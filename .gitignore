@@ -1,3 +1,6 @@
+Assembly-CSharp.csproj
+PrincessAdventure.sln
+.vs/*
 Assets/Scenes/*
 Library/*
 Logs/*
