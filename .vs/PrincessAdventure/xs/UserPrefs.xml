@@ -1,11 +1,16 @@
 ﻿<Properties StartupConfiguration="{7F7FDA83-3822-E1EE-63B6-5926C27FE1CF}|">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManger.cs">
+    <Files>
+      <File FileName="Assets/Scripts/GameManger.cs" Line="10" Column="25" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PrincessAdventure" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scenes" selected="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="GameManger.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -14,7 +19,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="412d1718-2dad-4493-9222-1b684d225576" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="35981617-a6bb-4135-bf05-be9144adab3f" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
