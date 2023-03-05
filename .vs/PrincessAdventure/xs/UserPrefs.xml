@@ -5,7 +5,7 @@
       <File FileName="Assets/Scripts/World/GameManger.cs" Line="11" Column="3" />
       <File FileName="Assets/Scripts/World/InputController.cs" Line="21" Column="38" />
       <File FileName="Assets/Scripts/World/NewMonoBehaviour.cs" Line="18" Column="1" />
-      <File FileName="Assets/Scripts/Character/NewMonoBehaviour.cs" Line="4" Column="30" />
+      <File FileName="Assets/Scripts/Character/NewMonoBehaviour.cs" Line="6" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,7 +13,9 @@
           <Node name="PrincessAdventure" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Character" expanded="True" />
+                <Node name="Character" expanded="True">
+                  <Node name="MoveController.cs" selected="True" />
+                </Node>
                 <Node name="Models" expanded="True" />
                 <Node name="World" expanded="True" />
               </Node>

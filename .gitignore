@@ -1,11 +1,27 @@
 Assembly-CSharp.csproj
 PrincessAdventure.sln
+2DCustomizableCharacters.CharacterEditor.csproj
+2DCustomizableCharacters.CharacterEditor.Editor.csproj
+2DCustomizableCharacters.csproj
+2DCustomizableCharacters.Editor.csproj
+CFXR.WelcomeScreen.csproj
+CFXRDemo.csproj
+CFXREditor.csproj
+CFXRRuntime.csproj
+ColorPicker.csproj
+KinoBloom.Runtime.csproj
+ToonyColorsPro.Demo.Editor.csproj
 .vs/*
 Assets/Scenes/*
+Assets/2D Customizable Characters/*
+Assets/2D Hand Painted Tilesets/*
+Assets/JMO Assets/*
 Library/*
 Logs/*
 obj/*
+xs/*
 Packages/*
 Temp/*
+UserSettings/*
 .vs/PrincessAdventure/xs/project-cache/Assembly-CSharp-Debug.json
 .vs/PrincessAdventure/xs/UserPrefs.xml

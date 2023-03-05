@@ -63,6 +63,20 @@
     <Compile Include="Assets/Scripts/Character/MoveController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR Particle Glow.shader" />
+    <None Include="Assets/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR Particle Ubershader.shader" />
+    <None Include="Assets/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR_SETTINGS.cginc" />
+    <None Include="Assets/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR.cginc" />
+    <None Include="Assets/JMO Assets/Cartoon FX Remaster/Readme Cartoon FX Remaster FREE.txt" />
+    <None Include="Assets/2D Customizable Characters/Character Editor/Fonts/Nunito/OFL.txt" />
+    <None Include="Assets/JMO Assets/Cartoon FX Remaster/CFXR Prefabs/Texts/_Make your own text effect.txt" />
+    <None Include="Assets/2D Hand Painted Tilesets/Readme.txt" />
+    <None Include="Assets/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR Particle Procedural Ring.shader" />
+    <None Include="Assets/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR_URP.cginc" />
+    <None Include="Assets/2D Customizable Characters/Readme.txt" />
+    <None Include="Assets/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR Particle Distortion.shader" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="UnityEngine">
       <HintPath>/Applications/Unity/Hub/Editor/2021.3.20f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -839,6 +853,50 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
+      <Project>{9F823F7B-B019-C26B-7F04-96BADB6A9DD6}</Project>
+      <Name>ToonyColorsPro.Demo.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="KinoBloom.Runtime.csproj">
+      <Project>{92D99E75-4F0A-2EB5-0DDB-534BCDD253DD}</Project>
+      <Name>KinoBloom.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXREditor.csproj">
+      <Project>{8CC0F344-E20C-0780-E961-358A05F866B3}</Project>
+      <Name>CFXREditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXRDemo.csproj">
+      <Project>{3983C5E9-DE58-A285-167F-D098E891DC0C}</Project>
+      <Name>CFXRDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXR.WelcomeScreen.csproj">
+      <Project>{9EFA388F-D41D-4519-75C4-9371BB67B42B}</Project>
+      <Name>CFXR.WelcomeScreen</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXRRuntime.csproj">
+      <Project>{3F2E6BAA-2DAE-356D-E57D-A8DB08B39E82}</Project>
+      <Name>CFXRRuntime</Name>
+    </ProjectReference>
+    <ProjectReference Include="2DCustomizableCharacters.Editor.csproj">
+      <Project>{7CD887B3-D9AD-5F4F-EE48-7B199A00A8E4}</Project>
+      <Name>2DCustomizableCharacters.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="ColorPicker.csproj">
+      <Project>{2D93EA1E-8764-1D24-3E5A-7505B1195C73}</Project>
+      <Name>ColorPicker</Name>
+    </ProjectReference>
+    <ProjectReference Include="2DCustomizableCharacters.CharacterEditor.csproj">
+      <Project>{1B7C83A6-00AA-DBDB-B5AF-C3284A944980}</Project>
+      <Name>2DCustomizableCharacters.CharacterEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="2DCustomizableCharacters.CharacterEditor.Editor.csproj">
+      <Project>{04EEF404-F2A1-CC69-A1A0-600F42F93B04}</Project>
+      <Name>2DCustomizableCharacters.CharacterEditor.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="2DCustomizableCharacters.csproj">
+      <Project>{AD664D52-B116-25F0-8477-C67A55415F25}</Project>
+      <Name>2DCustomizableCharacters</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
