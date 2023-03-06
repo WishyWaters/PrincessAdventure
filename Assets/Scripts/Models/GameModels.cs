@@ -20,6 +20,14 @@ public enum GameScenes
 
 }
 
+public enum ControllerTypes
+{
+	Xbox,
+	Ps,
+	Other,
+
+}
+
 [System.Serializable]
 public class GameDetails
 {

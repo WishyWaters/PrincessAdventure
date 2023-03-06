@@ -1,5 +1,6 @@
-﻿<Properties StartupConfiguration="{7F7FDA83-3822-E1EE-63B6-5926C27FE1CF}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Character/MoveController.cs">
+﻿<Properties StartupConfiguration="{AD664D52-B116-25F0-8477-C67A55415F25}|">
+  <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="437f8836-7e53-4fde-bf75-e4afb2f16771" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/World/InputManager.cs">
     <Files>
       <File FileName="Assets/Scripts/Models/StateModels.cs" Line="5" Column="1" />
       <File FileName="Assets/Scripts/World/GameManger.cs" Line="11" Column="3" />
@@ -12,12 +13,11 @@
         <State name="__root__">
           <Node name="PrincessAdventure" expanded="True">
             <Node name="Assets" expanded="True">
+              <Node name="2D Customizable Characters" expanded="True" />
               <Node name="Scripts" expanded="True">
-                <Node name="Character" expanded="True">
-                  <Node name="MoveController.cs" selected="True" />
+                <Node name="World" expanded="True">
+                  <Node name="InputManager.cs" selected="True" />
                 </Node>
-                <Node name="Models" expanded="True" />
-                <Node name="World" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -27,7 +27,6 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="437f8836-7e53-4fde-bf75-e4afb2f16771" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -57,10 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/World/GameManager.cs" />
-    <Compile Include="Assets/Scripts/World/InputManager.cs" />
     <Compile Include="Assets/Scripts/Models/GameModels.cs" />
-    <Compile Include="Assets/Scripts/World/SaveManager.cs" />
     <Compile Include="Assets/Scripts/Character/MoveController.cs" />
+    <Compile Include="Assets/Scripts/World/InputManager.cs" />
+    <Compile Include="Assets/Scripts/World/SaveManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR Particle Glow.shader" />
@@ -749,6 +749,9 @@
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Sysroot.Linux_x86_64">
+      <HintPath>Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
@@ -767,9 +770,6 @@
     <Reference Include="Unity.2D.IK.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
@@ -778,9 +778,6 @@
     </Reference>
     <Reference Include="Unity.2D.Psdimporter.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -800,6 +797,12 @@
     <Reference Include="Unity.2D.Tilemap.Extras.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualScripting.Flow">
+      <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
@@ -811,6 +814,9 @@
     </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Toolchain.Macos-x86_64-Linux-x86_64">
+      <HintPath>Library/ScriptAssemblies/Unity.Toolchain.Macos-x86_64-Linux-x86_64.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
@@ -842,52 +848,38 @@
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.State.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Toolchain.Macos-x86_64-Linux-x86_64">
-      <HintPath>Library/ScriptAssemblies/Unity.Toolchain.Macos-x86_64-Linux-x86_64.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Sysroot.Linux_x86_64">
-      <HintPath>Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.SysrootPackage.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
-      <Project>{9F823F7B-B019-C26B-7F04-96BADB6A9DD6}</Project>
-      <Name>ToonyColorsPro.Demo.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="KinoBloom.Runtime.csproj">
-      <Project>{92D99E75-4F0A-2EB5-0DDB-534BCDD253DD}</Project>
-      <Name>KinoBloom.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="CFXREditor.csproj">
-      <Project>{8CC0F344-E20C-0780-E961-358A05F866B3}</Project>
-      <Name>CFXREditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="CFXRDemo.csproj">
-      <Project>{3983C5E9-DE58-A285-167F-D098E891DC0C}</Project>
-      <Name>CFXRDemo</Name>
-    </ProjectReference>
-    <ProjectReference Include="CFXR.WelcomeScreen.csproj">
-      <Project>{9EFA388F-D41D-4519-75C4-9371BB67B42B}</Project>
-      <Name>CFXR.WelcomeScreen</Name>
-    </ProjectReference>
-    <ProjectReference Include="CFXRRuntime.csproj">
-      <Project>{3F2E6BAA-2DAE-356D-E57D-A8DB08B39E82}</Project>
-      <Name>CFXRRuntime</Name>
+    <ProjectReference Include="ColorPicker.csproj">
+      <Project>{2D93EA1E-8764-1D24-3E5A-7505B1195C73}</Project>
+      <Name>ColorPicker</Name>
     </ProjectReference>
     <ProjectReference Include="2DCustomizableCharacters.Editor.csproj">
       <Project>{7CD887B3-D9AD-5F4F-EE48-7B199A00A8E4}</Project>
       <Name>2DCustomizableCharacters.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="ColorPicker.csproj">
-      <Project>{2D93EA1E-8764-1D24-3E5A-7505B1195C73}</Project>
-      <Name>ColorPicker</Name>
-    </ProjectReference>
     <ProjectReference Include="2DCustomizableCharacters.CharacterEditor.csproj">
       <Project>{1B7C83A6-00AA-DBDB-B5AF-C3284A944980}</Project>
       <Name>2DCustomizableCharacters.CharacterEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
+      <Project>{9F823F7B-B019-C26B-7F04-96BADB6A9DD6}</Project>
+      <Name>ToonyColorsPro.Demo.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXREditor.csproj">
+      <Project>{8CC0F344-E20C-0780-E961-358A05F866B3}</Project>
+      <Name>CFXREditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="KinoBloom.Runtime.csproj">
+      <Project>{92D99E75-4F0A-2EB5-0DDB-534BCDD253DD}</Project>
+      <Name>KinoBloom.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXRDemo.csproj">
+      <Project>{3983C5E9-DE58-A285-167F-D098E891DC0C}</Project>
+      <Name>CFXRDemo</Name>
     </ProjectReference>
     <ProjectReference Include="2DCustomizableCharacters.CharacterEditor.Editor.csproj">
       <Project>{04EEF404-F2A1-CC69-A1A0-600F42F93B04}</Project>
@@ -896,6 +888,14 @@
     <ProjectReference Include="2DCustomizableCharacters.csproj">
       <Project>{AD664D52-B116-25F0-8477-C67A55415F25}</Project>
       <Name>2DCustomizableCharacters</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXR.WelcomeScreen.csproj">
+      <Project>{9EFA388F-D41D-4519-75C4-9371BB67B42B}</Project>
+      <Name>CFXR.WelcomeScreen</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXRRuntime.csproj">
+      <Project>{3F2E6BAA-2DAE-356D-E57D-A8DB08B39E82}</Project>
+      <Name>CFXRRuntime</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
