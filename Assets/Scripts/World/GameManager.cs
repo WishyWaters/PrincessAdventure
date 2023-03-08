@@ -2,26 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace PrincessAdventure
 {
-	private static GameManager _GameManagerInstance;
-	private GameState currentState = GameState.Undefined;
-
-	private void Awake()
+	public class GameManager : MonoBehaviour
 	{
-		if (_GameManagerInstance == null)
+		private static GameManager _GameManagerInstance;
+		private GameState currentState = GameState.Undefined;
+
+		private void Awake()
 		{
-			DontDestroyOnLoad(this);
-			_GameManagerInstance = this;
+			if (_GameManagerInstance == null)
+			{
+				DontDestroyOnLoad(this);
+				_GameManagerInstance = this;
+			}
+			else if (_GameManagerInstance != this)
+			{
+				Destroy(gameObject);
+			}
 		}
-		else if (_GameManagerInstance != this)
-		{
-			Destroy(gameObject);
-		}
+
 	}
-
-
-
-
-
 }
