@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PrincessAdventure
 {
-	public enum CharacterState
+	public enum PrincessState
 	{
 		Neutral,
 		Moving,
@@ -24,7 +24,8 @@ namespace PrincessAdventure
 		public bool InputInteract { get; set; }
 
 		public bool InputMagicCast { get; set; }
-		public bool InputSummon { get; set; }
+		public bool InputSummoning { get; set; }
+		public bool InputSummonComplete { get; set; }
 
 		public bool InputFade { get; set; }
 

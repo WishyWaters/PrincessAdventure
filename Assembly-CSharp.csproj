@@ -61,8 +61,8 @@
     <Compile Include="Assets/Scripts/World/InputManager.cs" />
     <Compile Include="Assets/Scripts/World/SaveManager.cs" />
     <Compile Include="Assets/Scripts/Character/ActionController.cs" />
-    <Compile Include="Assets/Scripts/Models/CharacterObjectModels.cs" />
     <Compile Include="Assets/Scripts/Character/CharacterController.cs" />
+    <Compile Include="Assets/Scripts/Models/PrincessModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR Particle Glow.shader" />

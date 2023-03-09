@@ -72,9 +72,10 @@ namespace PrincessAdventure
             if (Input.GetButtonUp("Magic"))
             {
                 if (_magicDownStart + _holdThreshold >= Time.time)
-                {
                     newInputs.InputMagicCast = true;
-                }
+                else 
+                    newInputs.InputSummonComplete = true;
+
                 _magicDownStart = 0f;
 
             }
@@ -82,7 +83,7 @@ namespace PrincessAdventure
             {
                 if (_magicDownStart + _holdThreshold <= Time.time)
                 {
-                    newInputs.InputSummon = true;
+                    newInputs.InputSummoning = true;
                 }
             }
 
@@ -92,12 +93,14 @@ namespace PrincessAdventure
             {
                 if (_bombDownStart + _holdThreshold >= Time.time)
                     newInputs.InputDropBomb = true;
+                else
+                    newInputs.InputThrowBomb = true;
                 _bombDownStart = 0f;
             }
             if(Input.GetButton("Bomb"))
             {
                 if (_bombDownStart + _holdThreshold <= Time.time)
-                    newInputs.InputThrowBomb = true;
+                    newInputs.InputHoldBomb = true;
             }
 
             if (Input.GetButtonDown("Fade"))

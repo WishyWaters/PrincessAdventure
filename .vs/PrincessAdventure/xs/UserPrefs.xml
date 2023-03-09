@@ -1,19 +1,25 @@
 ﻿<Properties StartupConfiguration="{AD664D52-B116-25F0-8477-C67A55415F25}|">
   <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="437f8836-7e53-4fde-bf75-e4afb2f16771" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Character/CharacterController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/2D Customizable Characters/Character Editor/Scripts/SpriteExporter.cs">
     <Files>
-      <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/Demo Scripts/CharacterControllerInputs.cs" Line="17" Column="30" />
-      <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/Demo Scripts/DemoCharacterController.cs" Line="24" Column="1" />
-      <File FileName="Assets/Scripts/Character/NewMonoBehaviour.cs" Line="10" Column="37" />
-      <File FileName="Assets/Scripts/World/InputController.cs" Line="39" Column="49" />
+      <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/Demo Scripts/CharacterControllerInputs.cs" Line="8" Column="52" />
+      <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/Demo Scripts/DemoCharacterController.cs" Line="142" Column="30" />
+      <File FileName="Assets/Scripts/Character/NewMonoBehaviour.cs" Line="234" Column="30" />
+      <File FileName="Assets/Scripts/Models/PrincessModels.cs" Line="17" Column="8" />
+      <File FileName="Assets/Scripts/World/InputController.cs" Line="54" Column="62" />
       <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/UI/AnimationPlayer.cs" Line="7" Column="1" />
-      <File FileName="Assets/Scripts/Character/NewMonoBehaviour.cs" Line="9" Column="1" />
-      <File FileName="Assets/Scripts/Models/NewClass.cs" Line="11" Column="8" />
       <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/Demo Scripts/LegacyInputs.cs" Line="53" Column="30" />
       <File FileName="Assets/Scripts/Models/GameModels.cs" Line="6" Column="2" />
-      <File FileName="Assets/Scripts/World/GameManager.cs" Line="10" Column="20" />
+      <File FileName="Assets/Scripts/World/GameManager.cs" Line="15" Column="5" />
       <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/Demo Scripts/InputSystemInputs.cs" Line="67" Column="30" />
-      <File FileName="Assets/2D Customizable Characters/Scripts/CustomizableCharacter.cs" Line="1" Column="1" />
+      <File FileName="Assets/2D Customizable Characters/Scripts/CustomizableCharacter.cs" Line="4" Column="33" />
+      <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/AnimationClipGroup.cs" Line="1" Column="1" />
+      <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/CharacterEditorCustomization.cs" Line="1" Column="1" />
+      <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/CharacterEditorData.cs" Line="1" Column="1" />
+      <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/CharacterEditorSettings.cs" Line="1" Column="1" />
+      <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/ICharacterController.cs" Line="1" Column="1" />
+      <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/PrefabExporter.cs" Line="1" Column="1" />
+      <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/SpriteExporter.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,15 +29,13 @@
               <Node name="2D Customizable Characters" expanded="True">
                 <Node name="Character Editor" expanded="True">
                   <Node name="Scripts" expanded="True">
-                    <Node name="Demo Scripts" expanded="True" />
+                    <Node name="SpriteExporter.cs" selected="True" />
                   </Node>
                 </Node>
                 <Node name="Scripts" expanded="True" />
               </Node>
               <Node name="Scripts" expanded="True">
-                <Node name="Character" expanded="True">
-                  <Node name="CharacterController.cs" selected="True" />
-                </Node>
+                <Node name="Character" expanded="True" />
                 <Node name="Models" expanded="True" />
                 <Node name="World" expanded="True" />
               </Node>
