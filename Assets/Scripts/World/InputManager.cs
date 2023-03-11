@@ -24,6 +24,7 @@ namespace PrincessAdventure
 
         //Centralized inputs, communicate tasks out to other components
         //Defaulting to ps5 controller for now
+        //Use fixed update because we move via Rigidbody & Physics
         void Update()
         {
 
@@ -108,7 +109,7 @@ namespace PrincessAdventure
 
 
 
-            _charCtrl.HandleInputs(newInputs);
+            _charCtrl.UpdateNextInputs(newInputs);
 
         }
 

@@ -3,21 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - WorldBoundry
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Princess
+  - Fade
+  - Enemy
+  - Interact
+  - Pet
+  - FadePass
+  - PetPass
   - 
   - 
   - 
@@ -38,18 +39,30 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Ground
+  - name: Underground
+    uniqueID: 3322806491
+    locked: 0
+  - name: GroundBottom
+    uniqueID: 2670881459
+    locked: 0
+  - name: GroundMid
     uniqueID: 3669006493
     locked: 0
-  - name: GroundDeco
+  - name: GroundTop
     uniqueID: 2782688645
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Top
-    uniqueID: 2655908275
-    locked: 0
-  - name: TopDeco
+  - name: AboveBottom
     uniqueID: 1093532807
+    locked: 0
+  - name: AboveMiddle
+    uniqueID: 144273981
+    locked: 0
+  - name: AboveTop
+    uniqueID: 4042787129
+    locked: 0
+  - name: Sky
+    uniqueID: 2108697989
     locked: 0

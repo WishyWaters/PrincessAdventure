@@ -16,6 +16,9 @@ Assets/Scenes/*
 Assets/2D Customizable Characters/*
 Assets/2D Hand Painted Tilesets/*
 Assets/JMO Assets/*
+Assets/Game Music Treasury - Vol. II/*
+Assets/Gamemaster Audio - Pro Sound Collection/*
+Assets/118 sprite effects bundle/*
 Library/*
 Logs/*
 obj/*
@@ -27,4 +30,4 @@ UserSettings/*
 .vs/PrincessAdventure/xs/UserPrefs.xml
 .vs/PrincessAdventure/xs/UserPrefs.xml
 .vs/PrincessAdventure/xs/project-cache/Assembly-CSharp-Debug.json
-Assets/118 sprite effects bundle/*
+

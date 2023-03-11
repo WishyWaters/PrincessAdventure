@@ -14,7 +14,8 @@ namespace PrincessAdventure
 		//Fade
 		DropBomb,
 		HoldingBomb,
-		ThrowBomb
+		ThrowBomb,
+		Falling
 	}
 
 	public class PrincessInputActions

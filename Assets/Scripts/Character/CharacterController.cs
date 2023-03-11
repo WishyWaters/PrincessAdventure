@@ -9,6 +9,7 @@ namespace PrincessAdventure
         [Header("References")]
         [SerializeField] private CustomizableCharacters.CustomizableCharacter _customizableCharacter;
         [SerializeField] private Animator _animator;
+        [SerializeField] private Rigidbody2D _rigidbody;
 
         [Header("Settings")]
         [SerializeField] private float _acceleration; //13
@@ -25,6 +26,10 @@ namespace PrincessAdventure
         private GameObject _currentDirectionGameObject;
         private Coroutine _currentCoroutine;
 
+        private PrincessInputActions _nextInputs;
+        private PrincessInputActions _currentInputs;
+        private bool _ignoreInputs;
+
 
         //handle movement
         //run or walk animation
@@ -34,7 +39,57 @@ namespace PrincessAdventure
             EnableController();
         }
 
-        public void HandleInputs(PrincessInputActions inputs)
+        void FixedUpdate()
+        {
+            _currentInputs = _nextInputs;
+            _nextInputs = new PrincessInputActions();
+
+            if(!_ignoreInputs)
+                HandleInputs(_currentInputs);
+        }
+
+        public void UpdateNextInputs(PrincessInputActions inputs)
+        {
+            _nextInputs.MoveAxis = inputs.MoveAxis;
+
+            if (inputs.InputDropBomb)
+                _nextInputs.InputDropBomb = true;
+            if (inputs.InputFade)
+                _nextInputs.InputFade = true;
+            if (inputs.InputHoldBomb)
+                _nextInputs.InputHoldBomb = true;
+            if (inputs.InputInteract)
+                _nextInputs.InputInteract = true;
+            if (inputs.InputMagicCast)
+                _nextInputs.InputMagicCast = true;
+            if (inputs.InputRunning)
+                _nextInputs.InputRunning = true;
+            if (inputs.InputSummonComplete)
+                _nextInputs.InputSummonComplete = true;
+            if (inputs.InputSummoning)
+                _nextInputs.InputSummoning = true;
+            if (inputs.InputThrowBomb)
+                _nextInputs.InputThrowBomb = true;
+            
+
+        }
+
+        public void AttemptCliffJump(Vector2 fallDirection)
+        {
+            Debug.Log("start attempt");
+            var inputDirection = GetClosestDirection(_currentInputs.MoveAxis);
+
+            if (fallDirection == inputDirection)
+            {
+                ChangeState(PrincessState.Falling);
+                if (_currentCoroutine != null)
+                    StopCoroutine(_currentCoroutine);
+                _currentCoroutine = StartCoroutine(DoCliffJump(inputDirection));
+            }
+        }
+
+
+        private void HandleInputs(PrincessInputActions inputs)
         {
             //Start New Action
             if (_currentState == PrincessState.Neutral || _currentState == PrincessState.Moving)
@@ -81,8 +136,10 @@ namespace PrincessAdventure
             ResetRigs();
 
             ChangeState(PrincessState.Neutral);
-
+            _nextInputs = new PrincessInputActions();
             _previousDirection = Vector2.zero;
+            _ignoreInputs = false;
+
             HandleDirection(new PrincessInputActions());
         }
 
@@ -95,7 +152,11 @@ namespace PrincessAdventure
 
         private void Move(Vector2 amount)
         {
-            transform.position += (Vector3)(amount * Time.deltaTime);
+            Vector2 nextPosition = _rigidbody.position;
+            nextPosition += amount * Time.deltaTime;
+
+            _rigidbody.MovePosition(nextPosition);
+
         }
 
         private void HandleLocomotion(PrincessInputActions inputs)
@@ -104,7 +165,7 @@ namespace PrincessAdventure
             var maxAcceleration = _acceleration;
 
             if (inputs.MoveAxis != Vector2.zero
-                && (_currentState == PrincessState.Neutral || _currentState == PrincessState.HoldingBomb || _currentState == PrincessState.Moving))
+                && (_currentState == PrincessState.Neutral || _currentState == PrincessState.HoldingBomb || _currentState == PrincessState.Moving || _currentState == PrincessState.Summon))
             {
                 if (!inputs.InputRunning)
                     maxAcceleration /= 2;
@@ -359,7 +420,7 @@ namespace PrincessAdventure
             _animator.ResetTrigger("Spell");
 
 
-            while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Stab")
+            while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Spell")
                        && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
             {
                 // prevent too early attack input
@@ -373,6 +434,38 @@ namespace PrincessAdventure
             ChangeState(PrincessState.Neutral);
         }
 
+        private IEnumerator DoCliffJump(Vector2 fallDirection)
+        {
+            _rigidbody.bodyType = RigidbodyType2D.Kinematic;
+            _ignoreInputs = true;
+
+            Debug.Log("Do Jump");
+            Vector2 destination = _rigidbody.position + (fallDirection * 3);
+
+            _animator.SetTrigger("Hurt");
+
+            // wait for animator state to change to Hurt
+            while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt") == false)
+                yield return null;
+
+            _animator.ResetTrigger("Hurt");
+
+            while (_rigidbody.position != destination)
+            {
+                Vector2 nextPosition = Vector2.MoveTowards(_rigidbody.position, destination, Time.deltaTime * _moveSpeed * 3);
+                _rigidbody.MovePosition(nextPosition);
+                Debug.Log("Falling");
+
+                yield return null;
+            }
+
+            //TODO: Add landing effect
+            Debug.Log("Landed");
+
+            _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+            _ignoreInputs = false;
+            ChangeState(PrincessState.Neutral);
+        }
 
         #endregion
     }
