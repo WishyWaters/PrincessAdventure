@@ -4,13 +4,20 @@ using UnityEngine;
 
 namespace PrincessAdventure
 {
-	public enum SimpleDirection
-	{
-		Up,
-		Down,
-		Left,
-		Right
-	}
+	public enum InteractionTypes
+    {
+        Jump,
+        Chest,
+        Talk,
+        Door
 
-	
+    }
+
+    public class Interactable
+    {
+        public int interactableId;
+        public InteractionTypes type;
+        public int relatedId;
+        public Vector2 requiredDirection;
+    }
 }

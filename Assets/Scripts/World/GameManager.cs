@@ -7,7 +7,7 @@ namespace PrincessAdventure
 	public class GameManager : MonoBehaviour
 	{
 		private static GameManager _GameManagerInstance;
-		private GameState currentState = GameState.Undefined;
+		//private GameState currentState = GameState.Undefined;
 
 		private void Awake()
 		{

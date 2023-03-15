@@ -10,6 +10,7 @@ namespace PrincessAdventure
         [SerializeField] private CustomizableCharacters.CustomizableCharacter _customizableCharacter;
         [SerializeField] private Animator _animator;
         [SerializeField] private Rigidbody2D _rigidbody;
+        [SerializeField] private InteractController _interactCtrl;
 
         [Header("Settings")]
         [SerializeField] private float _acceleration; //13
@@ -77,15 +78,12 @@ namespace PrincessAdventure
         public void AttemptCliffJump(Vector2 fallDirection)
         {
             Debug.Log("start attempt");
-            var inputDirection = GetClosestDirection(_currentInputs.MoveAxis);
 
-            if (fallDirection == inputDirection)
-            {
-                ChangeState(PrincessState.Falling);
-                if (_currentCoroutine != null)
-                    StopCoroutine(_currentCoroutine);
-                _currentCoroutine = StartCoroutine(DoCliffJump(inputDirection));
-            }
+            ChangeState(PrincessState.Falling);
+            if (_currentCoroutine != null)
+                StopCoroutine(_currentCoroutine);
+            _currentCoroutine = StartCoroutine(DoCliffJump(fallDirection));
+            
         }
 
 
@@ -136,6 +134,7 @@ namespace PrincessAdventure
             ResetRigs();
 
             ChangeState(PrincessState.Neutral);
+
             _nextInputs = new PrincessInputActions();
             _previousDirection = Vector2.zero;
             _ignoreInputs = false;
@@ -196,6 +195,9 @@ namespace PrincessAdventure
             var direction = GetClosestDirection(inputs.MoveAxis);
             if (direction == _previousDirection)
                 return;
+
+
+            _interactCtrl.UpdateOffset(direction);
 
             _currentDirectionGameObject?.SetActive(false);
 
@@ -260,7 +262,7 @@ namespace PrincessAdventure
 
         private void HandleInteraction()
         {
-
+            _interactCtrl.AttemptInteraction();
         }
 
         private void HandleMagicCast(PrincessInputActions inputs)
@@ -439,7 +441,6 @@ namespace PrincessAdventure
             _rigidbody.bodyType = RigidbodyType2D.Kinematic;
             _ignoreInputs = true;
 
-            Debug.Log("Do Jump");
             Vector2 destination = _rigidbody.position + (fallDirection * 3);
 
             _animator.SetTrigger("Hurt");
@@ -452,16 +453,15 @@ namespace PrincessAdventure
 
             while (_rigidbody.position != destination)
             {
-                Vector2 nextPosition = Vector2.MoveTowards(_rigidbody.position, destination, Time.deltaTime * _moveSpeed * 3);
+                Vector2 nextPosition = Vector2.MoveTowards(_rigidbody.position, destination, Time.deltaTime * _moveSpeed * 10);
                 _rigidbody.MovePosition(nextPosition);
-                Debug.Log("Falling");
 
                 yield return null;
             }
 
-            //TODO: Add landing effect
-            Debug.Log("Landed");
+            LandingController landCtrl = this.GetComponent<LandingController>();
 
+            landCtrl.HandleLanding();
             _rigidbody.bodyType = RigidbodyType2D.Dynamic;
             _ignoreInputs = false;
             ChangeState(PrincessState.Neutral);

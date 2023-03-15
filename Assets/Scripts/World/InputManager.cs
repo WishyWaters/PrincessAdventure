@@ -7,7 +7,6 @@ namespace PrincessAdventure
     public class InputManager : MonoBehaviour
     {
         private ControllerTypes _inputName = ControllerTypes.Other;
-        private bool _isPaused = false;
         private CharacterController _charCtrl;
 
         private float _interactDownStart;
