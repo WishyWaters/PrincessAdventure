@@ -33,18 +33,22 @@ namespace PrincessAdventure
 	[System.Serializable]
 	public class GameDetails
 	{
-
 		public int saveID;
 		public GameScenes gameScene;
-		public int startPoint;
+		public int loadLocationIndex;
 		public int gold;
-		//TODO: Stats
-		//TODO: Found Items
-		//TODO: Current Equipment
-		//TODO: Character attributes
+		public int maxHearts;
+		public int maxMana;
+		public int starShards;
 		public bool hasMagic;
 		public bool hasFade;
 		public bool hasBomb;
+		public List<int> hats;
+		public List<int> outfits;
+		public List<int> shoes;
+		public List<int> necklaces;
+		public List<int> rings;
+		public List<int> friends;
 
 	}
 }

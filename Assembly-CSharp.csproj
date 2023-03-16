@@ -104,6 +104,9 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexZoom.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark01.cs" />
     <Compile Include="Assets/Scripts/Character/ActionController.cs" />
+    <Compile Include="Assets/Scripts/Monster/MonsterController.cs" />
+    <Compile Include="Assets/Retro Cartoon UI Pack/Retro Cartoon UI Resources/Scripts/PressedBtn.cs" />
+    <Compile Include="Assets/Retro Cartoon UI Pack/Retro Cartoon UI Resources/Scripts/SliderValuePass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

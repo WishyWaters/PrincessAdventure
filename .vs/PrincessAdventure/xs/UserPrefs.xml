@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{AD664D52-B116-25F0-8477-C67A55415F25}|">
   <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="bd7ecaa8-e19d-4743-b8a2-7709bd6b26c7" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Models/PrincessModels.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/2D Customizable Characters/Character Editor/Scripts/Demo Scripts/DemoCharacterController.cs">
     <Files>
       <File FileName="Assets/Scripts/World/InputManager.cs" Line="134" Column="14" />
       <File FileName="Assets/Scripts/Models/PrincessModels.cs" Line="38" Column="2" />
@@ -10,20 +10,37 @@
       <File FileName="Assets/Scripts/Level/CliffJump.cs" />
       <File FileName="Assets/Scripts/Models/GameModels.cs" />
       <File FileName="Assets/Scripts/Level/Interaction.cs" />
-      <File FileName="Assets/Scripts/Character/CharacterEffects/InteractController.cs" />
-      <File FileName="Assets/Scripts/Level/DefaultRenderOrder.cs" />
-      <File FileName="Assets/4Direction Animated 2D Monsters (Fantazia Top Down)/Example/MonsterSpawner.cs" />
-      <File FileName="Assets/4Direction Animated 2D Monsters (Fantazia Top Down)/READ_ME_FIRST.txt" Line="2" Column="26" />
-      <File FileName="Assets/Spine/CHANGELOG.md" />
+      <File FileName="Assets/Scripts/Character/CharacterEffects/InteractController.cs" Line="10" Column="9" />
+      <File FileName="Assets/Scripts/Level/DefaultRenderOrder.cs" Line="17" Column="39" />
+      <File FileName="Assets/4Direction Animated 2D Monsters (Fantazia Top Down)/Example/MonsterSpawner.cs" Line="13" Column="33" />
+      <File FileName="Assets/Scripts/Monster/MonsterController.cs" Line="36" Column="45" />
+      <File FileName="Assets/2D Customizable Characters/Character Editor/Scripts/Demo Scripts/DemoCharacterController.cs" Line="146" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PrincessAdventure" expanded="True">
-            <Node name="Assets" expanded="True" selected="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Models" expanded="True" />
+            <Node name="Assets" expanded="True">
+              <Node name="2D Customizable Characters" expanded="True">
+                <Node name="Character Editor" expanded="True">
+                  <Node name="Scripts" expanded="True">
+                    <Node name="Demo Scripts" expanded="True">
+                      <Node name="DemoCharacterController.cs" selected="True" />
+                    </Node>
+                  </Node>
+                </Node>
               </Node>
+              <Node name="4Direction Animated 2D Monsters (Fantazia Top Down)" expanded="True">
+                <Node name="Example" expanded="True" />
+              </Node>
+              <Node name="Scripts" expanded="True">
+                <Node name="Character" expanded="True">
+                  <Node name="CharacterEffects" expanded="True" />
+                </Node>
+                <Node name="Level" expanded="True" />
+                <Node name="Monster" expanded="True" />
+              </Node>
+              <Node name="Spine" expanded="True" />
             </Node>
           </Node>
         </State>
