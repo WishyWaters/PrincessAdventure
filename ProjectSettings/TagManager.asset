@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - FxTemporaire
+  - SoundManager
   layers:
   - Default
   - TransparentFX

@@ -20,4 +20,16 @@ namespace PrincessAdventure
         public int relatedId;
         public Vector2 requiredDirection;
     }
+
+    public enum PickUps
+    {
+        RedPotion,
+        BluePotion,
+        GreenPotion,
+        Key,
+        Coin,
+        SilverBar,
+        GoldBar,
+        StarShard
+    }
 }

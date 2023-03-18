@@ -77,13 +77,29 @@ namespace PrincessAdventure
 
         public void AttemptCliffJump(Vector2 fallDirection)
         {
-            Debug.Log("start attempt");
 
             ChangeState(PrincessState.Falling);
             if (_currentCoroutine != null)
                 StopCoroutine(_currentCoroutine);
             _currentCoroutine = StartCoroutine(DoCliffJump(fallDirection));
             
+        }
+
+        public void HandleDamage()
+        {
+
+            ChangeState(PrincessState.Falling);
+            if (_currentCoroutine != null)
+                StopCoroutine(_currentCoroutine);
+            _currentCoroutine = StartCoroutine(DoHurt(_previousDirection * -1));
+
+        }
+
+        public void HandlePotions(PickUps pickUp)
+        {
+            PotionPickupEffectController potionCtrl = this.GetComponent<PotionPickupEffectController>();
+
+            potionCtrl.SpawnPotionEffect(pickUp);
         }
 
 
@@ -463,6 +479,36 @@ namespace PrincessAdventure
 
             landCtrl.HandleLanding();
             _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+            _ignoreInputs = false;
+            ChangeState(PrincessState.Neutral);
+        }
+
+        private IEnumerator DoHurt(Vector2 flinchDirection)
+        {
+            _ignoreInputs = true;
+
+            Vector2 destination = _rigidbody.position + (flinchDirection);
+
+            _animator.SetTrigger("Hurt");
+
+            // wait for animator state to change to Hurt
+            while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt") == false)
+                yield return null;
+
+            _animator.ResetTrigger("Hurt");
+
+            while (_rigidbody.position != destination)
+            {
+                Vector2 nextPosition = Vector2.MoveTowards(_rigidbody.position, destination, Time.deltaTime * _moveSpeed * 5);
+                _rigidbody.MovePosition(nextPosition);
+
+                yield return null;
+            }
+
+            DamageEffectController dmgCtrl = this.GetComponent<DamageEffectController>();
+
+            dmgCtrl.SpawnDamageEffect();
+
             _ignoreInputs = false;
             ChangeState(PrincessState.Neutral);
         }

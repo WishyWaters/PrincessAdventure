@@ -10,6 +10,7 @@ namespace PrincessAdventure
     public class MonsterController : MonoBehaviour
     {
         [SerializeField] SkeletonAnimation _monsterAnimator;
+        [SerializeField] bool _dealHeartDamage;
         Rigidbody2D _rigidbody;
 
         private Vector2 _currentDirection;
@@ -50,6 +51,11 @@ namespace PrincessAdventure
         void OnCollisionEnter2D(Collision2D collision)
         {
             ChangeDirection();
+
+            if(_dealHeartDamage && collision.gameObject.tag == "Player")
+            {
+                GameManager.GameInstance.DamagePrincess();
+            }
         }
 
         private void ChangeDirection()

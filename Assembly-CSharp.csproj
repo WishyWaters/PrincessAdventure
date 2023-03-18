@@ -65,7 +65,6 @@
     <Compile Include="Assets/Scripts/Character/CharacterEffects/InteractController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexShakeA.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark04.cs" />
-    <Compile Include="Assets/Scripts/Level/CliffJump.cs" />
     <Compile Include="Assets/Scripts/Models/PrincessModels.cs" />
     <Compile Include="Assets/Scripts/Models/GameModels.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/ChatController.cs" />
@@ -107,6 +106,15 @@
     <Compile Include="Assets/Scripts/Monster/MonsterController.cs" />
     <Compile Include="Assets/Retro Cartoon UI Pack/Retro Cartoon UI Resources/Scripts/PressedBtn.cs" />
     <Compile Include="Assets/Retro Cartoon UI Pack/Retro Cartoon UI Resources/Scripts/SliderValuePass.cs" />
+    <Compile Include="Assets/Scripts/GUI/GameplayGuiController.cs" />
+    <Compile Include="Assets/Scripts/GUI/GuiManager.cs" />
+    <Compile Include="Assets/Scripts/Utilities/GlobalUtils.cs" />
+    <Compile Include="Assets/Scripts/Character/CharacterEffects/DamageEffectController.cs" />
+    <Compile Include="Assets/Scripts/Character/CharacterEffects/PotionPickupEffectController.cs" />
+    <Compile Include="Assets/Scripts/World/SoundManager/SoundManager.cs" />
+    <Compile Include="Assets/Scripts/World/SoundManager/PlaySoundOnStart.cs" />
+    <Compile Include="Assets/Scripts/World/SoundManager/VolumeSlider.cs" />
+    <Compile Include="Assets/Scripts/Level/pickups/PickupController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
