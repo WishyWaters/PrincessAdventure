@@ -115,6 +115,7 @@
     <Compile Include="Assets/Scripts/World/SoundManager/PlaySoundOnStart.cs" />
     <Compile Include="Assets/Scripts/World/SoundManager/VolumeSlider.cs" />
     <Compile Include="Assets/Scripts/Level/pickups/PickupController.cs" />
+    <Compile Include="Assets/Scripts/Level/TreasureExplosion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

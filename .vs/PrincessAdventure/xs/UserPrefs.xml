@@ -1,18 +1,19 @@
 ﻿<Properties StartupConfiguration="{AD664D52-B116-25F0-8477-C67A55415F25}|">
   <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="bd7ecaa8-e19d-4743-b8a2-7709bd6b26c7" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GUI/GameplayGuiController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Character/CharacterEffects/PotionPickupEffectController.cs">
     <Files>
-      <File FileName="Assets/Scripts/Level/Interaction.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Character/CharacterController.cs" Line="102" Column="50" />
+      <File FileName="Assets/Scripts/Level/Interaction.cs" Line="35" Column="27" />
+      <File FileName="Assets/Scripts/Character/CharacterController.cs" Line="317" Column="64" />
       <File FileName="Assets/Scripts/Character/CharacterEffects/LandingController.cs" Line="13" Column="1" />
-      <File FileName="Assets/Scripts/World/GameManager.cs" Line="64" Column="17" />
-      <File FileName="Assets/Scripts/Character/CharacterEffects/PotionPickupEffectController.cs" Line="57" Column="39" />
-      <File FileName="Assets/Scripts/Level/pickups/PickupController.cs" Line="18" Column="45" />
-      <File FileName="Assets/Scripts/Monster/MonsterController.cs" Line="59" Column="10" />
-      <File FileName="Assets/Scripts/Character/CharacterEffects/InteractController.cs" Line="80" Column="10" />
+      <File FileName="Assets/Scripts/World/GameManager.cs" Line="142" Column="38" />
+      <File FileName="Assets/Scripts/Level/pickups/PickupController.cs" Line="58" Column="1" />
       <File FileName="Assets/Scripts/Models/GameModels.cs" Line="40" Column="19" />
-      <File FileName="Assets/Scripts/GUI/GameplayGuiController.cs" Line="32" Column="1" />
-      <File FileName="Assets/Scripts/GUI/GuiManager.cs" Line="26" Column="34" />
+      <File FileName="Assets/Scripts/GUI/GameplayGuiController.cs" Line="36" Column="45" />
+      <File FileName="Assets/Scripts/GUI/GuiManager.cs" Line="24" Column="39" />
+      <File FileName="Assets/Scripts/Level/TreasureExplosion.cs" Line="81" Column="1" />
+      <File FileName="Assets/Scripts/Models/LevelModels.cs" Line="13" Column="19" />
+      <File FileName="Assets/Scripts/Character/CharacterEffects/InteractController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Character/CharacterEffects/PotionPickupEffectController.cs" Line="27" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -31,11 +32,11 @@
               </Node>
               <Node name="Scripts" expanded="True">
                 <Node name="Character" expanded="True">
-                  <Node name="CharacterEffects" expanded="True" />
+                  <Node name="CharacterEffects" expanded="True">
+                    <Node name="PotionPickupEffectController.cs" selected="True" />
+                  </Node>
                 </Node>
-                <Node name="GUI" expanded="True">
-                  <Node name="GameplayGuiController.cs" selected="True" />
-                </Node>
+                <Node name="GUI" expanded="True" />
                 <Node name="Level" expanded="True">
                   <Node name="pickups" expanded="True" />
                 </Node>

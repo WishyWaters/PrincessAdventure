@@ -30,6 +30,9 @@ namespace PrincessAdventure
                 case InteractionTypes.Jump:
                     DoCliffJump();
                     break;
+                case InteractionTypes.MinorChest:
+                    DoTreasureExplosion();
+                    break;
             }
 
         }
@@ -38,6 +41,12 @@ namespace PrincessAdventure
         {
             CharacterController charCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
             charCtrl.AttemptCliffJump(_direction);
+        }
+
+        private void DoTreasureExplosion()
+        {
+            TreasureExplosion treasure = this.GetComponent<TreasureExplosion>();
+            treasure.ThrowTreasure();
         }
     }
 }

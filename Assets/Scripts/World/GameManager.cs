@@ -137,6 +137,10 @@ namespace PrincessAdventure
 			}
         }
 
+		public int GetCurrentHealth()
+        {
+			return _gameDetails.currentHealth;
+        }
 
         #endregion
 

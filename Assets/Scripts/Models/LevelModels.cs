@@ -7,9 +7,10 @@ namespace PrincessAdventure
 	public enum InteractionTypes
     {
         Jump,
-        Chest,
+        MinorChest,
         Talk,
-        Door
+        Door,
+        MajorChest
 
     }
 
