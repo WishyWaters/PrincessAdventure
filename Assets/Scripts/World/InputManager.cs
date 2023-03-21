@@ -12,7 +12,7 @@ namespace PrincessAdventure
         private float _interactDownStart;
         private float _magicDownStart;
         private float _bombDownStart;
-        private float _holdThreshold = .2f;
+        private float _holdThreshold = .4f;
 
         private void Awake()
         {
@@ -103,7 +103,7 @@ namespace PrincessAdventure
                     newInputs.InputHoldBomb = true;
             }
 
-            if (Input.GetButtonDown("Fade"))
+            if (Input.GetButton("Fade"))
                 newInputs.InputFade = true;
 
 
@@ -119,6 +119,8 @@ namespace PrincessAdventure
             //{
             //    Debug.Log(name);
             //}
+            if (Input.GetJoystickNames() == null || Input.GetJoystickNames().Length == 0)
+                return ControllerTypes.Other;
 
             string joystickName = Input.GetJoystickNames()[0].ToLower();
 

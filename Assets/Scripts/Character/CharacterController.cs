@@ -283,12 +283,12 @@ namespace PrincessAdventure
 
         private void HandleMagicCast(PrincessInputActions inputs)
         {
-            Debug.Log("Attempt Cast");
             ChangeState(PrincessState.MagicCast);
 
             if (_currentCoroutine != null)
                 StopCoroutine(_currentCoroutine);
             _currentCoroutine = StartCoroutine(DoMagicCast(inputs));
+
         }
 
         private void HandleSummoning()
@@ -338,7 +338,11 @@ namespace PrincessAdventure
 
         private void HandleFade()
         {
-            Debug.Log("Fade");
+            FadeController fadeCtrl = this.GetComponent<FadeController>();
+
+            fadeCtrl.FadeOn();
+
+
         }
 
 
@@ -364,6 +368,10 @@ namespace PrincessAdventure
                 yield return null;
 
             _animator.ResetTrigger("Attack 1");
+
+            //spawn sparkles
+            SparkleController sparkleCtrl = this.GetComponent<SparkleController>();
+            sparkleCtrl.HandleSparkleCast(_previousDirection);
 
 
             while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1")

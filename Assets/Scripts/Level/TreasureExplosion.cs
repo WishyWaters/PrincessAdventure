@@ -24,7 +24,7 @@ namespace PrincessAdventure
         public void ThrowTreasure()
         {
             //5 to 20 coins
-            int numOfCoins = UnityEngine.Random.Range(20, 50);
+            int numOfCoins = UnityEngine.Random.Range(5, 25);
             //0 to 2 silver
             int numOfSilver = UnityEngine.Random.Range(0, 3);
             //0 to 1 gold bar/red p/ blue p
@@ -57,22 +57,36 @@ namespace PrincessAdventure
             GameObject newTreasure = Instantiate(prefabToMake, this.transform.position, this.transform.rotation);
 
             PickupController pickupCtrl = newTreasure.GetComponent<PickupController>();
-    
-            float x = GetRandomInRange();
-            float y = GetRandomInRange();
-            pickupCtrl.MoveItemToTarget(newTreasure.transform.position + new Vector3(x, y, 0));
+
+            //float x = GetRandomInRange();
+            //float y = GetRandomInRange();
+            float randomRadius = UnityEngine.Random.Range(.8f, 2f);
+            Vector3 rndPositionFromCircle = RandomCircle(newTreasure.transform.position, randomRadius);
+
+            pickupCtrl.MoveItemToTarget(rndPositionFromCircle);
         }
 
 
         private float GetRandomInRange()
         {
             float result = UnityEngine.Random.Range(-1.5f, 1.5f);
-            if (result >= 0f)
+
+            if (result >= 0f && result < .5f)
                 result += .5f;
-            else if (result < 0f)
+            else if (result < 0f && result > -.5f)
                 result -= .5f;
 
             return result;
+        }
+
+        Vector3 RandomCircle(Vector3 center, float radius)
+        {
+            float ang = Random.value * 360;
+            Vector3 pos;
+            pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+            pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+            pos.z = center.z;
+            return pos;
         }
 
         private void PlayFanFare()

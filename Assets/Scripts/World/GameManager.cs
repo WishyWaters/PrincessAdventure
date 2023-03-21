@@ -56,7 +56,7 @@ namespace PrincessAdventure
 		{
 			_gameDetails = new ActiveGame(1);
 
-			Debug.Log(_gameDetails);
+			//Debug.Log(_gameDetails);
 		}
 
 		private void LoadGui()

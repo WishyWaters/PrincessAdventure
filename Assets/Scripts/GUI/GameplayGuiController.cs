@@ -28,7 +28,7 @@ namespace PrincessAdventure
 
         public void LoadGameplayGui(ActiveGame gameDetails)
         {
-            Debug.Log("Loading Gameplay UI");
+            //Debug.Log("Loading Gameplay UI");
 
             LoadHearts(gameDetails.maxHearts);
             LoadMagic(gameDetails.maxMana);

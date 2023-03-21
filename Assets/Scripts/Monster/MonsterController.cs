@@ -52,7 +52,8 @@ namespace PrincessAdventure
         {
             ChangeDirection();
 
-            if(_dealHeartDamage && collision.gameObject.tag == "Player")
+
+            if(_dealHeartDamage && collision.gameObject.tag == "Player" && collision.gameObject.layer == 6)
             {
                 GameManager.GameInstance.DamagePrincess();
             }

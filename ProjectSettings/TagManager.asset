@@ -22,7 +22,7 @@ TagManager:
   - FlyPass
   - Enemy
   - Interact
-  - 
+  - Projectile
   - 
   - 
   - 
@@ -52,8 +52,14 @@ TagManager:
   - name: GroundTop
     uniqueID: 2782688645
     locked: 0
+  - name: DefaultBottom
+    uniqueID: 255091621
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: DefaultTop
+    uniqueID: 3439010573
     locked: 0
   - name: AboveBottom
     uniqueID: 1093532807

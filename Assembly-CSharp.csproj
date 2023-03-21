@@ -116,6 +116,8 @@
     <Compile Include="Assets/Scripts/World/SoundManager/VolumeSlider.cs" />
     <Compile Include="Assets/Scripts/Level/pickups/PickupController.cs" />
     <Compile Include="Assets/Scripts/Level/TreasureExplosion.cs" />
+    <Compile Include="Assets/Scripts/Character/CharacterEffects/FadeController.cs" />
+    <Compile Include="Assets/Scripts/Character/CharacterEffects/SparkleController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
