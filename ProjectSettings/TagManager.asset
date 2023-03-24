@@ -6,6 +6,11 @@ TagManager:
   tags:
   - FxTemporaire
   - SoundManager
+  - Companion
+  - Bomb
+  - Projectile
+  - Enemy
+  - Destructible
   layers:
   - Default
   - TransparentFX

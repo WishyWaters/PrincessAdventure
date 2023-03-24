@@ -1,30 +1,34 @@
 ﻿<Properties StartupConfiguration="{AD664D52-B116-25F0-8477-C67A55415F25}|">
-  <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="bd7ecaa8-e19d-4743-b8a2-7709bd6b26c7" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/World/GameManager.cs">
+  <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="1272591d-2340-4770-9ecf-6a7fa9022d2d" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Princess Assets/Scripts/Monster/EnemyController.cs">
     <Files>
-      <File FileName="Assets/Scripts/GUI/GameplayGuiController.cs" Line="31" Column="15" />
-      <File FileName="Assets/Scripts/Character/CharacterEffects/FadeController.cs" Line="59" Column="6" />
-      <File FileName="Assets/Scripts/Character/CharacterEffects/SparkleController.cs" Line="35" Column="14" />
-      <File FileName="Assets/Scripts/Character/CharacterEffects/LandingController.cs" Line="5" Column="1" />
-      <File FileName="Assets/Scripts/World/InputManager.cs" Line="24" Column="72" />
-      <File FileName="Assets/Scripts/World/GameManager.cs" Line="59" Column="6" />
+      <File FileName="Assets/Princess Assets/Scripts/Monster/MonsterController.cs" Line="87" Column="10" IsPinned="True" />
+      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterController.cs" Line="173" Column="1" IsPinned="True" />
+      <File FileName="Assets/Princess Assets/Scripts/Character/CompanionController.cs" Line="93" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Interaction.cs" Line="30" Column="43" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/TreasureExplosion.cs" Line="12" Column="9" />
+      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterEffects/InteractController.cs" Line="110" Column="37" />
+      <File FileName="Assets/Princess Assets/Scripts/World/GameManager.cs" Line="17" Column="20" />
+      <File FileName="Assets/Princess Assets/Scripts/Models/LevelModels.cs" Line="67" Column="15" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PrincessAdventure" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="2D Customizable Characters" expanded="True" />
-              <Node name="Scripts" expanded="True">
-                <Node name="Character" expanded="True">
-                  <Node name="CharacterEffects" expanded="True" />
-                </Node>
-                <Node name="GUI" expanded="True" />
-                <Node name="World" expanded="True">
-                  <Node name="GameManager.cs" selected="True" />
+              <Node name="Princess Assets" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="Character" expanded="True">
+                    <Node name="CharacterEffects" expanded="True" />
+                  </Node>
+                  <Node name="Level" expanded="True" />
+                  <Node name="Models" expanded="True" />
+                  <Node name="Monster" expanded="True">
+                    <Node name="EnemyController.cs" selected="True" />
+                  </Node>
+                  <Node name="World" expanded="True" />
                 </Node>
               </Node>
-              <Node name="Spine" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -34,9 +38,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Scripts/Character/CharacterEffects/SparkleController.cs" relfile="Assets/Scripts/Character/CharacterEffects/SparkleController.cs" line="34" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
