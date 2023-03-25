@@ -36,8 +36,8 @@ namespace PrincessAdventure
 
     public enum EnemyStates
     {
-        Patrol,
-        Follow,
+        Patrolling,
+        Idle,
         Attack,
         Disabled
     }

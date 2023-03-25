@@ -105,6 +105,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/LandingController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/CreateBombController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark03.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemySoundController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_FrameRateCounter.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/pickups/PickupController.cs" />

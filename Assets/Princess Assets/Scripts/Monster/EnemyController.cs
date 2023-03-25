@@ -15,14 +15,15 @@ namespace PrincessAdventure
         [SerializeField] private SkeletonAnimation _enemyAnimator;
         [SerializeField] private CustomizableCharacters.CustomizableCharacter _customizableCharacter;
         [SerializeField] private Animator _animator;
+        [SerializeField] private EnemySoundController _sfxCtrl;
 
         [Header("Settings")]
         [SerializeField] private int _health;
         [SerializeField] private bool _dealHeartDamage;
         [SerializeField] private int _coinDamage;
         [SerializeField] private TreasureDrops _treasureDrop;
-        [SerializeField] private float _acceleration; //13
-        [SerializeField] private float _moveSpeed; //7
+        [SerializeField] private float _acceleration; //8+
+        [SerializeField] private float _moveSpeed; //2 to 7
         [SerializeField] private Vector2 _startDirection;
 
         [SerializeField] private LayerMask _whatIsPlayer;
@@ -30,10 +31,11 @@ namespace PrincessAdventure
 
         [Header("Patrols")]
         [SerializeField] private EnemyPatrolTypes _patrolType;
-        [SerializeField] private float _walkTime;
+        [SerializeField] private float _patrolTime;
         [SerializeField] private float _idleTime;
 
         [Header("Attacks")]
+        [SerializeField] private float _sightRadius;
         [SerializeField] private float _attackRadius;
         [SerializeField] private GameObject _projectile;
         [SerializeField] private float _idleTimeAfterAttack;
@@ -49,22 +51,17 @@ namespace PrincessAdventure
         private GameObject _currentDirectionGameObject;
         private string _animationPrefix = "Front_";
         private Vector2 _lastActiveAxis;
-
+        private Coroutine _currentCoroutine;
+        private bool _allowNewSpineAnimations; 
         private EnemyStates _enemyState;
+        private float _onSightSignalCooldown;
 
         //patrol
-        private bool _isWalking;
-        private float _walkEndTime;
+        private float _patrolEndTime;
         private float _idleEndTime;
         private Vector2 _directionBeforeIdle;
 
-        //attacking
-        private bool _alreadyAttacked;
 
-        private float _sightRange;
-        private float _attackRange;
-        private bool _playerInSight;
-        private bool _playerInAttackRange;
 
 
         #region Unity Functions
@@ -76,60 +73,191 @@ namespace PrincessAdventure
 
         void FixedUpdate()
         {
-            //TODO: Get player object
-            _playerInSight = Physics2D.OverlapCircleAll((Vector2)this.transform.position, _sightRange, _whatIsPlayer).Length > 0 ? true : false;
-            _playerInAttackRange = Physics2D.OverlapCircleAll((Vector2)this.transform.position, _attackRange, _whatIsPlayer).Length > 0 ? true : false;
+            HandleAI();
 
-            if (!_playerInSight && !_playerInAttackRange)
-                Patroling();
-            else if (_playerInSight && !_playerInAttackRange)
-                ChasePlayer();
-            else if (_playerInAttackRange)
-                AttackPlayer();
+            if (_rigType == EnemyRigTypes.CustomHumanoid)
+                HandleAnimatorLocomotion(_currentDirection);
+            else
+            {
+                if(_enemyState != EnemyStates.Attack)
+                    HandleSpineLocomotion(_currentDirection);
+            }
+                
 
         }
         #endregion
 
         #region Basic AI
-        private void Patroling()
+        private void ChangeState(EnemyStates newState)
         {
-            if (_isWalking)
+            switch(newState)
             {
-                Debug.Log("Walking");
-                if (Time.time > _walkEndTime)
-                {
-                    Debug.Log("Walk to Idle");
-                    _directionBeforeIdle = _currentDirection;
-                    _currentDirection = Vector2.zero;
-                    _isWalking = false;
+                case EnemyStates.Patrolling:
+                    _idleEndTime = 0;
+                    _patrolEndTime = Time.time + _patrolTime;
+                    ChangeDirection();
+                    break;
+                case EnemyStates.Idle:
+                    _patrolEndTime = 0;
                     _idleEndTime = Time.time + _idleTime;
-                }
+                    _directionBeforeIdle = _currentDirection;
+                    ChangeDirection(Vector2.zero);
+                    _sfxCtrl.PlayIdleSound();
+                    break;
+                case EnemyStates.Attack:
+                    _patrolEndTime = 0;
+                    _idleEndTime = Time.time + _idleTimeAfterAttack;
+                    _directionBeforeIdle = _currentDirection;
+                    ChangeDirection(Vector2.zero);
+                    _sfxCtrl.PlayAttackSound();
+                    break;
+
+            }
+
+            _enemyState = newState;
+        }
+
+        private void HandleAI()
+        {
+            switch(_enemyState)
+            {
+                case EnemyStates.Idle:
+                    CheckIdleTime();
+                    break;
+                case EnemyStates.Patrolling:
+                    Patrolling();
+                    break;
+                case EnemyStates.Attack:
+                    CheckIdleTime();
+                    break;
+
+            }
+
+
+        }
+
+        private void CheckIdleTime()
+        {
+            if (Time.time > _idleEndTime)
+                ChangeState(EnemyStates.Patrolling);
+
+        }
+
+        private void Patrolling()
+        {
+
+            Collider2D[] playersInSight = Physics2D.OverlapCircleAll((Vector2)this.transform.position, _sightRadius, _whatIsPlayer);
+
+            if (playersInSight.Length == 0)
+            {
+                CheckPatrolTime();
             }
             else
             {
-                Debug.Log("Idling");
-                if (Time.time > _idleEndTime)
+
+                //Attempt Melee Attack
+                Collider2D[] playersInAttackRange = Physics2D.OverlapCircleAll((Vector2)this.transform.position, _attackRadius, _whatIsPlayer);
+                if (playersInAttackRange.Length > 0)
                 {
-                    Debug.Log("Idle to Walk");
-                    ChangeDirection();
+                    HandleAttack();
+                }
+                else if (ShouldUseRangeAttack(playersInSight[0].transform.position))
+                {
+                    LaunceProjectileAttack(playersInSight[0].transform.position);
+                }
+                else
+                {
+                    ChasePlayer(playersInSight[0].transform.position);
                 }
             }
+        }
+
+        private void CheckPatrolTime()
+        {
+            if (Time.time > _patrolEndTime)
+                ChangeState(EnemyStates.Idle);
+
+        }
+
+        private void ChasePlayer(Vector3 playerPosition)
+        {
+            if(_onSightSignalCooldown <= Time.time)
+            {
+                _onSightSignalCooldown = Time.time + 30;
+                _sfxCtrl.PlaySightSound();
+            }
+
+            Vector3 direction = (playerPosition - this.transform.position).normalized;
+            //Debug.DrawLine(playerPosition, playerPosition + direction * 10, Color.red, Mathf.Infinity);
+            ChangeDirection((Vector2)direction);
+        }
+
+        private void FleePlayer(Vector3 playerPosition)
+        {
+            Vector3 direction = (this.transform.position- playerPosition).normalized;
+            //Debug.DrawLine(playerPosition, playerPosition + direction * 10, Color.red, Mathf.Infinity);
+            ChangeDirection((Vector2)direction);
+        }
+
+        private bool ShouldUseRangeAttack(Vector3 playerPosition)
+        {
+            if (_projectile == null)
+                return false;
+
+            if ((playerPosition.x >= this.transform.position.x - 1f)
+                && (playerPosition.x <= this.transform.position.x + 1f))
+                return true;
+
+            if ((playerPosition.y >= this.transform.position.y - 1f)
+                && (playerPosition.y <= this.transform.position.y + 1f))
+                return true;
+
+            return false;
+        }
+
+        private void LaunceProjectileAttack(Vector3 playerPosition)
+        {
+            //TODO: Instantiate Projectile
+
+            HandleAttack();
+
+
+        }
+
+        private void HandleAttack()
+        {
+            ChangeState(EnemyStates.Attack);
 
             if (_rigType == EnemyRigTypes.CustomHumanoid)
-                HandleAnimatorLocomotion(_currentDirection);
+            {
+                if (_currentCoroutine != null)
+                    StopCoroutine(_currentCoroutine);
+                _currentCoroutine = StartCoroutine(DoAnimatorAttack(_currentDirection));
+            }
             else
-                HandleSpineLocomotion(_currentDirection);
-
-
+            {
+                SetSpineAnimation("Attack", false);
+            }
         }
 
-        private void ChasePlayer()
+        private void CheckAttackCollision()
         {
+            Collider2D[] playersInAttackRange = Physics2D.OverlapCircleAll((Vector2)this.transform.position + _previousDirection, .5f, _whatIsPlayer);
 
-        }
+            foreach(Collider2D player in playersInAttackRange)
+            {
+                if (_dealHeartDamage && player.gameObject.tag == "Player" && player.gameObject.layer == 6)
+                {
+                    _sfxCtrl.PlayAttackImpactSound();
+                    GameManager.GameInstance.DamagePrincess(this.transform.position);
+                }
+                else if (player.gameObject.tag == "Companion")
+                {
+                    _sfxCtrl.PlayAttackImpactSound();
+                    GameManager.GameInstance.ActivatePrincess(true);
+                }
+            }
 
-        private void AttackPlayer()
-        {
 
         }
 
@@ -140,17 +268,20 @@ namespace PrincessAdventure
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             _previousDirection = Vector2.zero;
 
-            if(_rigType == EnemyRigTypes.CustomHumanoid)
+            if (_rigType == EnemyRigTypes.CustomHumanoid)
             {
                 ResetAnimatorRigs();
                 HandleAnimatorDirection(_startDirection);
             }
             else
             {
-                HandleSpineDirection(_startDirection);
-                UpdateSpineAnimation("Idle", true);
-            }
+                _allowNewSpineAnimations = true;
+                _enemyAnimator.AnimationState.Complete += OnSpineAnimationComplete;
 
+                HandleSpineDirection(_startDirection);
+                SetSpineAnimation("Idle", true);
+            }
+            ChangeState(EnemyStates.Idle);
             _currentDirection = _startDirection;
             _directionBeforeIdle = _startDirection;
         }
@@ -166,17 +297,18 @@ namespace PrincessAdventure
 
         private void ChangeDirection()
         {
-            _isWalking = true;
-            _walkEndTime = Time.time + _walkTime;
+            if(_currentDirection == Vector2.zero)
+                _currentDirection = _directionBeforeIdle;
+
+            if (_currentDirection == Vector2.zero)
+                _currentDirection = _startDirection;
+
             switch (_patrolType)
             {
                 case EnemyPatrolTypes.backForth:
-                    _currentDirection = _directionBeforeIdle;
                     _currentDirection *= -1;
                     break;
                 case EnemyPatrolTypes.sharpTurn:
-                    _currentDirection = _directionBeforeIdle;
-
                     if ((_currentDirection.x >= 0 && _currentDirection.y >= 0)
                         || (_currentDirection.x < 0 && _currentDirection.y < 0))
                         _currentDirection.y *= -1;
@@ -189,6 +321,14 @@ namespace PrincessAdventure
                     break;
 
             }
+
+            _currentDirection = _currentDirection.normalized;
+        }
+
+        private void ChangeDirection(Vector2 newDirection)
+        {
+            _currentDirection = newDirection;
+
         }
 
 
@@ -218,12 +358,12 @@ namespace PrincessAdventure
             {
                 _currentMovement = _lastActiveAxis * targetSpeed;
                 Move(_currentMovement);
-                UpdateSpineAnimation("Walk", true);
+                SetSpineAnimation("Walk", true);
 
             }
             else
             {
-                UpdateSpineAnimation("Idle", true);
+                SetSpineAnimation("Idle", true);
             }
         }
 
@@ -267,14 +407,31 @@ namespace PrincessAdventure
             _previousDirection = direction;
         }
 
-        private void UpdateSpineAnimation(string animationName, bool loop)
+        private void SetSpineAnimation(string animationName, bool loop)
         {
-            animationName = _animationPrefix + animationName;
+            if (_allowNewSpineAnimations)
+            {
+                if (animationName == "Attack")
+                {
+                    _allowNewSpineAnimations = false;
+                    CheckAttackCollision();
 
-            if (_enemyAnimator.AnimationName == animationName)
-                return;
+                }
 
-            _enemyAnimator.AnimationState.SetAnimation(0, animationName, loop);
+                animationName = _animationPrefix + animationName;
+
+                if (_enemyAnimator.AnimationName == animationName)
+                    return;
+
+                _enemyAnimator.AnimationState.SetAnimation(0, animationName, loop);
+            }
+        }
+
+        public void OnSpineAnimationComplete(TrackEntry trackEntry)
+        {
+            // Add your implementation code here to react to complete events
+            _allowNewSpineAnimations = true;
+            SetSpineAnimation("Idle", true);
         }
 
         #endregion
@@ -289,7 +446,7 @@ namespace PrincessAdventure
 
         private void HandleAnimatorLocomotion(Vector2 moveAxis)
         {
-            var maxAcceleration = _acceleration;
+            float maxAcceleration = _acceleration;
 
             if (moveAxis != Vector2.zero)
             {
@@ -383,7 +540,7 @@ namespace PrincessAdventure
 
             if(_dealHeartDamage && collision.gameObject.tag == "Player" && collision.gameObject.layer == 6)
             {
-                GameManager.GameInstance.DamagePrincess();
+                GameManager.GameInstance.DamagePrincess(this.transform.position);
             }
             else if(collision.gameObject.tag == "Companion")
             {
@@ -395,9 +552,43 @@ namespace PrincessAdventure
             }
         }
 
-       
 
 
+        #region Coroutines
+        private IEnumerator DoAnimatorAttack(Vector2 direction)
+        {
+
+            _animator.SetTrigger("Attack 1");
+
+            // make sure each attack is going in the direction player is pressing
+            if (direction != Vector2.zero)
+            {
+                _lastActiveAxis = direction;
+                HandleAnimatorDirection(direction);
+                _currentAcceleration = 1.2f;
+            }
+            else
+                _currentAcceleration = 0.8f;
+
+            // wait for animator state to change to attack
+            while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") == false)
+                yield return null;
+
+            _animator.ResetTrigger("Attack 1");
+
+
+            while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1")
+                       && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+            {
+
+                yield return null;
+            }
+
+            CheckAttackCollision();
+
+        }
+
+        #endregion
     }
 
 }

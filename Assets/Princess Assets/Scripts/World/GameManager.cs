@@ -119,7 +119,7 @@ namespace PrincessAdventure
 			ActivatePrincess(true);
         }
 
-		public void DamagePrincess()
+		public void DamagePrincess(Vector3 hitFromPosition)
         {
 			if(_controllingCompanion)
 				ActivatePrincess(true);
@@ -133,7 +133,7 @@ namespace PrincessAdventure
 
 				_guiMgr.EmptyOneHeart();
 
-				_charCtrl.HandleDamage();
+				_charCtrl.HandleDamage(hitFromPosition);
 
 				if (_gameDetails.currentHealth == 0)
 					KillPrincess();
@@ -169,7 +169,7 @@ namespace PrincessAdventure
 					_charCtrl.HandlePotions(pickUpType);
 					break;
 				case PickUps.GreenPotion:
-					DamagePrincess();
+					DamagePrincess(Vector3.zero);
 					_charCtrl.HandlePotions(pickUpType);
 					break;
 				case PickUps.Coin:

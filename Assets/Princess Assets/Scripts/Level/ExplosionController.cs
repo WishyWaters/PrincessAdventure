@@ -26,7 +26,7 @@ namespace PrincessAdventure
         {
             if(hit.tag == "Player" && hit.gameObject.layer == 6)
             {
-                GameManager.GameInstance.DamagePrincess();
+                GameManager.GameInstance.DamagePrincess(this.transform.position);
             }
             else if (hit.tag == "Companion")
             {

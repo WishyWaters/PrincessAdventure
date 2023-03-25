@@ -82,13 +82,20 @@ namespace PrincessAdventure
             
         }
 
-        public void HandleDamage()
+        public void HandleDamage(Vector3 hitFromPosition)
         {
 
             ChangeState(PrincessState.Falling);
             if (_currentCoroutine != null)
                 StopCoroutine(_currentCoroutine);
-            _currentCoroutine = StartCoroutine(DoHurt(_previousDirection * -1));
+
+            Vector2 flinchDirection;
+            if (hitFromPosition == Vector3.zero)
+                flinchDirection = _previousDirection * -1;
+            else
+                flinchDirection = (Vector2)(this.transform.position - hitFromPosition).normalized;
+
+            _currentCoroutine = StartCoroutine(DoHurt(flinchDirection));
 
         }
 
@@ -499,7 +506,7 @@ namespace PrincessAdventure
 
         private IEnumerator DoCliffJump(Vector2 fallDirection)
         {
-            _rigidbody.bodyType = RigidbodyType2D.Kinematic;
+            _rigidbody.simulated = false;
             _ignoreInputs = true;
 
             Vector2 destination = _rigidbody.position + (fallDirection * 3);
@@ -515,15 +522,15 @@ namespace PrincessAdventure
             while (_rigidbody.position != destination)
             {
                 Vector2 nextPosition = Vector2.MoveTowards(_rigidbody.position, destination, Time.deltaTime * _moveSpeed * 10);
-                _rigidbody.MovePosition(nextPosition);
-
+                //_rigidbody.MovePosition(nextPosition);
+                this.transform.position = nextPosition;
                 yield return null;
             }
 
             LandingController landCtrl = this.GetComponent<LandingController>();
 
             landCtrl.HandleLanding();
-            _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+            _rigidbody.simulated = true;
             _ignoreInputs = false;
             ChangeState(PrincessState.Neutral);
         }
@@ -542,9 +549,11 @@ namespace PrincessAdventure
 
             _animator.ResetTrigger("Hurt");
 
-            while (_rigidbody.position != destination)
+            float moveTime = 0f;
+            while (_rigidbody.position != destination && moveTime < .3f)
             {
-                Vector2 nextPosition = Vector2.MoveTowards(_rigidbody.position, destination, Time.deltaTime * _moveSpeed * 5);
+                moveTime += Time.deltaTime;
+                Vector2 nextPosition = Vector2.MoveTowards(_rigidbody.position, destination, Time.deltaTime * _moveSpeed * 6);
                 _rigidbody.MovePosition(nextPosition);
 
                 yield return null;
