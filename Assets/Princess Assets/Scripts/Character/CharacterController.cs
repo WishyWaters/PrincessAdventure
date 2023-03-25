@@ -99,6 +99,23 @@ namespace PrincessAdventure
 
         }
 
+        public void HandleCoinDamage(Vector3 hitFromPosition, int coinsTossed)
+        {
+
+            ChangeState(PrincessState.Falling);
+            if (_currentCoroutine != null)
+                StopCoroutine(_currentCoroutine);
+
+            Vector2 flinchDirection;
+            if (hitFromPosition == Vector3.zero)
+                flinchDirection = _previousDirection * -1;
+            else
+                flinchDirection = (Vector2)(this.transform.position - hitFromPosition).normalized;
+
+            _currentCoroutine = StartCoroutine(DoCoinHurt(flinchDirection, coinsTossed));
+
+        }
+
         public void HandlePotions(PickUps pickUp)
         {
             PotionPickupEffectController potionCtrl = this.GetComponent<PotionPickupEffectController>();
@@ -562,6 +579,40 @@ namespace PrincessAdventure
             DamageEffectController dmgCtrl = this.GetComponent<DamageEffectController>();
 
             dmgCtrl.SpawnDamageEffect();
+
+            _ignoreInputs = false;
+            ChangeState(PrincessState.Neutral);
+        }
+
+        private IEnumerator DoCoinHurt(Vector2 flinchDirection, int coinsTossed)
+        {
+            _ignoreInputs = true;
+
+            Vector2 destination = _rigidbody.position + (flinchDirection);
+
+            _animator.SetTrigger("Hurt");
+
+            // wait for animator state to change to Hurt
+            while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt") == false)
+                yield return null;
+
+            _animator.ResetTrigger("Hurt");
+
+            float moveTime = 0f;
+            while (_rigidbody.position != destination && moveTime < .3f)
+            {
+                moveTime += Time.deltaTime;
+                Vector2 nextPosition = Vector2.MoveTowards(_rigidbody.position, destination, Time.deltaTime * _moveSpeed * 6);
+                _rigidbody.MovePosition(nextPosition);
+
+                yield return null;
+            }
+
+            DamageEffectController dmgCtrl = this.GetComponent<DamageEffectController>();
+            dmgCtrl.SpawnCoinDamageEffect();
+
+            CoinTossController coinCtrl = this.GetComponent<CoinTossController>();
+            coinCtrl.ThrowTreasure(coinsTossed);
 
             _ignoreInputs = false;
             ChangeState(PrincessState.Neutral);

@@ -7,12 +7,16 @@ namespace PrincessAdventure
     public class DestroyAfterEffectsDone : MonoBehaviour
     {
         [SerializeField] float _liveTime;
+        [SerializeField] AudioClip _startClip;
 
         private float _deathTime;
         // Start is called before the first frame update
         void Start()
         {
             _deathTime = Time.time + _liveTime;
+
+            if (_startClip != null)
+                AudioSource.PlayClipAtPoint(_startClip, this.transform.position);
         }
 
         // Update is called once per frame

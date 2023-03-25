@@ -75,7 +75,8 @@ MonoBehaviour:
   _interactionType: 1
   _interactionId: 0
   _direction: {x: 0, y: 0}
-  _tempText: 
+  _activeBefore: {fileID: 1220573075638616377}
+  _activeAfter: {fileID: 4884558876653921589}
 --- !u!114 &140090747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,10 +94,11 @@ MonoBehaviour:
   goldBarPrefab: {fileID: 887971048506479786, guid: 3cf46a19a47884785ab0bc54788bc390, type: 3}
   redPotionPrefab: {fileID: 6158474435987077149, guid: a1aa91fab88c94f628131fcb5f2461f1, type: 3}
   bluePotionPrefab: {fileID: 8478885175730939282, guid: 8dcbc381ba1584f28bf6893d4571860c, type: 3}
-  openObject: {fileID: 4884558876653921589}
-  closeObject: {fileID: 1220573075638616377}
-  _openClip: {fileID: 8300000, guid: f45440bf82b559849934f60c8ca4f96b, type: 3}
-  _openEffect: {fileID: 7177991128484655659, guid: 59a35ab9f68edff40b6e5332bed330f5, type: 3}
+  _treasureType: 0
+  _fanfareClip: {fileID: 8300000, guid: 894df81654dd6704eb8d8c14e2acfbd4, type: 3}
+  _fanfareEffect: {fileID: 7177991128484655659, guid: 59a35ab9f68edff40b6e5332bed330f5, type: 3}
+  _tossMinRadius: 0.7
+  _tossMaxRadius: 1.5
 --- !u!1001 &7739345920774623728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,15 +116,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4873632433795912880, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.3
+      value: 0.10213232
       objectReference: {fileID: 0}
     - target: {fileID: 4873632433795912880, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.68
+      value: -4.102865
       objectReference: {fileID: 0}
     - target: {fileID: 4873632433795912880, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.026368111
       objectReference: {fileID: 0}
     - target: {fileID: 4873632433795912880, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_LocalRotation.w
@@ -130,15 +132,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4873632433795912880, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4873632433795912880, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4873632433795912880, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4873632433795912880, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

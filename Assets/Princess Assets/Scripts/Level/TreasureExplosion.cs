@@ -20,7 +20,8 @@ namespace PrincessAdventure
         [SerializeField] private TreasureDrops _treasureType;
         [SerializeField] private AudioClip _fanfareClip;
         [SerializeField] private GameObject _fanfareEffect;
-        [SerializeField] private float _tossRadius;
+        [SerializeField] private float _tossMinRadius;
+        [SerializeField] private float _tossMaxRadius;
 
         public void ThrowTreasure()
         {
@@ -61,7 +62,7 @@ namespace PrincessAdventure
 
             //float x = GetRandomInRange();
             //float y = GetRandomInRange();
-            float randomRadius = UnityEngine.Random.Range(.8f, _tossRadius);
+            float randomRadius = UnityEngine.Random.Range(_tossMinRadius, _tossMaxRadius);
             Vector3 rndPositionFromCircle = RandomCircle(newTreasure.transform.position, randomRadius);
 
             pickupCtrl.MoveItemToTarget(rndPositionFromCircle);

@@ -93,6 +93,12 @@ namespace PrincessAdventure
 
                     bCtrl.Explode();
                 }
+                else if (collision.tag == "Enemy")
+                {
+                    EnemyController enemyCtrl = collision.GetComponent<EnemyController>();
+
+                    enemyCtrl.DamageEnemy(this.transform.position, false);
+                }
 
                 Explode();
             }

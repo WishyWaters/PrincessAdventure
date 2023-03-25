@@ -1,13 +1,18 @@
 ﻿<Properties StartupConfiguration="{AD664D52-B116-25F0-8477-C67A55415F25}|">
   <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="03577c8c-9c5f-4fb4-bbc5-46c168b46b23" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Princess Assets/Scripts/Character/CharacterEffects/ProjectileController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Princess Assets/Scripts/Utilities/DestroyAfterEffectsDone.cs">
     <Files>
-      <File FileName="Assets/Princess Assets/Scripts/Monster/EnemySoundController.cs" Line="38" Column="37" />
-      <File FileName="Assets/Princess Assets/Scripts/Monster/EnemyController.cs" Line="520" Column="57" />
-      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterController.cs" Line="93" Column="49" />
-      <File FileName="Assets/Princess Assets/Scripts/World/GameManager.cs" Line="172" Column="33" />
+      <File FileName="Assets/Princess Assets/Scripts/World/GameManager.cs" Line="157" Column="5" />
       <File FileName="Assets/Princess Assets/Scripts/Level/ExplosionController.cs" Line="29" Column="80" />
-      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterEffects/ProjectileController.cs" Line="87" Column="18" />
+      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterEffects/ProjectileController.cs" Line="44" Column="27" />
+      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterEffects/DamageEffectController.cs" Line="18" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterEffects/CoinTossController.cs" Line="17" Column="50" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/TreasureExplosion.cs" Line="28" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/World/SoundManager/SoundManager.cs" Line="49" Column="21" />
+      <File FileName="Assets/4Direction Animated 2D Monsters (Fantazia Top Down)/Example/MonsterSpawner.cs" Line="163" Column="103" />
+      <File FileName="Assets/Princess Assets/Scripts/Models/LevelModels.cs" Line="42" Column="14" />
+      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterEffects/FadeController.cs" Line="57" Column="14" />
+      <File FileName="Assets/Princess Assets/Scripts/Utilities/DestroyAfterEffectsDone.cs" Line="16" Column="26" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,15 +24,16 @@
               </Node>
               <Node name="Princess Assets" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="Character" expanded="True">
-                    <Node name="CharacterEffects" expanded="True">
-                      <Node name="ProjectileController.cs" selected="True" />
-                    </Node>
-                  </Node>
+                  <Node name="Character" expanded="True" />
                   <Node name="Level" expanded="True" />
                   <Node name="Models" expanded="True" />
                   <Node name="Monster" expanded="True" />
-                  <Node name="World" expanded="True" />
+                  <Node name="Utilities" expanded="True">
+                    <Node name="DestroyAfterEffectsDone.cs" selected="True" />
+                  </Node>
+                  <Node name="World" expanded="True">
+                    <Node name="SoundManager" expanded="True" />
+                  </Node>
                 </Node>
               </Node>
             </Node>
@@ -39,9 +45,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/Monster/EnemyController.cs" relfile="Assets/Princess Assets/Scripts/Monster/EnemyController.cs" line="93" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

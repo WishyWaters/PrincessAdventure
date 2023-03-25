@@ -35,7 +35,8 @@ namespace PrincessAdventure
 
         public void PlayEffectSound(AudioClip clip)
         {
-			_effectsSource.PlayOneShot(clip);
+			if(clip != null)
+				_effectsSource.PlayOneShot(clip);
         }
 
 		public void ChangeMasterVolume(float value)

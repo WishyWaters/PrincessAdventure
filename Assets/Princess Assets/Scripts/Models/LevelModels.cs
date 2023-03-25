@@ -39,6 +39,7 @@ namespace PrincessAdventure
         Patrolling,
         Idle,
         Attack,
+        Hurt,
         Disabled
     }
 

@@ -28,6 +28,8 @@ namespace PrincessAdventure
 
         [SerializeField] private LayerMask _whatIsPlayer;
         [SerializeField] private LayerMask _whatIsBlockade;
+        [SerializeField] private bool _diesToExplosion;
+        [SerializeField] private GameObject _deathEffect;
 
         [Header("Patrols")]
         [SerializeField] private EnemyPatrolTypes _patrolType;
@@ -55,6 +57,7 @@ namespace PrincessAdventure
         private bool _allowNewSpineAnimations; 
         private EnemyStates _enemyState;
         private float _onSightSignalCooldown;
+        private int _currentDamage;
 
         //patrol
         private float _patrolEndTime;
@@ -111,6 +114,20 @@ namespace PrincessAdventure
                     ChangeDirection(Vector2.zero);
                     _sfxCtrl.PlayAttackSound();
                     break;
+                case EnemyStates.Hurt:
+                    _patrolEndTime = 0;
+                    _idleEndTime = Time.time + .5f;
+                    _directionBeforeIdle = _currentDirection;
+                    ChangeDirection(Vector2.zero);
+                    _sfxCtrl.PlayOnHurtSound();
+                    break;
+                case EnemyStates.Disabled:
+                    _rigidbody.simulated = false;
+                    _directionBeforeIdle = Vector2.zero;
+                    ChangeDirection(Vector2.zero);
+                    _sfxCtrl.PlayDeathSound();
+                    break;
+
 
             }
 
@@ -192,9 +209,9 @@ namespace PrincessAdventure
             ChangeDirection((Vector2)direction);
         }
 
-        private void FleePlayer(Vector3 playerPosition)
+        private void FleeTarget(Vector3 targetPosition)
         {
-            Vector3 direction = (this.transform.position- playerPosition).normalized;
+            Vector3 direction = (this.transform.position- targetPosition).normalized;
             //Debug.DrawLine(playerPosition, playerPosition + direction * 10, Color.red, Mathf.Infinity);
             ChangeDirection((Vector2)direction);
         }
@@ -246,10 +263,15 @@ namespace PrincessAdventure
 
             foreach(Collider2D player in playersInAttackRange)
             {
-                if (_dealHeartDamage && player.gameObject.tag == "Player" && player.gameObject.layer == 6)
+                if (player.gameObject.tag == "Player" && player.gameObject.layer == 6)
                 {
                     _sfxCtrl.PlayAttackImpactSound();
-                    GameManager.GameInstance.DamagePrincess(this.transform.position);
+
+                    if (_dealHeartDamage)
+                        GameManager.GameInstance.DamagePrincess(this.transform.position);
+
+                    if (_coinDamage > 0)
+                        GameManager.GameInstance.CoinDamagePrincess(this.transform.position, _coinDamage);
                 }
                 else if (player.gameObject.tag == "Companion")
                 {
@@ -409,12 +431,15 @@ namespace PrincessAdventure
 
         private void SetSpineAnimation(string animationName, bool loop)
         {
+            //Names are: Idle, Walk, Death, Hurt and Attack
             if (_allowNewSpineAnimations)
             {
-                if (animationName == "Attack")
+                if (animationName == "Attack" || animationName == "Hurt" || animationName == "Death")
                 {
                     _allowNewSpineAnimations = false;
-                    CheckAttackCollision();
+
+                    if (animationName == "Attack")
+                        CheckAttackCollision();
 
                 }
 
@@ -430,8 +455,13 @@ namespace PrincessAdventure
         public void OnSpineAnimationComplete(TrackEntry trackEntry)
         {
             // Add your implementation code here to react to complete events
-            _allowNewSpineAnimations = true;
-            SetSpineAnimation("Idle", true);
+            if (_enemyAnimator.AnimationName.Contains("Death"))
+                Destroy(this.gameObject);
+            else
+            {
+                _allowNewSpineAnimations = true;
+                SetSpineAnimation("Idle", true);
+            }
         }
 
         #endregion
@@ -538,18 +568,93 @@ namespace PrincessAdventure
         void OnCollisionEnter2D(Collision2D collision)
         {
 
-            if(_dealHeartDamage && collision.gameObject.tag == "Player" && collision.gameObject.layer == 6)
+            if(collision.gameObject.tag == "Player" && collision.gameObject.layer == 6)
             {
-                GameManager.GameInstance.DamagePrincess(this.transform.position);
+                if(_dealHeartDamage)
+                    GameManager.GameInstance.DamagePrincess(this.transform.position);
+
+                if (_coinDamage > 0)
+                    GameManager.GameInstance.CoinDamagePrincess(this.transform.position, _coinDamage);
             }
             else if(collision.gameObject.tag == "Companion")
             {
                 GameManager.GameInstance.ActivatePrincess(true);
-            } else
+            }
+            else
             {
-                Debug.Log("Collision Direction Change");
+                //Debug.Log("Collision Direction Change");
                 ChangeDirection();
             }
+        }
+
+        public void DamageEnemy(Vector3 positionOfPain, bool isExplosion)
+        {
+            if (_diesToExplosion && isExplosion)
+                DestroyEnemy();
+            else
+            {
+                _currentDamage++;
+
+                if (_currentDamage >= _health)
+                    DestroyEnemy();
+                else
+                {
+                    if (_rigType == EnemyRigTypes.CustomHumanoid)
+                    {
+                        if (_currentCoroutine != null)
+                            StopCoroutine(_currentCoroutine);
+                        _currentCoroutine = StartCoroutine(DoAnimatorHurt(_currentDirection));
+                    }
+                    else
+                    {
+                        //Names are: Idle, Walk, Death, Hurt and Attack
+                        SetSpineAnimation("Hurt", false);
+                    }
+                    FleeTarget(positionOfPain);
+                }
+            }
+        }
+
+        private void DestroyEnemy()
+        {
+            ChangeState(EnemyStates.Disabled);
+            
+
+            if (_rigType == EnemyRigTypes.CustomHumanoid)
+            {
+                if (_currentCoroutine != null)
+                    StopCoroutine(_currentCoroutine);
+                _currentCoroutine = StartCoroutine(DoDie(_currentDirection));
+            }
+            else
+            {
+                //Names are: Idle, Walk, Death, Hurt and Attack
+                SetSpineAnimation("Death", false);
+            }
+
+            Instantiate(_deathEffect, this.transform.position, this.transform.rotation);
+            PaintItBlack();
+        }
+
+        private void PaintItBlack()
+        {
+            Color black = Color.black;
+
+            if(_rigType == EnemyRigTypes.CustomHumanoid)
+            {
+                SpriteRenderer[] children = GetComponentsInChildren<SpriteRenderer>(true);
+                foreach (SpriteRenderer child in children)
+                {
+                    child.color = black;
+                }
+            }
+            else
+            {
+                _enemyAnimator.skeleton.SetColor(black);
+            }
+
+
+            
         }
 
 
@@ -588,6 +693,69 @@ namespace PrincessAdventure
 
         }
 
+        private IEnumerator DoAnimatorHurt(Vector2 direction)
+        {
+            _animator.SetTrigger("Hurt");
+
+            // make sure each attack is going in the direction player is pressing
+            if (direction != Vector2.zero)
+            {
+                _lastActiveAxis = direction;
+                HandleAnimatorDirection(direction);
+                _currentAcceleration = 1.2f;
+            }
+            else
+                _currentAcceleration = 0.8f;
+
+            // wait for animator state to change to attack
+            while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt") == false)
+                yield return null;
+
+            _animator.ResetTrigger("Hurt");
+
+
+            while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt")
+                       && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+            {
+
+                yield return null;
+            }
+        }
+
+
+        private IEnumerator DoDie(Vector2 direction)
+        {
+            _animator.SetTrigger("Die");
+
+            // make sure each attack is going in the direction player is pressing
+            if (direction != Vector2.zero)
+            {
+                _lastActiveAxis = direction;
+                HandleAnimatorDirection(direction);
+                _currentAcceleration = 1.2f;
+            }
+            else
+                _currentAcceleration = 0.8f;
+
+            // wait for animator state to change to attack
+            while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Die") == false)
+                yield return null;
+
+            _animator.ResetTrigger("Die");
+
+            float moveTime = 0f;
+            while (moveTime < .3f)
+            {
+                moveTime += Time.deltaTime;
+
+                yield return null;
+            }
+            
+
+            Destroy(this.gameObject);
+        }
+
+        
         #endregion
     }
 

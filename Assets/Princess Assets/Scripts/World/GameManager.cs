@@ -140,6 +140,28 @@ namespace PrincessAdventure
 			}
         }
 
+		public void CoinDamagePrincess(Vector3 hitFromPosition, int coinDmg)
+		{
+			if (_controllingCompanion)
+				ActivatePrincess(true);
+
+			if (_invincibleUntilTime <= Time.time)
+			{
+				_invincibleUntilTime = Time.time + 1;
+
+				//Update game details
+				if (_gameDetails.gold - coinDmg <= 0)
+					coinDmg = _gameDetails.gold;
+
+				_gameDetails.gold -= coinDmg;
+				
+				_guiMgr.UpdateGoldText(_gameDetails.gold);
+
+				_charCtrl.HandleCoinDamage(hitFromPosition, Mathf.FloorToInt(coinDmg /2));
+
+			}
+		}
+
 		public void HealPrincess()
 		{
 			if (_gameDetails.currentHealth < _gameDetails.maxHearts)
