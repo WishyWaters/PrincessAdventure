@@ -38,6 +38,12 @@ namespace PrincessAdventure
 
                 bCtrl.Explode();
             }
+            else if (hit.tag == "Enemy")
+            {
+                EnemyController enemyCtrl = hit.GetComponent<EnemyController>();
+
+                enemyCtrl.DamageEnemy(this.transform.position, false);
+            }
 
             //TODO: If destructable, then destroy it!
         }

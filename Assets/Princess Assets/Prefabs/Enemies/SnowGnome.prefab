@@ -8588,6 +8588,7 @@ GameObject:
   - component: {fileID: 2844249987772654438}
   - component: {fileID: 2844249987772654435}
   - component: {fileID: 2844249987772654434}
+  - component: {fileID: 2711851803589546691}
   m_Layer: 13
   m_Name: SnowGnome
   m_TagString: Enemy
@@ -8669,7 +8670,6 @@ MonoBehaviour:
   _health: 1
   _dealHeartDamage: 0
   _coinDamage: 10
-  _treasureDrop: 0
   _acceleration: 10
   _moveSpeed: 3
   _startDirection: {x: 0, y: -1}
@@ -8682,10 +8682,10 @@ MonoBehaviour:
   _diesToExplosion: 0
   _deathEffect: {fileID: 5395580496455951886, guid: f0d5e753522f5422e8ab894900279cb0, type: 3}
   _patrolType: 0
-  _patrolTime: 3
-  _idleTime: 0.5
+  _patrolTime: 4
+  _idleTime: 2
   _sightRadius: 3
-  _attackRadius: 0.5
+  _attackRadius: 0.6
   _projectile: {fileID: 0}
   _idleTimeAfterAttack: 1
 --- !u!82 &2844249987772654435
@@ -8709,7 +8709,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 12
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -8815,6 +8815,30 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1d773269459507d498944cd2e0438fa6, type: 3}
   - {fileID: 8300000, guid: ca69704b419684a4bad00dc526efedef, type: 3}
   _onDie: {fileID: 8300000, guid: 7715ac696f104374c80309abc5762cad, type: 3}
+--- !u!114 &2711851803589546691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844249987772654441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef8f57622e1104ac4b4c642cab9bd293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 7412016046180206115, guid: df3a677b7393f4369a8bba8e55a32767, type: 3}
+  silverbarPrefab: {fileID: 6359290201135866522, guid: 3c9cf9b8d094b43afbe30144abd159e0, type: 3}
+  goldBarPrefab: {fileID: 887971048506479786, guid: 3cf46a19a47884785ab0bc54788bc390, type: 3}
+  redPotionPrefab: {fileID: 6158474435987077149, guid: a1aa91fab88c94f628131fcb5f2461f1, type: 3}
+  bluePotionPrefab: {fileID: 8478885175730939282, guid: 8dcbc381ba1584f28bf6893d4571860c, type: 3}
+  greenPotionPrefab: {fileID: 3088891121141034366, guid: caf4f93f29e4840938b6fbac8656d2bd, type: 3}
+  keyPrefab: {fileID: 2459508508526674925, guid: 76c4294cf26bd4006bd81b4e5fed1685, type: 3}
+  _treasureType: 1
+  _tossMinRadius: 0.2
+  _tossMaxRadius: 1
+  _fanfareClip: {fileID: 0}
+  _fanfareEffect: {fileID: 0}
 --- !u!1 &2844249987877268499
 GameObject:
   m_ObjectHideFlags: 0

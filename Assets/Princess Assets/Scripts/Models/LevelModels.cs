@@ -53,7 +53,8 @@ namespace PrincessAdventure
         MinAll,
         MedAll,
         LotAll,
-        Horde
+        Horde,
+        PoisonPotion
         
     }
 

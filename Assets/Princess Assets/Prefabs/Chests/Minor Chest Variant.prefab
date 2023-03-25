@@ -94,11 +94,13 @@ MonoBehaviour:
   goldBarPrefab: {fileID: 887971048506479786, guid: 3cf46a19a47884785ab0bc54788bc390, type: 3}
   redPotionPrefab: {fileID: 6158474435987077149, guid: a1aa91fab88c94f628131fcb5f2461f1, type: 3}
   bluePotionPrefab: {fileID: 8478885175730939282, guid: 8dcbc381ba1584f28bf6893d4571860c, type: 3}
-  _treasureType: 0
-  _fanfareClip: {fileID: 8300000, guid: 894df81654dd6704eb8d8c14e2acfbd4, type: 3}
-  _fanfareEffect: {fileID: 7177991128484655659, guid: 59a35ab9f68edff40b6e5332bed330f5, type: 3}
+  greenPotionPrefab: {fileID: 3088891121141034366, guid: caf4f93f29e4840938b6fbac8656d2bd, type: 3}
+  keyPrefab: {fileID: 2459508508526674925, guid: 76c4294cf26bd4006bd81b4e5fed1685, type: 3}
+  _treasureType: 6
   _tossMinRadius: 0.7
   _tossMaxRadius: 1.5
+  _fanfareClip: {fileID: 8300000, guid: 894df81654dd6704eb8d8c14e2acfbd4, type: 3}
+  _fanfareEffect: {fileID: 7177991128484655659, guid: 59a35ab9f68edff40b6e5332bed330f5, type: 3}
 --- !u!1001 &7739345920774623728
 PrefabInstance:
   m_ObjectHideFlags: 0

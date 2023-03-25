@@ -21,7 +21,6 @@ namespace PrincessAdventure
         [SerializeField] private int _health;
         [SerializeField] private bool _dealHeartDamage;
         [SerializeField] private int _coinDamage;
-        [SerializeField] private TreasureDrops _treasureDrop;
         [SerializeField] private float _acceleration; //8+
         [SerializeField] private float _moveSpeed; //2 to 7
         [SerializeField] private Vector2 _startDirection;
@@ -631,6 +630,9 @@ namespace PrincessAdventure
                 //Names are: Idle, Walk, Death, Hurt and Attack
                 SetSpineAnimation("Death", false);
             }
+            TreasureExplosion treasure = this.GetComponent<TreasureExplosion>();
+            if (treasure != null)
+                treasure.ThrowTreasure();
 
             Instantiate(_deathEffect, this.transform.position, this.transform.rotation);
             PaintItBlack();
