@@ -19,7 +19,7 @@ namespace PrincessAdventure
 		private float _invincibleUntilTime = 0;
 
 		private bool _controllingCompanion = false;
-
+		private float _manaRegenTime;
 
         #region Unity Functions
         private void Awake()
@@ -36,6 +36,11 @@ namespace PrincessAdventure
 
 			SetupGame();
 		}
+
+        private void Update()
+        {
+			ManaRegen();
+        }
 
         #endregion
 
@@ -60,8 +65,9 @@ namespace PrincessAdventure
 		private void LoadGameDetails()
 		{
 			_gameDetails = new ActiveGame(1);
-			_gameDetails.currentHealth = _gameDetails.maxHearts;
-			_gameDetails.currentManaPoints = _gameDetails.maxMana;
+			_gameDetails.currentHealth = _gameDetails.heartPoints;
+			_gameDetails.maxManaPoints = _gameDetails.magicPoints * 50;
+			_gameDetails.currentManaPoints = _gameDetails.maxManaPoints;
 
 			//Debug.Log(_gameDetails);
 		}
@@ -164,9 +170,63 @@ namespace PrincessAdventure
 			}
 		}
 
+		public bool HasMana(int manaNeed)
+        {
+			if (_gameDetails.currentManaPoints >= manaNeed)
+				return true;
+			else
+				return false;
+        }
+
+		private void ManaRegen()
+        {
+			//Add 1% mana every second
+			if (_manaRegenTime > 1f)
+			{
+				_manaRegenTime = 0;
+				int recoveryAmt = Mathf.FloorToInt(_gameDetails.maxManaPoints * .01f);
+
+				ManaRecover(recoveryAmt);
+			}
+			else
+				_manaRegenTime += Time.deltaTime;
+		}
+
+		public void ManaPotionUse()
+        {
+			//Add 75pts or 30%, which ever is higher mana on potion get
+			int recoveryAmt = Mathf.FloorToInt(_gameDetails.maxManaPoints * .30f);
+
+			if (recoveryAmt < 75)
+				recoveryAmt = 75;
+
+			ManaRecover(recoveryAmt);
+
+		}
+
+		private void ManaRecover(int amount)
+        {
+			if (_gameDetails.currentManaPoints + amount > _gameDetails.maxManaPoints)
+				_gameDetails.currentManaPoints = _gameDetails.maxManaPoints;
+			else
+				_gameDetails.currentManaPoints += amount;
+
+			_guiMgr.UpdateMana(_gameDetails.currentManaPoints, _gameDetails.maxManaPoints);
+		}
+
+		public void ManaSpend(int amount)
+		{
+			if (_gameDetails.currentManaPoints - amount <= 0)
+				_gameDetails.currentManaPoints = 0;
+			else
+				_gameDetails.currentManaPoints -= amount;
+
+			_guiMgr.UpdateMana(_gameDetails.currentManaPoints, _gameDetails.maxManaPoints);
+		}
+
 		public void HealPrincess()
 		{
-			if (_gameDetails.currentHealth < _gameDetails.maxHearts)
+			if (_gameDetails.currentHealth < _gameDetails.heartPoints)
 			{
 				//Update game details
 				_gameDetails.currentHealth += 1;
@@ -185,11 +245,12 @@ namespace PrincessAdventure
             switch (pickUpType)
             {
 				case PickUps.RedPotion:
+
 					HealPrincess();
 					_charCtrl.HandlePotions(pickUpType);
 					break;
 				case PickUps.BluePotion:
-					//TODO: Mana functions
+					ManaPotionUse();
 					_charCtrl.HandlePotions(pickUpType);
 					break;
 				case PickUps.GreenPotion:

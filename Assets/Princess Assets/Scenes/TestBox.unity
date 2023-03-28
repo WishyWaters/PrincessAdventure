@@ -44128,6 +44128,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: bf638b96c16230b4c85cf3126b64fcb0, type: 3}
     - target: {fileID: 1185337930, guid: d14e1a768da9d46e4ae92629fd1c69a8, type: 3}
+      propertyPath: _layersToPickup.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185337930, guid: d14e1a768da9d46e4ae92629fd1c69a8, type: 3}
       propertyPath: _deflectProjectileSound
       value: 
       objectReference: {fileID: 8300000, guid: 3d7acdbc20b1b4245823d706ccd63f15, type: 3}
@@ -45597,6 +45601,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5270708293847413952, guid: e19e98207e7824846b6df3284af7d781, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270708293847413952, guid: e19e98207e7824846b6df3284af7d781, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270708293847413952, guid: e19e98207e7824846b6df3284af7d781, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270708293847413952, guid: e19e98207e7824846b6df3284af7d781, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270708294133250554, guid: e19e98207e7824846b6df3284af7d781, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270708294133250554, guid: e19e98207e7824846b6df3284af7d781, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270708294133250554, guid: e19e98207e7824846b6df3284af7d781, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270708294133250554, guid: e19e98207e7824846b6df3284af7d781, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5270708294449098688, guid: e19e98207e7824846b6df3284af7d781, type: 3}
       propertyPath: m_Name
       value: Gold Rock

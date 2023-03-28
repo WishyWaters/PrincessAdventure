@@ -38,8 +38,9 @@ namespace PrincessAdventure
 		public int loadLocationIndex;
 		public int gold;
 		public int keys;
-		public int maxHearts;
-		public int maxMana;
+		public int heartPoints;
+		public int magicPoints;
+		public int luckPoints;
 		public int starShards;
 		public bool hasMagic;
 		public bool hasFade;
@@ -65,7 +66,7 @@ namespace PrincessAdventure
     {
 		public int currentHealth;
 		public int currentManaPoints;
-		public int totalManaPoints;
+		public int maxManaPoints;
 
 		public ActiveGame(int newSaveId)
         {
@@ -73,8 +74,9 @@ namespace PrincessAdventure
 			gameScene = GameScenes.StartMountain;
 			loadLocationIndex = 1;
 			gold = 0;
-			maxHearts = 3;
-			maxMana = 3;
+			heartPoints = 3;
+			magicPoints = 3;
+			luckPoints = 3;
 			starShards = 0;
 			hasMagic = false;
 			hasFade = false;

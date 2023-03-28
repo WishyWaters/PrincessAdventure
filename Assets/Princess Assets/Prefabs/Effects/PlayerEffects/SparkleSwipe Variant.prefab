@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1021754039623256368, guid: 69d8f05fda8421849a84b27b8c0d773d, type: 3}
       propertyPath: clearBehavior
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5318118474938795680, guid: 69d8f05fda8421849a84b27b8c0d773d, type: 3}
       propertyPath: m_Name
@@ -114,3 +114,32 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.1
+--- !u!114 &3120972354350802824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418981108207200328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a8fc0ba69df42729b6c64a76c59c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _liveTime: 0.9
+  _startClip: {fileID: 0}
+--- !u!114 &1703839521486502746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418981108207200328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c613da11028647ffa29e79cad0d8c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deflectHitPrefab: {fileID: 6326484252251236401, guid: 03a39f0b3b293447aafdaf589a98ac54, type: 3}
+  _deflectProjectileSound: {fileID: 8300000, guid: 3d7acdbc20b1b4245823d706ccd63f15, type: 3}
+  _deflectOtherSound: {fileID: 8300000, guid: bf638b96c16230b4c85cf3126b64fcb0, type: 3}

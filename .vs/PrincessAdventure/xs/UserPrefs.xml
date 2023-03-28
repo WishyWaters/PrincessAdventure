@@ -1,15 +1,16 @@
 ﻿<Properties StartupConfiguration="{AD664D52-B116-25F0-8477-C67A55415F25}|">
   <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="03577c8c-9c5f-4fb4-bbc5-46c168b46b23" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Princess Assets/Scripts/Character/CharacterEffects/InteractController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Princess Assets/Scripts/Monster/EnemyController.cs">
     <Files>
-      <File FileName="Assets/Princess Assets/Scripts/World/GameManager.cs" Line="104" Column="19" />
-      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterEffects/ProjectileController.cs" Line="86" Column="10" />
-      <File FileName="Assets/4Direction Animated 2D Monsters (Fantazia Top Down)/Example/MonsterSpawner.cs" Line="163" Column="103" />
-      <File FileName="Assets/Princess Assets/Scripts/Models/LevelModels.cs" Line="43" Column="18" />
-      <File FileName="Assets/Princess Assets/Scripts/Monster/EnemyController.cs" Line="447" Column="70" />
-      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterController.cs" Line="555" Column="28" />
-      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterEffects/LandingController.cs" Line="33" Column="1" />
-      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterEffects/InteractController.cs" Line="64" Column="23" />
+      <File FileName="Assets/Princess Assets/Scripts/World/GameManager.cs" Line="253" Column="22" />
+      <File FileName="Assets/Princess Assets/Scripts/Models/GameModels.cs" Line="69" Column="17" />
+      <File FileName="Assets/Princess Assets/Scripts/GUI/GuiManager.cs" Line="52" Column="31" />
+      <File FileName="Assets/Princess Assets/Scripts/GUI/GameplayGuiController.cs" Line="73" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterController.cs" Line="406" Column="31" />
+      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleController.cs" Line="61" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/pickups/PickupController.cs" Line="7" Column="18" />
+      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleReflectController.cs" Line="27" Column="15" />
+      <File FileName="Assets/Princess Assets/Scripts/Monster/EnemyController.cs" Line="179" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,15 +23,16 @@
               <Node name="Princess Assets" expanded="True">
                 <Node name="Scripts" expanded="True">
                   <Node name="Character" expanded="True">
-                    <Node name="CharacterEffects" expanded="True">
-                      <Node name="InteractController.cs" selected="True" />
-                    </Node>
+                    <Node name="CharacterEffects" expanded="True" />
                   </Node>
+                  <Node name="GUI" expanded="True" />
                   <Node name="Level" expanded="True">
                     <Node name="pickups" expanded="True" />
                   </Node>
                   <Node name="Models" expanded="True" />
-                  <Node name="Monster" expanded="True" />
+                  <Node name="Monster" expanded="True">
+                    <Node name="EnemyController.cs" selected="True" />
+                  </Node>
                   <Node name="Utilities" expanded="True" />
                   <Node name="World" expanded="True">
                     <Node name="SoundManager" expanded="True" />
@@ -47,7 +49,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleController.cs" relfile="Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleController.cs" line="66" column="1" />
+      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/World/GameManager.cs" relfile="Assets/Princess Assets/Scripts/World/GameManager.cs" line="253" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

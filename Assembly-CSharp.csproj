@@ -132,6 +132,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/CoinTossController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/ProjectileTrap.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/TransmuteController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleReflectController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

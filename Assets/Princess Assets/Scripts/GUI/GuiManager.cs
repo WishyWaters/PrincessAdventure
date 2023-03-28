@@ -46,5 +46,10 @@ namespace PrincessAdventure
             _gameplayGui.UpdateKeyText(keys);
 
         }
+
+        public void UpdateMana(int currentMana, int maxMana)
+        {
+            _gameplayGui.UpdateMana(currentMana, maxMana);
+        }
     }
 }

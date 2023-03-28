@@ -19,7 +19,13 @@ namespace PrincessAdventure
         [SerializeField] private float _moveSpeed; //7
 
         private readonly Vector2[] _directions = { Vector2.right, Vector2.left, Vector2.up, Vector2.down };
+        private readonly int _reflectMana = 10;
+        private readonly int _summonMana = 50;
+        private readonly int _fireballMana = 20;
+        private readonly int _bombMana = 30;
+        private readonly int _fadeManaPerSecond = 10;
 
+        private float _fadeManaTicker;
         private PrincessState _currentState;
         private float _currentAcceleration;
         private Vector2 _lastActiveAxis;
@@ -345,6 +351,7 @@ namespace PrincessAdventure
 
         private void HandleMagicCast(PrincessInputActions inputs)
         {
+
             ChangeState(PrincessState.MagicCast);
 
             if (_currentCoroutine != null)
@@ -426,8 +433,13 @@ namespace PrincessAdventure
             _animator.ResetTrigger("Attack 1");
 
             //spawn sparkles
-            SparkleController sparkleCtrl = this.GetComponent<SparkleController>();
-            sparkleCtrl.HandleSparkleCast(_previousDirection);
+            if (GameManager.GameInstance.HasMana(_reflectMana))
+            {
+                GameManager.GameInstance.ManaSpend(_reflectMana);
+
+                SparkleController sparkleCtrl = this.GetComponent<SparkleController>();
+                sparkleCtrl.HandleSparkleCast(_previousDirection);
+            }
 
 
             while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1")
@@ -477,9 +489,13 @@ namespace PrincessAdventure
             }
 
             //summon friend
-            CreateSummonController summonCtrl = this.GetComponent<CreateSummonController>();
-            summonCtrl.HandleSummon(_previousDirection);
+            if (GameManager.GameInstance.HasMana(_summonMana))
+            {
+                GameManager.GameInstance.ManaSpend(_summonMana);
 
+                CreateSummonController summonCtrl = this.GetComponent<CreateSummonController>();
+                summonCtrl.HandleSummon(_previousDirection);
+            }
 
 
             ChangeState(PrincessState.Neutral);
@@ -507,9 +523,13 @@ namespace PrincessAdventure
             _animator.ResetTrigger("Spell");
 
             //spawn sparkles
-            CreateBombController bombCtrl = this.GetComponent<CreateBombController>();
-            bombCtrl.HandleBombDrop(_previousDirection);
+            if (GameManager.GameInstance.HasMana(_bombMana))
+            {
+                GameManager.GameInstance.ManaSpend(_bombMana);
 
+                CreateBombController bombCtrl = this.GetComponent<CreateBombController>();
+                bombCtrl.HandleBombDrop(_previousDirection);
+            }
 
             while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Spell")
                        && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
@@ -659,19 +679,19 @@ namespace PrincessAdventure
                 if(!hasThrownFireBall && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)
                 {
                     //spawn fireball halfway into animation
-                    ThrowFireballController tossFireCtrl = this.GetComponent<ThrowFireballController>();
-                    tossFireCtrl.ThrowFireball(_previousDirection);
+                    if (GameManager.GameInstance.HasMana(_fireballMana))
+                    {
+                        GameManager.GameInstance.ManaSpend(_fireballMana);
+
+                        ThrowFireballController tossFireCtrl = this.GetComponent<ThrowFireballController>();
+                        tossFireCtrl.ThrowFireball(_previousDirection);
+                    }
 
                     hasThrownFireBall = true;
                 }
 
                 yield return null;
             }
-
-            //spawn fireball
-            //ThrowFireballController tossFireCtrl = this.GetComponent<ThrowFireballController>();
-            //tossFireCtrl.ThrowFireball(_previousDirection);
-
 
 
             ChangeState(PrincessState.Neutral);

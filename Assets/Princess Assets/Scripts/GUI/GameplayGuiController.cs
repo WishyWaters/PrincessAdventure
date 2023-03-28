@@ -30,8 +30,8 @@ namespace PrincessAdventure
         {
             //Debug.Log("Loading Gameplay UI");
 
-            LoadHearts(gameDetails.maxHearts);
-            LoadMagic(gameDetails.maxMana);
+            LoadHearts(gameDetails.heartPoints);
+            LoadMagic(gameDetails.magicPoints);
             UpdateGoldText(gameDetails.gold);
             UpdateKeyText(gameDetails.keys);
         }
@@ -65,6 +65,17 @@ namespace PrincessAdventure
         public void UpdateKeyText(int keys)
         {
             _keyText.text = keys.ToString();
+        }
+
+        public void UpdateMana(int currentMana, int maxMana)
+        {
+            //fill slider
+            Slider magicSlider = _magicProgressBar.GetComponent<Slider>();
+            float newValue = (float)currentMana / maxMana;
+            magicSlider.value = newValue;
+
+            //set chaser target
+            StartCoroutine(UpdateSliderOnDelay(newValue));
         }
 
         private void LoadHearts(int numOfHearts)
@@ -103,6 +114,20 @@ namespace PrincessAdventure
             chaserSlider.value = 1;
         }
 
+        IEnumerator UpdateSliderOnDelay(float value)
+        {
+            float animationWaitTime = .6f;
+            float timeTicker = 0f;
+            Slider chaserSlider = _magicConsumeBar.GetComponent<Slider>();
 
+            while (timeTicker < animationWaitTime)
+            {
+                timeTicker += Time.deltaTime;
+                yield return null;
+            }
+            chaserSlider.value = value;
+
+            
+        }
     }
 }

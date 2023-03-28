@@ -8,31 +8,39 @@ namespace PrincessAdventure
     {
         [SerializeField] private GameObject _sparkleEffectPrefab;
         [SerializeField] private AudioClip _sparkleSound;
-        [SerializeField] private LayerMask _layersToReflect;
+        [SerializeField] private LayerMask _layersToPickup;
 
-        [SerializeField] private GameObject _deflectHitPrefab;
-        [SerializeField] private AudioClip _deflectProjectileSound;  //magic_deflect_spell_impact1/2
-        [SerializeField] private AudioClip _deflectOtherSound;
         private GameObject _sparkleEffect;
-        private Vector2 _direction;
 
         public void HandleSparkleCast(Vector2 direction)
         {
-            _direction = direction;
-            if (_sparkleEffect == null)
-                _sparkleEffect = Instantiate(_sparkleEffectPrefab, this.transform);
+            _sparkleEffect = Instantiate(_sparkleEffectPrefab, this.transform);
 
             //Move & Rotate to match direction
             SetEffectPosition(direction);
-            _sparkleEffect.SetActive(true);
 
-            ParticleSystem partSys = _sparkleEffect.GetComponent<ParticleSystem>();
 
-            if (_sparkleEffect != null && partSys != null)
-                partSys.Play();
+            SparkleReflectController reflectCtrl = _sparkleEffect.GetComponent<SparkleReflectController>();
+            reflectCtrl.HandleSparkleReflect(direction);
 
             if (_sparkleSound != null)
                 SoundManager.SoundInstance.PlayEffectSound(_sparkleSound);
+
+            PickupGrab();
+        }
+
+        private void PickupGrab()
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll((Vector2)this.transform.position, 1.1f, _layersToPickup);
+
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.tag == "Pickup")
+                {
+                    PickupController pickupCtrl = collider.gameObject.GetComponent<PickupController>();
+                    pickupCtrl.PickupItem();
+                }
+            }
         }
 
         private void SetEffectPosition(Vector2 direction)
@@ -59,37 +67,5 @@ namespace PrincessAdventure
             }
         }
 
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-
-            if (collision.tag == "Enemy")
-            {
-                
-                Instantiate(_deflectHitPrefab, (Vector3)collision.ClosestPoint(this.transform.position), this.transform.rotation);
-                SoundManager.SoundInstance.PlayEffectSound(_deflectOtherSound);
-                EnemyController enemyCtrl = collision.gameObject.GetComponent<EnemyController>();
-                enemyCtrl.ReflectEnemy(_direction);
-            }
-            else if (collision.tag == "Projectile")
-            {
-                Instantiate(_deflectHitPrefab, (Vector3)collision.ClosestPoint(this.transform.position), this.transform.rotation);
-                SoundManager.SoundInstance.PlayEffectSound(_deflectProjectileSound);
-                ProjectileController projCtrl = collision.gameObject.GetComponent<ProjectileController>();
-                projCtrl.ReflectProjectile(_direction);
-            }
-            else if (collision.tag == "Pickup")
-            {
-                PickupController pickupCtrl = collision.gameObject.GetComponent<PickupController>();
-                pickupCtrl.PickupItem();
-            }
-            else if (collision.tag == "Transmute")
-            {
-                Instantiate(_deflectHitPrefab, (Vector3)collision.ClosestPoint(this.transform.position), this.transform.rotation);
-
-                TransmuteController transCtrl = collision.gameObject.GetComponent<TransmuteController>();
-                transCtrl.TransmuteToItem();
-            }
-        }
     }
 }
