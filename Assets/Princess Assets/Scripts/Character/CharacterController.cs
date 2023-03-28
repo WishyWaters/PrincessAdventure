@@ -23,9 +23,7 @@ namespace PrincessAdventure
         private readonly int _summonMana = 50;
         private readonly int _fireballMana = 20;
         private readonly int _bombMana = 30;
-        private readonly int _fadeManaPerSecond = 10;
 
-        private float _fadeManaTicker;
         private PrincessState _currentState;
         private float _currentAcceleration;
         private Vector2 _lastActiveAxis;
