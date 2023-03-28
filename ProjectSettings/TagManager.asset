@@ -11,6 +11,8 @@ TagManager:
   - Projectile
   - Enemy
   - Destructible
+  - Transmute
+  - Pickup
   layers:
   - Default
   - TransparentFX

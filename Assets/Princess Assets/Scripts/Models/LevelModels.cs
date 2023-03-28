@@ -40,7 +40,8 @@ namespace PrincessAdventure
         Idle,
         Attack,
         Hurt,
-        Disabled
+        Disabled,
+        Fleeing
     }
 
     public enum TreasureDrops

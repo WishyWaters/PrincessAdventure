@@ -63,7 +63,7 @@ namespace PrincessAdventure
 
         public void PlayDeathSound()
         {
-            AudioSource.PlayClipAtPoint(_onDie, this.transform.position);
+            AudioSource.PlayClipAtPoint(_onDie, this.transform.position, SoundManager.SoundInstance.GetMasterVolume());
         }
     }
 }

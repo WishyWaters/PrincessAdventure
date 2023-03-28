@@ -7,6 +7,7 @@ namespace PrincessAdventure
     public class LandingController : MonoBehaviour
     {
         [SerializeField] private GameObject _landingEffectPrefab;
+        [SerializeField] private AudioClip _jumpShout;
         [SerializeField] private AudioClip _landSound;
 
         private GameObject _landingEffect;
@@ -24,7 +25,15 @@ namespace PrincessAdventure
             if (_landSound != null)
                 SoundManager.SoundInstance.PlayEffectSound(_landSound);
         }
-    
+
+        public void JumpShout()
+        {
+            if (_jumpShout != null)
+                SoundManager.SoundInstance.PlayEffectSound(_jumpShout);
+
+        }
+
+
 
     }
 }

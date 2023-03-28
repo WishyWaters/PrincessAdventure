@@ -60,6 +60,8 @@ namespace PrincessAdventure
 		private void LoadGameDetails()
 		{
 			_gameDetails = new ActiveGame(1);
+			_gameDetails.currentHealth = _gameDetails.maxHearts;
+			_gameDetails.currentManaPoints = _gameDetails.maxMana;
 
 			//Debug.Log(_gameDetails);
 		}

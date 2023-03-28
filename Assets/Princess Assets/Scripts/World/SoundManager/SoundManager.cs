@@ -15,7 +15,7 @@ namespace PrincessAdventure
 
 		public static SoundManager SoundInstance;
 
-		private float sfxVolume = .5f;
+		private float sfxVolume = 1f;
 
 		#region Unity Functions
 		private void Awake()

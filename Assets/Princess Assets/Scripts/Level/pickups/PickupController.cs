@@ -48,14 +48,19 @@ namespace PrincessAdventure
             //Debug.Log("item enter " + col.name);
             if (col.tag == "Player" || col.tag == "Companion")
             {
-                GameManager.GameInstance.PickupItem(_itemType);
-
-                if (_clip != null)
-                    SoundManager.SoundInstance.PlayEffectSound(_clip);
-
-                Destroy(this.gameObject);
+                PickupItem();
             }
 
+        }
+
+        public void PickupItem()
+        {
+            GameManager.GameInstance.PickupItem(_itemType);
+
+            if (_clip != null)
+                SoundManager.SoundInstance.PlayEffectSound(_clip);
+
+            Destroy(this.gameObject);
         }
 
 

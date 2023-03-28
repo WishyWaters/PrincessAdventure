@@ -62,7 +62,7 @@ namespace PrincessAdventure
         private float _patrolEndTime;
         private float _idleEndTime;
         private Vector2 _directionBeforeIdle;
-
+        private float _fleeEndTime;
 
 
 
@@ -126,6 +126,9 @@ namespace PrincessAdventure
                     ChangeDirection(Vector2.zero);
                     _sfxCtrl.PlayDeathSound();
                     break;
+                case EnemyStates.Fleeing:
+                    _fleeEndTime = Time.time + 2f;
+                    break;
 
 
             }
@@ -146,6 +149,9 @@ namespace PrincessAdventure
                 case EnemyStates.Attack:
                     CheckIdleTime();
                     break;
+                case EnemyStates.Fleeing:
+                    CheckFleeTime();
+                    break;
 
             }
 
@@ -155,6 +161,13 @@ namespace PrincessAdventure
         private void CheckIdleTime()
         {
             if (Time.time > _idleEndTime)
+                ChangeState(EnemyStates.Patrolling);
+
+        }
+
+        private void CheckFleeTime()
+        {
+            if (Time.time > _fleeEndTime)
                 ChangeState(EnemyStates.Patrolling);
 
         }
@@ -431,7 +444,7 @@ namespace PrincessAdventure
         private void SetSpineAnimation(string animationName, bool loop)
         {
             //Names are: Idle, Walk, Death, Hurt and Attack
-            if (_allowNewSpineAnimations)
+            if (_allowNewSpineAnimations || animationName == "Death")
             {
                 if (animationName == "Attack" || animationName == "Hurt" || animationName == "Death")
                 {
@@ -659,7 +672,11 @@ namespace PrincessAdventure
             
         }
 
-
+        public void ReflectEnemy(Vector2 direction)
+        {
+            ChangeState(EnemyStates.Fleeing);
+            ChangeDirection(direction);
+        }
 
         #region Coroutines
         private IEnumerator DoAnimatorAttack(Vector2 direction)

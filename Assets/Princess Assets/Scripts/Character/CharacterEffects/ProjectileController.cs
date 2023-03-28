@@ -11,9 +11,11 @@ namespace PrincessAdventure
         [SerializeField] private AudioClip _fireSound;
         [SerializeField] private AudioClip _hitSound;
         [SerializeField] private LayerMask _layerMask;
+        [SerializeField] private float _speed = 10f;
+        [SerializeField] private bool _altAngled = false;
+        [SerializeField] private AudioSource _audioSource;
 
         private float _timeToLive = 5f;
-        private float _speed = 10f;
         private Vector2 _direction = Vector2.zero;
         private float _deathTime;
         private bool isActive = false;
@@ -44,23 +46,32 @@ namespace PrincessAdventure
                 Explode();
             else
             {
+                SetRotation();
                 if (_fireSound != null)
-                    SoundManager.SoundInstance.PlayEffectSound(_fireSound);
+                    _audioSource.PlayOneShot(_fireSound);
+                    
             }
         }
 
-        public void Move()
+        public void ReflectProjectile(Vector2 newDirection)
+        {
+            _direction = newDirection;
+            _deathTime += 1;
+            SetRotation();
+        }
+
+        private void Move()
         {
             transform.position += (Vector3)_direction * _speed * Time.deltaTime;
         }
 
-        public void Explode()
+        private void Explode()
         {
             SpawnHitEffect();
             Destroy(this.gameObject);
         }
 
-        public void SpawnHitEffect()
+        private void SpawnHitEffect()
         {
             GameObject hitEffect = Instantiate(_hitEffectPrefab, this.transform.position, this.transform.rotation);
 
@@ -70,8 +81,40 @@ namespace PrincessAdventure
                 partSys.Play();
 
             if (_hitSound != null)
-                SoundManager.SoundInstance.PlayEffectSound(_hitSound);
+                AudioSource.PlayClipAtPoint(_hitSound, this.transform.position, SoundManager.SoundInstance.GetMasterVolume());
 
+        }
+
+        private void SetRotation()
+        {
+            if (_direction == Vector2.down)
+            {
+                if(_altAngled)
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 270);
+                else
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 90);
+            }
+            else if (_direction == Vector2.right)
+            {
+                if (_altAngled)
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                else
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 180);
+            }
+            else if (_direction == Vector2.up)
+            {
+                if (_altAngled)
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 90);
+                else
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 270);
+            }
+            else if (_direction == Vector2.left)
+            {
+                if (_altAngled)
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 180);
+                else
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -103,5 +146,8 @@ namespace PrincessAdventure
                 Explode();
             }
         }
+
+
+
     }
 }

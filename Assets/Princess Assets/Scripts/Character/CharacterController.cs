@@ -12,6 +12,7 @@ namespace PrincessAdventure
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private InteractController _interactCtrl;
         [SerializeField] private PrincessCustomizerController _princessCustomCtrl;
+        [SerializeField] private AudioListener _listener;
 
         [Header("Settings")]
         [SerializeField] private float _acceleration; //13
@@ -167,7 +168,9 @@ namespace PrincessAdventure
 
         public void EnableController()
         {
+            _listener.enabled = true;
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            
             ResetRigs();
 
             ChangeState(PrincessState.Neutral);
@@ -185,6 +188,7 @@ namespace PrincessAdventure
 
         public void DisableController()
         {
+            _listener.enabled = false;
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
             ChangeState(PrincessState.Disabled);
             _ignoreInputs = true;
@@ -523,6 +527,8 @@ namespace PrincessAdventure
 
         private IEnumerator DoCliffJump(Vector2 fallDirection)
         {
+            LandingController landCtrl = this.GetComponent<LandingController>();
+
             _rigidbody.simulated = false;
             _ignoreInputs = true;
 
@@ -535,6 +541,7 @@ namespace PrincessAdventure
                 yield return null;
 
             _animator.ResetTrigger("Hurt");
+            landCtrl.JumpShout();
 
             while (_rigidbody.position != destination)
             {
@@ -544,7 +551,6 @@ namespace PrincessAdventure
                 yield return null;
             }
 
-            LandingController landCtrl = this.GetComponent<LandingController>();
 
             landCtrl.HandleLanding();
             _rigidbody.simulated = true;
