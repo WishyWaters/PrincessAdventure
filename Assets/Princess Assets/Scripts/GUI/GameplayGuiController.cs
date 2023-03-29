@@ -72,10 +72,12 @@ namespace PrincessAdventure
             //fill slider
             Slider magicSlider = _magicProgressBar.GetComponent<Slider>();
             float newValue = (float)currentMana / maxMana;
-            magicSlider.value = newValue;
 
-            //set chaser target
-            StartCoroutine(UpdateSliderOnDelay(newValue));
+            //set chaser target, if mana is decreasing
+            if(newValue < magicSlider.value)
+                StartCoroutine(UpdateSliderOnDelay(newValue));
+
+            magicSlider.value = newValue;
         }
 
         private void LoadHearts(int numOfHearts)

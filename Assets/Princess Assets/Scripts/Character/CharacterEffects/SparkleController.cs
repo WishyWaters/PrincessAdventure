@@ -31,7 +31,7 @@ namespace PrincessAdventure
 
         private void PickupGrab()
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll((Vector2)this.transform.position, 1.1f, _layersToPickup);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll((Vector2)_sparkleEffect.transform.position, 1.2f, _layersToPickup);
 
             foreach (Collider2D collider in colliders)
             {
