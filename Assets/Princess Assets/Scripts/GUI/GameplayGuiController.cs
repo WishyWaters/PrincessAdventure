@@ -48,7 +48,7 @@ namespace PrincessAdventure
 
         public void EmptyOneHeart()
         {
-            if(_currentFullHeart > 0)
+            if(_currentFullHeart >= 0)
             {
                 GameObject heartContainer = _hearts[_currentFullHeart];
                 heartContainer.GetComponent<Image>().sprite = _emptyHeartSprite;
@@ -83,6 +83,7 @@ namespace PrincessAdventure
         private void LoadHearts(int numOfHearts)
         {
             GlobalUtils.DestroyChildren(_heartLayoutGroup);
+            _hearts.Clear();
 
             _currentFullHeart = numOfHearts - 1;
 

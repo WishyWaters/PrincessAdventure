@@ -16,7 +16,7 @@ namespace PrincessAdventure
             _deathTime = Time.time + _liveTime;
 
             if (_startClip != null)
-                AudioSource.PlayClipAtPoint(_startClip, this.transform.position);
+                SoundManager.SoundInstance.PlayClipAt(_startClip, this.transform.position);
         }
 
         // Update is called once per frame

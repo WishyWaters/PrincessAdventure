@@ -81,7 +81,7 @@ namespace PrincessAdventure
                 partSys.Play();
 
             if (_hitSound != null)
-                AudioSource.PlayClipAtPoint(_hitSound, this.transform.position, SoundManager.SoundInstance.GetMasterVolume());
+                SoundManager.SoundInstance.PlayClipAt(_hitSound, this.transform.position);
 
         }
 
@@ -141,6 +141,12 @@ namespace PrincessAdventure
                     EnemyController enemyCtrl = collision.GetComponent<EnemyController>();
 
                     enemyCtrl.DamageEnemy(this.transform.position, false);
+                }
+                else if (collision.tag == "Boomshroom")
+                {
+                    BoomshroomController shroomCtrl = collision.GetComponent<BoomshroomController>();
+
+                    shroomCtrl.StartExplode();
                 }
 
                 Explode();

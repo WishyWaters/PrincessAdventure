@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 3850641674204995769}
   - component: {fileID: 3850641674204995770}
   - component: {fileID: 3850641674204995771}
-  - component: {fileID: 8829997243341339381}
   m_Layer: 8
   m_Name: SlimeCompanion
   m_TagString: Companion
@@ -189,14 +188,6 @@ MonoBehaviour:
   _powerType: 0
   _acceleration: 3
   _moveSpeed: 3
---- !u!81 &8829997243341339381
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3850641674204995764}
-  m_Enabled: 1
 --- !u!1001 &3850641672160960491
 PrefabInstance:
   m_ObjectHideFlags: 0

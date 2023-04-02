@@ -13,6 +13,8 @@ TagManager:
   - Destructible
   - Transmute
   - Pickup
+  - SceneManager
+  - Boomshroom
   layers:
   - Default
   - TransparentFX

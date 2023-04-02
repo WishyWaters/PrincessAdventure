@@ -65,6 +65,7 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark01_UGUI.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/ThrowFireballController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_A.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/World/SceneManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/InteractController.cs" />
     <Compile Include="Assets/Retro Cartoon UI Pack/Retro Cartoon UI Resources/Scripts/PressedBtn.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/GuiManager.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/PotionPickupEffectController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Utilities/DestroyAfterEffectsDone.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Models/PrincessModels.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/World/PrincessSpawnController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Models/GameModels.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/ChatController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TextMeshProFloatingText.cs" />
@@ -81,12 +83,16 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/DefaultRenderOrder.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/EnvMapAnimator.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_UiFrameRateCounter.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/CoinTossController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Checkpoint/CheckpointController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/CameraController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/DamageEffectController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/ProjectileTrap.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CompanionController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_ExampleScript_01.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TextConsoleSimulator.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/DefeatGuiController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/ObjectSpin.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextInfoDebugTool.cs" />
@@ -104,17 +110,20 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TextMeshSpawner.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/LandingController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/CreateBombController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/BoomshroomController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark03.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemySoundController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_FrameRateCounter.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/pickups/PickupController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleReflectController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexJitter.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/FadeController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/GameplayGuiController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextEventHandler.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_B.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/SaveManager.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/DestructibleController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Models/LevelModels.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/SoundManager/PlaySoundOnStart.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/SoundManager/SoundManager.cs" />
@@ -124,15 +133,12 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexColorCycler.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TeleType.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexZoom.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/TransmuteController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemyController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark01.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/ActionController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CompanionManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/TreasureExplosion.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/CoinTossController.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Level/ProjectileTrap.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Level/TransmuteController.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleReflectController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

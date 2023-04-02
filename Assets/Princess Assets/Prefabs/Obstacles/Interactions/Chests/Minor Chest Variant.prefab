@@ -158,7 +158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4873632433795912885, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_Name
-      value: Chest
+      value: Minor Chest Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873632433795912885, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8905857967593312457, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_IsActive

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3049506219105728406}
   - component: {fileID: 3049506219105728407}
   - component: {fileID: 4149444774449904585}
+  - component: {fileID: -710278734002712261}
   m_Layer: 15
   m_Name: GreenProjectile
   m_TagString: Projectile
@@ -103,8 +104,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3049506219105728400}
   m_Enabled: 1
-  m_SortingLayerID: -855956723
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!82 &4149444774449904585
 AudioSource:
@@ -202,6 +203,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-710278734002712261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3049506219105728400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af58293f0b2a9458e939e71cdccd147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  callOnUpdate: 1
 --- !u!1001 &3049506218023338619
 PrefabInstance:
   m_ObjectHideFlags: 0

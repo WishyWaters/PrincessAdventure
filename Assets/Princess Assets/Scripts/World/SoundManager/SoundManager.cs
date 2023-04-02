@@ -39,6 +39,14 @@ namespace PrincessAdventure
 				_effectsSource.PlayOneShot(clip);
         }
 
+		public void ChangeMusic(AudioClip track, bool isLoop)
+        {
+			_musicSource.Stop();
+			_musicSource.loop = isLoop;
+			_musicSource.clip = track;
+			_musicSource.PlayDelayed(.5f);
+        }
+
 		public void ChangeMasterVolume(float value)
         {
 			AudioListener.volume = value;
@@ -50,5 +58,24 @@ namespace PrincessAdventure
 
 		}
 
-    }
+		public AudioSource PlayClipAt(AudioClip clip, Vector3 pos)
+		{
+			GameObject tempGO = new GameObject("TempAudio"); // create the temp object
+			tempGO.transform.position = pos; // set its position
+			AudioSource aSource = tempGO.AddComponent<AudioSource>(); // add an audio source
+			aSource.clip = clip; // define the clip
+								 // set other aSource properties here, if desired
+			aSource.volume = sfxVolume;
+			aSource.spatialBlend = 1;
+			aSource.rolloffMode = AudioRolloffMode.Linear;
+			aSource.minDistance = 1;
+			aSource.maxDistance = 15;
+
+
+			aSource.Play(); // start the sound
+			Destroy(tempGO, clip.length); // destroy object after clip duration
+			return aSource; // return the AudioSource reference
+		}
+
+	}
 }

@@ -7,11 +7,12 @@ namespace PrincessAdventure
     public class ExplosionController : MonoBehaviour
     {
         [SerializeField] private AudioClip _blastSound;
+        [SerializeField] private float _blastRadius;
 
         // Start is called before the first frame update
         void Start()
         {
-            Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, 2f);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, _blastRadius);
 
             if(hits != null)
             {
@@ -42,10 +43,20 @@ namespace PrincessAdventure
             {
                 EnemyController enemyCtrl = hit.GetComponent<EnemyController>();
 
-                enemyCtrl.DamageEnemy(this.transform.position, false);
+                enemyCtrl.DamageEnemy(this.transform.position, true);
             }
+            else if (hit.tag == "Boomshroom")
+            {
+                BoomshroomController shroomCtrl = hit.GetComponent<BoomshroomController>();
 
-            //TODO: If destructable, then destroy it!
+                shroomCtrl.StartExplode();
+            }
+            else if (hit.tag == "Destructible")
+            {
+                DestructibleController destCtrl = hit.GetComponent<DestructibleController>();
+
+                destCtrl.RemoveDestructable();
+            }
         }
     
     }

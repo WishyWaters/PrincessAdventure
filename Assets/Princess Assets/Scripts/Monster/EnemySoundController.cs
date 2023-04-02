@@ -39,9 +39,12 @@ namespace PrincessAdventure
 
         public void PlaySightSound()
         {
-            int soundIndex = Random.Range(0, _onSight.Count);
+            if (_onSight.Count > 0)
+            {
+                int soundIndex = Random.Range(0, _onSight.Count);
 
-            _audioSource.PlayOneShot(_onSight[soundIndex]);
+                _audioSource.PlayOneShot(_onSight[soundIndex]);
+            }
         }
 
         public void PlayOnHurtSound()
@@ -53,7 +56,7 @@ namespace PrincessAdventure
 
         public void PlayIdleSound()
         {
-            if (Random.Range(0f, 1f) < .2f)//Play idles on 20% of calls
+            if (Random.Range(0f, 1f) < .2f && _onIdle.Count > 0)//Play idles on 20% of calls
             {
                 int soundIndex = Random.Range(0, _onIdle.Count);
 
@@ -63,7 +66,7 @@ namespace PrincessAdventure
 
         public void PlayDeathSound()
         {
-            AudioSource.PlayClipAtPoint(_onDie, this.transform.position, SoundManager.SoundInstance.GetMasterVolume());
+            SoundManager.SoundInstance.PlayClipAt(_onDie, this.transform.position);
         }
     }
 }

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _liveTime: 1
+  _startClip: {fileID: 0}
 --- !u!210 &8632698072362018753
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -72,6 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blastSound: {fileID: 8300000, guid: 5666bcf4c764b3e4abdb56c59a8a8d0a, type: 3}
+  _blastRadius: 2
 --- !u!1001 &5491853657058813505
 PrefabInstance:
   m_ObjectHideFlags: 0

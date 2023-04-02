@@ -6,24 +6,30 @@ namespace PrincessAdventure
 
     public class GuiManager : MonoBehaviour
     {
+        [Header("Panels")]
+        [SerializeField] GameObject _gameplayPanel;
+        [SerializeField] GameObject _defeatPanel;
+
+        [Header("Scripts")]
         [SerializeField] GameplayGuiController _gameplayGui;
+        [SerializeField] DefeatGuiController _defeatGui;
 
-        // Use this for initialization
-        void Start()
+
+
+        public void LoadGameplayGui(ActiveGame gameDetails)
         {
+            _gameplayPanel.SetActive(true);
+            _defeatPanel.SetActive(false);
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-
-        public void LoadGui(ActiveGame gameDetails)
-        {
             _gameplayGui.LoadGameplayGui(gameDetails);
+        }
+
+        public void LoadDefeatGui()
+        {
+            _gameplayPanel.SetActive(false);
+            _defeatPanel.SetActive(true);
+
+            _defeatGui.LoadDefeatScreen();
         }
 
         public void EmptyOneHeart()
@@ -51,5 +57,7 @@ namespace PrincessAdventure
         {
             _gameplayGui.UpdateMana(currentMana, maxMana);
         }
+
+
     }
 }

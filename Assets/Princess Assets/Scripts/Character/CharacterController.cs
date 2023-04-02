@@ -12,7 +12,6 @@ namespace PrincessAdventure
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private InteractController _interactCtrl;
         [SerializeField] private PrincessCustomizerController _princessCustomCtrl;
-        [SerializeField] private AudioListener _listener;
 
         [Header("Settings")]
         [SerializeField] private float _acceleration; //13
@@ -172,7 +171,6 @@ namespace PrincessAdventure
 
         public void EnableController()
         {
-            _listener.enabled = true;
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             
             ResetRigs();
@@ -192,7 +190,6 @@ namespace PrincessAdventure
 
         public void DisableController()
         {
-            _listener.enabled = false;
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
             ChangeState(PrincessState.Disabled);
             _ignoreInputs = true;

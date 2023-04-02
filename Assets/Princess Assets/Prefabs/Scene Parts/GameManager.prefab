@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4171004264456068045}
   - component: {fileID: 4171004264456068044}
   - component: {fileID: 4171004264456068050}
+  - component: {fileID: 540876424}
+  - component: {fileID: 2753737074986956837}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -46,9 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guiMgr: {fileID: 0}
-  _charCtrl: {fileID: 0}
-  _companionMgr: {fileID: 0}
+  _companionMgr: {fileID: 2753737074986956837}
   _camera: {fileID: 0}
+  _princessPrefab: {fileID: 4482395217454736612, guid: fd64a3efd2d5141cc9c3c7b4cb87f0ae, type: 3}
 --- !u!114 &4171004264456068050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,3 +63,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78aecfe18b0ea4f249673007c0531952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &540876424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171004264456068047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c24d7159f8a64fb4abe072fe84c3794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _starPrefab: {fileID: 6226289986157931524, guid: 223f9c2ef78c940cb853ed55192eb004, type: 3}
+  _starExposionPrefab: {fileID: 4283377742505027893, guid: 444808e01bee64dc0926db24bd11a15d, type: 3}
+  _fallingStarClip: {fileID: 8300000, guid: ea28b38424eff8844aedc8f836e7fba6, type: 3}
+  _starMagicClip: {fileID: 8300000, guid: 6b68c5eb65b816642a404dca3c7e71cc, type: 3}
+  _starExplosionClip: {fileID: 8300000, guid: f443483e0319bad4aa7ebf106b91f749, type: 3}
+  _princessLandClips:
+  - {fileID: 8300000, guid: 512c7ce59f3fcad42bf07ae6de696855, type: 3}
+  - {fileID: 8300000, guid: ed3dd1a9a954a604fa2ad68b98f6fd18, type: 3}
+  - {fileID: 8300000, guid: c17ff32cf2d56c345a790ea2504912e9, type: 3}
+  - {fileID: 8300000, guid: 565fc247f368a70469b77fd71e453657, type: 3}
+  _princessDeathClips:
+  - {fileID: 8300000, guid: 7d5cf39c7c2a58943bdbaa129394b73a, type: 3}
+  - {fileID: 8300000, guid: b0aaf2ed62f2bbc41b29c2ebe4e9a7ec, type: 3}
+  - {fileID: 8300000, guid: ff566fff97c9057488105db1519c414d, type: 3}
+  _deathExposionPrefab: {fileID: 7437856771827640419, guid: 572abbd3ece3c4c88b8fb4ae487d32c7, type: 3}
+  _risingStarClip: {fileID: 8300000, guid: fed0868802ec3b9428822989ed693806, type: 3}
+--- !u!114 &2753737074986956837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171004264456068047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0731d2627954ee98608dc7107852c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _companionPrefabs:
+  - {fileID: 3850641674204995764, guid: 5ea9bab106b5f4f2386f40534dce8052, type: 3}
+  _unsummonEffectPrefab: {fileID: 141433446842962269, guid: 9fe8f8b3288e45a44af36ff8aa04486e, type: 3}
+  _unsummonSound: {fileID: 8300000, guid: 1c58756cbf41d76479bac606d55926c0, type: 3}

@@ -662,7 +662,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 4be99c44c85ac314f973ae01cbc5f056, type: 3}
     - target: {fileID: 292609433349294602, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.017999649
+      value: -0.017997742
       objectReference: {fileID: 0}
     - target: {fileID: 292609433349294602, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1842,11 +1842,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6440122413732201649, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.58
+      value: -12.7
       objectReference: {fileID: 0}
     - target: {fileID: 6440122413732201649, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.91
+      value: 14.4
       objectReference: {fileID: 0}
     - target: {fileID: 6440122413732201649, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2225,6 +2225,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8746090421077416876, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746090421077416876, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -2418,7 +2422,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.6361725
+  m_Mass: 0.60821235
   m_LinearDrag: 10
   m_AngularDrag: 10
   m_GravityScale: 0
@@ -2442,15 +2446,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.1}
   serializedVersion: 2
-  m_Radius: 0.45
---- !u!81 &708861773
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4482395217454736612}
-  m_Enabled: 1
+  m_Radius: 0.44
 --- !u!114 &708861710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2468,7 +2464,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 708861725}
   _interactCtrl: {fileID: 1978224370}
   _princessCustomCtrl: {fileID: 708861770}
-  _listener: {fileID: 708861773}
   _acceleration: 13
   _moveSpeed: 7
 --- !u!114 &708861713

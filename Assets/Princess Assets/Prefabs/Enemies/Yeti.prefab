@@ -96,7 +96,6 @@ MonoBehaviour:
   _health: 2
   _dealHeartDamage: 1
   _coinDamage: 0
-  _treasureDrop: 3
   _acceleration: 10
   _moveSpeed: 3
   _startDirection: {x: 0.95, y: 0.5}
@@ -163,7 +162,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 18
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0

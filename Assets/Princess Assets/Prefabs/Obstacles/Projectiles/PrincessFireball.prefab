@@ -4894,7 +4894,7 @@ MonoBehaviour:
   _hitSound: {fileID: 8300000, guid: 4a360f810c365d6469d6a21803022cdc, type: 3}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 3073
+    m_Bits: 35841
   _speed: 10
   _altAngled: 0
   _audioSource: {fileID: 2783116495023704357}

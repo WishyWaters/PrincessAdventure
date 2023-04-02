@@ -40,7 +40,7 @@ namespace PrincessAdventure
         [SerializeField] private float _attackRadius;
         [SerializeField] private GameObject _projectile;
         [SerializeField] private float _idleTimeAfterAttack;
-
+        [SerializeField] private float _projectileWaitTime;
 
         private readonly Vector2[] _directions = { Vector2.right, Vector2.left, Vector2.up, Vector2.down };
 
@@ -63,6 +63,7 @@ namespace PrincessAdventure
         private float _idleEndTime;
         private Vector2 _directionBeforeIdle;
         private float _fleeEndTime;
+        private float _attackCooldownTime;
 
 
 
@@ -81,7 +82,7 @@ namespace PrincessAdventure
                 HandleAnimatorLocomotion(_currentDirection);
             else
             {
-                if(_enemyState != EnemyStates.Attack)
+                if (_enemyState == EnemyStates.Patrolling || _enemyState == EnemyStates.Idle || _enemyState == EnemyStates.Fleeing)
                     HandleSpineLocomotion(_currentDirection);
             }
                 
@@ -108,22 +109,19 @@ namespace PrincessAdventure
                     break;
                 case EnemyStates.Attack:
                     _patrolEndTime = 0;
-                    _idleEndTime = Time.time + _idleTimeAfterAttack;
+                    _attackCooldownTime = Time.time + _idleTimeAfterAttack;
                     _directionBeforeIdle = _currentDirection;
-                    ChangeDirection(Vector2.zero);
                     _sfxCtrl.PlayAttackSound();
                     break;
                 case EnemyStates.Hurt:
                     _patrolEndTime = 0;
                     _idleEndTime = Time.time + .5f;
                     _directionBeforeIdle = _currentDirection;
-                    ChangeDirection(Vector2.zero);
                     _sfxCtrl.PlayOnHurtSound();
                     break;
                 case EnemyStates.Disabled:
                     _rigidbody.simulated = false;
                     _directionBeforeIdle = Vector2.zero;
-                    ChangeDirection(Vector2.zero);
                     _sfxCtrl.PlayDeathSound();
                     break;
                 case EnemyStates.Fleeing:
@@ -147,10 +145,13 @@ namespace PrincessAdventure
                     Patrolling();
                     break;
                 case EnemyStates.Attack:
-                    CheckIdleTime();
+                    //CheckIdleTime();  Attack moves to Idle after animation
                     break;
                 case EnemyStates.Fleeing:
                     CheckFleeTime();
+                    break;
+                case EnemyStates.Hurt:
+                    //CheckIdleTime(); Hurt moves to Flee after animation
                     break;
 
             }
@@ -185,18 +186,24 @@ namespace PrincessAdventure
             {
 
                 //Attempt Melee Attack
-                Collider2D[] playersInAttackRange = Physics2D.OverlapCircleAll((Vector2)this.transform.position, _attackRadius, _whatIsPlayer);
-                if (playersInAttackRange.Length > 0)
+                if (_attackCooldownTime < Time.time)
                 {
-                    HandleAttack();
-                }
-                else if (ShouldUseRangeAttack(playersInSight[0].transform.position))
-                {
-                    LaunceProjectileAttack(playersInSight[0].transform.position);
-                }
-                else
-                {
-                    ChasePlayer(playersInSight[0].transform.position);
+                    Collider2D[] playersInAttackRange = Physics2D.OverlapCircleAll((Vector2)this.transform.position, _attackRadius, _whatIsPlayer);
+
+                    if (playersInAttackRange.Length > 0)
+                    {
+                        HandleAttack(playersInSight[0].transform.position);
+                    }
+                    else if (ShouldUseRangeAttack(playersInSight[0].transform.position))
+                    {
+                        StartCoroutine(LaunchProjectile(playersInSight[0].transform.position));
+                        HandleAttack(playersInSight[0].transform.position);
+
+                    }
+                    else
+                    {
+                        ChasePlayer(playersInSight[0].transform.position);
+                    }
                 }
             }
         }
@@ -244,17 +251,11 @@ namespace PrincessAdventure
             return false;
         }
 
-        private void LaunceProjectileAttack(Vector3 playerPosition)
+        private void HandleAttack(Vector3 playerPosition)
         {
-            //TODO: Instantiate Projectile
+            //Update to face player
+            _currentDirection = (Vector2)(playerPosition - this.transform.position).normalized;
 
-            HandleAttack();
-
-
-        }
-
-        private void HandleAttack()
-        {
             ChangeState(EnemyStates.Attack);
 
             if (_rigType == EnemyRigTypes.CustomHumanoid)
@@ -265,6 +266,7 @@ namespace PrincessAdventure
             }
             else
             {
+                HandleSpineDirection(_currentDirection);
                 SetSpineAnimation("Attack", false);
             }
         }
@@ -469,11 +471,20 @@ namespace PrincessAdventure
             // Add your implementation code here to react to complete events
             if (_enemyAnimator.AnimationName.Contains("Death"))
                 Destroy(this.gameObject);
-            else
+            else if (_enemyAnimator.AnimationName.Contains("Attack"))
             {
-                _allowNewSpineAnimations = true;
+                ChangeState(EnemyStates.Idle);
                 SetSpineAnimation("Idle", true);
             }
+            else if (_enemyAnimator.AnimationName.Contains("Hurt"))
+            {
+                ChangeState(EnemyStates.Fleeing);
+                SetSpineAnimation("Walk", true);
+            }
+
+            _allowNewSpineAnimations = true;
+            
+            
         }
 
         #endregion
@@ -611,6 +622,8 @@ namespace PrincessAdventure
                     DestroyEnemy();
                 else
                 {
+                    FleeTarget(positionOfPain);
+                    ChangeState(EnemyStates.Hurt);
                     if (_rigType == EnemyRigTypes.CustomHumanoid)
                     {
                         if (_currentCoroutine != null)
@@ -620,9 +633,10 @@ namespace PrincessAdventure
                     else
                     {
                         //Names are: Idle, Walk, Death, Hurt and Attack
+                        HandleSpineDirection(_currentDirection);
                         SetSpineAnimation("Hurt", false);
                     }
-                    FleeTarget(positionOfPain);
+                    
                 }
             }
         }
@@ -641,6 +655,8 @@ namespace PrincessAdventure
             else
             {
                 //Names are: Idle, Walk, Death, Hurt and Attack
+                HandleSpineDirection(_currentDirection);
+
                 SetSpineAnimation("Death", false);
             }
             TreasureExplosion treasure = this.GetComponent<TreasureExplosion>();
@@ -674,8 +690,11 @@ namespace PrincessAdventure
 
         public void ReflectEnemy(Vector2 direction)
         {
-            ChangeState(EnemyStates.Fleeing);
-            ChangeDirection(direction);
+            if (_enemyState == EnemyStates.Patrolling || _enemyState == EnemyStates.Idle || _enemyState == EnemyStates.Fleeing)
+            {
+                ChangeState(EnemyStates.Fleeing);
+                ChangeDirection(direction);
+            }
         }
 
         #region Coroutines
@@ -710,6 +729,8 @@ namespace PrincessAdventure
 
             CheckAttackCollision();
 
+            ChangeState(EnemyStates.Idle);
+
         }
 
         private IEnumerator DoAnimatorHurt(Vector2 direction)
@@ -739,6 +760,8 @@ namespace PrincessAdventure
 
                 yield return null;
             }
+
+            ChangeState(EnemyStates.Fleeing);
         }
 
 
@@ -774,7 +797,33 @@ namespace PrincessAdventure
             Destroy(this.gameObject);
         }
 
-        
+        private IEnumerator LaunchProjectile(Vector3 playerPosition)
+        {
+
+            float timePassed = 0f;
+
+            //Wait for animation
+            while (timePassed < _projectileWaitTime)
+            {
+                timePassed += Time.deltaTime;
+                yield return null;
+            }
+
+            Vector3 direction = (playerPosition - this.transform.position).normalized;
+            Vector2 directionToFire = GetClosestDirection(direction);
+            Vector3 projSpawnPoint = this.transform.position + (Vector3)directionToFire;
+            if (directionToFire == Vector2.left || directionToFire == Vector2.right)
+                projSpawnPoint.y += .6f;
+            else if (directionToFire == Vector2.up)
+                projSpawnPoint.x += .6f;
+
+
+            GameObject projectile = Instantiate(_projectile, projSpawnPoint, new Quaternion());
+            ProjectileController projCtrl = projectile.GetComponent<ProjectileController>();
+            projCtrl.InitializeProjectile((Vector3)directionToFire);
+        }
+
+
         #endregion
     }
 

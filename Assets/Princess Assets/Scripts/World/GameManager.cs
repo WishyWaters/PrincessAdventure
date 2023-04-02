@@ -8,12 +8,15 @@ namespace PrincessAdventure
 	public class GameManager : MonoBehaviour
 	{
 		[SerializeField] private GuiManager _guiMgr;
-		[SerializeField] private CharacterController _charCtrl;
 		[SerializeField] private CompanionManager _companionMgr;
 		[SerializeField] private CinemachineVirtualCamera _camera;
+		[SerializeField] private GameObject _princessPrefab;
+
 
 		public static GameManager GameInstance;
 
+		private SceneManager _sceneMgr;
+		private CharacterController _charCtrl;
 		private GameState _currentState = GameState.Undefined;
 		private ActiveGame _gameDetails;
 		private float _invincibleUntilTime = 0;
@@ -33,13 +36,17 @@ namespace PrincessAdventure
 			{
 				Destroy(gameObject);
 			}
+		}
 
+        private void Start()
+        {
 			SetupGame();
 		}
 
-        private void Update()
+		private void Update()
         {
-			ManaRegen();
+			if(_currentState == GameState.Playing)
+				ManaRegen();
         }
 
         #endregion
@@ -47,18 +54,35 @@ namespace PrincessAdventure
         #region start up functions
         private void SetupGame()
         {
-			//TODO: Convert to async
-			//TODO: Load given scene
-
 			_currentState = GameState.Loading;
 			//Load Game Details
 			LoadGameDetails();
 
+			//Setup this scene
+			_sceneMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>();
+			GameObject checkPoint = _sceneMgr.GetSceneCheckPoint();
+			_camera.Follow = checkPoint.transform;
+			_camera.enabled = true;
+
+			SoundManager.SoundInstance.ChangeMusic(_sceneMgr.GetSceneMusic(), true);
+
+
 			//Call UI Setup
 			LoadGui();
 
-			//Unpause & Activate game
+			//Play Cutscene
+			_currentState = GameState.Cutscene;
 
+			PrincessSpawnController spawnCtrl = this.GetComponent<PrincessSpawnController>();
+			spawnCtrl.StartPrincessSpawn(checkPoint.transform.position);
+		}
+
+		public void LoadPlayer(Vector3 spawnPosition)
+        {
+			GameObject princess = Instantiate(_princessPrefab, spawnPosition, new Quaternion());
+			_charCtrl = princess.GetComponent<CharacterController>();
+
+			ActivatePrincess(false);
 			_currentState = GameState.Playing;
 		}
 
@@ -69,24 +93,51 @@ namespace PrincessAdventure
 			_gameDetails.maxManaPoints = _gameDetails.magicPoints * 50;
 			_gameDetails.currentManaPoints = _gameDetails.maxManaPoints;
 
-			//Debug.Log(_gameDetails);
 		}
 
+		public void LoadDefeatGui()
+        {
+			_currentState = GameState.Menu;
+			_guiMgr.LoadDefeatGui();
+        }
 		private void LoadGui()
         {
-			_guiMgr.LoadGui(_gameDetails);
+			_guiMgr.LoadGameplayGui(_gameDetails);
 
 		}
+
+		public void ContinueGameAfterDeath()
+        {
+			SetupGame();
+		}
+		public void QuitGame()
+        {
+			#if UNITY_EDITOR
+						// Application.Quit() does not work in the editor so
+						// UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+						UnityEditor.EditorApplication.isPlaying = false;
+			#else
+					 Application.Quit();
+			#endif
+
+        }
         #endregion
 
         #region Gameplay Actions
 
+		public GameState GetCurrentGameState()
+        {
+			return _currentState;
+        }
 		public void RouteInputs(PrincessInputActions inputs)
         {
-			if(_controllingCompanion) 
-				_companionMgr.UpdateNextInputs(inputs);
-			else
-				_charCtrl.UpdateNextInputs(inputs);
+			if (_currentState == GameState.Playing)
+			{
+				if (_controllingCompanion)
+					_companionMgr.UpdateNextInputs(inputs);
+				else
+					_charCtrl.UpdateNextInputs(inputs);
+			}
 		}
 
 		public void ActivateCompanion(Vector3 targetPosition)
@@ -184,7 +235,7 @@ namespace PrincessAdventure
 			if (_manaRegenTime > 1f)
 			{
 				_manaRegenTime = 0;
-				int recoveryAmt = Mathf.FloorToInt(_gameDetails.maxManaPoints * .01f);
+				int recoveryAmt = 2 + Mathf.FloorToInt(_gameDetails.maxManaPoints * .005f);
 
 				ManaRecover(recoveryAmt);
 			}
@@ -195,10 +246,10 @@ namespace PrincessAdventure
 		public void ManaPotionUse()
         {
 			//Add 75pts or 30%, which ever is higher mana on potion get
-			int recoveryAmt = Mathf.FloorToInt(_gameDetails.maxManaPoints * .30f);
+			//int recoveryAmt = Mathf.FloorToInt(_gameDetails.maxManaPoints * .20f);
 
-			if (recoveryAmt < 75)
-				recoveryAmt = 75;
+			//if (recoveryAmt < 60)
+			int recoveryAmt = 60;
 
 			ManaRecover(recoveryAmt);
 
@@ -235,10 +286,28 @@ namespace PrincessAdventure
 			}
 		}
 
+		public bool DoesPrincessNeedRegen()
+        {
+			if (_gameDetails.currentHealth == _gameDetails.heartPoints
+				&& _gameDetails.currentManaPoints == _gameDetails.maxManaPoints)
+				return false;
+
+			return true;
+        }
+
 		private void KillPrincess()
         {
-			//TODO: Configure KillPrincess
-        }
+			_camera.Follow = null;
+			_camera.enabled = false;
+			_currentState = GameState.Cutscene;
+
+			PrincessSpawnController spawnCtrl = this.GetComponent<PrincessSpawnController>();
+			spawnCtrl.StartPrincessDeath(_charCtrl.gameObject.transform.position);
+
+			Destroy(_charCtrl.gameObject);
+			_charCtrl = null;
+
+		}
 
 		public void PickupItem(PickUps pickUpType)
         {
@@ -279,6 +348,11 @@ namespace PrincessAdventure
 		public int GetCurrentHealth()
         {
 			return _gameDetails.currentHealth;
+        }
+
+		public void UpdatePlayerGameScene()
+        {
+			_gameDetails.gameScene = _sceneMgr.GetCurrentScene();
         }
 
         #endregion
