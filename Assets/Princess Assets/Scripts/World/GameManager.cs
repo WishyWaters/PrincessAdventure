@@ -68,7 +68,7 @@ namespace PrincessAdventure
 
 
 			//Call UI Setup
-			LoadGui();
+			LoadGameplayGui();
 
 			//Play Cutscene
 			_currentState = GameState.Cutscene;
@@ -100,7 +100,14 @@ namespace PrincessAdventure
 			_currentState = GameState.Menu;
 			_guiMgr.LoadDefeatGui();
         }
-		private void LoadGui()
+
+		public void LoadStarShardGui()
+		{
+			_currentState = GameState.Menu;
+			_guiMgr.LoadStarShardGui(_gameDetails.starShards);
+		}
+
+		private void LoadGameplayGui()
         {
 			_guiMgr.LoadGameplayGui(_gameDetails);
 
@@ -345,6 +352,37 @@ namespace PrincessAdventure
 			}
         }
 
+		public void PickupMajorTreasure(MajorTreasures treasure, int treasureId)
+        {
+			switch(treasure)
+            {
+				case MajorTreasures.StarShard:
+					_gameDetails.starShards++;
+					LoadStarShardGui();
+					break;
+				//case MajorTreasures.Friend:
+				//	_gameDetails.friends.Add(treasureId);
+				//	break;
+				//case MajorTreasures.Hat:
+				//	_gameDetails.hats.Add(treasureId);
+				//	break;
+				//case MajorTreasures.Necklace:
+				//	_gameDetails.necklaces.Add(treasureId);
+				//	break;
+				//case MajorTreasures.Outfit:
+				//	_gameDetails.outfits.Add(treasureId);
+				//	break;
+				//case MajorTreasures.Ring:
+				//	_gameDetails.rings.Add(treasureId);
+				//	break;
+				//case MajorTreasures.Shoes:
+				//	_gameDetails.shoes.Add(treasureId);
+				//	break;
+			}
+
+			//Call Game save
+        }
+
 		public int GetCurrentHealth()
         {
 			return _gameDetails.currentHealth;
@@ -353,6 +391,17 @@ namespace PrincessAdventure
 		public void UpdatePlayerGameScene()
         {
 			_gameDetails.gameScene = _sceneMgr.GetCurrentScene();
+        }
+
+		public void UpdateCameraFollow(GameObject newFollow)
+        {
+			_camera.Follow = newFollow.transform;
+        }
+
+		public void ResumeGameFromMenu()
+        {
+			_currentState = GameState.Playing;
+			LoadGameplayGui();
         }
 
         #endregion

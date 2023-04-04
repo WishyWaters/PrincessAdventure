@@ -19671,6 +19671,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4283377742505027891}
     m_Modifications:
+    - target: {fileID: 5711547139488797713, guid: 85434a4ee77941e498d22b221f10e504, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711547139488797713, guid: 85434a4ee77941e498d22b221f10e504, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711547139488797713, guid: 85434a4ee77941e498d22b221f10e504, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711547139488797713, guid: 85434a4ee77941e498d22b221f10e504, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711547139488797713, guid: 85434a4ee77941e498d22b221f10e504, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5711547139488797716, guid: 85434a4ee77941e498d22b221f10e504, type: 3}
       propertyPath: m_Name
       value: CFXR2 Debris Hit (Unlit)
@@ -19693,11 +19713,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5711547139488797719, guid: 85434a4ee77941e498d22b221f10e504, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.13231395
+      value: 0.062873185
       objectReference: {fileID: 0}
     - target: {fileID: 5711547139488797719, guid: 85434a4ee77941e498d22b221f10e504, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.9912079
+      value: -0.99802154
       objectReference: {fileID: 0}
     - target: {fileID: 5711547139488797719, guid: 85434a4ee77941e498d22b221f10e504, type: 3}
       propertyPath: m_LocalRotation.y
@@ -19709,7 +19729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5711547139488797719, guid: 85434a4ee77941e498d22b221f10e504, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -164.793
+      value: -172.791
       objectReference: {fileID: 0}
     - target: {fileID: 5711547139488797719, guid: 85434a4ee77941e498d22b221f10e504, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

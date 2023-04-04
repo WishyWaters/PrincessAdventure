@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 140090745}
   - component: {fileID: 140090746}
   - component: {fileID: 140090747}
+  - component: {fileID: 674882545958218344}
   m_Layer: 14
   m_Name: ChestInteraction
   m_TagString: Untagged
@@ -73,10 +74,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionType: 1
-  _interactionId: 0
   _direction: {x: 0, y: 0}
-  _activeBefore: {fileID: 1220573075638616377}
-  _activeAfter: {fileID: 4884558876653921589}
+  _affectedObjectCtrl: {fileID: 674882545958218344}
+  _activeBefore: {fileID: 0}
+  _activeAfter: {fileID: 0}
 --- !u!114 &140090747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +102,28 @@ MonoBehaviour:
   _tossMaxRadius: 1.5
   _fanfareClip: {fileID: 8300000, guid: 894df81654dd6704eb8d8c14e2acfbd4, type: 3}
   _fanfareEffect: {fileID: 7177991128484655659, guid: 59a35ab9f68edff40b6e5332bed330f5, type: 3}
+--- !u!114 &674882545958218344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140090743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64df327f9eb8c45fea6f82da35324a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeBefore: {fileID: 1220573075638616377}
+  _activeAfter: {fileID: 4884558876653921589}
+  _onActivation: {fileID: 0}
+  _onReset: {fileID: 0}
+  _affectedObjectId: 0
+  _behavior: 1
+  _timeToReset: 0
+  _cameraOnActivation: 0
+  _cameraMoveTime: 0
+  _isLocked: 0
 --- !u!1001 &7739345920774623728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,11 +141,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4873632433795912880, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.10213232
+      value: 14.875879
       objectReference: {fileID: 0}
     - target: {fileID: 4873632433795912880, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.102865
+      value: 30.88056
       objectReference: {fileID: 0}
     - target: {fileID: 4873632433795912880, guid: d84661b0cf1d825429fb9add4a7a9021, type: 3}
       propertyPath: m_LocalPosition.z

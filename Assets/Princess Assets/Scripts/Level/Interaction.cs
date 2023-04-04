@@ -8,23 +8,36 @@ namespace PrincessAdventure
     {
         [Header("Settings")]
         [SerializeField] private InteractionTypes _interactionType;
-        [SerializeField] private int _interactionId;
 
         [Header("Optional")]
         [SerializeField] private Vector2 _direction;
+        [SerializeField] private AffectedObjectController _affectedObjectCtrl;
+
         [SerializeField] private GameObject _activeBefore;
         [SerializeField] private GameObject _activeAfter;
 
-        // Use this for initialization
-        void Start()
+
+        private void Start()
         {
-            //InteractionTypes 
+            //TODO: Check affected object, if toggled, update _activeBefore/_activeAfter
+
         }
 
-        // Update is called once per frame
-        void Update()
+        public bool IsInteractionActive()
         {
-            
+            bool isActive = true;
+
+            switch (_interactionType)
+            {
+                case InteractionTypes.Door:
+                case InteractionTypes.MinorChest:
+                case InteractionTypes.MajorChest:
+                case InteractionTypes.Lever:
+                    isActive = _affectedObjectCtrl.IsActive();
+                    break;
+            }
+
+            return isActive;
         }
 
         public string GetInteractionWord()
@@ -34,8 +47,9 @@ namespace PrincessAdventure
             switch (_interactionType)
             {
                 case InteractionTypes.Door:
-                case InteractionTypes.MinorChest:
                 case InteractionTypes.MajorChest:
+                case InteractionTypes.MinorChest:
+                    //TODO:  Check if locked
                     word = "Open";
                     break;
                 case InteractionTypes.Talk:
@@ -43,6 +57,9 @@ namespace PrincessAdventure
                     break;
                 case InteractionTypes.Jump:
                     word = "Jump";
+                    break;
+                case InteractionTypes.Lever:
+                    word = "Pull";
                     break;
                 default:
                     word = "!";
@@ -62,8 +79,31 @@ namespace PrincessAdventure
                 case InteractionTypes.MinorChest:
                     DoTreasureExplosion();
                     break;
+                case InteractionTypes.Lever:
+                    DoLeverPull();
+                    break;
+                case InteractionTypes.MajorChest:
+                    DoMajorTreasure();
+                    break;
             }
 
+            if (_activeAfter != null)
+                UpdateActiveInteractable();
+
+        }
+
+        private void UpdateActiveInteractable()
+        {
+            if(_affectedObjectCtrl.IsToggled())
+            {
+                _activeAfter.SetActive(true);
+                _activeBefore.SetActive(false);
+            }
+            else
+            {
+                _activeAfter.SetActive(false);
+                _activeBefore.SetActive(true);
+            }
         }
 
         private void DoCliffJump()
@@ -74,20 +114,22 @@ namespace PrincessAdventure
 
         private void DoTreasureExplosion()
         {
-            TreasureExplosion treasure = this.GetComponent<TreasureExplosion>();
+            _affectedObjectCtrl.ToggleTheObject();
+            TreasureExplosion treasure = _affectedObjectCtrl.gameObject.GetComponent<TreasureExplosion>();
             treasure.ThrowTreasure();
-
-            StopInteractions();
         }
 
-        private void StopInteractions()
+        private void DoLeverPull()
         {
-            BoxCollider2D col = this.GetComponent<BoxCollider2D>();
-            col.enabled = false;
-
-            _activeAfter.SetActive(true);
-            _activeBefore.SetActive(false);
-
+            _affectedObjectCtrl.ToggleTheObject();
         }
+
+        private void DoMajorTreasure()
+        {
+            _affectedObjectCtrl.ToggleTheObject();
+            MajorItemHandler itemHandler = _affectedObjectCtrl.gameObject.GetComponent<MajorItemHandler>();
+            itemHandler.HandleTreasure();
+        }
+
     }
 }

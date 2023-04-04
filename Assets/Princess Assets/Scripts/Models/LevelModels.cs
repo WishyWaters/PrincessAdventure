@@ -10,7 +10,17 @@ namespace PrincessAdventure
         MinorChest,
         Talk,
         Door,
-        MajorChest
+        MajorChest,
+        Lever
+
+    }
+
+    public enum AffectedBehavior
+    {
+        OneTimeResetOnLoad,
+        OneTimeSave,
+        Toggle,
+        TimedReset
 
     }
 
@@ -57,6 +67,17 @@ namespace PrincessAdventure
         Horde,
         PoisonPotion
         
+    }
+
+    public enum MajorTreasures
+    {
+        StarShard,
+        Friend,
+        Hat,
+        Necklace,
+        Outfit,
+        Ring,
+        Shoes
     }
 
     public enum EnemyRigTypes

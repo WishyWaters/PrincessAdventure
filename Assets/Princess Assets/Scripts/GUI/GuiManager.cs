@@ -9,17 +9,19 @@ namespace PrincessAdventure
         [Header("Panels")]
         [SerializeField] GameObject _gameplayPanel;
         [SerializeField] GameObject _defeatPanel;
+        [SerializeField] GameObject _starShardPanel;
 
         [Header("Scripts")]
         [SerializeField] GameplayGuiController _gameplayGui;
         [SerializeField] DefeatGuiController _defeatGui;
-
+        [SerializeField] StarShardGuiController _starShardGui;
 
 
         public void LoadGameplayGui(ActiveGame gameDetails)
         {
             _gameplayPanel.SetActive(true);
             _defeatPanel.SetActive(false);
+            _starShardPanel.SetActive(false);
 
             _gameplayGui.LoadGameplayGui(gameDetails);
         }
@@ -28,8 +30,18 @@ namespace PrincessAdventure
         {
             _gameplayPanel.SetActive(false);
             _defeatPanel.SetActive(true);
+            _starShardPanel.SetActive(false);
 
             _defeatGui.LoadDefeatScreen();
+        }
+
+        public void LoadStarShardGui(int numOfShards)
+        {
+            _gameplayPanel.SetActive(false);
+            _defeatPanel.SetActive(false);
+            _starShardPanel.SetActive(true);
+
+            _starShardGui.LoadStarShardScreen(numOfShards);
         }
 
         public void EmptyOneHeart()

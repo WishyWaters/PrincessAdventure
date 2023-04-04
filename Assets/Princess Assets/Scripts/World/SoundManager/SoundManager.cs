@@ -60,6 +60,9 @@ namespace PrincessAdventure
 
 		public AudioSource PlayClipAt(AudioClip clip, Vector3 pos)
 		{
+			if (clip == null)
+				return null;
+
 			GameObject tempGO = new GameObject("TempAudio"); // create the temp object
 			tempGO.transform.position = pos; // set its position
 			AudioSource aSource = tempGO.AddComponent<AudioSource>(); // add an audio source

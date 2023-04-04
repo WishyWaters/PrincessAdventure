@@ -27,6 +27,7 @@ namespace PrincessAdventure
             EventSystem.current.SetSelectedGameObject(_continueButton);
             _wishText.text = "Don't get bombed out!";
         }
+
         public void ContinueGame()
         {
             SoundManager.SoundInstance.PlayEffectSound(_click);

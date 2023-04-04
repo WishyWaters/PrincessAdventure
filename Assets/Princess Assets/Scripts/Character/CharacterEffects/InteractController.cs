@@ -23,11 +23,7 @@ namespace PrincessAdventure
 
         private void Update()
         {
-            ////Manage the Interact INPUT UI!!
-            //if (_currentInteract != null && (_currentInteract._requiredDirection == Vector2.zero || _currentInteract._requiredDirection == _lastDirection))
-            //    ToggleInteractText(true);
-            //else
-            //    ToggleInteractText(false);
+
 
 
         }
@@ -63,7 +59,14 @@ namespace PrincessAdventure
         {
             if(_currentInteract != null)
             {
-                _currentInteract.DoInteraction(_lastDirection);
+                if (_currentInteract.IsInteractionActive())
+                    _currentInteract.DoInteraction(_lastDirection);
+                else
+                {
+                    _currentCol = null;
+                    _currentInteract = null;
+                    ToggleInteractText(false);
+                }
             }
 
         }
@@ -73,7 +76,14 @@ namespace PrincessAdventure
             if (_currentCol == null) {
                 _currentCol = col;
                 _currentInteract = col.GetComponent<Interaction>();
-                ToggleInteractText(true);
+                if(_currentInteract.IsInteractionActive())
+                    ToggleInteractText(true);
+                else
+                {
+                    _currentCol = null;
+                    _currentInteract = null;
+                    ToggleInteractText(false);
+                }
             }
 
         }
