@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 namespace PrincessAdventure
 {
@@ -10,6 +11,7 @@ namespace PrincessAdventure
 
         [SerializeField] private GameObject _continueButton;
         [SerializeField] private Image _starFill;
+        [SerializeField] private TextMeshProUGUI _continueButtonText;
 
         [SerializeField] private AudioClip _click;
         [SerializeField] private AudioClip _piecePut;
@@ -24,8 +26,15 @@ namespace PrincessAdventure
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(_continueButton);
 
+
             currentShards = numOfShards;
             _starFill.fillAmount = GetFillValue(currentShards - 1);
+
+            if (currentShards == 5)
+                _continueButtonText.text = "Power Up";
+            else
+                _continueButtonText.text = "Confirm";
+
             StartCoroutine(PlaceStarShard());
         }
 
@@ -33,7 +42,7 @@ namespace PrincessAdventure
         {
             float waitCount = 0;
 
-            while(waitCount < 4.2f)
+            while(waitCount < 1.4f)
             {
                 waitCount += Time.deltaTime;
                 yield return null;
@@ -47,9 +56,9 @@ namespace PrincessAdventure
         {
             SoundManager.SoundInstance.PlayEffectSound(_click);
 
-            if (currentShards == 5) //TODO:  Go to LEVEL UP!!!
+            if (currentShards == 5) 
             {
-                GameManager.GameInstance.ResumeGameFromMenu();
+                GameManager.GameInstance.LoadPowerUpGui();
                 currentShards = 0;
             }
             else

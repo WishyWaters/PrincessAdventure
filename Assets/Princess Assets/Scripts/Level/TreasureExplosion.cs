@@ -269,15 +269,17 @@ namespace PrincessAdventure
                 case TreasureDrops.MinCoins:
                 case TreasureDrops.MedCoins:
                 case TreasureDrops.LotCoins:
-                case TreasureDrops.MinAll:
-                case TreasureDrops.MedAll:
                     numOf = 0;
                     break;
-                case TreasureDrops.LotAll:
+                case TreasureDrops.MinAll:
+                case TreasureDrops.MedAll:
                     numOf = 1;
                     break;
-                case TreasureDrops.Horde:
+                case TreasureDrops.LotAll:
                     numOf = 2;
+                    break;
+                case TreasureDrops.Horde:
+                    numOf = 3;
                     break;
                 case TreasureDrops.SinglePotion:
                 case TreasureDrops.ManyPotions:

@@ -141,6 +141,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/AffectedObjectController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/MajorItemHandler.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/StarShardGuiController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/PowerUpGuiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

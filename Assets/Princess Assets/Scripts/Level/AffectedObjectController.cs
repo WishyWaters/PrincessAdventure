@@ -20,6 +20,8 @@ namespace PrincessAdventure
         [SerializeField] private bool _cameraOnActivation;
         [SerializeField] private float _cameraMoveTime;
         [SerializeField] private bool _isLocked;
+        [SerializeField] private AudioClip _onUnlock;
+        [SerializeField] private AudioClip _onNoKey;
 
         private bool _isActive;
         private bool _isToggled;
@@ -119,6 +121,20 @@ namespace PrincessAdventure
         private void UpdateSave()
         {
             //TODO:  Call scene manager and update object data
+        }
+
+        public void Unlock()
+        {
+            SoundManager.SoundInstance.PlayClipAt(_onUnlock, this.transform.position);
+
+            _isLocked = false;
+            UpdateSave();
+        }
+
+        public void FailedToUnlock()
+        {
+            SoundManager.SoundInstance.PlayClipAt(_onNoKey, this.transform.position);
+
         }
     }
 }

@@ -60,7 +60,10 @@ namespace PrincessAdventure
             if(_currentInteract != null)
             {
                 if (_currentInteract.IsInteractionActive())
+                {
                     _currentInteract.DoInteraction(_lastDirection);
+                    UpdateInteractable();
+                }
                 else
                 {
                     _currentCol = null;
@@ -71,12 +74,11 @@ namespace PrincessAdventure
 
         }
 
-        void OnTriggerEnter2D(Collider2D col)
+        private void UpdateInteractable()
         {
-            if (_currentCol == null) {
-                _currentCol = col;
-                _currentInteract = col.GetComponent<Interaction>();
-                if(_currentInteract.IsInteractionActive())
+            if (_currentInteract != null)
+            {
+                if (_currentInteract.IsInteractionActive())
                     ToggleInteractText(true);
                 else
                 {
@@ -84,6 +86,15 @@ namespace PrincessAdventure
                     _currentInteract = null;
                     ToggleInteractText(false);
                 }
+            }
+        }
+
+        void OnTriggerEnter2D(Collider2D col)
+        {
+            if (_currentCol == null) {
+                _currentCol = col;
+                _currentInteract = col.GetComponent<Interaction>();
+                UpdateInteractable();
             }
 
         }
@@ -99,16 +110,10 @@ namespace PrincessAdventure
 
         }
 
-        void OnTriggerStay2D(Collider2D col)
-        {
-
-
-        }
-
         private void ToggleInteractText(bool enabled)
         {
-            if (enabled == _textMesh.enabled)
-                return;
+            //if (enabled == _textMesh.enabled)
+            //    return;
 
             if (enabled)
             {

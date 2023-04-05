@@ -30,8 +30,9 @@ namespace PrincessAdventure
         {
             //Debug.Log("Loading Gameplay UI");
 
-            LoadHearts(gameDetails.heartPoints);
+            LoadHearts(gameDetails.heartPoints, gameDetails.currentHealth);
             LoadMagic(gameDetails.magicPoints);
+            UpdateMana(gameDetails.currentManaPoints, gameDetails.maxManaPoints);
             UpdateGoldText(gameDetails.gold);
             UpdateKeyText(gameDetails.keys);
         }
@@ -80,18 +81,22 @@ namespace PrincessAdventure
             magicSlider.value = newValue;
         }
 
-        private void LoadHearts(int numOfHearts)
+        private void LoadHearts(int maxHearts, int currentHealth)
         {
             GlobalUtils.DestroyChildren(_heartLayoutGroup);
             _hearts.Clear();
 
-            _currentFullHeart = numOfHearts - 1;
+            _currentFullHeart = currentHealth - 1;
 
             //foreach heart instantiate a heart
-            for(int i = 0; i < numOfHearts; i++)
+            for(int i = 0; i < maxHearts; i++)
             {
                 GameObject heartContainer = Instantiate(_heartContainerPrefab, _heartLayoutGroup.transform);
-                heartContainer.GetComponent<Image>().sprite = _fullHeartSprite;
+
+                if(i <= _currentFullHeart)
+                    heartContainer.GetComponent<Image>().sprite = _fullHeartSprite;
+                else
+                    heartContainer.GetComponent<Image>().sprite = _emptyHeartSprite;
 
                 _hearts.Add(heartContainer);
             }

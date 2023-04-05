@@ -102,4 +102,11 @@ namespace PrincessAdventure
 
 		}
 	}
+
+	public enum PowerUpOptions
+	{
+		Heart,
+		Magic,
+		Luck
+	}
 }

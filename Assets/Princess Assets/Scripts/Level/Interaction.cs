@@ -48,8 +48,13 @@ namespace PrincessAdventure
             {
                 case InteractionTypes.Door:
                 case InteractionTypes.MajorChest:
-                case InteractionTypes.MinorChest:
                     //TODO:  Check if locked
+                    if (_affectedObjectCtrl.IsLocked())
+                        word = "Unlock";
+                    else
+                        word = "Open";
+                    break;
+                case InteractionTypes.MinorChest:
                     word = "Open";
                     break;
                 case InteractionTypes.Talk:
@@ -80,30 +85,27 @@ namespace PrincessAdventure
                     DoTreasureExplosion();
                     break;
                 case InteractionTypes.Lever:
+
+                    if (_activeAfter != null)
+                        UpdateActiveInteractable(!_affectedObjectCtrl.IsToggled());
+
                     DoLeverPull();
                     break;
                 case InteractionTypes.MajorChest:
-                    DoMajorTreasure();
+                    if (_affectedObjectCtrl.IsLocked())
+                        AttemptUnlock();
+                    else
+                        DoMajorTreasure();
                     break;
             }
 
-            if (_activeAfter != null)
-                UpdateActiveInteractable();
-
         }
 
-        private void UpdateActiveInteractable()
+        private void UpdateActiveInteractable(bool isToggled)
         {
-            if(_affectedObjectCtrl.IsToggled())
-            {
-                _activeAfter.SetActive(true);
-                _activeBefore.SetActive(false);
-            }
-            else
-            {
-                _activeAfter.SetActive(false);
-                _activeBefore.SetActive(true);
-            }
+            _activeAfter.SetActive(isToggled);
+            _activeBefore.SetActive(!isToggled);
+            
         }
 
         private void DoCliffJump()
@@ -129,6 +131,18 @@ namespace PrincessAdventure
             _affectedObjectCtrl.ToggleTheObject();
             MajorItemHandler itemHandler = _affectedObjectCtrl.gameObject.GetComponent<MajorItemHandler>();
             itemHandler.HandleTreasure();
+        }
+
+        private void AttemptUnlock()
+        {
+            if (GameManager.GameInstance.HasKey())
+            {
+                _affectedObjectCtrl.Unlock();
+                GameManager.GameInstance.UseKey();
+            }
+            else
+                _affectedObjectCtrl.FailedToUnlock();
+
         }
 
     }

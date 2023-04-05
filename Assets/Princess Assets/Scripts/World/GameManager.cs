@@ -88,7 +88,10 @@ namespace PrincessAdventure
 
 		private void LoadGameDetails()
 		{
-			_gameDetails = new ActiveGame(1);
+			if(_gameDetails == null)
+				_gameDetails = new ActiveGame(1);
+
+
 			_gameDetails.currentHealth = _gameDetails.heartPoints;
 			_gameDetails.maxManaPoints = _gameDetails.magicPoints * 50;
 			_gameDetails.currentManaPoints = _gameDetails.maxManaPoints;
@@ -111,6 +114,12 @@ namespace PrincessAdventure
         {
 			_guiMgr.LoadGameplayGui(_gameDetails);
 
+		}
+
+		public void LoadPowerUpGui()
+		{
+			_currentState = GameState.Menu;
+			_guiMgr.LoadPowerUpGui();
 		}
 
 		public void ContinueGameAfterDeath()
@@ -316,6 +325,24 @@ namespace PrincessAdventure
 
 		}
 
+		public bool HasKey()
+        {
+			if (_gameDetails.keys > 0)
+				return true;
+
+			return false;
+        }
+
+		public void UseKey()
+        {
+			if (_gameDetails.keys > 0)
+            {
+				_gameDetails.keys -= 1;
+
+			}
+
+		}
+
 		public void PickupItem(PickUps pickUpType)
         {
             switch (pickUpType)
@@ -398,16 +425,44 @@ namespace PrincessAdventure
 			_camera.Follow = newFollow.transform;
         }
 
+		public void PowerUpPrincess(PowerUpOptions powerUp)
+        {
+			_gameDetails.starShards = 0;
+
+			switch(powerUp)
+            {
+				case PowerUpOptions.Heart:
+					_gameDetails.heartPoints++;
+					_gameDetails.currentHealth = _gameDetails.heartPoints;
+					break;
+				case PowerUpOptions.Magic:
+					_gameDetails.magicPoints++;
+					_gameDetails.maxManaPoints = _gameDetails.magicPoints * 50;
+					_gameDetails.currentManaPoints = _gameDetails.maxManaPoints;
+					break;
+				case PowerUpOptions.Luck:
+					_gameDetails.luckPoints++;
+					break;
+			}
+
+
+			LoadGameplayGui();
+			_currentState = GameState.Playing;
+
+			//TODO: Save Game
+		}
+
 		public void ResumeGameFromMenu()
         {
-			_currentState = GameState.Playing;
 			LoadGameplayGui();
-        }
+			_currentState = GameState.Playing;
 
-        #endregion
+		}
+
+		#endregion
 
 
-    }
+	}
 
 
 }
