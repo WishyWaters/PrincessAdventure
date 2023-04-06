@@ -8,6 +8,8 @@ namespace PrincessAdventure
     public class InteractController : MonoBehaviour
     {
         [SerializeField] TextMeshPro _textMesh;
+        [SerializeField] bool _isCompanion;
+        [SerializeField] List<AudioClip> _noticeClips;
 
         private BoxCollider2D _interactionTrigger;
         private Collider2D _currentCol;
@@ -18,7 +20,8 @@ namespace PrincessAdventure
         private void Awake()
         {
             _interactionTrigger = this.GetComponent<BoxCollider2D>();
-            _textMesh.enabled = false;
+            //_textMesh.enabled = false;
+            _textMesh.text = "";
         }
 
 
@@ -49,11 +52,38 @@ namespace PrincessAdventure
 
         }
 
+        public void UpdateCompanionOffset(Vector2 direction)
+        {
+            _lastDirection = direction;
+
+            if (direction == Vector2.right)
+            {
+                _interactionTrigger.offset = new Vector2(0.5f, 0.1f);
+                _interactionTrigger.size = new Vector2(0.5f, .6f);
+            }
+            else if (direction == Vector2.left)
+            {
+                _interactionTrigger.offset = new Vector2(-0.5f, 0.1f);
+                _interactionTrigger.size = new Vector2(0.5f, .6f);
+            }
+            else if (direction == Vector2.up)
+            {
+                _interactionTrigger.offset = new Vector2(0f, .5f);
+                _interactionTrigger.size = new Vector2(.6f, 0.5f);
+            }
+            else if (direction == Vector2.down)
+            {
+                _interactionTrigger.offset = new Vector2(0f, -0.5f);
+                _interactionTrigger.size = new Vector2(.6f, 0.5f);
+            }
+
+        }
+
         public void AttemptInteraction()
         {
             if(_currentInteract != null)
             {
-                if (_currentInteract.IsInteractionActive())
+                if (_currentInteract.IsInteractionActive(_isCompanion))
                 {
                     _currentInteract.DoInteraction(_lastDirection);
                     UpdateInteractable();
@@ -65,6 +95,12 @@ namespace PrincessAdventure
                     ToggleInteractText(false);
                 }
             }
+            else if(!_isCompanion)
+            {
+                int soundIndex = Random.Range(0, _noticeClips.Count);
+                SoundManager.SoundInstance.PlayEffectSound(_noticeClips[soundIndex]);
+                GameManager.GameInstance.PlayerIsNoticeable();
+            }
 
         }
 
@@ -72,7 +108,7 @@ namespace PrincessAdventure
         {
             if (_currentInteract != null)
             {
-                if (_currentInteract.IsInteractionActive())
+                if (_currentInteract.IsInteractionActive(_isCompanion))
                     ToggleInteractText(true);
                 else
                 {
@@ -111,13 +147,14 @@ namespace PrincessAdventure
 
             if (enabled)
             {
-                _textMesh.enabled = true;
-                _textMesh.text = _currentInteract.GetInteractionWord();
+                //_textMesh.enabled = true;
+                if(_textMesh.text != _currentInteract.GetInteractionWord())
+                    _textMesh.text = _currentInteract.GetInteractionWord();
             }
             else
             {
                 _textMesh.text = "";
-                _textMesh.enabled = false;
+                //_textMesh.enabled = false;
             }
         }
 

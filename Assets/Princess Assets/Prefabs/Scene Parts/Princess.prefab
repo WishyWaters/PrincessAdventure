@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 1128988594}
   - component: {fileID: 1128988595}
   - component: {fileID: 1128988592}
+  - component: {fileID: 6183145537369750400}
   m_Layer: 0
   m_Name: InteractText
   m_TagString: Untagged
@@ -216,6 +217,21 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1128988595}
   m_maskType: 0
+--- !u!114 &6183145537369750400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128988593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed57967c52645d390a89dcf8f61ba73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 0.1
+  SpeedMultiplier: 0.1
+  CurveScale: 0.1
 --- !u!1 &1978224371
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,6 +243,7 @@ GameObject:
   - component: {fileID: 1978224332}
   - component: {fileID: 1978224370}
   - component: {fileID: 1978224333}
+  - component: {fileID: 6056787282273162406}
   m_Layer: 14
   m_Name: InteractTrigger
   m_TagString: Untagged
@@ -263,6 +280,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textMesh: {fileID: 1128988592}
+  _isCompanion: 0
+  _noticeClips:
+  - {fileID: 8300000, guid: fe5e507aed285394989d7dfb2eb97ca1, type: 3}
+  - {fileID: 8300000, guid: d6785cd10e21a3d49924de5ee116ca7a, type: 3}
+  - {fileID: 8300000, guid: fd9f8ccc83ed37c44bea99e52bdee354, type: 3}
+  - {fileID: 8300000, guid: 717ffc07a07dfb740aa9fbad1b4703d4, type: 3}
+  - {fileID: 8300000, guid: b6e084b87b2d2bb49a6f46e1c73eb5ca, type: 3}
 --- !u!61 &1978224333
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -289,6 +313,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 1.1}
   m_EdgeRadius: 0
+--- !u!210 &6056787282273162406
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978224371}
+  m_Enabled: 1
+  m_SortingLayerID: 2108697989
+  m_SortingLayer: 5
+  m_SortingOrder: 0
 --- !u!1001 &5139997325393444680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -666,7 +701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 292609433349294602, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4829998
+      value: 0.4829979
       objectReference: {fileID: 0}
     - target: {fileID: 457938727774481407, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
       propertyPath: m_Size.x
@@ -1210,7 +1245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2893559847727565050, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3789997
+      value: 0.37900162
       objectReference: {fileID: 0}
     - target: {fileID: 3023808619144476663, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
       propertyPath: m_Size.x

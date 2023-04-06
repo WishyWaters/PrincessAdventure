@@ -65,7 +65,7 @@ namespace PrincessAdventure
                 yield return null;
             }
 
-            GameManager.GameInstance.UpdateCameraFollow(GameObject.FindGameObjectWithTag("Player"));
+            GameManager.GameInstance.UpdateCameraFollowToPlayer();
         }
 
         private void PlayToggleSound()

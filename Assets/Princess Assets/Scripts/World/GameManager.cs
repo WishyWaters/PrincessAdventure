@@ -17,12 +17,14 @@ namespace PrincessAdventure
 
 		private SceneManager _sceneMgr;
 		private CharacterController _charCtrl;
-		private GameState _currentState = GameState.Undefined;
+		private GameObject _activeCompanion;
+		private GameState _currentGameState = GameState.Undefined;
 		private ActiveGame _gameDetails;
 		private float _invincibleUntilTime = 0;
 
 		private bool _controllingCompanion = false;
 		private float _manaRegenTime;
+		private float _playerNoticeTimer;
 
         #region Unity Functions
         private void Awake()
@@ -45,7 +47,7 @@ namespace PrincessAdventure
 
 		private void Update()
         {
-			if(_currentState == GameState.Playing)
+			if(GetCurrentGameState() == GameState.Playing)
 				ManaRegen();
         }
 
@@ -54,7 +56,7 @@ namespace PrincessAdventure
         #region start up functions
         private void SetupGame()
         {
-			_currentState = GameState.Loading;
+			ChangeGameState(GameState.Loading);
 			//Load Game Details
 			LoadGameDetails();
 
@@ -71,7 +73,7 @@ namespace PrincessAdventure
 			LoadGameplayGui();
 
 			//Play Cutscene
-			_currentState = GameState.Cutscene;
+			ChangeGameState(GameState.Cutscene);
 
 			PrincessSpawnController spawnCtrl = this.GetComponent<PrincessSpawnController>();
 			spawnCtrl.StartPrincessSpawn(checkPoint.transform.position);
@@ -83,7 +85,7 @@ namespace PrincessAdventure
 			_charCtrl = princess.GetComponent<CharacterController>();
 
 			ActivatePrincess(false);
-			_currentState = GameState.Playing;
+			ChangeGameState(GameState.Playing);
 		}
 
 		private void LoadGameDetails()
@@ -120,13 +122,13 @@ namespace PrincessAdventure
 
 		public void LoadDefeatGui()
 		{
-			_currentState = GameState.Menu;
+			ChangeGameState(GameState.Menu);
 			_guiMgr.LoadDefeatGui();
 		}
 
 		public void LoadStarShardGui()
 		{
-			_currentState = GameState.Menu;
+			ChangeGameState(GameState.Menu);
 			_guiMgr.LoadStarShardGui(_gameDetails.starShards);
 		}
 
@@ -138,7 +140,7 @@ namespace PrincessAdventure
 
 		public void LoadPowerUpGui()
 		{
-			_currentState = GameState.Menu;
+			ChangeGameState(GameState.Menu);
 			_guiMgr.LoadPowerUpGui();
 		}
 
@@ -161,13 +163,30 @@ namespace PrincessAdventure
 
 		#region Gameplay Actions
 
+		private void ChangeGameState(GameState newState)
+        {
+			switch(newState)
+            {
+				case GameState.Menu:
+					Time.timeScale = 0;
+					break;
+				default:
+					Time.timeScale = 1;
+					break;
+            }
+
+			_currentGameState = newState;
+
+		}
+
 		public GameState GetCurrentGameState()
         {
-			return _currentState;
+			return _currentGameState;
         }
+
 		public void RouteInputs(PrincessInputActions inputs)
         {
-			if (_currentState == GameState.Playing)
+			if (GetCurrentGameState() == GameState.Playing)
 			{
 				if (_controllingCompanion)
 					_companionMgr.UpdateNextInputs(inputs);
@@ -178,8 +197,8 @@ namespace PrincessAdventure
 
 		public void ActivateCompanion(Vector3 targetPosition)
         {
-			//TODO: Get selected companion from GameDetails
-			GameObject companion = _companionMgr.HandleCompanionActivation(1, targetPosition);
+
+			GameObject companion = _companionMgr.HandleCompanionActivation(_gameDetails.selectedFriend, targetPosition);
 			ControlCompanion(companion);
 		}
 
@@ -193,6 +212,7 @@ namespace PrincessAdventure
 
 		private void ControlPrincess()
 		{
+			_activeCompanion = null;
 			_controllingCompanion = false;
 			_charCtrl.EnableController();
 			_companionMgr.SetIgnoreInputs(true);
@@ -202,6 +222,7 @@ namespace PrincessAdventure
 
 		private void ControlCompanion(GameObject companion)
 		{
+			_activeCompanion = companion;
 			_controllingCompanion = true;
 			_charCtrl.DisableController();
 			_companionMgr.SetIgnoreInputs(false);
@@ -335,7 +356,7 @@ namespace PrincessAdventure
         {
 			_camera.Follow = null;
 			_camera.enabled = false;
-			_currentState = GameState.Cutscene;
+			ChangeGameState(GameState.Cutscene);
 
 			PrincessSpawnController spawnCtrl = this.GetComponent<PrincessSpawnController>();
 			spawnCtrl.StartPrincessDeath(_charCtrl.gameObject.transform.position);
@@ -449,6 +470,15 @@ namespace PrincessAdventure
 			_camera.Follow = newFollow.transform;
         }
 
+		public void UpdateCameraFollowToPlayer()
+		{
+			if(_controllingCompanion)
+				_camera.Follow = _activeCompanion.transform;
+			else
+				_camera.Follow = _charCtrl.gameObject.transform;
+
+		}
+
 		public void PowerUpPrincess(PowerUpOptions powerUp)
         {
 			_gameDetails.starShards = 0;
@@ -471,7 +501,7 @@ namespace PrincessAdventure
 
 
 			LoadGameplayGui();
-			_currentState = GameState.Playing;
+			ChangeGameState(GameState.Playing);
 
 			//TODO: Save Game
 		}
@@ -479,7 +509,21 @@ namespace PrincessAdventure
 		public void ResumeGameFromMenu()
         {
 			LoadGameplayGui();
-			_currentState = GameState.Playing;
+			ChangeGameState(GameState.Playing);
+
+		}
+
+		public int GetPlayerNoticeModifier()
+        {
+			if (_playerNoticeTimer > Time.time)
+				return 2;
+
+			return 0;
+        }
+
+		public void PlayerIsNoticeable()
+        {
+			_playerNoticeTimer = Time.time + 3f;
 
 		}
 

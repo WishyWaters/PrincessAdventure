@@ -22,9 +22,9 @@ namespace PrincessAdventure
 
         private List<GameObject> _hearts = new List<GameObject>();
         private int _currentFullHeart = 0;
-
+        private bool _timerIsActive = false;
         private float _magicWidthPerMagicPoint = 60f;
-
+        
         // Use this for initialization
         void Start()
         {
@@ -39,7 +39,7 @@ namespace PrincessAdventure
             UpdateMana(gameDetails.currentManaPoints, gameDetails.maxManaPoints);
             UpdateGoldText(gameDetails.gold);
             UpdateKeyText(gameDetails.keys);
-            _timerPanel.SetActive(false);
+            _timerPanel.SetActive(_timerIsActive);
         }
 
         public void RefillOneHeart()
@@ -145,6 +145,7 @@ namespace PrincessAdventure
 
         public void StartTimerGui(int time)
         {
+            _timerIsActive = true;
             _timerPanel.SetActive(true);
             _timerText.text = time.ToString();
         }
@@ -156,6 +157,7 @@ namespace PrincessAdventure
 
         public void EndTimerGui()
         {
+            _timerIsActive = false;
             SoundManager.SoundInstance.PlayEffectSound(_timeUpClip);
             _timerPanel.SetActive(false);
         }

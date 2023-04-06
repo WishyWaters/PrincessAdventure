@@ -8,6 +8,7 @@ namespace PrincessAdventure
     {
         [Header("Settings")]
         [SerializeField] private InteractionTypes _interactionType;
+        [SerializeField] private bool _companionCanDo;
 
         [Header("Optional")]
         [SerializeField] private Vector2 _direction;
@@ -23,9 +24,13 @@ namespace PrincessAdventure
 
         }
 
-        public bool IsInteractionActive()
+        public bool IsInteractionActive(bool isCompanion)
         {
             bool isActive = true;
+
+            if(isCompanion &&_companionCanDo == false)
+                return false;
+            
 
             switch (_interactionType)
             {

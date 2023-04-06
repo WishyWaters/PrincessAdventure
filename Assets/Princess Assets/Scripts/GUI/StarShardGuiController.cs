@@ -42,9 +42,9 @@ namespace PrincessAdventure
         {
             float waitCount = 0;
 
-            while(waitCount < 1.4f)
+            while(waitCount < 1f)
             {
-                waitCount += Time.deltaTime;
+                waitCount += Time.unscaledDeltaTime;
                 yield return null;
             }
 

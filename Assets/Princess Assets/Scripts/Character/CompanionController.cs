@@ -12,6 +12,7 @@ namespace PrincessAdventure
         [SerializeField] SkeletonAnimation _monsterAnimator;
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private InteractController _interactCtrl;
+        [SerializeField] private Transform _spriteTransform;
 
         [Header("Settings")]
         [SerializeField] private int _companionId;
@@ -34,7 +35,6 @@ namespace PrincessAdventure
         private float _currentAcceleration;
         private Vector2 _lastActiveAxis;
         private Vector2 _currentMovement;
-
 
         // Start is called before the first frame update
         void Start()
@@ -175,23 +175,26 @@ namespace PrincessAdventure
             if (direction == _previousDirection)
                 return;
 
-            //TODO: Add interactions!
-           // _interactCtrl.UpdateOffset(direction);
+            
+            _interactCtrl.UpdateCompanionOffset(direction);
 
 
             if (direction == Vector2.right)
             {
+                float scaleX = Mathf.Abs(_spriteTransform.localScale.x);
+
                 _monsterAnimator.skeleton.SetSkin("Side");
                 _monsterAnimator.skeleton.SetSlotsToSetupPose();
-                this.transform.localScale = new Vector3(1, 1, 1);
+                _spriteTransform.localScale = new Vector3(scaleX, _spriteTransform.localScale.y, _spriteTransform.localScale.z);
                 _animationPrefix = "Side_";
 
             }
             else if (direction == Vector2.left)
             {
+                float scaleX = Mathf.Abs(_spriteTransform.localScale.x) * -1;
                 _monsterAnimator.skeleton.SetSkin("Side");
                 _monsterAnimator.skeleton.SetSlotsToSetupPose();
-                this.transform.localScale = new Vector3(-1, 1, 1);
+                _spriteTransform.localScale = new Vector3(scaleX, _spriteTransform.localScale.y, _spriteTransform.localScale.z);
                 _animationPrefix = "Side_";
 
             }
@@ -253,7 +256,8 @@ namespace PrincessAdventure
 
         private void HandleInteraction()
         {
-            Debug.Log("Companion Interact!");
+            _interactCtrl.AttemptInteraction();
+
         }
 
         private void HandleUnsummon()

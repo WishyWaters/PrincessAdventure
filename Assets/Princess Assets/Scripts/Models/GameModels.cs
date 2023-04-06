@@ -93,7 +93,7 @@ namespace PrincessAdventure
 			rings.Add(0);
 			friends = new List<int>();
 			friends.Add(0);
-			selectedFriend = 0;
+			selectedFriend = 1;
 			selectedHat = 0;
 			selectedNecklace = 0;
 			selectedOutfit = 0;

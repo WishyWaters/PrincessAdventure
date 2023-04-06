@@ -175,8 +175,9 @@ namespace PrincessAdventure
 
         private void Patrolling()
         {
+            float sightRadius = _sightRadius + GameManager.GameInstance.GetPlayerNoticeModifier();
 
-            Collider2D[] playersInSight = Physics2D.OverlapCircleAll((Vector2)this.transform.position, _sightRadius, _whatIsPlayer);
+            Collider2D[] playersInSight = Physics2D.OverlapCircleAll((Vector2)this.transform.position, sightRadius, _whatIsPlayer);
 
             if (playersInSight.Length == 0)
             {
