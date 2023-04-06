@@ -9,6 +9,8 @@ namespace PrincessAdventure
         [SerializeField] PickUps _itemType;
         [SerializeField] AudioClip _clip;
         [SerializeField] GameObject _item;
+        [SerializeField] bool _saveOnPickup;
+        [SerializeField] int _objectId;
 
         private Transform _startMarker;
         private Transform _endMarker;

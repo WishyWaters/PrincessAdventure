@@ -16,7 +16,7 @@ namespace PrincessAdventure
         [Header("Settings")]
         [SerializeField] private int _affectedObjectId;
         [SerializeField] private AffectedBehavior _behavior;
-        [SerializeField] private float _timeToReset; 
+        [SerializeField] private float _timeToReset;
         [SerializeField] private bool _cameraOnActivation;
         [SerializeField] private float _cameraMoveTime;
         [SerializeField] private bool _isLocked;
@@ -100,8 +100,48 @@ namespace PrincessAdventure
                     _activeBefore.SetActive(!_isToggled);
                     UpdateSave();
                     break;
+                case AffectedBehavior.TimedReset:
+                    _isActive = false;
+                    _isToggled = true;
+                    _activeAfter.SetActive(true);
+                    _activeBefore.SetActive(false);
+                    StartCoroutine(TimerCountdown());
+                    break;
             }
         }
+
+
+        private IEnumerator TimerCountdown()
+        {
+            float timeRemaining = _timeToReset;
+            //TODO: Initialize Timer UI
+            int secondsRemaining = Mathf.FloorToInt(timeRemaining);
+
+            GameManager.GameInstance.StartTimerGui(secondsRemaining);
+
+            while (timeRemaining > 0)
+            {
+                secondsRemaining = Mathf.FloorToInt(timeRemaining);
+                GameManager.GameInstance.UpdateTimerText(secondsRemaining);
+                timeRemaining -= Time.deltaTime;
+
+                yield return null;
+            }
+
+            //Close Timer UI
+            GameManager.GameInstance.EndTimerGui();
+            //Reset Toggle
+            PlayToggleSound();
+            _isActive = true;
+            _isToggled = false;
+            _activeAfter.SetActive(false);
+            _activeBefore.SetActive(true);
+
+
+
+
+        }
+
 
         public bool IsActive()
         {

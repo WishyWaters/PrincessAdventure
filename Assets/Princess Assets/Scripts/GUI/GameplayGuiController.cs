@@ -16,6 +16,10 @@ namespace PrincessAdventure
         [SerializeField] private Text _goldText;
         [SerializeField] private Text _keyText;
 
+        [SerializeField] private GameObject _timerPanel;
+        [SerializeField] private Text _timerText;
+        [SerializeField] private AudioClip _timeUpClip;
+
         private List<GameObject> _hearts = new List<GameObject>();
         private int _currentFullHeart = 0;
 
@@ -35,6 +39,7 @@ namespace PrincessAdventure
             UpdateMana(gameDetails.currentManaPoints, gameDetails.maxManaPoints);
             UpdateGoldText(gameDetails.gold);
             UpdateKeyText(gameDetails.keys);
+            _timerPanel.SetActive(false);
         }
 
         public void RefillOneHeart()
@@ -136,6 +141,23 @@ namespace PrincessAdventure
             chaserSlider.value = value;
 
             
+        }
+
+        public void StartTimerGui(int time)
+        {
+            _timerPanel.SetActive(true);
+            _timerText.text = time.ToString();
+        }
+
+        public void UpdateTimerText(int time)
+        {
+            _timerText.text = time.ToString();
+        }
+
+        public void EndTimerGui()
+        {
+            SoundManager.SoundInstance.PlayEffectSound(_timeUpClip);
+            _timerPanel.SetActive(false);
         }
     }
 }

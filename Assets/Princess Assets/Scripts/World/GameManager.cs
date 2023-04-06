@@ -98,29 +98,6 @@ namespace PrincessAdventure
 
 		}
 
-		public void LoadDefeatGui()
-        {
-			_currentState = GameState.Menu;
-			_guiMgr.LoadDefeatGui();
-        }
-
-		public void LoadStarShardGui()
-		{
-			_currentState = GameState.Menu;
-			_guiMgr.LoadStarShardGui(_gameDetails.starShards);
-		}
-
-		private void LoadGameplayGui()
-        {
-			_guiMgr.LoadGameplayGui(_gameDetails);
-
-		}
-
-		public void LoadPowerUpGui()
-		{
-			_currentState = GameState.Menu;
-			_guiMgr.LoadPowerUpGui();
-		}
 
 		public void ContinueGameAfterDeath()
         {
@@ -137,9 +114,52 @@ namespace PrincessAdventure
 			#endif
 
         }
-        #endregion
+		#endregion
 
-        #region Gameplay Actions
+		#region GUI functions
+
+		public void LoadDefeatGui()
+		{
+			_currentState = GameState.Menu;
+			_guiMgr.LoadDefeatGui();
+		}
+
+		public void LoadStarShardGui()
+		{
+			_currentState = GameState.Menu;
+			_guiMgr.LoadStarShardGui(_gameDetails.starShards);
+		}
+
+		private void LoadGameplayGui()
+		{
+			_guiMgr.LoadGameplayGui(_gameDetails);
+
+		}
+
+		public void LoadPowerUpGui()
+		{
+			_currentState = GameState.Menu;
+			_guiMgr.LoadPowerUpGui();
+		}
+
+		public void StartTimerGui(int time)
+		{
+			_guiMgr.StartTimerGui(time);
+		}
+
+		public void UpdateTimerText(int time)
+		{
+			_guiMgr.UpdateTimerText(time);
+		}
+
+		public void EndTimerGui()
+		{
+			_guiMgr.EndTimerGui();
+		}
+
+		#endregion
+
+		#region Gameplay Actions
 
 		public GameState GetCurrentGameState()
         {
@@ -375,6 +395,10 @@ namespace PrincessAdventure
 				case PickUps.Key:
 					_gameDetails.keys += 1;
 					_guiMgr.UpdateKeyText(_gameDetails.keys);
+					break;
+				case PickUps.StarShard:
+					_gameDetails.starShards++;
+					LoadStarShardGui();
 					break;
 			}
         }

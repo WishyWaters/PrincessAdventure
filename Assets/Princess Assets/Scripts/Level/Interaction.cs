@@ -85,7 +85,7 @@ namespace PrincessAdventure
                     DoTreasureExplosion();
                     break;
                 case InteractionTypes.Lever:
-
+                    
                     if (_activeAfter != null)
                         UpdateActiveInteractable(!_affectedObjectCtrl.IsToggled());
 

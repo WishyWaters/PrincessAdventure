@@ -84,6 +84,21 @@ namespace PrincessAdventure
             _gameplayGui.UpdateMana(currentMana, maxMana);
         }
 
+        public void StartTimerGui(int time)
+        {
+            _gameplayGui.StartTimerGui(time);
+        }
+
+        public void UpdateTimerText(int time)
+        {
+            _gameplayGui.UpdateTimerText(time);
+        }
+
+        public void EndTimerGui()
+        {
+            _gameplayGui.EndTimerGui();
+        }
+
 
     }
 }

@@ -136,12 +136,13 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/TransmuteController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemyController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark01.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Character/CompanionManager.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/World/CompanionManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/TreasureExplosion.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/AffectedObjectController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/MajorItemHandler.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/StarShardGuiController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/PowerUpGuiController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/TimerGuiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

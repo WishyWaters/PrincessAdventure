@@ -21,12 +21,6 @@ namespace PrincessAdventure
             _textMesh.enabled = false;
         }
 
-        private void Update()
-        {
-
-
-
-        }
 
         public void UpdateOffset(Vector2 direction)
         {
