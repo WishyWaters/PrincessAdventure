@@ -17,6 +17,7 @@ namespace PrincessAdventure
         [SerializeField] private GameObject _activeBefore;
         [SerializeField] private GameObject _activeAfter;
 
+        [SerializeField] private int _id;
 
         private void Start()
         {
@@ -101,6 +102,9 @@ namespace PrincessAdventure
                         AttemptUnlock();
                     else
                         DoMajorTreasure();
+                    break;
+                case InteractionTypes.Message:
+                    GameManager.GameInstance.LoadMessageGui(_id);
                     break;
             }
 

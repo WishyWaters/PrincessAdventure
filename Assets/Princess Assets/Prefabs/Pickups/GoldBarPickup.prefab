@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887971048051685209}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.086, z: -0.7706332}
+  m_LocalPosition: {x: 0, y: -0.078, z: -0.7706332}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887971048187662232}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.7706332}
+  m_LocalPosition: {x: 0, y: -0.16299999, z: -0.7706332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -179,6 +179,8 @@ GameObject:
   - component: {fileID: 887971048506479789}
   - component: {fileID: 887971048506479788}
   - component: {fileID: 887971048506479787}
+  - component: {fileID: 5333039808513016037}
+  - component: {fileID: 5854386672915948591}
   m_Layer: 0
   m_Name: GoldBarPickup
   m_TagString: Pickup
@@ -216,7 +218,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.18}
   serializedVersion: 2
   m_Radius: 0.4
 --- !u!114 &887971048506479787
@@ -234,3 +236,29 @@ MonoBehaviour:
   _itemType: 6
   _clip: {fileID: 8300000, guid: fac07df343d5dea4490697653bc8a2cd, type: 3}
   _item: {fileID: 887971048187662232}
+  _saveOnPickup: 0
+  _objectId: 0
+--- !u!210 &5333039808513016037
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887971048506479786}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &5854386672915948591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887971048506479786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af58293f0b2a9458e939e71cdccd147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  callOnUpdate: 0

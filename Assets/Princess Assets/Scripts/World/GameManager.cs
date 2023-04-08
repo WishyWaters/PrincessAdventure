@@ -26,8 +26,8 @@ namespace PrincessAdventure
 		private float _manaRegenTime;
 		private float _playerNoticeTimer;
 
-        #region Unity Functions
-        private void Awake()
+		#region Unity Functions
+		private void Awake()
 		{
 			if (GameInstance == null)
 			{
@@ -159,6 +159,14 @@ namespace PrincessAdventure
 			_guiMgr.EndTimerGui();
 		}
 
+		public void LoadMessageGui(int msgId)
+        {
+			ChangeGameState(GameState.Menu);
+
+			string msgText = _sceneMgr.GetMessageText(msgId);
+			_guiMgr.LoadMessageGui(msgText);
+        }
+
 		#endregion
 
 		#region Gameplay Actions
@@ -204,10 +212,15 @@ namespace PrincessAdventure
 
 		public void ActivatePrincess(bool unsummon)
 		{
-			if (unsummon)
-				_companionMgr.DestroyCurrentSummon();
+			_camera.Follow = _charCtrl.gameObject.transform;
 
-            ControlPrincess();
+			if (unsummon)
+			{
+				_camera.OnTargetObjectWarped(_charCtrl.gameObject.transform, _charCtrl.gameObject.transform.position - _activeCompanion.transform.position);
+				_companionMgr.DestroyCurrentSummon();
+			}
+			
+			ControlPrincess();
 		}
 
 		private void ControlPrincess()
@@ -216,7 +229,6 @@ namespace PrincessAdventure
 			_controllingCompanion = false;
 			_charCtrl.EnableController();
 			_companionMgr.SetIgnoreInputs(true);
-			_camera.Follow = _charCtrl.gameObject.transform;
 
 		}
 
@@ -226,6 +238,7 @@ namespace PrincessAdventure
 			_controllingCompanion = true;
 			_charCtrl.DisableController();
 			_companionMgr.SetIgnoreInputs(false);
+
 			_camera.Follow = companion.transform;
 
 		}
@@ -526,6 +539,24 @@ namespace PrincessAdventure
 			_playerNoticeTimer = Time.time + 3f;
 
 		}
+
+		public void TeleportPlayerWithinScene(Vector3 target)
+        {
+
+
+			if (_controllingCompanion)
+			{
+				_camera.OnTargetObjectWarped(_activeCompanion.transform, target - _activeCompanion.transform.position);
+				_activeCompanion.transform.position = target;
+			}
+			else
+            {
+				_camera.OnTargetObjectWarped(_charCtrl.gameObject.transform, target - _charCtrl.gameObject.transform.position);
+				_charCtrl.gameObject.transform.position = target;
+
+			}
+
+        }
 
 		#endregion
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace PrincessAdventure
 {
@@ -11,6 +12,15 @@ namespace PrincessAdventure
         [SerializeField] private AudioClip _defaultSceneMusic;
         [SerializeField] private GameObject _checkPointReference;
         [SerializeField] private List<Vector3> _locations;
+        [SerializeField] private TextAsset _sceneMessageData;
+
+        private SceneMessages _sceneMessages;
+
+        private void Start()
+        {
+            _sceneMessages = JsonUtility.FromJson<SceneMessages>(_sceneMessageData.text);
+
+        }
 
         public GameScenes GetCurrentScene()
         {
@@ -26,5 +36,15 @@ namespace PrincessAdventure
         {
             return _defaultSceneMusic;
         }
+
+
+        public string GetMessageText(int msgId)
+        {
+            if (_sceneMessages.messages.Exists(x => x.id == msgId))
+                return _sceneMessages.messages.Where(x => x.id == msgId).FirstOrDefault().message;
+            else
+                return "";
+        }
+
     }
 }

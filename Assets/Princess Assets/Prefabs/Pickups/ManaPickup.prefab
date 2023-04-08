@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8478885174161511712}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.384, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8478885174254652829}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -0.27, z: -0.7116146}
+  m_LocalPosition: {x: -0.02, y: -0.276, z: -0.7116146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -179,6 +179,8 @@ GameObject:
   - component: {fileID: 8478885175730939285}
   - component: {fileID: 8478885175730939284}
   - component: {fileID: 8478885175730939283}
+  - component: {fileID: 548382319184281552}
+  - component: {fileID: -1015673667411244224}
   m_Layer: 0
   m_Name: ManaPickup
   m_TagString: Pickup
@@ -216,7 +218,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.3}
   serializedVersion: 2
   m_Radius: 0.3
 --- !u!114 &8478885175730939283
@@ -234,3 +236,29 @@ MonoBehaviour:
   _itemType: 1
   _clip: {fileID: 0}
   _item: {fileID: 8478885174161511712}
+  _saveOnPickup: 0
+  _objectId: 0
+--- !u!210 &548382319184281552
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478885175730939282}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &-1015673667411244224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478885175730939282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af58293f0b2a9458e939e71cdccd147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  callOnUpdate: 0

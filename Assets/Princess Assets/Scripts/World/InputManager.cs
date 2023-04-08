@@ -23,7 +23,13 @@ namespace PrincessAdventure
         //Use fixed update because we move via Rigidbody & Physics
         void Update()
         {
+            if (GameManager.GameInstance.GetCurrentGameState() == GameState.Playing)
+                CaptureGameplayInput();
 
+        }
+
+        private void CaptureGameplayInput()
+        {
             //settings
             if (Input.GetButtonDown("Settings"))
                 Debug.Log("Settings");
@@ -47,7 +53,7 @@ namespace PrincessAdventure
                 _interactDownStart = Time.time;
             if (Input.GetButtonUp("Interact"))
             {
-                if (_interactDownStart + _holdThreshold >= Time.time)
+                if (_interactDownStart > 0 && _interactDownStart + _holdThreshold >= Time.time)
                 {
                     newInputs.InputInteract = true;
                     //Debug.Log("interact");
@@ -70,7 +76,7 @@ namespace PrincessAdventure
             {
                 if (_magicDownStart + _holdThreshold >= Time.time)
                     newInputs.InputMagicCast = true;
-                else 
+                else
                     newInputs.InputSummonComplete = true;
 
                 _magicDownStart = 0f;
@@ -86,7 +92,7 @@ namespace PrincessAdventure
 
             if (Input.GetButtonDown("Bomb"))
                 _bombDownStart = Time.time;
-            if(Input.GetButtonUp("Bomb"))
+            if (Input.GetButtonUp("Bomb"))
             {
                 if (_bombDownStart + _holdThreshold >= Time.time)
                     newInputs.InputThrowFireball = true;
@@ -94,7 +100,7 @@ namespace PrincessAdventure
                     newInputs.InputDropBomb = true;
                 _bombDownStart = 0f;
             }
-            if(Input.GetButton("Bomb"))
+            if (Input.GetButton("Bomb"))
             {
                 if (_bombDownStart + _holdThreshold <= Time.time)
                     newInputs.InputHoldBomb = true;
@@ -105,7 +111,6 @@ namespace PrincessAdventure
 
 
             GameManager.GameInstance.RouteInputs(newInputs);
-
         }
 
         private ControllerTypes getControllerType()

@@ -1,0 +1,46 @@
+﻿{"messages" : [
+        {
+            "id": 1,
+            "message": "Warning! Booming mushrooms ahead! "
+        },
+        {
+            "id": 2,
+            "message": "Go Away! Gnomes Only!"
+        },
+        {
+            "id": 3,
+            "message": "A tiny tent that smells of fresh cut wood and smoldering mushrooms."
+        },
+        {
+            "id": 4,
+            "message": "Only gnomes and tiny creatures could squeeze through these prickle bushes."
+        },
+        {
+            "id": 5,
+            "message": "An old log covered with slippery moss."
+        },
+        {
+            "id": 6,
+            "message": "^ The town with a name\n < Blood Leaf Grotto\n > Old Gold Mine."
+        },
+        {
+            "id": 7,
+            "message": "Blood Leaf Grotto ahead"
+        },
+        {
+            "id": 8,
+            "message": "Old Gold Mines ahead"
+        },
+        {
+            "id": 9,
+            "message": "A tiny tent that smells of sparkles and star dust."
+        },
+        {
+            "id": 10,
+            "message": "A rusty gate with no latch or handle."
+        },
+        {
+            "id": 11,
+            "message": "A tiny tent that smells of stinky gnome feet."
+        }
+]}

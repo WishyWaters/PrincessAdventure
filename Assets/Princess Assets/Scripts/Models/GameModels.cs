@@ -74,8 +74,8 @@ namespace PrincessAdventure
 			gameScene = GameScenes.StartMountain;
 			loadLocationIndex = 1;
 			gold = 0;
-			heartPoints = 3;
-			magicPoints = 3;
+			heartPoints = 5;
+			magicPoints = 5;
 			luckPoints = 3;
 			starShards = 0;
 			hasMagic = false;

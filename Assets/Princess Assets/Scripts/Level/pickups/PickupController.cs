@@ -23,6 +23,12 @@ namespace PrincessAdventure
 
         private void Update()
         {
+            if (Time.timeScale > 0)
+                BounceItem();
+        }
+
+        private void BounceItem()
+        {
             //Item Bounce...
             //Calculate height of item
             if (_itemHeight > 0)

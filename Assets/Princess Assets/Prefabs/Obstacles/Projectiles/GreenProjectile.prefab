@@ -72,7 +72,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 3073
-  _speed: 4
+  _speed: 8
   _altAngled: 1
   _audioSource: {fileID: 4149444774449904585}
 --- !u!50 &3049506219105728406

@@ -95,7 +95,7 @@ namespace PrincessAdventure
                     ToggleInteractText(false);
                 }
             }
-            else if(!_isCompanion)
+            else if(!_isCompanion && GameManager.GameInstance.GetPlayerNoticeModifier() == 0)
             {
                 int soundIndex = Random.Range(0, _noticeClips.Count);
                 SoundManager.SoundInstance.PlayEffectSound(_noticeClips[soundIndex]);

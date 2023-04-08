@@ -11,7 +11,8 @@ namespace PrincessAdventure
         Talk,
         Door,
         MajorChest,
-        Lever
+        Lever,
+        Message
 
     }
 
@@ -91,5 +92,25 @@ namespace PrincessAdventure
         random,
         backForth,
         sharpTurn
+    }
+
+    [System.Serializable]
+    public class MessageData
+    {
+        public int id;
+        public string message;
+    }
+
+    [System.Serializable]
+    public class SceneMessages
+    {
+        public List<MessageData> messages;
+    }
+
+    [System.Serializable]
+    public class OneTimeObjects
+    {
+        int id;
+        public bool wasUsed;
     }
 }

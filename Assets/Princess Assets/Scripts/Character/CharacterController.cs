@@ -35,6 +35,7 @@ namespace PrincessAdventure
         private PrincessInputActions _nextInputs;
         private PrincessInputActions _currentInputs;
         private bool _ignoreInputs;
+        private float _interactCooldown = 0;
 
         private void Start()
         {
@@ -341,7 +342,11 @@ namespace PrincessAdventure
 
         private void HandleInteraction()
         {
-            _interactCtrl.AttemptInteraction();
+            if (_interactCooldown < Time.time)
+            {
+                _interactCooldown = Time.time + 1;
+                _interactCtrl.AttemptInteraction();
+            }
         }
 
         private void HandleMagicCast(PrincessInputActions inputs)

@@ -11,12 +11,14 @@ namespace PrincessAdventure
         [SerializeField] GameObject _defeatPanel;
         [SerializeField] GameObject _starShardPanel;
         [SerializeField] GameObject _powerUpPanel;
+        [SerializeField] GameObject _messagePanel;
 
         [Header("Scripts")]
         [SerializeField] GameplayGuiController _gameplayGui;
         [SerializeField] DefeatGuiController _defeatGui;
         [SerializeField] StarShardGuiController _starShardGui;
         [SerializeField] PowerUpGuiController _powerUpGui;
+        [SerializeField] MessageGuiController _messageGui;
 
         public void LoadGameplayGui(ActiveGame gameDetails)
         {
@@ -24,6 +26,7 @@ namespace PrincessAdventure
             _defeatPanel.SetActive(false);
             _starShardPanel.SetActive(false);
             _powerUpPanel.SetActive(false);
+            _messagePanel.SetActive(false);
 
             _gameplayGui.LoadGameplayGui(gameDetails);
         }
@@ -34,6 +37,7 @@ namespace PrincessAdventure
             _defeatPanel.SetActive(true);
             _starShardPanel.SetActive(false);
             _powerUpPanel.SetActive(false);
+            _messagePanel.SetActive(false);
 
             _defeatGui.LoadDefeatScreen();
         }
@@ -44,6 +48,7 @@ namespace PrincessAdventure
             _defeatPanel.SetActive(false);
             _starShardPanel.SetActive(true);
             _powerUpPanel.SetActive(false);
+            _messagePanel.SetActive(false);
 
             _starShardGui.LoadStarShardScreen(numOfShards);
         }
@@ -54,8 +59,20 @@ namespace PrincessAdventure
             _defeatPanel.SetActive(false);
             _starShardPanel.SetActive(false);
             _powerUpPanel.SetActive(true);
+            _messagePanel.SetActive(false);
 
             _powerUpGui.LoadPowerUpScreen();
+        }
+
+        public void LoadMessageGui(string msgText)
+        {
+            _gameplayPanel.SetActive(false);
+            _defeatPanel.SetActive(false);
+            _starShardPanel.SetActive(false);
+            _powerUpPanel.SetActive(false);
+            _messagePanel.SetActive(true);
+
+            _messageGui.LoadMessageGui(msgText);
         }
 
         public void EmptyOneHeart()
@@ -98,7 +115,5 @@ namespace PrincessAdventure
         {
             _gameplayGui.EndTimerGui();
         }
-
-
     }
 }
