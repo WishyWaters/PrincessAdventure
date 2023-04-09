@@ -145,6 +145,8 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/TreasureExplosion.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/MessageGuiController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/TeleportInScene.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/ScreenFadeController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/SmallFireController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

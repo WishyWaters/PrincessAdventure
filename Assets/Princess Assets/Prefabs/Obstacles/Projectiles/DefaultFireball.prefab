@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4906050980110961156}
   - component: {fileID: 172409668876608794}
   - component: {fileID: 2832725785070531107}
+  - component: {fileID: -8368198763624039583}
   m_Layer: 15
   m_Name: DefaultFireball
   m_TagString: Projectile
@@ -103,8 +104,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139985926392448247}
   m_Enabled: 1
-  m_SortingLayerID: -855956723
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!82 &2832725785070531107
 AudioSource:
@@ -202,6 +203,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8368198763624039583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139985926392448247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af58293f0b2a9458e939e71cdccd147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  callOnUpdate: 1
 --- !u!1001 &1438337187791870427
 PrefabInstance:
   m_ObjectHideFlags: 0

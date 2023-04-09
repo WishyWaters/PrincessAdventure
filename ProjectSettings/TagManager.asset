@@ -15,6 +15,7 @@ TagManager:
   - Pickup
   - SceneManager
   - Boomshroom
+  - OpenFire
   layers:
   - Default
   - TransparentFX

@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8cecb700ad0425c827527651e325db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guiMgr: {fileID: 0}
   _companionMgr: {fileID: 2753737074986956837}
   _camera: {fileID: 0}
   _princessPrefab: {fileID: 4482395217454736612, guid: fd64a3efd2d5141cc9c3c7b4cb87f0ae, type: 3}

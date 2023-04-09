@@ -122,31 +122,37 @@ namespace PrincessAdventure
 
             if (isActive && !collision.isTrigger)
             {
-                if (collision.tag == "Player" && collision.gameObject.layer == 6)
+                if (collision.CompareTag("Player") && collision.gameObject.layer == 6)
                 {
                     GameManager.GameInstance.DamagePrincess(this.transform.position);
                 }
-                else if (collision.tag == "Companion")
+                else if (collision.CompareTag("Companion"))
                 {
                     GameManager.GameInstance.ActivatePrincess(true);
                 }
-                else if (collision.tag == "Bomb")
+                else if (collision.CompareTag("Bomb"))
                 {
                     BombController bCtrl = collision.GetComponent<BombController>();
 
                     bCtrl.Explode();
                 }
-                else if (collision.tag == "Enemy")
+                else if (collision.CompareTag("Enemy"))
                 {
                     EnemyController enemyCtrl = collision.GetComponent<EnemyController>();
 
                     enemyCtrl.DamageEnemy(this.transform.position, false);
                 }
-                else if (collision.tag == "Boomshroom")
+                else if (collision.CompareTag("Boomshroom"))
                 {
                     BoomshroomController shroomCtrl = collision.GetComponent<BoomshroomController>();
 
                     shroomCtrl.StartExplode();
+                }
+                else if (collision.CompareTag("OpenFire"))
+                {
+                    SmallFireController fireCtrl = collision.GetComponent<SmallFireController>();
+
+                    fireCtrl.LightFire();
                 }
 
                 Explode();

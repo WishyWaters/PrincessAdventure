@@ -20,7 +20,7 @@ namespace PrincessAdventure
         private void OnTriggerEnter2D(Collider2D collision)
         {
 
-            if (collision.tag == "Enemy")
+            if (collision.CompareTag("Enemy"))
             {
                 
                 Instantiate(_deflectHitPrefab, (Vector3)collision.ClosestPoint(this.transform.position), this.transform.rotation);
@@ -28,19 +28,27 @@ namespace PrincessAdventure
                 EnemyController enemyCtrl = collision.gameObject.GetComponent<EnemyController>();
                 enemyCtrl.ReflectEnemy(_direction);
             }
-            else if (collision.tag == "Projectile")
+            else if (collision.CompareTag("Projectile"))
             {
                 Instantiate(_deflectHitPrefab, (Vector3)collision.ClosestPoint(this.transform.position), this.transform.rotation);
                 SoundManager.SoundInstance.PlayEffectSound(_deflectProjectileSound);
                 ProjectileController projCtrl = collision.gameObject.GetComponent<ProjectileController>();
                 projCtrl.ReflectProjectile(_direction);
             }
-            else if (collision.tag == "Transmute")
+            else if (collision.CompareTag("Transmute"))
             {
                 Instantiate(_deflectHitPrefab, (Vector3)collision.ClosestPoint(this.transform.position), this.transform.rotation);
 
                 TransmuteController transCtrl = collision.gameObject.GetComponent<TransmuteController>();
                 transCtrl.TransmuteToItem();
+            }
+            else if (collision.CompareTag("OpenFire"))
+            {
+                Instantiate(_deflectHitPrefab, (Vector3)collision.ClosestPoint(this.transform.position), this.transform.rotation);
+
+                SmallFireController fireCtrl = collision.GetComponent<SmallFireController>();
+
+                fireCtrl.Extinguish();
             }
         }
     }

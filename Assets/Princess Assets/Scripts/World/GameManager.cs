@@ -7,7 +7,6 @@ namespace PrincessAdventure
 {
 	public class GameManager : MonoBehaviour
 	{
-		[SerializeField] private GuiManager _guiMgr;
 		[SerializeField] private CompanionManager _companionMgr;
 		[SerializeField] private CinemachineVirtualCamera _camera;
 		[SerializeField] private GameObject _princessPrefab;
@@ -123,40 +122,40 @@ namespace PrincessAdventure
 		public void LoadDefeatGui()
 		{
 			ChangeGameState(GameState.Menu);
-			_guiMgr.LoadDefeatGui();
+			GuiManager.GuiInstance.LoadDefeatGui();
 		}
 
 		public void LoadStarShardGui()
 		{
 			ChangeGameState(GameState.Menu);
-			_guiMgr.LoadStarShardGui(_gameDetails.starShards);
+			GuiManager.GuiInstance.LoadStarShardGui(_gameDetails.starShards);
 		}
 
 		private void LoadGameplayGui()
 		{
-			_guiMgr.LoadGameplayGui(_gameDetails);
+			GuiManager.GuiInstance.LoadGameplayGui(_gameDetails);
 
 		}
 
 		public void LoadPowerUpGui()
 		{
 			ChangeGameState(GameState.Menu);
-			_guiMgr.LoadPowerUpGui();
+			GuiManager.GuiInstance.LoadPowerUpGui();
 		}
 
 		public void StartTimerGui(int time)
 		{
-			_guiMgr.StartTimerGui(time);
+			GuiManager.GuiInstance.StartTimerGui(time);
 		}
 
 		public void UpdateTimerText(int time)
 		{
-			_guiMgr.UpdateTimerText(time);
+			GuiManager.GuiInstance.UpdateTimerText(time);
 		}
 
 		public void EndTimerGui()
 		{
-			_guiMgr.EndTimerGui();
+			GuiManager.GuiInstance.EndTimerGui();
 		}
 
 		public void LoadMessageGui(int msgId)
@@ -164,7 +163,7 @@ namespace PrincessAdventure
 			ChangeGameState(GameState.Menu);
 
 			string msgText = _sceneMgr.GetMessageText(msgId);
-			_guiMgr.LoadMessageGui(msgText);
+			GuiManager.GuiInstance.LoadMessageGui(msgText);
         }
 
 		#endregion
@@ -260,7 +259,7 @@ namespace PrincessAdventure
 				//Update game details
 				_gameDetails.currentHealth -= 1;
 
-				_guiMgr.EmptyOneHeart();
+				GuiManager.GuiInstance.EmptyOneHeart();
 
 				_charCtrl.HandleDamage(hitFromPosition);
 
@@ -283,8 +282,8 @@ namespace PrincessAdventure
 					coinDmg = _gameDetails.gold;
 
 				_gameDetails.gold -= coinDmg;
-				
-				_guiMgr.UpdateGoldText(_gameDetails.gold);
+
+				GuiManager.GuiInstance.UpdateGoldText(_gameDetails.gold);
 
 				_charCtrl.HandleCoinDamage(hitFromPosition, Mathf.FloorToInt(coinDmg /2));
 
@@ -332,7 +331,7 @@ namespace PrincessAdventure
 			else
 				_gameDetails.currentManaPoints += amount;
 
-			_guiMgr.UpdateMana(_gameDetails.currentManaPoints, _gameDetails.maxManaPoints);
+			GuiManager.GuiInstance.UpdateMana(_gameDetails.currentManaPoints, _gameDetails.maxManaPoints);
 		}
 
 		public void ManaSpend(int amount)
@@ -342,7 +341,7 @@ namespace PrincessAdventure
 			else
 				_gameDetails.currentManaPoints -= amount;
 
-			_guiMgr.UpdateMana(_gameDetails.currentManaPoints, _gameDetails.maxManaPoints);
+			GuiManager.GuiInstance.UpdateMana(_gameDetails.currentManaPoints, _gameDetails.maxManaPoints);
 		}
 
 		public void HealPrincess()
@@ -352,7 +351,7 @@ namespace PrincessAdventure
 				//Update game details
 				_gameDetails.currentHealth += 1;
 
-				_guiMgr.HealOneHeart();
+				GuiManager.GuiInstance.HealOneHeart();
 			}
 		}
 
@@ -416,19 +415,19 @@ namespace PrincessAdventure
 					break;
 				case PickUps.Coin:
 					_gameDetails.gold += 1;
-					_guiMgr.UpdateGoldText(_gameDetails.gold);
+					GuiManager.GuiInstance.UpdateGoldText(_gameDetails.gold);
 					break;
 				case PickUps.SilverBar:
 					_gameDetails.gold += 10;
-					_guiMgr.UpdateGoldText(_gameDetails.gold);
+					GuiManager.GuiInstance.UpdateGoldText(_gameDetails.gold);
 					break;
 				case PickUps.GoldBar:
 					_gameDetails.gold += 25;
-					_guiMgr.UpdateGoldText(_gameDetails.gold);
+					GuiManager.GuiInstance.UpdateGoldText(_gameDetails.gold);
 					break;
 				case PickUps.Key:
 					_gameDetails.keys += 1;
-					_guiMgr.UpdateKeyText(_gameDetails.keys);
+					GuiManager.GuiInstance.UpdateKeyText(_gameDetails.keys);
 					break;
 				case PickUps.StarShard:
 					_gameDetails.starShards++;
@@ -543,20 +542,54 @@ namespace PrincessAdventure
 		public void TeleportPlayerWithinScene(Vector3 target)
         {
 
+			ChangeGameState(GameState.Menu);
 
+			StartCoroutine(TeleportPlayerWithinSceneWithFillGui(target));
+
+
+        }
+
+		#endregion
+
+		#region Coroutines
+		private IEnumerator TeleportPlayerWithinSceneWithFillGui(Vector3 target)
+        {
+			float fadeTime = .3f;
+			float currentTimer = 0f;
+
+			//Call fade out
+			GuiManager.GuiInstance.FillToBlack(FadeTypes.EnterExit, fadeTime);
+
+			while(currentTimer < fadeTime)
+            {
+				currentTimer += Time.unscaledDeltaTime;
+				yield return null;
+            }
+
+			//perform warp
 			if (_controllingCompanion)
 			{
 				_camera.OnTargetObjectWarped(_activeCompanion.transform, target - _activeCompanion.transform.position);
 				_activeCompanion.transform.position = target;
 			}
 			else
-            {
+			{
 				_camera.OnTargetObjectWarped(_charCtrl.gameObject.transform, target - _charCtrl.gameObject.transform.position);
 				_charCtrl.gameObject.transform.position = target;
 
 			}
 
-        }
+			//Call fade in
+			GuiManager.GuiInstance.FillToClear(FadeTypes.EnterExit, fadeTime);
+			currentTimer = 0f;
+			while (currentTimer < fadeTime)
+			{
+				currentTimer += Time.unscaledDeltaTime;
+				yield return null;
+			}
+
+			ChangeGameState(GameState.Playing);
+		}
 
 		#endregion
 

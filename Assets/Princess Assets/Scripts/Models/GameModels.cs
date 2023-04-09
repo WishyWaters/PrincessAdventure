@@ -109,4 +109,13 @@ namespace PrincessAdventure
 		Magic,
 		Luck
 	}
+
+	public enum FadeTypes
+    {
+		Left,
+		Right,
+		Up,
+		Down,
+		EnterExit
+    }
 }
