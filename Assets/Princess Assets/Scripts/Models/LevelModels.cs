@@ -102,7 +102,7 @@ namespace PrincessAdventure
     }
 
     [System.Serializable]
-    public class SceneMessages
+    public class LevelMessages
     {
         public List<MessageData> messages;
     }

@@ -38,7 +38,15 @@ namespace PrincessAdventure
             }
         }
         #endregion
-
+        public void DeactivateAllGui()
+        {
+            _gameplayPanel.SetActive(false);
+            _defeatPanel.SetActive(false);
+            _starShardPanel.SetActive(false);
+            _powerUpPanel.SetActive(false);
+            _messagePanel.SetActive(false);
+            _fadePanel.SetActive(false);
+        }
         public void LoadGameplayGui(ActiveGame gameDetails)
         {
             _gameplayPanel.SetActive(true);

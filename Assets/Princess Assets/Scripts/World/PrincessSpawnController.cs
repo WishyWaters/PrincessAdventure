@@ -59,10 +59,11 @@ namespace PrincessAdventure
             SoundManager.SoundInstance.PlayEffectSound(_starExplosionClip);
 
             Destroy(star.gameObject);
-            GameManager.GameInstance.LoadPlayer(starDestination);
+            GameManager.GameInstance.LoadPlayer(starDestination, Vector2.down);
 
             SoundManager.SoundInstance.PlayEffectSound(_princessLandClips[Random.Range(0, _princessLandClips.Count)]);
 
+            GameManager.GameInstance.ResumeGameplay();
         }
 
         public void StartPrincessDeath(Vector3 deathPosition)

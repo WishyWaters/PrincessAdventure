@@ -249,11 +249,6 @@ namespace PrincessAdventure
             _monsterAnimator.AnimationState.SetAnimation(0, animationName, loop);
         }
 
-        private void HandleSwitchToPrincess()
-        {
-            GameManager.GameInstance.ActivatePrincess(false);
-        }
-
         private void HandleInteraction()
         {
             _interactCtrl.AttemptInteraction();

@@ -16,6 +16,7 @@ TagManager:
   - SceneManager
   - Boomshroom
   - OpenFire
+  - VirtualCamera
   layers:
   - Default
   - TransparentFX

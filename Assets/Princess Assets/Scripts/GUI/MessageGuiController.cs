@@ -28,7 +28,7 @@ namespace PrincessAdventure
             SoundManager.SoundInstance.PlayEffectSound(_click);
 
 
-            GameManager.GameInstance.ResumeGameFromMenu();
+            GameManager.GameInstance.ResumeGameplay();
         }
     }
 }

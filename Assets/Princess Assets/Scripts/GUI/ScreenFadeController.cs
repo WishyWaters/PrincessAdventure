@@ -37,7 +37,8 @@ namespace PrincessAdventure
 
             switch (type)
             {
-                case FadeTypes.EnterExit:
+                case FadeTypes.Enter:
+                case FadeTypes.Exit:
                     _background.fillAmount = 0f;
                     _background.fillMethod = Image.FillMethod.Radial360;
                     _background.fillClockwise = true;
@@ -85,7 +86,8 @@ namespace PrincessAdventure
 
             switch (type)
             {
-                case FadeTypes.EnterExit:
+                case FadeTypes.Enter:
+                case FadeTypes.Exit:
                     _background.fillAmount = 1f;
                     _background.fillMethod = Image.FillMethod.Radial360;
                     _background.fillClockwise = false;

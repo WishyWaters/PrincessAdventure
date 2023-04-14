@@ -19,7 +19,9 @@ namespace PrincessAdventure
 		MainMenu,
 		TestBox,
 		StartMountain,
-		BoomshroomForest
+		BoomshroomWoods,
+		LevelLoadTester,
+		BoneTomb
 	}
 
 	public enum ControllerTypes
@@ -116,6 +118,7 @@ namespace PrincessAdventure
 		Right,
 		Up,
 		Down,
-		EnterExit
+		Enter,
+		Exit
     }
 }

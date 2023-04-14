@@ -39,7 +39,7 @@ namespace PrincessAdventure
 
         private void Start()
         {
-            EnableController();
+            //EnableController(Vector2.down);
         }
 
         void FixedUpdate()
@@ -170,7 +170,7 @@ namespace PrincessAdventure
             HandleLocomotion(inputs);
         }
 
-        public void EnableController()
+        public void EnableController(Vector2 directionToFace, bool doWakeUp = false)
         {
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             
@@ -179,14 +179,20 @@ namespace PrincessAdventure
             ChangeState(PrincessState.Neutral);
 
             _nextInputs = new PrincessInputActions();
+
+            _nextInputs.MoveAxis = directionToFace;
+
             _previousDirection = Vector2.zero;
             _ignoreInputs = false;
 
-            HandleDirection(new PrincessInputActions());
+            HandleDirection(_nextInputs);
 
-            if (_currentCoroutine != null)
-                StopCoroutine(_currentCoroutine);
-            _currentCoroutine = StartCoroutine(DoWakeUp());
+            if (doWakeUp)
+            {
+                if (_currentCoroutine != null)
+                    StopCoroutine(_currentCoroutine);
+                _currentCoroutine = StartCoroutine(DoWakeUp());
+            }
         }
 
         public void DisableController()
@@ -344,7 +350,7 @@ namespace PrincessAdventure
         {
             if (_interactCooldown < Time.time)
             {
-                _interactCooldown = Time.time + 1;
+                _interactCooldown = Time.time + .4f;
                 _interactCtrl.AttemptInteraction();
             }
         }

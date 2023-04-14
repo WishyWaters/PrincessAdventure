@@ -62,7 +62,7 @@ namespace PrincessAdventure
                 currentShards = 0;
             }
             else
-                GameManager.GameInstance.ResumeGameFromMenu();
+                GameManager.GameInstance.ResumeGameplay();
         }
 
         private float GetFillValue(int numOfShards)

@@ -7,6 +7,7 @@ namespace PrincessAdventure
     {
         [SerializeField] Transform _targetLocation;
         [SerializeField] AudioClip _teleportClip;
+        [SerializeField] FadeTypes _fade = FadeTypes.Enter;
 
         void OnTriggerEnter2D(Collider2D col)
         {
@@ -14,13 +15,9 @@ namespace PrincessAdventure
             if (col.CompareTag("Player") || col.CompareTag("Companion"))
             {
                 SoundManager.SoundInstance.PlayEffectSound(_teleportClip);
-                GameManager.GameInstance.TeleportPlayerWithinScene(_targetLocation.position);
+                GameManager.GameInstance.TeleportPlayerWithinScene(_targetLocation.position, _fade);
             }
 
         }
-
-
-
-
     }
 }

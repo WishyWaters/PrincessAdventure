@@ -9540,7 +9540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9205bc1bbacc90040a998067b5643d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearBehavior: 2
+  clearBehavior: 0
   cameraShake:
     enabled: 1
     useMainCamera: 1
@@ -24000,6 +24000,7 @@ GameObject:
   - component: {fileID: 3440469011473192979}
   - component: {fileID: 2135288035221496517}
   - component: {fileID: 8642120934990572573}
+  - component: {fileID: 2194863350581084500}
   m_Layer: 0
   m_Name: MushroomBoomSmall
   m_TagString: Untagged
@@ -24048,6 +24049,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blastSound: {fileID: 8300000, guid: 917de2391ffefbc409dde687b6ad2898, type: 3}
   _blastRadius: 0.75
+--- !u!114 &2194863350581084500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699141555588334397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a8fc0ba69df42729b6c64a76c59c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _liveTime: 2
+  _startClip: {fileID: 0}
 --- !u!1 &8086493077190185470
 GameObject:
   m_ObjectHideFlags: 0

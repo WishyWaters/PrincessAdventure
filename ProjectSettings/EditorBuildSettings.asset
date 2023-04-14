@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Princess Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Princess Assets/Scenes/LevelLoadTester.unity
+    guid: 2d1d663737ec4432ea2bca92b33eed1f
+  - enabled: 1
+    path: Assets/Princess Assets/Scenes/BoomshroomWoods.unity
+    guid: 71e54a233b040463cbb4f2a9522d4c33
   m_configObjects: {}

@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 namespace PrincessAdventure
 {
 	public class GameManager : MonoBehaviour
 	{
 		[SerializeField] private CompanionManager _companionMgr;
-		[SerializeField] private CinemachineVirtualCamera _camera;
 		[SerializeField] private GameObject _princessPrefab;
 
 
 		public static GameManager GameInstance;
 
-		private SceneManager _sceneMgr;
+		private LevelManager _levelMgr;
 		private CharacterController _charCtrl;
 		private GameObject _activeCompanion;
 		private GameState _currentGameState = GameState.Undefined;
@@ -24,6 +24,7 @@ namespace PrincessAdventure
 		private bool _controllingCompanion = false;
 		private float _manaRegenTime;
 		private float _playerNoticeTimer;
+		private CinemachineVirtualCamera _virtualCamera;
 
 		#region Unity Functions
 		private void Awake()
@@ -41,7 +42,7 @@ namespace PrincessAdventure
 
         private void Start()
         {
-			SetupGame();
+			SetupNewGame();
 		}
 
 		private void Update()
@@ -52,39 +53,48 @@ namespace PrincessAdventure
 
         #endregion
 
-        #region start up functions
-        private void SetupGame()
+        #region load functions
+        private void SetupNewGame()
         {
 			ChangeGameState(GameState.Loading);
+
 			//Load Game Details
 			LoadGameDetails();
 
-			//Setup this scene
-			_sceneMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>();
-			GameObject checkPoint = _sceneMgr.GetSceneCheckPoint();
-			_camera.Follow = checkPoint.transform;
-			_camera.enabled = true;
-
-			SoundManager.SoundInstance.ChangeMusic(_sceneMgr.GetSceneMusic(), true);
-
-
-			//Call UI Setup
-			LoadGameplayGui();
+			SetupLevel();
 
 			//Play Cutscene
+			SpawnPlayerAtCheckpoint();
+		}
+
+		private void SetupLevel()
+        {
+			//Setup this scene
+			_virtualCamera = GameObject.FindGameObjectWithTag("VirtualCamera").GetComponentInChildren<CinemachineVirtualCamera>();
+			_virtualCamera.enabled = false;
+			_levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+			
+			SoundManager.SoundInstance.ChangeMusic(_levelMgr.GetLevelMusic(), true);
+		}
+
+		private void SpawnPlayerAtCheckpoint()
+        {
 			ChangeGameState(GameState.Cutscene);
+
+			GameObject checkPoint = _levelMgr.GetLevelCheckPoint();
+			_virtualCamera.Follow = checkPoint.transform;
+			_virtualCamera.enabled = true;
 
 			PrincessSpawnController spawnCtrl = this.GetComponent<PrincessSpawnController>();
 			spawnCtrl.StartPrincessSpawn(checkPoint.transform.position);
 		}
 
-		public void LoadPlayer(Vector3 spawnPosition)
+		public void LoadPlayer(Vector3 spawnPosition, Vector2 faceDirection)
         {
 			GameObject princess = Instantiate(_princessPrefab, spawnPosition, new Quaternion());
 			_charCtrl = princess.GetComponent<CharacterController>();
 
-			ActivatePrincess(false);
-			ChangeGameState(GameState.Playing);
+			ActivatePrincess(false, faceDirection);
 		}
 
 		private void LoadGameDetails()
@@ -99,11 +109,94 @@ namespace PrincessAdventure
 
 		}
 
+		public void MoveToNewScene(GameScenes targetScene, int targetIndex, FadeTypes fade)
+        {
+			ChangeGameState(GameState.Loading);
+
+			StartCoroutine(LoadSceneWithCurrentGame(targetScene, targetIndex, fade));
+
+
+
+        }
+
+		private IEnumerator LoadSceneWithCurrentGame(GameScenes targetScene, int targetIndex, FadeTypes fade)
+		{
+			float fadeTime = .6f;
+			float currentTimer = 0f;
+
+			//Fade out
+			GuiManager.GuiInstance.FillToBlack(fade, .3f);
+			while (currentTimer < fadeTime)
+			{
+				currentTimer += Time.unscaledDeltaTime;
+				yield return null;
+			}
+			
+			//save scene data
+			_levelMgr.SaveLevelDetails();
+
+			//load next scene
+			AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(targetScene.ToString());
+
+			// Wait until the asynchronous scene fully loads
+			while (!asyncLoad.isDone)
+			{
+				yield return null;
+			}
+
+
+			//Setup New scene
+			SetupLevel();
+
+			Vector2 facing = new Vector2();
+			switch(fade)
+            {
+				case FadeTypes.Left:
+					facing = Vector2.left;
+					break;
+				case FadeTypes.Right:
+					facing = Vector2.right;
+					break;
+				case FadeTypes.Up:
+				case FadeTypes.Enter:
+					facing = Vector2.up;
+					break;
+				case FadeTypes.Down:
+				case FadeTypes.Exit:
+				default:
+					facing = Vector2.down;
+					break;
+
+			}
+
+			LoadPlayer(_levelMgr.GetLevelEntryPoint(targetIndex).position, facing);
+
+			//wait a frame after level load
+			bool continueLoad = true;
+			while (continueLoad)
+			{
+				continueLoad = false ;
+				yield return null;
+			}
+
+			//Call fade in
+			currentTimer = 0;
+			GuiManager.GuiInstance.FillToClear(fade, fadeTime);
+			while (currentTimer < fadeTime)
+			{
+				currentTimer += Time.unscaledDeltaTime;
+				yield return null;
+			}
+
+			ResumeGameplay();
+		}
 
 		public void ContinueGameAfterDeath()
         {
-			SetupGame();
+			GuiManager.GuiInstance.DeactivateAllGui();
+			SetupNewGame();
 		}
+
 		public void QuitGame()
         {
 			#if UNITY_EDITOR
@@ -115,6 +208,7 @@ namespace PrincessAdventure
 			#endif
 
         }
+
 		#endregion
 
 		#region GUI functions
@@ -162,7 +256,7 @@ namespace PrincessAdventure
         {
 			ChangeGameState(GameState.Menu);
 
-			string msgText = _sceneMgr.GetMessageText(msgId);
+			string msgText = _levelMgr.GetMessageText(msgId);
 			GuiManager.GuiInstance.LoadMessageGui(msgText);
         }
 
@@ -209,24 +303,28 @@ namespace PrincessAdventure
 			ControlCompanion(companion);
 		}
 
-		public void ActivatePrincess(bool unsummon)
+		public void ActivatePrincess(bool unsummon, Vector2 faceDirection = new Vector2())
 		{
-			_camera.Follow = _charCtrl.gameObject.transform;
+			bool doWakeUpAnim = false;
+			_virtualCamera.enabled = true;
+			_virtualCamera.Follow = _charCtrl.gameObject.transform;
+			_virtualCamera.OnTargetObjectWarped(_charCtrl.gameObject.transform, _charCtrl.gameObject.transform.position - _virtualCamera.gameObject.transform.position);
 
 			if (unsummon)
 			{
-				_camera.OnTargetObjectWarped(_charCtrl.gameObject.transform, _charCtrl.gameObject.transform.position - _activeCompanion.transform.position);
+				doWakeUpAnim = true;
+				//_virtualCamera.OnTargetObjectWarped(_charCtrl.gameObject.transform, _charCtrl.gameObject.transform.position - _activeCompanion.transform.position);
 				_companionMgr.DestroyCurrentSummon();
 			}
 			
-			ControlPrincess();
+			ControlPrincess(faceDirection, doWakeUpAnim);
 		}
 
-		private void ControlPrincess()
+		private void ControlPrincess(Vector2 faceDirection, bool doWakeUp)
 		{
 			_activeCompanion = null;
 			_controllingCompanion = false;
-			_charCtrl.EnableController();
+			_charCtrl.EnableController(faceDirection, doWakeUp);
 			_companionMgr.SetIgnoreInputs(true);
 
 		}
@@ -238,7 +336,7 @@ namespace PrincessAdventure
 			_charCtrl.DisableController();
 			_companionMgr.SetIgnoreInputs(false);
 
-			_camera.Follow = companion.transform;
+			_virtualCamera.Follow = companion.transform;
 
 		}
 
@@ -366,8 +464,8 @@ namespace PrincessAdventure
 
 		private void KillPrincess()
         {
-			_camera.Follow = null;
-			_camera.enabled = false;
+			_virtualCamera.Follow = null;
+			_virtualCamera.enabled = false;
 			ChangeGameState(GameState.Cutscene);
 
 			PrincessSpawnController spawnCtrl = this.GetComponent<PrincessSpawnController>();
@@ -474,20 +572,20 @@ namespace PrincessAdventure
 
 		public void UpdatePlayerGameScene()
         {
-			_gameDetails.gameScene = _sceneMgr.GetCurrentScene();
+			_gameDetails.gameScene = _levelMgr.GetCurrentLevel();
         }
 
 		public void UpdateCameraFollow(GameObject newFollow)
         {
-			_camera.Follow = newFollow.transform;
+			_virtualCamera.Follow = newFollow.transform;
         }
 
 		public void UpdateCameraFollowToPlayer()
 		{
 			if(_controllingCompanion)
-				_camera.Follow = _activeCompanion.transform;
+				_virtualCamera.Follow = _activeCompanion.transform;
 			else
-				_camera.Follow = _charCtrl.gameObject.transform;
+				_virtualCamera.Follow = _charCtrl.gameObject.transform;
 
 		}
 
@@ -512,13 +610,12 @@ namespace PrincessAdventure
 			}
 
 
-			LoadGameplayGui();
-			ChangeGameState(GameState.Playing);
+			ResumeGameplay();
 
 			//TODO: Save Game
 		}
 
-		public void ResumeGameFromMenu()
+		public void ResumeGameplay()
         {
 			LoadGameplayGui();
 			ChangeGameState(GameState.Playing);
@@ -539,12 +636,12 @@ namespace PrincessAdventure
 
 		}
 
-		public void TeleportPlayerWithinScene(Vector3 target)
+		public void TeleportPlayerWithinScene(Vector3 target, FadeTypes fade)
         {
 
 			ChangeGameState(GameState.Menu);
 
-			StartCoroutine(TeleportPlayerWithinSceneWithFillGui(target));
+			StartCoroutine(TeleportPlayerWithinSceneWithFillGui(target, fade));
 
 
         }
@@ -552,13 +649,13 @@ namespace PrincessAdventure
 		#endregion
 
 		#region Coroutines
-		private IEnumerator TeleportPlayerWithinSceneWithFillGui(Vector3 target)
+		private IEnumerator TeleportPlayerWithinSceneWithFillGui(Vector3 target, FadeTypes fade)
         {
 			float fadeTime = .3f;
 			float currentTimer = 0f;
 
 			//Call fade out
-			GuiManager.GuiInstance.FillToBlack(FadeTypes.EnterExit, fadeTime);
+			GuiManager.GuiInstance.FillToBlack(fade, fadeTime);
 
 			while(currentTimer < fadeTime)
             {
@@ -569,18 +666,18 @@ namespace PrincessAdventure
 			//perform warp
 			if (_controllingCompanion)
 			{
-				_camera.OnTargetObjectWarped(_activeCompanion.transform, target - _activeCompanion.transform.position);
+				_virtualCamera.OnTargetObjectWarped(_activeCompanion.transform, target - _activeCompanion.transform.position);
 				_activeCompanion.transform.position = target;
 			}
 			else
 			{
-				_camera.OnTargetObjectWarped(_charCtrl.gameObject.transform, target - _charCtrl.gameObject.transform.position);
+				_virtualCamera.OnTargetObjectWarped(_charCtrl.gameObject.transform, target - _charCtrl.gameObject.transform.position);
 				_charCtrl.gameObject.transform.position = target;
 
 			}
 
 			//Call fade in
-			GuiManager.GuiInstance.FillToClear(FadeTypes.EnterExit, fadeTime);
+			GuiManager.GuiInstance.FillToClear(fade, fadeTime);
 			currentTimer = 0f;
 			while (currentTimer < fadeTime)
 			{
