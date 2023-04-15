@@ -1,15 +1,17 @@
 ﻿<Properties StartupConfiguration="{AD664D52-B116-25F0-8477-C67A55415F25}|">
   <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="ac0ab1f8-3d2d-4729-8447-c2482c616881" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Princess Assets/Scripts/Level/Interactions/ProjectileController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Princess Assets/Scripts/Level/Interactions/WeightSwitchController.cs">
     <Files>
-      <File FileName="Assets/Princess Assets/Scripts/Level/AffectedObjectController.cs" Line="133" Column="27" IsPinned="True" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/AffectedObjectController.cs" Line="10" Column="1" IsPinned="True" />
       <File FileName="Assets/Princess Assets/Scripts/World/GameManager.cs" Line="69" Column="1" />
       <File FileName="Assets/Princess Assets/Scripts/Character/CharacterController.cs" Line="175" Column="1" />
-      <File FileName="Assets/Princess Assets/Scripts/Level/TeleportInScene.cs" />
-      <File FileName="Assets/Princess Assets/Scripts/Level/Traps/ProjectileTrap.cs" Line="9" Column="1" />
-      <File FileName="Assets/Princess Assets/Scripts/Level/Traps/LaserTrap.cs" Line="12" Column="6" />
-      <File FileName="Assets/Princess Assets/Scripts/Level/Traps/DamageOnEnter.cs" Line="9" Column="9" />
-      <File FileName="Assets/Princess Assets/Scripts/Level/Interactions/ProjectileController.cs" Line="126" Column="85" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/TeleportInScene.cs" Line="10" Column="60" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Traps/ProjectileTrap.cs" Line="27" Column="14" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Traps/LaserTrap.cs" Line="48" Column="17" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Traps/DamageOnEnter.cs" Line="7" Column="30" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Interactions/ProjectileController.cs" Line="120" Column="30" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Rewards/PuzzleCheckController.cs" Line="80" Column="10" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Interactions/WeightSwitchController.cs" Line="7" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -27,7 +29,7 @@
                   <Node name="GUI" expanded="True" />
                   <Node name="Level" expanded="True">
                     <Node name="Interactions" expanded="True">
-                      <Node name="ProjectileController.cs" selected="True" />
+                      <Node name="WeightSwitchController.cs" selected="True" />
                     </Node>
                     <Node name="Rewards" expanded="True" />
                     <Node name="Traps" expanded="True" />

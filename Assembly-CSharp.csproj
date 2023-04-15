@@ -151,6 +151,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/PuzzleCheckController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/LaserTrap.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/DamagePlayerOnTriggerEnter.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/WeightSwitchController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

@@ -14,6 +14,8 @@ namespace PrincessAdventure
         [SerializeField] private AudioClip _fanfareClip;
         [SerializeField] private GameObject _fanfareEffect;
 
+        private bool puzzleSolved;
+
         private void Start()
         {
             //TODO:  Check scene manager for completed puzzle
@@ -22,7 +24,7 @@ namespace PrincessAdventure
         }
         public void CheckPuzzle()
         {
-            if (IsPuzzleCorrect())
+            if (IsPuzzleCorrect() && !puzzleSolved)
                 HandlePuzzleCompletion(true);
         }
 
@@ -44,6 +46,8 @@ namespace PrincessAdventure
 
         private void HandlePuzzleCompletion(bool performFanfare)
         {
+            puzzleSolved = true;
+
             if (_objectToSpawn != null)
                 Instantiate(_objectToSpawn, this.transform.position, this.transform.rotation);
 
