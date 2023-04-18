@@ -152,6 +152,11 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/LaserTrap.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/DamagePlayerOnTriggerEnter.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/WeightSwitchController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Monster/GhostBossController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Unique/BossSpawner.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemyAnimateController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemyBehaviorController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemyActionController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

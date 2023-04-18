@@ -24,8 +24,9 @@ namespace PrincessAdventure
             {
                 
                 Instantiate(_deflectHitPrefab, (Vector3)collision.ClosestPoint(this.transform.position), this.transform.rotation);
+
                 SoundManager.SoundInstance.PlayEffectSound(_deflectOtherSound);
-                EnemyController enemyCtrl = collision.gameObject.GetComponent<EnemyController>();
+                EnemyActionController enemyCtrl = collision.gameObject.GetComponent<EnemyActionController>();
                 enemyCtrl.ReflectEnemy(_direction);
             }
             else if (collision.CompareTag("Projectile"))

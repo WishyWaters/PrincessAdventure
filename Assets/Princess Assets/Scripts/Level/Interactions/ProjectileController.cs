@@ -139,7 +139,7 @@ namespace PrincessAdventure
                 }
                 else if (collision.CompareTag("Enemy"))
                 {
-                    EnemyController enemyCtrl = collision.GetComponent<EnemyController>();
+                    EnemyActionController enemyCtrl = collision.GetComponent<EnemyActionController>();
 
                     enemyCtrl.DamageEnemy(this.transform.position, false);
                 }

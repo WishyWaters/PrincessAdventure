@@ -11,10 +11,12 @@ GameObject:
   - component: {fileID: 598280427265149696}
   - component: {fileID: 598280427265149697}
   - component: {fileID: 598280427265149698}
-  - component: {fileID: 598280427265149699}
   - component: {fileID: 598280427265149700}
   - component: {fileID: 598280427265149701}
   - component: {fileID: 2717025190357480456}
+  - component: {fileID: 7552842431406062880}
+  - component: {fileID: 7492903425902501918}
+  - component: {fileID: 644071875159498401}
   m_Layer: 13
   m_Name: SkeletonKing
   m_TagString: Enemy
@@ -76,46 +78,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &598280427265149699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598280427265149708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cac98c14d3b9f4b699735bd59d3cf9fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 598280427265149698}
-  _rigType: 1
-  _enemyAnimator: {fileID: 6048262744502995729}
-  _customizableCharacter: {fileID: 0}
-  _animator: {fileID: 0}
-  _sfxCtrl: {fileID: 598280427265149700}
-  _health: 5
-  _dealHeartDamage: 1
-  _coinDamage: 5
-  _acceleration: 10
-  _moveSpeed: 3
-  _startDirection: {x: 0.95, y: 0.5}
-  _whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 832
-  _whatIsBlockade:
-    serializedVersion: 2
-    m_Bits: 15361
-  _diesToExplosion: 0
-  _deathEffect: {fileID: 5354610826560909560, guid: 8c2fab1aaa3e1414cbc4494607822cbe, type: 3}
-  _patrolType: 0
-  _patrolTime: 3
-  _idleTime: 1
-  _sightRadius: 3
-  _attackRadius: 1.2
-  _projectile: {fileID: 0}
-  _idleTimeAfterAttack: 1.5
-  _projectileWaitTime: 0
 --- !u!114 &598280427265149700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +225,86 @@ MonoBehaviour:
   _tossMaxRadius: 1
   _fanfareClip: {fileID: 0}
   _fanfareEffect: {fileID: 0}
+--- !u!114 &7552842431406062880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598280427265149708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f207032b9cd74b8c9cdb996c08f205b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 598280427265149698}
+  _sfxCtrl: {fileID: 598280427265149700}
+  _animateCtrl: {fileID: 644071875159498401}
+  _actionCtrl: {fileID: 7492903425902501918}
+  _treasure: {fileID: 2717025190357480456}
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 448
+  _whatIsBlockade:
+    serializedVersion: 2
+    m_Bits: 1025
+  _patrolType: 1
+  _patrolTime: 3
+  _idleTimeAfterPatrol: 0.3
+  _fleeTime: 0
+  _acceleration: 12
+  _moveSpeed: 4
+  _startDirection: {x: 1, y: 0}
+  _sightRadius: 4
+--- !u!114 &7492903425902501918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598280427265149708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390968ee75bd34ad5a0449aab0c0a0ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _behaviorCtrl: {fileID: 7552842431406062880}
+  _sfxCtrl: {fileID: 598280427265149700}
+  _health: 5
+  _dealHeartDamage: 1
+  _coinDamage: 10
+  _diesToExplosion: 0
+  _canBeReflected: 0
+  _fleeOnDamage: 0
+  _attackRadius: 1.3
+  _idleTimeAfterAttack: 0.5
+  _projectile: {fileID: 0}
+  _projectileWaitTime: 0
+  _leftRightOffset: 0
+  _upOffset: 0
+  _thingToCreate: {fileID: 0}
+  _onHitCreate: 0
+  _onHitTeleport: 0
+--- !u!114 &644071875159498401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598280427265149708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4572a8326faf4b60a4c2c6d562ea304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigType: 1
+  _deathEffectPrefab: {fileID: 6568514911891823830, guid: e57a6a51a74974b889d41ece266a315b, type: 3}
+  _spineAnimator: {fileID: 6048262744502995729}
+  _customizableCharacter: {fileID: 0}
+  _animator: {fileID: 0}
+  _behaviorCtrl: {fileID: 7552842431406062880}
+  _sfxCtrl: {fileID: 598280427265149700}
+  _actionCtrl: {fileID: 7492903425902501918}
 --- !u!1 &1820805074464429435
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,9 +468,38 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7170015480074968498, guid: f9de8c230d34ceb43af2216b5e921335, type: 3}
   m_PrefabInstance: {fileID: 3489935655343953571}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8892501621072801594}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8892501621072801594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5406077538006874521, guid: f9de8c230d34ceb43af2216b5e921335, type: 3}
+  m_PrefabInstance: {fileID: 3489935655343953571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &6820277083110216248
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8892501621072801594}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &307794073449763718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8892501621072801594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af58293f0b2a9458e939e71cdccd147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  callOnUpdate: 1

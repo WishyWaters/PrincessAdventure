@@ -153,10 +153,7 @@ namespace PrincessAdventure
                 case EnemyStates.Hurt:
                     //CheckIdleTime(); Hurt moves to Flee after animation
                     break;
-
             }
-
-
         }
 
         private void CheckIdleTime()
@@ -587,8 +584,6 @@ namespace PrincessAdventure
         }
 
 
-
-
         void OnCollisionEnter2D(Collision2D collision)
         {
 
@@ -611,36 +606,36 @@ namespace PrincessAdventure
             }
         }
 
-        public void DamageEnemy(Vector3 positionOfPain, bool isExplosion)
-        {
-            if (_diesToExplosion && isExplosion)
-                DestroyEnemy();
-            else
-            {
-                _currentDamage++;
+        //public void DamageEnemy(Vector3 positionOfPain, bool isExplosion)
+        //{
+        //    if (_diesToExplosion && isExplosion)
+        //        DestroyEnemy();
+        //    else
+        //    {
+        //        _currentDamage++;
 
-                if (_currentDamage >= _health)
-                    DestroyEnemy();
-                else
-                {
-                    FleeTarget(positionOfPain);
-                    ChangeState(EnemyStates.Hurt);
-                    if (_rigType == EnemyRigTypes.CustomHumanoid)
-                    {
-                        if (_currentCoroutine != null)
-                            StopCoroutine(_currentCoroutine);
-                        _currentCoroutine = StartCoroutine(DoAnimatorHurt(_currentDirection));
-                    }
-                    else
-                    {
-                        //Names are: Idle, Walk, Death, Hurt and Attack
-                        HandleSpineDirection(_currentDirection);
-                        SetSpineAnimation("Hurt", false);
-                    }
+        //        if (_currentDamage >= _health)
+        //            DestroyEnemy();
+        //        else
+        //        {
+        //            FleeTarget(positionOfPain);
+        //            ChangeState(EnemyStates.Hurt);
+        //            if (_rigType == EnemyRigTypes.CustomHumanoid)
+        //            {
+        //                if (_currentCoroutine != null)
+        //                    StopCoroutine(_currentCoroutine);
+        //                _currentCoroutine = StartCoroutine(DoAnimatorHurt(_currentDirection));
+        //            }
+        //            else
+        //            {
+        //                //Names are: Idle, Walk, Death, Hurt and Attack
+        //                HandleSpineDirection(_currentDirection);
+        //                SetSpineAnimation("Hurt", false);
+        //            }
                     
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         private void DestroyEnemy()
         {
@@ -689,14 +684,14 @@ namespace PrincessAdventure
             
         }
 
-        public void ReflectEnemy(Vector2 direction)
-        {
-            if (_enemyState == EnemyStates.Patrolling || _enemyState == EnemyStates.Idle || _enemyState == EnemyStates.Fleeing)
-            {
-                ChangeState(EnemyStates.Fleeing);
-                ChangeDirection(direction);
-            }
-        }
+        //public void ReflectEnemy(Vector2 direction)
+        //{
+        //    if (_enemyState == EnemyStates.Patrolling || _enemyState == EnemyStates.Idle || _enemyState == EnemyStates.Fleeing)
+        //    {
+        //        ChangeState(EnemyStates.Fleeing);
+        //        ChangeDirection(direction);
+        //    }
+        //}
 
         #region Coroutines
         private IEnumerator DoAnimatorAttack(Vector2 direction)

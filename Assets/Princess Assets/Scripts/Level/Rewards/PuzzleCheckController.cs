@@ -14,6 +14,9 @@ namespace PrincessAdventure
         [SerializeField] private AudioClip _fanfareClip;
         [SerializeField] private GameObject _fanfareEffect;
 
+        [SerializeField] private AudioClip _failClip;
+
+
         private bool puzzleSolved;
 
         private void Start()
@@ -26,6 +29,8 @@ namespace PrincessAdventure
         {
             if (IsPuzzleCorrect() && !puzzleSolved)
                 HandlePuzzleCompletion(true);
+            else if(!puzzleSolved)
+                SoundManager.SoundInstance.PlayEffectSound(_failClip);
         }
 
         private bool IsPuzzleCorrect()

@@ -25,6 +25,8 @@ namespace PrincessAdventure
 
         public void PlayAttackSound()
         {
+            if (_attack.Count == 0)
+                return;
             int soundIndex = Random.Range(0, _attack.Count);
 
             _audioSource.PlayOneShot(_attack[soundIndex]);
@@ -32,6 +34,9 @@ namespace PrincessAdventure
 
         public void PlayAttackImpactSound()
         {
+            if (_onAttackImpact.Count == 0)
+                return;
+
             int soundIndex = Random.Range(0, _onAttackImpact.Count);
 
             _audioSource.PlayOneShot(_onAttackImpact[soundIndex]);
@@ -49,6 +54,9 @@ namespace PrincessAdventure
 
         public void PlayOnHurtSound()
         {
+            if (_onHurt.Count == 0)
+                return;
+
             int soundIndex = Random.Range(0, _onHurt.Count);
 
             _audioSource.PlayOneShot(_onHurt[soundIndex]);

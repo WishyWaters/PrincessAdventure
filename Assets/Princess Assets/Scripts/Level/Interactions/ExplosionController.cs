@@ -41,7 +41,7 @@ namespace PrincessAdventure
             }
             else if (hit.tag == "Enemy")
             {
-                EnemyController enemyCtrl = hit.GetComponent<EnemyController>();
+                EnemyActionController enemyCtrl = hit.GetComponent<EnemyActionController>();
 
                 enemyCtrl.DamageEnemy(this.transform.position, true);
             }

@@ -53,7 +53,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.4
 --- !u!114 &4020889384676681918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7e53f9991764d87a4eb70080a8f00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitEffectPrefab: {fileID: 5135263558309566586, guid: c37e9aea2705c4d53a30a212900295bf, type: 3}
+  _hitEffectPrefab: {fileID: 7791924108900336001, guid: a19c5b844451448be96bd9408da85fc3, type: 3}
   _fireSound: {fileID: 8300000, guid: 893c88e50867de64588fc60104c089c7, type: 3}
   _hitSound: {fileID: 8300000, guid: e10283a77a414494baaf9a18c8a207c8, type: 3}
   _layerMask:
@@ -245,15 +245,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6471748739544416965, guid: 994d7d5b348f2b248bc5b8c1ce086dd3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.14999998
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6471748739544416965, guid: 994d7d5b348f2b248bc5b8c1ce086dd3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6471748739544416965, guid: 994d7d5b348f2b248bc5b8c1ce086dd3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.15
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6471748739544416965, guid: 994d7d5b348f2b248bc5b8c1ce086dd3, type: 3}
       propertyPath: m_LocalPosition.x
