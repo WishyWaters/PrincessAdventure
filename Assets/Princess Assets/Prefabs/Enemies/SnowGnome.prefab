@@ -8583,12 +8583,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2844249987772654437}
-  - component: {fileID: 2844249987772654436}
   - component: {fileID: 2844249987772654439}
-  - component: {fileID: 2844249987772654438}
   - component: {fileID: 2844249987772654435}
-  - component: {fileID: 2844249987772654434}
   - component: {fileID: 2711851803589546691}
+  - component: {fileID: 6472668767867503404}
+  - component: {fileID: 6413686056110107939}
+  - component: {fileID: 7638849051850406763}
+  - component: {fileID: 7526860445639053758}
+  - component: {fileID: 2844249987772654434}
   m_Layer: 13
   m_Name: SnowGnome
   m_TagString: Enemy
@@ -8612,22 +8614,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &2844249987772654436
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2844249987772654441}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.3
 --- !u!50 &2844249987772654439
 Rigidbody2D:
   serializedVersion: 4
@@ -8640,7 +8626,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.28274336
+  m_Mass: 0.52274334
   m_LinearDrag: 10
   m_AngularDrag: 10
   m_GravityScale: 0
@@ -8649,46 +8635,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2844249987772654438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2844249987772654441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cac98c14d3b9f4b699735bd59d3cf9fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 2844249987772654439}
-  _rigType: 0
-  _enemyAnimator: {fileID: 0}
-  _customizableCharacter: {fileID: 4020727120504845073}
-  _animator: {fileID: 87514558819783545}
-  _sfxCtrl: {fileID: 2844249987772654434}
-  _health: 1
-  _dealHeartDamage: 0
-  _coinDamage: 10
-  _acceleration: 10
-  _moveSpeed: 3
-  _startDirection: {x: 0, y: -1}
-  _whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 832
-  _whatIsBlockade:
-    serializedVersion: 2
-    m_Bits: 7169
-  _diesToExplosion: 0
-  _deathEffect: {fileID: 5395580496455951886, guid: f0d5e753522f5422e8ab894900279cb0, type: 3}
-  _patrolType: 0
-  _patrolTime: 4
-  _idleTime: 2
-  _sightRadius: 3
-  _attackRadius: 0.6
-  _projectile: {fileID: 0}
-  _idleTimeAfterAttack: 1
-  _projectileWaitTime: 0
 --- !u!82 &2844249987772654435
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8785,6 +8731,130 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2711851803589546691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844249987772654441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef8f57622e1104ac4b4c642cab9bd293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 7412016046180206115, guid: df3a677b7393f4369a8bba8e55a32767, type: 3}
+  silverbarPrefab: {fileID: 6359290201135866522, guid: 3c9cf9b8d094b43afbe30144abd159e0, type: 3}
+  goldBarPrefab: {fileID: 887971048506479786, guid: 3cf46a19a47884785ab0bc54788bc390, type: 3}
+  redPotionPrefab: {fileID: 6158474435987077149, guid: a1aa91fab88c94f628131fcb5f2461f1, type: 3}
+  bluePotionPrefab: {fileID: 8478885175730939282, guid: 8dcbc381ba1584f28bf6893d4571860c, type: 3}
+  greenPotionPrefab: {fileID: 3088891121141034366, guid: caf4f93f29e4840938b6fbac8656d2bd, type: 3}
+  keyPrefab: {fileID: 2459508508526674925, guid: 76c4294cf26bd4006bd81b4e5fed1685, type: 3}
+  _treasureType: 1
+  _tossMinRadius: 0.2
+  _tossMaxRadius: 1
+  _fanfareClip: {fileID: 0}
+  _fanfareEffect: {fileID: 0}
+--- !u!70 &6472668767867503404
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844249987772654441}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.2}
+  m_Size: {x: 0.6, y: 1}
+  m_Direction: 0
+--- !u!114 &6413686056110107939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844249987772654441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f207032b9cd74b8c9cdb996c08f205b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 2844249987772654439}
+  _sfxCtrl: {fileID: 2844249987772654434}
+  _animateCtrl: {fileID: 7638849051850406763}
+  _actionCtrl: {fileID: 7526860445639053758}
+  _treasure: {fileID: 2711851803589546691}
+  _bossSpawner: {fileID: 0}
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 832
+  _whatIsBlockade:
+    serializedVersion: 2
+    m_Bits: 7169
+  _patrolType: 1
+  _patrolTime: 4
+  _idleTimeAfterPatrol: 2
+  _fleeTime: 2
+  _acceleration: 10
+  _moveSpeed: 4
+  _startDirection: {x: 1, y: 0}
+  _sightRadius: 3
+--- !u!114 &7638849051850406763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844249987772654441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4572a8326faf4b60a4c2c6d562ea304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigType: 0
+  _deathEffectPrefab: {fileID: 5395580496455951886, guid: f0d5e753522f5422e8ab894900279cb0, type: 3}
+  _spineAnimator: {fileID: 0}
+  _customizableCharacter: {fileID: 4020727120504845073}
+  _animator: {fileID: 87514558819783545}
+  _behaviorCtrl: {fileID: 6413686056110107939}
+  _sfxCtrl: {fileID: 2844249987772654434}
+  _actionCtrl: {fileID: 7526860445639053758}
+--- !u!114 &7526860445639053758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844249987772654441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390968ee75bd34ad5a0449aab0c0a0ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _behaviorCtrl: {fileID: 6413686056110107939}
+  _sfxCtrl: {fileID: 2844249987772654434}
+  _health: 1
+  _dealHeartDamage: 0
+  _coinDamage: 10
+  _diesToExplosion: 0
+  _canBeReflected: 1
+  _fleeOnDamage: 1
+  _attackRadius: 0.5
+  _meleeWaitTime: 0.7
+  _idleTimeAfterAttack: 2
+  _projectile: {fileID: 0}
+  _projectileWaitTime: 0
+  _leftRightOffset: 0
+  _upOffset: 0
+  _onHitCreate: 0
+  _thingToCreatePrefab: {fileID: 0}
+  _onHitTeleport: 0
+  _teleportDestinations: []
+  _teleportEffectPrefab: {fileID: 0}
 --- !u!114 &2844249987772654434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8816,30 +8886,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1d773269459507d498944cd2e0438fa6, type: 3}
   - {fileID: 8300000, guid: ca69704b419684a4bad00dc526efedef, type: 3}
   _onDie: {fileID: 8300000, guid: 7715ac696f104374c80309abc5762cad, type: 3}
---- !u!114 &2711851803589546691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2844249987772654441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef8f57622e1104ac4b4c642cab9bd293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 7412016046180206115, guid: df3a677b7393f4369a8bba8e55a32767, type: 3}
-  silverbarPrefab: {fileID: 6359290201135866522, guid: 3c9cf9b8d094b43afbe30144abd159e0, type: 3}
-  goldBarPrefab: {fileID: 887971048506479786, guid: 3cf46a19a47884785ab0bc54788bc390, type: 3}
-  redPotionPrefab: {fileID: 6158474435987077149, guid: a1aa91fab88c94f628131fcb5f2461f1, type: 3}
-  bluePotionPrefab: {fileID: 8478885175730939282, guid: 8dcbc381ba1584f28bf6893d4571860c, type: 3}
-  greenPotionPrefab: {fileID: 3088891121141034366, guid: caf4f93f29e4840938b6fbac8656d2bd, type: 3}
-  keyPrefab: {fileID: 2459508508526674925, guid: 76c4294cf26bd4006bd81b4e5fed1685, type: 3}
-  _treasureType: 1
-  _tossMinRadius: 0.2
-  _tossMaxRadius: 1
-  _fanfareClip: {fileID: 0}
-  _fanfareEffect: {fileID: 0}
 --- !u!1 &2844249987877268499
 GameObject:
   m_ObjectHideFlags: 0

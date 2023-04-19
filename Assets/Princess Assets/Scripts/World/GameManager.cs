@@ -58,6 +58,8 @@ namespace PrincessAdventure
         {
 			ChangeGameState(GameState.Loading);
 
+			GuiManager.GuiInstance.ClearOut();
+
 			//Load Game Details
 			LoadGameDetails();
 
@@ -225,6 +227,12 @@ namespace PrincessAdventure
 			GuiManager.GuiInstance.LoadStarShardGui(_gameDetails.starShards);
 		}
 
+		public void LoadUniqueItemGui(PickUps item)
+		{
+			ChangeGameState(GameState.Menu);
+			GuiManager.GuiInstance.LoadUniqueItemGui(item);
+		}
+
 		private void LoadGameplayGui()
 		{
 			GuiManager.GuiInstance.LoadGameplayGui(_gameDetails);
@@ -292,7 +300,10 @@ namespace PrincessAdventure
 				if (_controllingCompanion)
 					_companionMgr.UpdateNextInputs(inputs);
 				else
+				{
+					inputs.InputFade = inputs.InputFade && _gameDetails.hasFade;
 					_charCtrl.UpdateNextInputs(inputs);
+				}
 			}
 		}
 
@@ -530,6 +541,22 @@ namespace PrincessAdventure
 				case PickUps.StarShard:
 					_gameDetails.starShards++;
 					LoadStarShardGui();
+					break;
+				case PickUps.Crystal:
+					_gameDetails.hasMagic = true;
+					LoadUniqueItemGui(PickUps.Crystal);
+					break;
+				case PickUps.Candle:
+					_gameDetails.hasFireball = true;
+					LoadUniqueItemGui(PickUps.Candle);
+					break;
+				case PickUps.Skull:
+					_gameDetails.hasFade = true;
+					LoadUniqueItemGui(PickUps.Skull);
+					break;
+				case PickUps.Book:
+					_gameDetails.hasBomb = true;
+					LoadUniqueItemGui(PickUps.Book);
 					break;
 			}
         }

@@ -47,6 +47,8 @@ namespace PrincessAdventure
 		public bool hasMagic;
 		public bool hasFade;
 		public bool hasBomb;
+		public bool hasFireball;
+		public bool hasSummon;
 		public List<int> hats;
 		public int selectedHat;
 		public List<int> outfits;
@@ -83,6 +85,8 @@ namespace PrincessAdventure
 			hasMagic = false;
 			hasFade = false;
 			hasBomb = false;
+			hasFireball = false;
+			hasSummon = false;
 			hats = new List<int>();
 			hats.Add(0);
 			outfits = new List<int>();

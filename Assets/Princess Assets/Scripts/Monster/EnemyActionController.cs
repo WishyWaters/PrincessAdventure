@@ -21,6 +21,7 @@ namespace PrincessAdventure
 
         [Header("Melee")]
         [SerializeField] private float _attackRadius;
+        [SerializeField] private float _meleeWaitTime;
         [SerializeField] private float _idleTimeAfterAttack;
 
         [Header("Range")]
@@ -72,17 +73,18 @@ namespace PrincessAdventure
 
 
 
-        public bool AttemptAction(Collider2D[] playersInSight, LayerMask whatIsPlayerMask)
+        public bool AttemptAction(Collider2D[] playersInSight, LayerMask whatIsPlayerMask, Vector2 direction)
         {
             bool canDoSomething = false;
 
             //Attempt Melee Attack
             if (_attackCooldownEndTime < Time.time)
             {
-                Collider2D[] playersInAttackRange = Physics2D.OverlapCircleAll((Vector2)this.transform.position, _attackRadius, whatIsPlayerMask);
+                Collider2D[] playersInAttackRange = Physics2D.OverlapCircleAll((Vector2)this.transform.position + direction, _attackRadius, whatIsPlayerMask);
 
                 if (playersInAttackRange.Length > 0)
                 {
+                    StartCoroutine(CheckAttackCollision( whatIsPlayerMask, direction));
                     HandleAttack(playersInAttackRange[0].transform.position);
                     canDoSomething = true;
                 }
@@ -96,6 +98,36 @@ namespace PrincessAdventure
             }
 
             return canDoSomething;
+        }
+
+        private IEnumerator CheckAttackCollision(LayerMask whatIsPlayerMask, Vector2 direction)
+        {
+
+            yield return new WaitForSeconds(_meleeWaitTime);
+
+            if (_currentDamage < _health)
+            {
+                Collider2D[] playersInAttackRange = Physics2D.OverlapCircleAll((Vector2)this.transform.position + direction, _attackRadius, whatIsPlayerMask);
+
+                foreach (Collider2D player in playersInAttackRange)
+                {
+                    if (player.gameObject.tag == "Player" && player.gameObject.layer == 6)
+                    {
+                        _sfxCtrl.PlayAttackImpactSound();
+
+                        if (_dealHeartDamage)
+                            GameManager.GameInstance.DamagePrincess(this.transform.position);
+
+                        if (_coinDamage > 0)
+                            GameManager.GameInstance.CoinDamagePrincess(this.transform.position, _coinDamage);
+                    }
+                    else if (player.gameObject.tag == "Companion")
+                    {
+                        _sfxCtrl.PlayAttackImpactSound();
+                        GameManager.GameInstance.ActivatePrincess(true);
+                    }
+                }
+            }
         }
 
         private bool ShouldUseRangeAttack(Vector3 playerPosition)
@@ -195,6 +227,11 @@ namespace PrincessAdventure
             {
                 _behaviorCtrl.AttemptReflect(direction);
             }
+        }
+
+        public bool CanEnemyBeReflected()
+        {
+            return _canBeReflected;
         }
 
         private Vector2 GetClosestDirection(Vector2 from)

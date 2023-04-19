@@ -22,12 +22,15 @@ namespace PrincessAdventure
 
             if (collision.CompareTag("Enemy"))
             {
-                
-                Instantiate(_deflectHitPrefab, (Vector3)collision.ClosestPoint(this.transform.position), this.transform.rotation);
-
-                SoundManager.SoundInstance.PlayEffectSound(_deflectOtherSound);
                 EnemyActionController enemyCtrl = collision.gameObject.GetComponent<EnemyActionController>();
-                enemyCtrl.ReflectEnemy(_direction);
+
+                if (enemyCtrl.CanEnemyBeReflected())
+                {
+                    Instantiate(_deflectHitPrefab, (Vector3)collision.ClosestPoint(this.transform.position), this.transform.rotation);
+
+                    SoundManager.SoundInstance.PlayEffectSound(_deflectOtherSound);
+                    enemyCtrl.ReflectEnemy(_direction);
+                }
             }
             else if (collision.CompareTag("Projectile"))
             {

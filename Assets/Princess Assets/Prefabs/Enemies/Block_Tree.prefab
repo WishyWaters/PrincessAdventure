@@ -95,10 +95,12 @@ GameObject:
   - component: {fileID: 5765538585901572439}
   - component: {fileID: 5765538585901572438}
   - component: {fileID: 5765538585901572437}
-  - component: {fileID: 5765538585901572436}
   - component: {fileID: 5765538585901572435}
   - component: {fileID: 5765538585901572434}
   - component: {fileID: 9077596761866264159}
+  - component: {fileID: 1126746360336828522}
+  - component: {fileID: 7673895229369647040}
+  - component: {fileID: 2989587462643717964}
   m_Layer: 13
   m_Name: Block_Tree
   m_TagString: Enemy
@@ -138,7 +140,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.6
 --- !u!50 &5765538585901572437
 Rigidbody2D:
   serializedVersion: 4
@@ -151,7 +153,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.50265485
+  m_Mass: 1.1309735
   m_LinearDrag: 10
   m_AngularDrag: 10
   m_GravityScale: 1
@@ -160,46 +162,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5765538585901572436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5765538585901572443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cac98c14d3b9f4b699735bd59d3cf9fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 5765538585901572437}
-  _rigType: 1
-  _enemyAnimator: {fileID: 3381413160841346668}
-  _customizableCharacter: {fileID: 0}
-  _animator: {fileID: 0}
-  _sfxCtrl: {fileID: 5765538585901572435}
-  _health: 8
-  _dealHeartDamage: 1
-  _coinDamage: 0
-  _acceleration: 10
-  _moveSpeed: 2
-  _startDirection: {x: 1, y: 0}
-  _whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 832
-  _whatIsBlockade:
-    serializedVersion: 2
-    m_Bits: 15361
-  _diesToExplosion: 1
-  _deathEffect: {fileID: 504078734957148712, guid: abe5d28ba1266469797097bfb246bec5, type: 3}
-  _patrolType: 1
-  _patrolTime: 4
-  _idleTime: 2
-  _sightRadius: 5
-  _attackRadius: 1
-  _projectile: {fileID: 3049506219105728400, guid: 134b5db59f344422a9d9aeb7652a2007, type: 3}
-  _idleTimeAfterAttack: 2
-  _projectileWaitTime: 0.5
 --- !u!114 &5765538585901572435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +306,90 @@ MonoBehaviour:
   _tossMaxRadius: 1.5
   _fanfareClip: {fileID: 0}
   _fanfareEffect: {fileID: 0}
+--- !u!114 &1126746360336828522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765538585901572443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f207032b9cd74b8c9cdb996c08f205b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 5765538585901572437}
+  _sfxCtrl: {fileID: 5765538585901572435}
+  _animateCtrl: {fileID: 7673895229369647040}
+  _actionCtrl: {fileID: 2989587462643717964}
+  _treasure: {fileID: 9077596761866264159}
+  _bossSpawner: {fileID: 0}
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 832
+  _whatIsBlockade:
+    serializedVersion: 2
+    m_Bits: 1
+  _patrolType: 1
+  _patrolTime: 4
+  _idleTimeAfterPatrol: 1
+  _fleeTime: 1
+  _acceleration: 10
+  _moveSpeed: 2
+  _startDirection: {x: 1, y: 0}
+  _sightRadius: 4
+--- !u!114 &7673895229369647040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765538585901572443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4572a8326faf4b60a4c2c6d562ea304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigType: 1
+  _deathEffectPrefab: {fileID: 504078734957148712, guid: abe5d28ba1266469797097bfb246bec5, type: 3}
+  _spineAnimator: {fileID: 3381413160841346668}
+  _customizableCharacter: {fileID: 0}
+  _animator: {fileID: 0}
+  _behaviorCtrl: {fileID: 1126746360336828522}
+  _sfxCtrl: {fileID: 5765538585901572435}
+  _actionCtrl: {fileID: 2989587462643717964}
+--- !u!114 &2989587462643717964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765538585901572443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390968ee75bd34ad5a0449aab0c0a0ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _behaviorCtrl: {fileID: 1126746360336828522}
+  _sfxCtrl: {fileID: 5765538585901572435}
+  _health: 8
+  _dealHeartDamage: 1
+  _coinDamage: 0
+  _diesToExplosion: 1
+  _canBeReflected: 1
+  _fleeOnDamage: 1
+  _attackRadius: 1.6
+  _meleeWaitTime: 0.6
+  _idleTimeAfterAttack: 2
+  _projectile: {fileID: 3049506219105728400, guid: 134b5db59f344422a9d9aeb7652a2007, type: 3}
+  _projectileWaitTime: 0.4
+  _leftRightOffset: 0.3
+  _upOffset: 1
+  _onHitCreate: 0
+  _thingToCreatePrefab: {fileID: 0}
+  _onHitTeleport: 0
+  _teleportDestinations: []
+  _teleportEffectPrefab: {fileID: 0}
 --- !u!1001 &1813431021453438995
 PrefabInstance:
   m_ObjectHideFlags: 0

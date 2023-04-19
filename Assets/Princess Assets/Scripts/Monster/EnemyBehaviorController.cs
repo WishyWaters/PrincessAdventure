@@ -12,6 +12,7 @@ namespace PrincessAdventure
         [SerializeField] private EnemyAnimateController _animateCtrl;
         [SerializeField] private EnemyActionController _actionCtrl;
         [SerializeField] private TreasureExplosion _treasure;
+        [SerializeField] private BossSpawner _bossSpawner;
 
         [Header("Core Settings")]
         [SerializeField] private LayerMask _whatIsPlayer;
@@ -33,6 +34,7 @@ namespace PrincessAdventure
         private EnemyStates _currentState;
 
         private Vector2 _currentDirection;
+        private Vector2 _previousDirection;
         private float _currentAcceleration;
         private Vector2 _lastActiveAxis;
 
@@ -50,9 +52,12 @@ namespace PrincessAdventure
             {
                 case EnemyStates.Idle:
                     if (ShouldEndCurrentState())
+                    {
+                        _currentDirection = _previousDirection;
                         ChangeState(EnemyStates.Patrolling, _patrolTime);
+                    }
                     else
-                        HandleLocomotion(_currentDirection);
+                        HandleLocomotion(Vector2.zero);
                     break;
 
                 case EnemyStates.Patrolling:
@@ -105,6 +110,7 @@ namespace PrincessAdventure
                     ChangeDirection();
                     break;
                 case EnemyStates.Idle:
+                    _previousDirection = _currentDirection;
                     _sfxCtrl.PlayIdleSound();
                     break;
                 case EnemyStates.Attack:
@@ -120,6 +126,7 @@ namespace PrincessAdventure
                     _animateCtrl.AnimateDeath(_currentDirection);
                     _sfxCtrl.PlayDeathSound();
                     _treasure.ThrowTreasure();
+                    CheckBossDeath();
                     break;
                 case EnemyStates.Fleeing:
                     break;
@@ -180,7 +187,7 @@ namespace PrincessAdventure
 //                Debug.Log("Player sighted");
                 //Call the EnemyActionController
 
-                if(!_actionCtrl.AttemptAction(playersInSight, _whatIsPlayer))
+                if(!_actionCtrl.AttemptAction(playersInSight, _whatIsPlayer, _currentDirection))
                     ChasePlayer(playersInSight[0].transform.position);
 
                 
@@ -224,7 +231,7 @@ namespace PrincessAdventure
                 Move(movement);
             }
 
-            _animateCtrl.AnimateMovement(_lastActiveAxis, targetSpeed, moveAxis);
+            _animateCtrl.AnimateMovement(_lastActiveAxis, _moveSpeed, targetSpeed, moveAxis);
 
         }
 
@@ -237,6 +244,13 @@ namespace PrincessAdventure
 
         }
 
+        private void CheckBossDeath()
+        {
+            if(_bossSpawner != null)
+            {
+                _bossSpawner.EndBossFight();
+            }
+        }
         #region public methods
         public void AttemptReflect(Vector2 direction)
         {

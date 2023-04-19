@@ -42,7 +42,12 @@ namespace PrincessAdventure
         Coin,
         SilverBar,
         GoldBar,
-        StarShard
+        StarShard,
+        Crystal,
+        Candle,
+        Skull,
+        Book
+
     }
 
     public enum EnemyStates

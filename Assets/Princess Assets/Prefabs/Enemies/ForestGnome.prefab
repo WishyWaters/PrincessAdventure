@@ -1381,10 +1381,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 356281166867775930}
-  - component: {fileID: 356281166867775931}
+  - component: {fileID: 6291117307068508035}
   - component: {fileID: 356281166867775928}
-  - component: {fileID: 356281166867775929}
   - component: {fileID: 356281166867775932}
+  - component: {fileID: 837304637207371530}
+  - component: {fileID: 6381939835588969802}
+  - component: {fileID: 5209404056945073070}
   - component: {fileID: 356281166867775933}
   - component: {fileID: 444558144127692828}
   m_Layer: 13
@@ -1410,8 +1412,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &356281166867775931
-CircleCollider2D:
+--- !u!70 &6291117307068508035
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1423,9 +1425,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.3
+  m_Offset: {x: 0, y: 0.2}
+  m_Size: {x: 0.6, y: 1}
+  m_Direction: 0
 --- !u!50 &356281166867775928
 Rigidbody2D:
   serializedVersion: 4
@@ -1438,7 +1440,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.28274336
+  m_Mass: 0.52274334
   m_LinearDrag: 10
   m_AngularDrag: 10
   m_GravityScale: 0
@@ -1447,46 +1449,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &356281166867775929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 356281166867775926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cac98c14d3b9f4b699735bd59d3cf9fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 356281166867775928}
-  _rigType: 0
-  _enemyAnimator: {fileID: 0}
-  _customizableCharacter: {fileID: 1460700773753131470}
-  _animator: {fileID: 2503974563061772710}
-  _sfxCtrl: {fileID: 356281166867775933}
-  _health: 1
-  _dealHeartDamage: 0
-  _coinDamage: 12
-  _acceleration: 10
-  _moveSpeed: 3
-  _startDirection: {x: 0, y: -1}
-  _whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 832
-  _whatIsBlockade:
-    serializedVersion: 2
-    m_Bits: 7169
-  _diesToExplosion: 0
-  _deathEffect: {fileID: 5395580496455951886, guid: f0d5e753522f5422e8ab894900279cb0, type: 3}
-  _patrolType: 0
-  _patrolTime: 4
-  _idleTime: 1
-  _sightRadius: 3
-  _attackRadius: 0.6
-  _projectile: {fileID: 0}
-  _idleTimeAfterAttack: 1
-  _projectileWaitTime: 0
 --- !u!82 &356281166867775932
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1583,6 +1545,90 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &837304637207371530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356281166867775926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f207032b9cd74b8c9cdb996c08f205b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 356281166867775928}
+  _sfxCtrl: {fileID: 356281166867775933}
+  _animateCtrl: {fileID: 6381939835588969802}
+  _actionCtrl: {fileID: 5209404056945073070}
+  _treasure: {fileID: 444558144127692828}
+  _bossSpawner: {fileID: 0}
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 320
+  _whatIsBlockade:
+    serializedVersion: 2
+    m_Bits: 3073
+  _patrolType: 1
+  _patrolTime: 4
+  _idleTimeAfterPatrol: 1
+  _fleeTime: 2
+  _acceleration: 10
+  _moveSpeed: 4
+  _startDirection: {x: 1, y: 0}
+  _sightRadius: 3
+--- !u!114 &6381939835588969802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356281166867775926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4572a8326faf4b60a4c2c6d562ea304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigType: 0
+  _deathEffectPrefab: {fileID: 5395580496455951886, guid: f0d5e753522f5422e8ab894900279cb0, type: 3}
+  _spineAnimator: {fileID: 0}
+  _customizableCharacter: {fileID: 1460700773753131470}
+  _animator: {fileID: 2503974563061772710}
+  _behaviorCtrl: {fileID: 837304637207371530}
+  _sfxCtrl: {fileID: 356281166867775933}
+  _actionCtrl: {fileID: 5209404056945073070}
+--- !u!114 &5209404056945073070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356281166867775926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390968ee75bd34ad5a0449aab0c0a0ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _behaviorCtrl: {fileID: 837304637207371530}
+  _sfxCtrl: {fileID: 356281166867775933}
+  _health: 1
+  _dealHeartDamage: 0
+  _coinDamage: 13
+  _diesToExplosion: 0
+  _canBeReflected: 1
+  _fleeOnDamage: 1
+  _attackRadius: 0.6
+  _meleeWaitTime: 0.7
+  _idleTimeAfterAttack: 2
+  _projectile: {fileID: 0}
+  _projectileWaitTime: 0
+  _leftRightOffset: 0
+  _upOffset: 0
+  _onHitCreate: 0
+  _thingToCreatePrefab: {fileID: 0}
+  _onHitTeleport: 0
+  _teleportDestinations: []
+  _teleportEffectPrefab: {fileID: 0}
 --- !u!114 &356281166867775933
 MonoBehaviour:
   m_ObjectHideFlags: 0

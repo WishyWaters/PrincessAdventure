@@ -58,14 +58,18 @@
   <ItemGroup>
     <Compile Include="Assets/Princess Assets/Scripts/GUI/ScreenFadeController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/BombController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/WeightSwitchController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/SkewTextExample.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/SimpleScript.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemyAnimateController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Unique/BossSpawner.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/MessageGuiController.cs" />
     <Compile Include="Assets/4Direction Animated 2D Monsters (Fantazia Top Down)/Example/MonsterSpawner.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/ExplosionController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/GameManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/PowerUpGuiController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark01_UGUI.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemyBehaviorController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/ThrowFireballController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_A.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/InteractController.cs" />
@@ -76,6 +80,7 @@
     <Compile Include="Assets/Retro Cartoon UI Pack/Retro Cartoon UI Resources/Scripts/SliderValuePass.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/PotionPickupEffectController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Utilities/DestroyAfterEffectsDone.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/LaserTrap.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/MajorItemHandler.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Models/PrincessModels.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/PrincessSpawnController.cs" />
@@ -113,6 +118,7 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark02.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/InputManager.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TextMeshSpawner.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/DamagePlayerOnTriggerEnter.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/LandingController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/CreateBombController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/BoomshroomController.cs" />
@@ -122,12 +128,15 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_FrameRateCounter.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/PickupController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Monster/GhostBossController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemyActionController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleReflectController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexJitter.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/FadeController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/GameplayGuiController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextEventHandler.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_B.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/PuzzleCheckController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/AffectedObjectController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/TeleportInScene.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/SaveManager.cs" />
@@ -148,15 +157,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/World/LevelManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/CompanionManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/TreasureExplosion.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/PuzzleCheckController.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/LaserTrap.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/DamagePlayerOnTriggerEnter.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/WeightSwitchController.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Monster/GhostBossController.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Level/Unique/BossSpawner.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemyAnimateController.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemyBehaviorController.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/Monster/EnemyActionController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/UniqueItemGuiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

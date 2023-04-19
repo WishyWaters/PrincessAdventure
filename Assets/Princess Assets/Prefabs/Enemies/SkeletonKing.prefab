@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 598280427265149696}
-  - component: {fileID: 598280427265149697}
+  - component: {fileID: 4983919312274326153}
   - component: {fileID: 598280427265149698}
   - component: {fileID: 598280427265149700}
   - component: {fileID: 598280427265149701}
@@ -41,8 +41,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &598280427265149697
-CircleCollider2D:
+--- !u!70 &4983919312274326153
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -54,9 +54,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1, y: 0.1}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: 0.5}
+  m_Size: {x: 0.8, y: 1.5}
+  m_Direction: 0
 --- !u!50 &598280427265149698
 Rigidbody2D:
   serializedVersion: 4
@@ -69,7 +69,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.7853982
+  m_Mass: 1.062655
   m_LinearDrag: 10
   m_AngularDrag: 10
   m_GravityScale: 1
@@ -242,6 +242,7 @@ MonoBehaviour:
   _animateCtrl: {fileID: 644071875159498401}
   _actionCtrl: {fileID: 7492903425902501918}
   _treasure: {fileID: 2717025190357480456}
+  _bossSpawner: {fileID: 0}
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 448
@@ -276,15 +277,18 @@ MonoBehaviour:
   _diesToExplosion: 0
   _canBeReflected: 0
   _fleeOnDamage: 0
-  _attackRadius: 1.3
+  _attackRadius: 1.1
+  _meleeWaitTime: 0.6
   _idleTimeAfterAttack: 0.5
   _projectile: {fileID: 0}
   _projectileWaitTime: 0
   _leftRightOffset: 0
   _upOffset: 0
-  _thingToCreate: {fileID: 0}
   _onHitCreate: 0
+  _thingToCreatePrefab: {fileID: 0}
   _onHitTeleport: 0
+  _teleportDestinations: []
+  _teleportEffectPrefab: {fileID: 0}
 --- !u!114 &644071875159498401
 MonoBehaviour:
   m_ObjectHideFlags: 0
