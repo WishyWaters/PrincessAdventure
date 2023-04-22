@@ -82,7 +82,7 @@ namespace PrincessAdventure
             AudioSource audioSource = GetComponent<AudioSource>();
             if (audioSource != null)
             {
-                audioSource.volume = SoundManager.SoundInstance.GetMasterVolume();
+                audioSource.volume = SoundManager.SoundInstance.GetSfxVolume();
                 audioSource.Play();
             }
         }

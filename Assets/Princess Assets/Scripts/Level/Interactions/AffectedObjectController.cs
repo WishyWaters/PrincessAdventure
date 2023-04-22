@@ -14,7 +14,7 @@ namespace PrincessAdventure
         [SerializeField] private AudioClip _onReset;
 
         [Header("Settings")]
-        [SerializeField] private int _affectedObjectId;
+        [SerializeField] private int _toggleSaveId;
         [SerializeField] private AffectedBehavior _behavior;
         [SerializeField] private float _timeToReset;
         [SerializeField] private bool _cameraOnActivation;
@@ -28,8 +28,21 @@ namespace PrincessAdventure
 
         private void Start()
         {
-            //TODO: Talk to SceneManager & update active, locked, and toggled
             _isActive = true;
+
+            //Talk to LevelManager & update active, locked, and toggled
+            LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+
+            if(levelMgr.DoesToggleSaveExist(_toggleSaveId))
+            {
+                _isLocked = false;
+                _isToggled = levelMgr.GetLevelToggle(_toggleSaveId);
+                _activeAfter.SetActive(_isToggled);
+                _activeBefore.SetActive(!_isToggled);
+
+                if (_behavior == AffectedBehavior.OneTimeSave && _isToggled)
+                    _isActive = false;
+            }
         }
 
         public void ToggleTheObject()
@@ -92,13 +105,13 @@ namespace PrincessAdventure
                     _activeBefore.SetActive(false);
                     _isToggled = true;
                     _isActive = false;
-                    UpdateSave();
+                    UpdateSave(_isToggled);
                     break;
                 case AffectedBehavior.Toggle:
                     _isToggled = !_isToggled;
                     _activeAfter.SetActive(_isToggled);
                     _activeBefore.SetActive(!_isToggled);
-                    UpdateSave();
+                    UpdateSave(_isToggled);
                     break;
                 case AffectedBehavior.TimedReset:
                     _isActive = false;
@@ -158,9 +171,12 @@ namespace PrincessAdventure
             return _isLocked;
         }
 
-        private void UpdateSave()
+        private void UpdateSave(bool value)
         {
-            //TODO:  Call scene manager and update object data
+            //Call level manager and update object data
+            LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+
+            levelMgr.SetLevelToggle(_toggleSaveId, value);
         }
 
         public void Unlock()
@@ -168,7 +184,7 @@ namespace PrincessAdventure
             SoundManager.SoundInstance.PlayClipAt(_onUnlock, this.transform.position);
 
             _isLocked = false;
-            UpdateSave();
+            UpdateSave(false);
         }
 
         public void FailedToUnlock()

@@ -6,10 +6,10 @@ namespace PrincessAdventure
 {
     public class PuzzleCheckController : MonoBehaviour
     {
-        [SerializeField] private int _id;
+        [SerializeField] private int _toggleSaveId;
         [SerializeField] private List<GameObject> _objectsToCheck;
 
-        [SerializeField] private GameObject _objectToSpawn;
+        [SerializeField] private GameObject _objectToSetActive;
         [SerializeField] private GameObject _objectToAffect;
         [SerializeField] private AudioClip _fanfareClip;
         [SerializeField] private GameObject _fanfareEffect;
@@ -21,10 +21,16 @@ namespace PrincessAdventure
 
         private void Start()
         {
-            //TODO:  Check scene manager for completed puzzle
-            //If previously solved then
-            //HandlePuzzleCompletion(false);
+            LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+
+            if (levelMgr.DoesToggleSaveExist(_toggleSaveId))
+            {
+                if(levelMgr.GetLevelToggle(_toggleSaveId))
+                    HandlePuzzleCompletion(false);
+            }
+
         }
+
         public void CheckPuzzle()
         {
             if (IsPuzzleCorrect() && !puzzleSolved)
@@ -53,14 +59,16 @@ namespace PrincessAdventure
         {
             puzzleSolved = true;
 
-            if (_objectToSpawn != null)
-                Instantiate(_objectToSpawn, this.transform.position, this.transform.rotation);
+            if (_objectToSetActive != null)
+                _objectToSetActive.SetActive(true);
 
             if(_objectToAffect)
             {
                 AffectedObjectController affectCtrl = _objectToAffect.GetComponent<AffectedObjectController>();
                 affectCtrl.ToggleTheObject();
             }
+
+            UpdateSave(true);
 
             if (performFanfare)
                 PlayFanFare();
@@ -82,6 +90,14 @@ namespace PrincessAdventure
             }
 
 
+        }
+
+        private void UpdateSave(bool value)
+        {
+            //Call level manager and update object data
+            LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+
+            levelMgr.SetLevelToggle(_toggleSaveId, value);
         }
     }
 }

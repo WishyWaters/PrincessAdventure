@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 620903321034066111}
   - component: {fileID: 620903321034066110}
   m_Layer: 14
-  m_Name: Interaction
+  m_Name: ChestInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,10 +74,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionType: 4
+  _companionCanDo: 0
   _direction: {x: 0, y: 0}
   _affectedObjectCtrl: {fileID: 620903321034066111}
   _activeBefore: {fileID: 0}
   _activeAfter: {fileID: 0}
+  _id: 0
 --- !u!114 &620903321034066111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +96,7 @@ MonoBehaviour:
   _activeAfter: {fileID: 5575931884982470449}
   _onActivation: {fileID: 0}
   _onReset: {fileID: 0}
-  _affectedObjectId: 2
+  _toggleSaveId: 0
   _behavior: 1
   _timeToReset: 0
   _cameraOnActivation: 0

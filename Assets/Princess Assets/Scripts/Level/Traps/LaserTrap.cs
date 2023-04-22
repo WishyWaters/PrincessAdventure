@@ -51,10 +51,16 @@ namespace PrincessAdventure
                 _particle.Play();
                 SoundManager.SoundInstance.PlayClipAt(_laserSound, this.transform.position);
                 _hitBox.SetActive(true);
-                _flipCountDown = 1f;
+                _flipCountDown = .8f;
             }
         }
 
-
+        private IEnumerator ActivateLaserHitBox()
+        {
+            yield return new WaitForSeconds(.2f);
+            _hitBox.SetActive(true);
+        }
     }
+
+
 }

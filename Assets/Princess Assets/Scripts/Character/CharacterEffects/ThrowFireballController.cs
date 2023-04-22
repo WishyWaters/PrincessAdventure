@@ -43,7 +43,7 @@ namespace PrincessAdventure
                 _throwEffect.transform.localPosition = new Vector3(0, -.4f, 0);
 
                 _fireball.transform.localRotation = Quaternion.Euler(0, 0, 90);
-                _fireball.transform.localPosition = worldPosition + new Vector3(0, -.75f, 0);
+                _fireball.transform.localPosition = worldPosition + new Vector3(0, -.85f, 0);
             }
             else if (direction == Vector2.right)
             {

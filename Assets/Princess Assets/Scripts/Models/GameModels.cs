@@ -78,9 +78,10 @@ namespace PrincessAdventure
 			gameScene = GameScenes.StartMountain;
 			loadLocationIndex = 1;
 			gold = 0;
-			heartPoints = 5;
-			magicPoints = 5;
-			luckPoints = 3;
+			keys = 0;
+			heartPoints = 3;
+			magicPoints = 3;
+			luckPoints = 0;
 			starShards = 0;
 			hasMagic = false;
 			hasFade = false;
@@ -105,6 +106,37 @@ namespace PrincessAdventure
 			selectedOutfit = 0;
 			selectedRing = 0;
 			selectedShoes = 0;
+
+		}
+
+		public ActiveGame(GameDetails gameDetails)
+		{
+			saveId = gameDetails.saveId;
+			gameScene = gameDetails.gameScene;
+			loadLocationIndex = 0;
+			gold = gameDetails.gold;
+			keys = gameDetails.keys;
+			heartPoints = gameDetails.heartPoints;
+			magicPoints = gameDetails.magicPoints;
+			luckPoints = gameDetails.luckPoints;
+			starShards = gameDetails.starShards;
+			hasMagic = gameDetails.hasMagic;
+			hasFade = gameDetails.hasFade;
+			hasBomb = gameDetails.hasBomb;
+			hasFireball = gameDetails.hasFireball;
+			hasSummon = gameDetails.hasSummon;
+			hats = gameDetails.hats;
+			outfits = gameDetails.outfits;
+			shoes = gameDetails.shoes;
+			necklaces = gameDetails.necklaces;
+			rings = gameDetails.rings;
+			friends = gameDetails.friends;
+			selectedFriend = gameDetails.selectedFriend;
+			selectedHat = gameDetails.selectedHat;
+			selectedNecklace = gameDetails.selectedNecklace;
+			selectedOutfit = gameDetails.selectedOutfit;
+			selectedRing = gameDetails.selectedRing;
+			selectedShoes = gameDetails.selectedShoes;
 
 		}
 	}

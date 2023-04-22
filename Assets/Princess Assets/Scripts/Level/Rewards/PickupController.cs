@@ -10,7 +10,7 @@ namespace PrincessAdventure
         [SerializeField] AudioClip _clip;
         [SerializeField] GameObject _item;
         [SerializeField] bool _saveOnPickup;
-        [SerializeField] int _objectId;
+        [SerializeField] int _toggleSaveId;
 
         private Transform _startMarker;
         private Transform _endMarker;
@@ -21,6 +21,17 @@ namespace PrincessAdventure
         private float _itemHeight = 0f;
         private float _bounceSpeed = .01f;
 
+        private void Start()
+        {
+            LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+
+            if (_saveOnPickup && levelMgr.DoesToggleSaveExist(_toggleSaveId))
+            {
+                if (levelMgr.GetLevelToggle(_toggleSaveId) == true)
+                    this.gameObject.SetActive(false);
+            }
+
+        }
         private void Update()
         {
             if (Time.timeScale > 0)
@@ -68,6 +79,7 @@ namespace PrincessAdventure
             if (_clip != null)
                 SoundManager.SoundInstance.PlayEffectSound(_clip);
 
+            UpdateSave();
             Destroy(this.gameObject);
         }
 
@@ -105,6 +117,14 @@ namespace PrincessAdventure
 
             //turn on collider
             col.enabled = true;
+        }
+
+        private void UpdateSave()
+        {
+            //Call level manager and update object data
+            LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+
+            levelMgr.SetLevelToggle(_toggleSaveId, true);
         }
 
     }

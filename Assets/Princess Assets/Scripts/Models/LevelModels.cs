@@ -113,9 +113,46 @@ namespace PrincessAdventure
     }
 
     [System.Serializable]
-    public class OneTimeObjects
+    public class ToggleSave
     {
-        int id;
-        public bool wasUsed;
+        public int id;
+        public bool wasToggled;
+
+        public ToggleSave(int newId, bool value)
+        {
+            id = newId;
+            wasToggled = value;
+        }
     }
+
+    [System.Serializable]
+    public class ReferenceSave
+    {
+        public int id;
+        public int referenceId;
+
+        public ReferenceSave(int newId, int value)
+        {
+            id = newId;
+            referenceId = value;
+        }
+    }
+
+    [System.Serializable]
+    public class LevelSave
+    {
+        public List<ToggleSave> toggles;
+        public List<ReferenceSave> references;
+
+        public LevelSave()
+        {
+            toggles = new List<ToggleSave>();
+            references = new List<ReferenceSave>();
+        }
+
+    }
+
+
+
+
 }

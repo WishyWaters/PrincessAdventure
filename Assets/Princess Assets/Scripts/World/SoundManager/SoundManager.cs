@@ -16,6 +16,7 @@ namespace PrincessAdventure
 		public static SoundManager SoundInstance;
 
 		private float sfxVolume = 1f;
+		private float musicVolume = 1f;
 
 		#region Unity Functions
 		private void Awake()
@@ -32,6 +33,11 @@ namespace PrincessAdventure
 		}
         #endregion
 
+        private void Start()
+        {
+			sfxVolume = PlayerPrefs.GetFloat("SfxVolume");
+			musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+		}
 
         public void PlayEffectSound(AudioClip clip)
         {
@@ -47,12 +53,17 @@ namespace PrincessAdventure
 			_musicSource.PlayDelayed(.5f);
         }
 
-		public void ChangeMasterVolume(float value)
+		public void ChangeMusicVolume(float value)
         {
-			AudioListener.volume = value;
+			_musicSource.volume = value;
         }
 
-		public float GetMasterVolume()
+		public void ChangeSfxVolume(float value)
+		{
+			_effectsSource.volume = value;
+		}
+
+		public float GetSfxVolume()
         {
 			return sfxVolume;
 
