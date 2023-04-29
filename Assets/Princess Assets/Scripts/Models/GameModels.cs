@@ -35,7 +35,6 @@ namespace PrincessAdventure
 	[System.Serializable]
 	public class GameDetails
 	{
-		public int saveId;
 		public GameScenes gameScene;
 		public int loadLocationIndex;
 		public int gold;
@@ -72,11 +71,10 @@ namespace PrincessAdventure
 		public int currentManaPoints;
 		public int maxManaPoints;
 
-		public ActiveGame(int newSaveId)
+		public ActiveGame()
         {
-			saveId = newSaveId;
-			gameScene = GameScenes.StartMountain;
-			loadLocationIndex = 1;
+			gameScene = GameScenes.LevelLoadTester;
+			loadLocationIndex = 0;
 			gold = 0;
 			keys = 0;
 			heartPoints = 3;
@@ -111,7 +109,6 @@ namespace PrincessAdventure
 
 		public ActiveGame(GameDetails gameDetails)
 		{
-			saveId = gameDetails.saveId;
 			gameScene = gameDetails.gameScene;
 			loadLocationIndex = 0;
 			gold = gameDetails.gold;

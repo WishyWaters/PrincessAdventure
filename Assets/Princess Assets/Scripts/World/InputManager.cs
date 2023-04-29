@@ -23,22 +23,32 @@ namespace PrincessAdventure
         //Use fixed update because we move via Rigidbody & Physics
         void Update()
         {
+            CapturePauseInput();
+
             if (GameManager.GameInstance.GetCurrentGameState() == GameState.Playing)
                 CaptureGameplayInput();
 
         }
 
-        private void CaptureGameplayInput()
+        private void CapturePauseInput()
         {
+            bool techPause = false;
+            bool gamePause = false;
+
             //settings
             if (Input.GetButtonDown("Settings"))
-                Debug.Log("Settings");
+                techPause = true;
 
             //inventory & status
             if (Input.GetButtonDown("Status"))
-                Debug.Log("Status");
+                gamePause = true;
 
+            GameManager.GameInstance.RoutePauseInput(techPause, gamePause);
 
+        }
+
+        private void CaptureGameplayInput()
+        {
             PrincessInputActions newInputs = new PrincessInputActions();
 
             //directional

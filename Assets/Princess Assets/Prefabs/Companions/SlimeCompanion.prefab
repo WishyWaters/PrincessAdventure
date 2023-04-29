@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textMesh: {fileID: 1599394452}
   _isCompanion: 1
+  _noticeClips: []
 --- !u!61 &191608026
 BoxCollider2D:
   m_ObjectHideFlags: 0

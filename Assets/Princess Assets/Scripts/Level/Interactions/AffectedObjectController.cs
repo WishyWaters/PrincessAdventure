@@ -120,6 +120,12 @@ namespace PrincessAdventure
                     _activeBefore.SetActive(false);
                     StartCoroutine(TimerCountdown());
                     break;
+                case AffectedBehavior.ToggleResetOnLoad:
+                    _isToggled = !_isToggled;
+                    _activeAfter.SetActive(_isToggled);
+                    _activeBefore.SetActive(!_isToggled);
+
+                    break;
             }
         }
 

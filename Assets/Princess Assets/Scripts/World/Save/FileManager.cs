@@ -46,4 +46,28 @@ public static class FileManager
             return false;
         }
     }
+
+    public static bool DeleteFile(string a_FileName)
+    {
+        var fullPath = Path.Combine(Application.persistentDataPath, a_FileName);
+
+        try
+        {
+            if (File.Exists(fullPath))
+            {
+                File.Delete(fullPath);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to read from {fullPath} with exception {e}");
+            return false;
+        }
+    }
 }

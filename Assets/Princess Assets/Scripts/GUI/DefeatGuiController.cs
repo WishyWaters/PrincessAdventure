@@ -39,7 +39,7 @@ namespace PrincessAdventure
         {
             SoundManager.SoundInstance.PlayEffectSound(_click);
 
-            GameManager.GameInstance.QuitGame();
+            GameManager.GameInstance.LoadMainMenu();
         }
 
         //TODO:  Look up messages by death

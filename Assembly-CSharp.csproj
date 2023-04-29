@@ -83,6 +83,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/LaserTrap.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/MajorItemHandler.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Models/PrincessModels.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/SaveButtonLayoutController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/PrincessSpawnController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Models/GameModels.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/ChatController.cs" />
@@ -107,7 +108,6 @@
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/Interaction.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/World/SoundManager/VolumeSlider.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextEventCheck.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/ShaderPropAnimator.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/WarpTextExample.cs" />
@@ -129,6 +129,7 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_FrameRateCounter.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/PickupController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/MainMenuController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Enemy/EnemyActionController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/SparkleReflectController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexJitter.cs" />
@@ -158,7 +159,9 @@
     <Compile Include="Assets/Princess Assets/Scripts/World/LevelManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/CompanionManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/TreasureExplosion.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/GUI/MainMenuController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/MainMenuGraphicsController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/TechnicalPauseController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/GamePauseGuiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

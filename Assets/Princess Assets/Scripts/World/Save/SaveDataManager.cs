@@ -2,16 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 
+
 namespace PrincessAdventure
 {
     public static class SaveDataManager
     {
-        public static void SaveGameDetails(GameDetails gameToSave)
+        public static void SaveGameDetails(int saveId, GameDetails gameToSave)
         {
             StringBuilder saveName = new StringBuilder();
 
             saveName.Append("PrincessAdvCore");
-            saveName.Append(gameToSave.saveId.ToString());
+            saveName.Append(saveId.ToString());
             saveName.Append(".dat");
             
 
@@ -80,6 +81,33 @@ namespace PrincessAdventure
                 savedLevel = new LevelSave();
 
             return savedLevel;
+        }
+
+        public static void EraseSave(int saveId)
+        {
+            //Erase Core save
+            StringBuilder coreSaveName = new StringBuilder();
+
+            coreSaveName.Append("PrincessAdvCore");
+            coreSaveName.Append(saveId.ToString());
+            coreSaveName.Append(".dat");
+
+            FileManager.DeleteFile(coreSaveName.ToString());
+
+            //Erase scene saves
+            foreach (string sceneName in GameScenes.GetNames(typeof(GameScenes)))
+            {
+                StringBuilder levelSaveName = new StringBuilder();
+
+                levelSaveName.Append("PrincessAdvLevel");
+                levelSaveName.Append(saveId.ToString());
+                levelSaveName.Append("_");
+                levelSaveName.Append(sceneName);
+                levelSaveName.Append(".dat");
+
+                FileManager.DeleteFile(levelSaveName.ToString());
+
+            }
         }
     }
 }

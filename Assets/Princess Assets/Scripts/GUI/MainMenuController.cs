@@ -52,6 +52,7 @@ namespace PrincessAdventure
 
         private bool _hasSave;
         private float _soundCheckCooldown;
+        private int _saveToErase;
 
         private void Start()
         {
@@ -105,6 +106,13 @@ namespace PrincessAdventure
             _ErasePanel.SetActive(false);
             _EraseConfirmPanel.SetActive(false);
 
+            SaveButtonLayoutController layoutOne = _saveOneBtn.GetComponent<SaveButtonLayoutController>();
+            SaveButtonLayoutController layoutTwo = _saveTwoBtn.GetComponent<SaveButtonLayoutController>();
+            SaveButtonLayoutController layoutThree = _saveThreeBtn.GetComponent<SaveButtonLayoutController>();
+            layoutOne.LoadButtonLayout(1);
+            layoutTwo.LoadButtonLayout(2);
+            layoutThree.LoadButtonLayout(3);
+
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(_saveOneBtn);
 
@@ -119,6 +127,13 @@ namespace PrincessAdventure
             _settingsPanel.SetActive(false);
             _ErasePanel.SetActive(true);
             _EraseConfirmPanel.SetActive(false);
+
+            SaveButtonLayoutController layoutOne = _deleteSaveOneBtn.GetComponent<SaveButtonLayoutController>();
+            SaveButtonLayoutController layoutTwo = _deleteSaveTwoBtn.GetComponent<SaveButtonLayoutController>();
+            SaveButtonLayoutController layoutThree = _deleteSaveThreeBtn.GetComponent<SaveButtonLayoutController>();
+            layoutOne.LoadButtonLayout(1);
+            layoutTwo.LoadButtonLayout(2);
+            layoutThree.LoadButtonLayout(3);
 
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(_backToLevelSelect);
@@ -136,13 +151,18 @@ namespace PrincessAdventure
 
         }
 
+        public void QuitGame()
+        {
+            GameManager.GameInstance.QuitGame();
+        }
+
         #endregion
 
         #region Game Saves
 
         public void ContinueRecentGame()
         {
-            StartGame(0);
+            StartGame(PlayerPrefs.GetInt("RecentSaveId"));
 
         }
 
@@ -164,7 +184,7 @@ namespace PrincessAdventure
         private void StartGame(int saveId)
         {
             SoundManager.SoundInstance.PlayEffectSound(_gameStart);
-
+            GameManager.GameInstance.LoadGame(saveId);
         }
 
         public void CancelErase()
@@ -179,25 +199,28 @@ namespace PrincessAdventure
 
         public void ConfirmErase()
         {
-            //TODO: Perform save erase
             SoundManager.SoundInstance.PlayEffectSound(_eraseDone);
+
+            SaveDataManager.EraseSave(_saveToErase);
 
             LoadSaveSelect();
         }
 
         public void EraseSaveOne()
         {
-            //TODO: set id to erase to #
+            _saveToErase = 1;
             LoadEraseConfirm();
         }
 
         public void EraseSaveTwo()
         {
+            _saveToErase = 2;
             LoadEraseConfirm();
         }
 
         public void EraseSaveThree()
         {
+            _saveToErase = 3;
             LoadEraseConfirm();
         }
         #endregion
@@ -207,7 +230,7 @@ namespace PrincessAdventure
         public void LoadSettings()
         {
             SoundManager.SoundInstance.PlayEffectSound(_click);
-            _soundCheckCooldown = Time.time + 2;
+            _soundCheckCooldown = Time.unscaledTime + 2;
 
             _mainPanel.SetActive(false);
             _savesPanel.SetActive(false);
@@ -253,10 +276,10 @@ namespace PrincessAdventure
             Slider sfxSlider = _sfxSlider.GetComponent<Slider>();
             SoundManager.SoundInstance.ChangeSfxVolume(sfxSlider.value);
 
-            if (_soundCheckCooldown < Time.time)
+            if (_soundCheckCooldown < Time.unscaledTime)
             {
                 SoundManager.SoundInstance.PlayEffectSound(_sfxTextClip);
-                _soundCheckCooldown = Time.time + .3f;
+                _soundCheckCooldown = Time.unscaledTime + .3f;
             }
         }
 
@@ -276,6 +299,7 @@ namespace PrincessAdventure
             }
 
         }
+
         public void SaveGameSettings()
         {
             SoundManager.SoundInstance.PlayEffectSound(_click);

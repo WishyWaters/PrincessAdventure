@@ -1,13 +1,20 @@
 ﻿<Properties StartupConfiguration="{AD664D52-B116-25F0-8477-C67A55415F25}|">
-  <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="dceda267-6279-456b-9391-cf904d3a70f9" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Princess Assets/Scripts/GUI/MainMenuController.cs">
+  <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="545a9de3-070b-464f-a586-5fc1298208a3" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Princess Assets/Scripts/Level/Interactions/AffectedObjectController.cs">
     <Files>
-      <File FileName="Assets/Princess Assets/Scripts/World/GameManager.cs" Line="73" Column="8" />
-      <File FileName="Assets/Princess Assets/Scripts/GUI/GameplayGuiController.cs" Line="118" Column="13" />
-      <File FileName="Assets/Princess Assets/Scripts/GUI/PowerUpGuiController.cs" Line="32" Column="1" />
-      <File FileName="Assets/Princess Assets/Scripts/GUI/GuiManager.cs" Line="140" Column="36" />
-      <File FileName="Assets/Princess Assets/Scripts/GUI/MainMenuController.cs" Line="229" Column="35" />
-      <File FileName="Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Toggle.cs" Line="284" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/GUI/TechnicalPauseController.cs" Line="27" Column="40" />
+      <File FileName="Assets/Princess Assets/Data/BoneTombMessages.json" Line="8" Column="52" />
+      <File FileName="Assets/Princess Assets/Scripts/World/Save/SaveDataManager.cs" Line="88" Column="30" />
+      <File FileName="Assets/Princess Assets/Scripts/World/GameManager.cs" Line="556" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/GUI/MainMenuController.cs" Line="274" Column="40" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Interactions/AffectedObjectController.cs" Line="193" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/Models/LevelModels.cs" Line="25" Column="26" />
+      <File FileName="Assets/Princess Assets/Scripts/Character/CharacterController.cs" Line="196" Column="10" />
+      <File FileName="Assets/Princess Assets/Scripts/World/PrincessSpawnController.cs" Line="66" Column="43" />
+      <File FileName="Assets/Princess Assets/Scripts/World/LevelManager.cs" Line="54" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/World/SoundManager/SoundManager.cs" Line="91" Column="29" />
+      <File FileName="Assets/Princess Assets/Scripts/World/SoundManager/PlaySoundOnStart.cs" Line="1" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Interactions/ProjectileController.cs" Line="126" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,22 +27,17 @@
               </Node>
               <Node name="JMO Assets" expanded="True">
                 <Node name="Cartoon FX Remaster" expanded="True">
-                  <Node name="CFXR Assets" expanded="True">
-                    <Node name="Scripts" expanded="True" />
-                  </Node>
+                  <Node name="CFXR Assets" expanded="True" />
                 </Node>
               </Node>
               <Node name="Princess Assets" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="Character" expanded="True">
-                    <Node name="CharacterEffects" expanded="True" />
-                  </Node>
-                  <Node name="Enemy" expanded="True" />
-                  <Node name="GUI" expanded="True">
-                    <Node name="MainMenuController.cs" selected="True" />
-                  </Node>
+                  <Node name="Character" expanded="True" />
                   <Node name="Level" expanded="True">
-                    <Node name="Interactions" expanded="True" />
+                    <Node name="Checkpoint" expanded="True" />
+                    <Node name="Interactions" expanded="True">
+                      <Node name="AffectedObjectController.cs" selected="True" />
+                    </Node>
                     <Node name="Rewards" expanded="True" />
                     <Node name="Traps" expanded="True" />
                   </Node>
@@ -50,6 +52,12 @@
           </Node>
         </State>
       </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>PlayerPrefs.GetInt("Tips")</Value>
+          <Value>_virtualCamera.transform.position</Value>
+        </State>
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
@@ -57,16 +65,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/Character/CharacterController.cs" relfile="Assets/Princess Assets/Scripts/Character/CharacterController.cs" line="42" column="1" />
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/World/Save/SaveDataManager.cs" relfile="Assets/Princess Assets/Scripts/World/Save/SaveDataManager.cs" line="10" column="1" />
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/Level/Interactions/ProjectileController.cs" relfile="Assets/Princess Assets/Scripts/Level/Interactions/ProjectileController.cs" line="126" column="1" />
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/Level/Interactions/AffectedObjectController.cs" relfile="Assets/Princess Assets/Scripts/Level/Interactions/AffectedObjectController.cs" line="187" column="1" />
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/World/GameManager.cs" relfile="Assets/Princess Assets/Scripts/World/GameManager.cs" line="225" column="1" />
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/World/GameManager.cs" relfile="Assets/Princess Assets/Scripts/World/GameManager.cs" line="233" column="1" />
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/World/GameManager.cs" relfile="Assets/Princess Assets/Scripts/World/GameManager.cs" line="240" column="1" />
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/World/GameManager.cs" relfile="Assets/Princess Assets/Scripts/World/GameManager.cs" line="242" column="1" />
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/World/GameManager.cs" relfile="Assets/Princess Assets/Scripts/World/GameManager.cs" line="251" column="1" />
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/World/GameManager.cs" relfile="Assets/Princess Assets/Scripts/World/GameManager.cs" line="262" column="1" />
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/World/GameManager.cs" relfile="Assets/Princess Assets/Scripts/World/GameManager.cs" line="69" column="1" />
+      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/GUI/MainMenuController.cs" relfile="Assets/Princess Assets/Scripts/GUI/MainMenuController.cs" line="255" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

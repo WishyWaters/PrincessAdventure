@@ -21,7 +21,8 @@ namespace PrincessAdventure
         OneTimeResetOnLoad,
         OneTimeSave,
         Toggle,
-        TimedReset
+        TimedReset,
+        ToggleResetOnLoad
 
     }
 

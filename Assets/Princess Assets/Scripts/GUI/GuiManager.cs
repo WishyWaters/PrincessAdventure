@@ -15,6 +15,8 @@ namespace PrincessAdventure
         [SerializeField] GameObject _fadePanel;
         [SerializeField] GameObject _uniqueItemPanel;
         [SerializeField] GameObject _mainMenuPanel;
+        [SerializeField] GameObject _techPausePanel;
+        [SerializeField] GameObject _gamePausePanel;
 
         [Header("Scripts")]
         [SerializeField] GameplayGuiController _gameplayGui;
@@ -25,6 +27,8 @@ namespace PrincessAdventure
         [SerializeField] ScreenFadeController _fadeGui;
         [SerializeField] UniqueItemGuiController _itemGui;
         [SerializeField] MainMenuController _mainMenu;
+        [SerializeField] TechnicalPauseController _techPauseGui;
+        [SerializeField] GamePauseGuiController _gamePauseGui;
 
         public static GuiManager GuiInstance;
 
@@ -52,7 +56,24 @@ namespace PrincessAdventure
             _fadePanel.SetActive(false);
             _uniqueItemPanel.SetActive(false);
             _mainMenuPanel.SetActive(false);
+            _techPausePanel.SetActive(false);
+            _gamePausePanel.SetActive(false);
         }
+
+        public void DeactivateAllExceptFade()
+        {
+            _gameplayPanel.SetActive(false);
+            _defeatPanel.SetActive(false);
+            _starShardPanel.SetActive(false);
+            _powerUpPanel.SetActive(false);
+            _messagePanel.SetActive(false);
+            _uniqueItemPanel.SetActive(false);
+            _mainMenuPanel.SetActive(false);
+            _techPausePanel.SetActive(false);
+            _gamePausePanel.SetActive(false);
+        }
+
+
         public void LoadGameplayGui(ActiveGame gameDetails)
         {
             _gameplayPanel.SetActive(true);
@@ -63,6 +84,8 @@ namespace PrincessAdventure
             _fadePanel.SetActive(false);
             _uniqueItemPanel.SetActive(false);
             _mainMenuPanel.SetActive(false);
+            _techPausePanel.SetActive(false);
+            _gamePausePanel.SetActive(false);
 
             _gameplayGui.LoadGameplayGui(gameDetails);
         }
@@ -77,6 +100,8 @@ namespace PrincessAdventure
             _fadePanel.SetActive(false);
             _uniqueItemPanel.SetActive(false);
             _mainMenuPanel.SetActive(false);
+            _techPausePanel.SetActive(false);
+            _gamePausePanel.SetActive(false);
 
             _defeatGui.LoadDefeatScreen();
         }
@@ -91,6 +116,8 @@ namespace PrincessAdventure
             _fadePanel.SetActive(false);
             _uniqueItemPanel.SetActive(false);
             _mainMenuPanel.SetActive(false);
+            _techPausePanel.SetActive(false);
+            _gamePausePanel.SetActive(false);
 
             _starShardGui.LoadStarShardScreen(numOfShards);
         }
@@ -105,6 +132,8 @@ namespace PrincessAdventure
             _fadePanel.SetActive(false);
             _uniqueItemPanel.SetActive(false);
             _mainMenuPanel.SetActive(false);
+            _techPausePanel.SetActive(false);
+            _gamePausePanel.SetActive(false);
 
             _powerUpGui.LoadPowerUpScreen();
         }
@@ -119,6 +148,8 @@ namespace PrincessAdventure
             _fadePanel.SetActive(false);
             _uniqueItemPanel.SetActive(false);
             _mainMenuPanel.SetActive(false);
+            _techPausePanel.SetActive(false);
+            _gamePausePanel.SetActive(false);
 
             _messageGui.LoadMessageGui(msgText);
         }
@@ -133,6 +164,8 @@ namespace PrincessAdventure
             _fadePanel.SetActive(false);
             _uniqueItemPanel.SetActive(true);
             _mainMenuPanel.SetActive(false);
+            _techPausePanel.SetActive(false);
+            _gamePausePanel.SetActive(false);
 
             _itemGui.LoadUniqueItemGui(item);
         }
@@ -147,8 +180,42 @@ namespace PrincessAdventure
             _fadePanel.SetActive(false);
             _uniqueItemPanel.SetActive(false);
             _mainMenuPanel.SetActive(true);
+            _techPausePanel.SetActive(false);
+            _gamePausePanel.SetActive(false);
 
             _mainMenu.LoadMainMenu();
+        }
+
+        public void LoadTechnicalPause()
+        {
+            _gameplayPanel.SetActive(false);
+            _defeatPanel.SetActive(false);
+            _starShardPanel.SetActive(false);
+            _powerUpPanel.SetActive(false);
+            _messagePanel.SetActive(false);
+            _fadePanel.SetActive(false);
+            _uniqueItemPanel.SetActive(false);
+            _mainMenuPanel.SetActive(false);
+            _techPausePanel.SetActive(true);
+            _gamePausePanel.SetActive(false);
+
+            _techPauseGui.LoadTechPause();
+        }
+
+        public void LoadGamePause()
+        {
+            _gameplayPanel.SetActive(false);
+            _defeatPanel.SetActive(false);
+            _starShardPanel.SetActive(false);
+            _powerUpPanel.SetActive(false);
+            _messagePanel.SetActive(false);
+            _fadePanel.SetActive(false);
+            _uniqueItemPanel.SetActive(false);
+            _mainMenuPanel.SetActive(false);
+            _techPausePanel.SetActive(false);
+            _gamePausePanel.SetActive(true);
+
+            //_gamePauseGui.
         }
 
         public void EmptyOneHeart()

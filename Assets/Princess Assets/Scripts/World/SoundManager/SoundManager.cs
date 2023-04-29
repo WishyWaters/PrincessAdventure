@@ -15,9 +15,6 @@ namespace PrincessAdventure
 
 		public static SoundManager SoundInstance;
 
-		private float sfxVolume = 1f;
-		private float musicVolume = 1f;
-
 		#region Unity Functions
 		private void Awake()
 		{
@@ -35,8 +32,16 @@ namespace PrincessAdventure
 
         private void Start()
         {
-			sfxVolume = PlayerPrefs.GetFloat("SfxVolume");
-			musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+			float music = 1f;
+			if (PlayerPrefs.HasKey("MusicVolume"))
+				music = PlayerPrefs.GetFloat("MusicVolume");
+
+			float sfx = 1;
+			if (PlayerPrefs.HasKey("SfxVolume"))
+				sfx = PlayerPrefs.GetFloat("SfxVolume");
+
+			ChangeMusicVolume(music);
+			ChangeSfxVolume(sfx);
 		}
 
         public void PlayEffectSound(AudioClip clip)
@@ -65,7 +70,7 @@ namespace PrincessAdventure
 
 		public float GetSfxVolume()
         {
-			return sfxVolume;
+			return _effectsSource.volume;
 
 		}
 
@@ -79,11 +84,11 @@ namespace PrincessAdventure
 			AudioSource aSource = tempGO.AddComponent<AudioSource>(); // add an audio source
 			aSource.clip = clip; // define the clip
 								 // set other aSource properties here, if desired
-			aSource.volume = sfxVolume;
+			aSource.volume = _effectsSource.volume;
 			aSource.spatialBlend = 1;
 			aSource.rolloffMode = AudioRolloffMode.Linear;
-			aSource.minDistance = 1;
-			aSource.maxDistance = 15;
+			aSource.minDistance = 0;
+			aSource.maxDistance = 20;
 
 
 			aSource.Play(); // start the sound

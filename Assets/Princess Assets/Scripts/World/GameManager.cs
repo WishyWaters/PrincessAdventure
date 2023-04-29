@@ -28,6 +28,8 @@ namespace PrincessAdventure
 		private float _playerNoticeTimer;
 		private CinemachineVirtualCamera _virtualCamera;
 
+		private bool _pause;
+
 		#region Unity Functions
 		private void Awake()
 		{
@@ -46,7 +48,7 @@ namespace PrincessAdventure
 
         private void Start()
         {
-			SetupNewGame();
+			SetupGameFromStart();
 		}
 
 		private void Update()
@@ -58,7 +60,17 @@ namespace PrincessAdventure
         #endregion
 
         #region load functions
-        private void SetupNewGame()
+		public void LoadGame(int saveId)
+        {
+			ChangeGameState(GameState.Loading);
+
+			_saveId = saveId;
+
+			//Load Game Details
+			StartCoroutine(LoadGameThenLoadScene());
+		}
+
+        private void SetupGameFromStart()
         {
 			ChangeGameState(GameState.Loading);
 
@@ -66,12 +78,9 @@ namespace PrincessAdventure
 
 			SetupLevel();
 
-			if (_levelMgr.GetCurrentLevel() == GameScenes.MainMenu)
+			if (_levelMgr.GetCurrentLevel() != GameScenes.MainMenu)
 			{
-				GuiManager.GuiInstance.LoadMainMenuGui();
-			}
-			else
-			{
+				
 				//Load Game Details
 				LoadGameDetails();
 
@@ -81,18 +90,25 @@ namespace PrincessAdventure
 		}
 
 		private void SetupLevel()
-        {
+		{
 			//Setup this scene
 			_virtualCamera = GameObject.FindGameObjectWithTag("VirtualCamera").GetComponentInChildren<CinemachineVirtualCamera>();
 			_virtualCamera.enabled = false;
 			_levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
 			_currentScene = _levelMgr.GetCurrentLevel();
 			SoundManager.SoundInstance.ChangeMusic(_levelMgr.GetLevelMusic(), true);
+
+			if (_levelMgr.GetCurrentLevel() == GameScenes.MainMenu)
+			{
+				ChangeGameState(GameState.Menu);
+				GuiManager.GuiInstance.LoadMainMenuGui();
+			}
 		}
 
 		private void SpawnPlayerAtCheckpoint()
         {
 			ChangeGameState(GameState.Cutscene);
+			FullRestoreNoEffects();
 
 			GameObject checkPoint = _levelMgr.GetLevelCheckPoint();
 			_virtualCamera.Follow = checkPoint.transform;
@@ -112,20 +128,23 @@ namespace PrincessAdventure
 
 		private void LoadGameDetails()
 		{
-			GameDetails savedGame = SaveDataManager.LoadGameDetails(1);
-
-			_saveId = savedGame.saveId;
+			GameDetails savedGame = SaveDataManager.LoadGameDetails(_saveId);
 
 			if (savedGame == null)
-				_gameDetails = new ActiveGame(1);
+				_gameDetails = new ActiveGame();
 			else
 				_gameDetails = new ActiveGame(savedGame);
 
 
+			FullRestoreNoEffects();
+
+		}
+
+		private void FullRestoreNoEffects()
+        {
 			_gameDetails.currentHealth = _gameDetails.heartPoints;
 			_gameDetails.maxManaPoints = _gameDetails.magicPoints * 50;
 			_gameDetails.currentManaPoints = _gameDetails.maxManaPoints;
-
 		}
 
 		public int GetSaveId()
@@ -139,9 +158,60 @@ namespace PrincessAdventure
 
 			StartCoroutine(LoadSceneWithCurrentGame(targetScene, targetIndex, fade));
 
-
-
         }
+
+		public void LoadMainMenu()
+		{
+			ChangeGameState(GameState.Loading);
+
+			StartCoroutine(LoadMainMenuScene());
+
+		}
+
+		private IEnumerator LoadGameThenLoadScene()
+        {
+			float fadeTime = .6f;
+			float currentTimer = 0f;
+
+			//Fade out
+			GuiManager.GuiInstance.FillToBlack(FadeTypes.Enter, .3f);
+			while (currentTimer < fadeTime)
+			{
+				currentTimer += Time.unscaledDeltaTime;
+				yield return null;
+			}
+
+			GuiManager.GuiInstance.DeactivateAllExceptFade();
+
+			LoadGameDetails();
+			_currentScene = _gameDetails.gameScene;
+
+			//load next scene
+			AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_currentScene.ToString());
+
+			// Wait until the asynchronous scene fully loads
+			while (!asyncLoad.isDone)
+			{
+				yield return null;
+			}
+
+
+			//Setup New scene
+			SetupLevel();
+
+			//Play Cutscene
+			SpawnPlayerAtCheckpoint();
+
+			//Call fade in
+			currentTimer = 0;
+			GuiManager.GuiInstance.FillToClear(FadeTypes.Enter, fadeTime);
+			while (currentTimer < fadeTime)
+			{
+				currentTimer += Time.unscaledDeltaTime;
+				yield return null;
+			}
+
+		}
 
 		private IEnumerator LoadSceneWithCurrentGame(GameScenes targetScene, int targetIndex, FadeTypes fade)
 		{
@@ -156,9 +226,11 @@ namespace PrincessAdventure
 				yield return null;
 			}
 
+			GuiManager.GuiInstance.DeactivateAllExceptFade();
+
 			//save scene data
-			SaveDataManager.SaveGameDetails(_gameDetails);
-			_levelMgr.SaveLevelDetails(_gameDetails.saveId);
+			SaveDataManager.SaveGameDetails(_saveId, _gameDetails);
+			_levelMgr.SaveLevelDetails(_saveId);
 
 			//load next scene
 			AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(targetScene.ToString());
@@ -216,6 +288,58 @@ namespace PrincessAdventure
 			ResumeGameplay();
 		}
 
+		private IEnumerator LoadMainMenuScene()
+		{
+			float fadeTime = .6f;
+			float currentTimer = 0f;
+
+			//Fade out
+			GuiManager.GuiInstance.FillToBlack(FadeTypes.Exit, .3f);
+			while (currentTimer < fadeTime)
+			{
+				currentTimer += Time.unscaledDeltaTime;
+				yield return null;
+			}
+
+			GuiManager.GuiInstance.DeactivateAllExceptFade();
+
+			//save scene data
+			SaveDataManager.SaveGameDetails(_saveId, _gameDetails);
+			_levelMgr.SaveLevelDetails(_saveId);
+
+			//load next scene
+			AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(GameScenes.MainMenu.ToString());
+
+			// Wait until the asynchronous scene fully loads
+			while (!asyncLoad.isDone)
+			{
+				yield return null;
+			}
+
+
+			//Setup New scene
+			SetupLevel();
+
+			//wait a frame after level load
+			bool continueLoad = true;
+			while (continueLoad)
+			{
+				continueLoad = false;
+				yield return null;
+			}
+
+			//Call fade in
+			currentTimer = 0;
+			GuiManager.GuiInstance.FillToClear(FadeTypes.Exit, fadeTime);
+			while (currentTimer < fadeTime)
+			{
+				currentTimer += Time.unscaledDeltaTime;
+				yield return null;
+			}
+
+			ChangeGameState(GameState.Menu);
+		}
+
 		private IEnumerator ReloadCurrentSceneAtCheckpoint()
 		{
 			float fadeTime = .6f;
@@ -230,8 +354,8 @@ namespace PrincessAdventure
 			}
 
 			//save scene data
-			SaveDataManager.SaveGameDetails(_gameDetails);
-			_levelMgr.SaveLevelDetails(_gameDetails.saveId);
+			SaveDataManager.SaveGameDetails(_saveId, _gameDetails);
+			_levelMgr.SaveLevelDetails(_saveId);
 
 			//load next scene
 			AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_currentScene.ToString());
@@ -242,11 +366,6 @@ namespace PrincessAdventure
 				yield return null;
 			}
 
-
-			//Setup New scene
-			SetupLevel();
-
-
 			//wait a frame after level load
 			bool continueLoad = true;
 			while (continueLoad)
@@ -255,7 +374,11 @@ namespace PrincessAdventure
 				yield return null;
 			}
 
-			SetupNewGame();
+			//Setup New scene
+			SetupLevel();
+
+			//Play Cutscene
+			SpawnPlayerAtCheckpoint();
 
 			//Call fade in
 			currentTimer = 0;
@@ -280,8 +403,6 @@ namespace PrincessAdventure
 
 		public void QuitGame()
         {
-			SaveDataManager.SaveGameDetails(_gameDetails);
-			_levelMgr.SaveLevelDetails(_gameDetails.saveId);
 
 			#if UNITY_EDITOR
 						// Application.Quit() does not work in the editor so
@@ -377,8 +498,10 @@ namespace PrincessAdventure
 
 		public void RouteInputs(PrincessInputActions inputs)
         {
-			if (GetCurrentGameState() == GameState.Playing)
+			
+			if (GetCurrentGameState() == GameState.Playing  && _currentScene != GameScenes.MainMenu)
 			{
+
 				if (_controllingCompanion)
 					_companionMgr.UpdateNextInputs(inputs);
 				else
@@ -386,7 +509,38 @@ namespace PrincessAdventure
 					inputs.InputFade = inputs.InputFade && _gameDetails.hasFade;
 					_charCtrl.UpdateNextInputs(inputs);
 				}
+				
 			}
+		}
+
+		public void RoutePauseInput(bool techPause, bool gamePause)
+        {
+			if (_currentScene != GameScenes.MainMenu)
+			{
+				if (_currentGameState == GameState.Menu && _pause)
+				{
+					if (techPause || gamePause)
+					{
+						ResumeGameplay();
+					}
+				}
+				else
+				{
+					if (techPause)
+					{
+						_pause = true;
+						ChangeGameState(GameState.Menu);
+						GuiManager.GuiInstance.LoadTechnicalPause();
+					}
+					else if (gamePause)
+					{
+						_pause = true;
+						ChangeGameState(GameState.Menu);
+						GuiManager.GuiInstance.LoadGamePause();
+					}
+				}
+			}
+
 		}
 
 		public void ActivateCompanion(Vector3 targetPosition)
@@ -725,6 +879,8 @@ namespace PrincessAdventure
 
 		public void ResumeGameplay()
         {
+			_pause = false;
+
 			LoadGameplayGui();
 			ChangeGameState(GameState.Playing);
 

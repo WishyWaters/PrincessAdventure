@@ -324,6 +324,8 @@ MonoBehaviour:
   _actionCtrl: {fileID: 2989587462643717964}
   _treasure: {fileID: 9077596761866264159}
   _bossSpawner: {fileID: 0}
+  _singleSpawn: 0
+  _toggleSaveId: 0
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 832
