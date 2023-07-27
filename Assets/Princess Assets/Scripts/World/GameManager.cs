@@ -16,6 +16,7 @@ namespace PrincessAdventure
 
 		private LevelManager _levelMgr;
 		private CharacterController _charCtrl;
+		private PrincessCustomizerController _customizerCtrl;
 		private GameObject _activeCompanion;
 		private GameState _currentGameState = GameState.Undefined;
 		private ActiveGame _gameDetails;
@@ -122,9 +123,10 @@ namespace PrincessAdventure
         {
 			GameObject princess = Instantiate(_princessPrefab, spawnPosition, new Quaternion());
 			_charCtrl = princess.GetComponent<CharacterController>();
-
+			_customizerCtrl = princess.GetComponent<PrincessCustomizerController>();
 			ActivatePrincess(false, faceDirection);
 		}
+
 
 		private void LoadGameDetails()
 		{
@@ -411,6 +413,71 @@ namespace PrincessAdventure
 			#else
 					 Application.Quit();
 			#endif
+
+        }
+
+		#endregion
+
+		#region Customization functions
+
+		public void SetBodyColor(Color newBodyColor)
+		{
+			//update player
+			_customizerCtrl.SetBodyColor(newBodyColor);
+			//TODO: update save object
+
+		}
+
+		public void SetHairStyle(PrincessHairStyles hairStyle)
+		{
+			//update player
+			_customizerCtrl.SetHairStyle(hairStyle);
+			//TODO: update save object
+
+		}
+
+		public void SetHairColor(Color newHairColor)
+		{
+			//update player
+			_customizerCtrl.SetHairColor(newHairColor);
+			//TODO: update save object
+
+		}
+
+		public void SetEyeShape(PrincessEyeShapes eyes)
+		{
+			//update player
+			_customizerCtrl.SetEyeShape(eyes);
+			//TODO: update save object
+
+		}
+
+		public void SetEyeColor(Color eyeColor)
+		{
+			//update player
+			_customizerCtrl.SetEyeColor(eyeColor);
+			//TODO: update save object
+
+		}
+
+		public void SetGlassesStyle(PrincessGlassesStyle glassesStyle)
+		{
+			//update player
+			_customizerCtrl.SetGlassesShape(glassesStyle);
+			//TODO: update save object
+
+		}
+
+		public void SetGlassesColor(Color color)
+		{
+			//update player
+			_customizerCtrl.SetGlassesColor(color);
+			//TODO: update save object
+
+		}
+
+		public void SavePrincessCustomization()
+        {
 
         }
 

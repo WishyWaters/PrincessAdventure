@@ -85,6 +85,7 @@ namespace PrincessAdventure
             CheckForRecentSave();
 
             EventSystem.current.SetSelectedGameObject(null);
+            
             if (_hasSave)
             {
                 _continueBtn.SetActive(true);

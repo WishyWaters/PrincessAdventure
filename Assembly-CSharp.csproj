@@ -68,6 +68,8 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/ExplosionController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/GameManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/PowerUpGuiController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/MainMenuGraphicsController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/GamePauseGuiController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark01_UGUI.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Enemy/EnemyBehaviorController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/ThrowFireballController.cs" />
@@ -122,6 +124,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/World/Save/SaveDataManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/LandingController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/CreateBombController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/TechnicalPauseController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/BoomshroomController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark03.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Enemy/EnemySoundController.cs" />
@@ -159,9 +162,15 @@
     <Compile Include="Assets/Princess Assets/Scripts/World/LevelManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/CompanionManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/TreasureExplosion.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/GUI/MainMenuGraphicsController.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/GUI/TechnicalPauseController.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/GUI/GamePauseGuiController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/CustomizeCharGuiController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/PrincessBodyColorSelector.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/SelectorGuiController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/PrincessHairStyleSelector.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/PrincessHairColorSelector.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/PrincessEyeSelector.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/PrincessEyeColorSelector.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/PrincessGlassesSelector.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/PrincessGlassesColorSelector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

@@ -61,7 +61,51 @@ namespace PrincessAdventure
 		public bool InputThrowFireball { get; set; }
 	}
 
-	
+	public class PrincessCustomizations
+    {
+		public Color BodyColor { get; set; }
+		public PrincessHairStyles HairStyle { get; set; }
+		public Color HairColor { get; set; }
+		public PrincessEyeShapes EyeStyle { get; set; }
+		public Color EyeColor { get; set; }
+		public PrincessGlassesStyle GlassesStyle { get; set; }
+		public Color GlassesColor { get; set; }
+
+	}
+
+	public enum PrincessHairStyles
+    {
+		Bangs,
+		Feathery,
+		Down,
+		Ponytail,
+		DoubleBun,
+		FaceFrame,
+		TurnedOut,
+		Mohawk,
+		Spike,
+		Floof,
+		Slick,
+		SlickPony,
+		SlickBun,
+		Pixie,
+		Bald
+    }
+
+	public enum PrincessEyeShapes
+    {
+		Big,
+		Middle,
+		Narrow
+    }
+
+	public enum PrincessGlassesStyle
+	{
+		None,
+		Round,
+		Thick,
+		Nose
+	}
 
 	
 }
