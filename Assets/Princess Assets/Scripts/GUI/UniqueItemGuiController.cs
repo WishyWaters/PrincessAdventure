@@ -9,7 +9,7 @@ namespace PrincessAdventure
 {
     public class UniqueItemGuiController : MonoBehaviour
     {
-        [SerializeField] private Sprite _crystalSprite;
+        [SerializeField] private Sprite _wandSprite;
         [SerializeField] private Sprite _candleSprite;
         [SerializeField] private Sprite _skullSprite;
         [SerializeField] private Sprite _bookSprite;
@@ -22,21 +22,24 @@ namespace PrincessAdventure
         [SerializeField] private AudioClip _click;
         [SerializeField] private AudioClip _powerUpZinger;
 
+        [SerializeField] private Sprite _gemSprite;
+        [SerializeField] private Sprite _soupSprite;
+
         public void LoadUniqueItemGui(PickUps item)
         {
             SoundManager.SoundInstance.PlayEffectSound(_powerUpZinger);
 
             switch (item)
             {
-                case PickUps.Crystal:
-                    _itemImage.sprite = _crystalSprite;
-                    _titleText.text = "Mirror Crystal";
-                    _descText.text = "";
+                case PickUps.Staff:
+                    _itemImage.sprite = _wandSprite;
+                    _titleText.text = "Star Wand";
+                    _descText.text = "A magical wand used to calm emotions, reflect danger, and find wishes.";
                     break;
                 case PickUps.Candle:
                     _itemImage.sprite = _candleSprite;
                     _titleText.text = "Ever Candle";
-                    _descText.text = "";
+                    _descText.text = "A candle that shoots a fire ball.  Do not use on birthday cakes.";
                     break;
                 case PickUps.Skull:
                     _itemImage.sprite = _skullSprite;
@@ -46,6 +49,16 @@ namespace PrincessAdventure
                 case PickUps.Book:
                     _itemImage.sprite = _bookSprite;
                     _titleText.text = "Boom Book";
+                    _descText.text = "An entire book on how to create magic explosions.  Becareful!";
+                    break;
+                case PickUps.Soup:
+                    _itemImage.sprite = _soupSprite;
+                    _titleText.text = "Monster Soup";
+                    _descText.text = "A tasty treat for ";
+                    break;
+                case PickUps.Gemstone:
+                    _itemImage.sprite = _gemSprite;
+                    _titleText.text = "Mirror Gem";
                     _descText.text = "";
                     break;
             }

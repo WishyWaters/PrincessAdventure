@@ -44,10 +44,13 @@ namespace PrincessAdventure
         SilverBar,
         GoldBar,
         StarShard,
-        Crystal,
+        Staff,
         Candle,
         Skull,
-        Book
+        Book,
+        Gemstone,
+        Soup
+
 
     }
 

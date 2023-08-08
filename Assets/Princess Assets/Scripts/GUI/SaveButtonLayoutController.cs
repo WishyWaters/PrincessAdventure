@@ -68,15 +68,14 @@ namespace PrincessAdventure
             int completedTally = 0;
             completedTally += game.heartPoints - 3;
             completedTally += game.magicPoints - 3;
-            completedTally += game.luckPoints;
             completedTally *= 5;
             completedTally += game.starShards;
-            completedTally += game.friends.Count;
-            completedTally += game.hats.Count;
-            completedTally += game.outfits.Count;
-            completedTally += game.shoes.Count;
-            completedTally += game.necklaces.Count;
-            completedTally += game.rings.Count;
+            completedTally += game.equipment.friends.Count;
+            completedTally += game.equipment.hats.Count;
+            completedTally += game.equipment.outfits.Count;
+            completedTally += game.equipment.shoes.Count;
+            completedTally += game.equipment.necklaces.Count;
+            completedTally += game.equipment.rings.Count;
 
 
             return Mathf.RoundToInt(completedTally);

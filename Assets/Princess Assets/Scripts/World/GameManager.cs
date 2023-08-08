@@ -424,15 +424,16 @@ namespace PrincessAdventure
 		{
 			//update player
 			_customizerCtrl.SetBodyColor(newBodyColor);
-			//TODO: update save object
 
+			_gameDetails.customizations.BodyColor = newBodyColor;
 		}
 
 		public void SetHairStyle(PrincessHairStyles hairStyle)
 		{
 			//update player
 			_customizerCtrl.SetHairStyle(hairStyle);
-			//TODO: update save object
+
+			_gameDetails.customizations.HairStyle = hairStyle;
 
 		}
 
@@ -440,7 +441,8 @@ namespace PrincessAdventure
 		{
 			//update player
 			_customizerCtrl.SetHairColor(newHairColor);
-			//TODO: update save object
+
+			_gameDetails.customizations.HairColor = newHairColor;
 
 		}
 
@@ -448,7 +450,8 @@ namespace PrincessAdventure
 		{
 			//update player
 			_customizerCtrl.SetEyeShape(eyes);
-			//TODO: update save object
+
+			_gameDetails.customizations.EyeStyle = eyes;
 
 		}
 
@@ -456,7 +459,8 @@ namespace PrincessAdventure
 		{
 			//update player
 			_customizerCtrl.SetEyeColor(eyeColor);
-			//TODO: update save object
+
+			_gameDetails.customizations.EyeColor = eyeColor;
 
 		}
 
@@ -464,7 +468,8 @@ namespace PrincessAdventure
 		{
 			//update player
 			_customizerCtrl.SetGlassesShape(glassesStyle);
-			//TODO: update save object
+
+			_gameDetails.customizations.GlassesStyle = glassesStyle;
 
 		}
 
@@ -472,7 +477,21 @@ namespace PrincessAdventure
 		{
 			//update player
 			_customizerCtrl.SetGlassesColor(color);
-			//TODO: update save object
+
+			_gameDetails.customizations.GlassesColor = color;
+
+		}
+
+		public PrincessEquipment GetPrincessEquipment()
+        {
+			return _gameDetails.equipment;
+        }
+
+		public void SetPrincessEquipment(PrincessEquipment newEquipment)
+        {
+			_gameDetails.equipment = newEquipment;
+
+			//TODO: Call Princess customizer to update character
 
 		}
 
@@ -613,7 +632,7 @@ namespace PrincessAdventure
 		public void ActivateCompanion(Vector3 targetPosition)
         {
 
-			GameObject companion = _companionMgr.HandleCompanionActivation(_gameDetails.selectedFriend, targetPosition);
+			GameObject companion = _companionMgr.HandleCompanionActivation(_gameDetails.equipment.selectedFriend, targetPosition);
 			ControlCompanion(companion);
 		}
 
@@ -845,9 +864,9 @@ namespace PrincessAdventure
 					_gameDetails.starShards++;
 					LoadStarShardGui();
 					break;
-				case PickUps.Crystal:
+				case PickUps.Staff:
 					_gameDetails.hasMagic = true;
-					LoadUniqueItemGui(PickUps.Crystal);
+					LoadUniqueItemGui(PickUps.Staff);
 					break;
 				case PickUps.Candle:
 					_gameDetails.hasFireball = true;
@@ -860,6 +879,14 @@ namespace PrincessAdventure
 				case PickUps.Book:
 					_gameDetails.hasBomb = true;
 					LoadUniqueItemGui(PickUps.Book);
+					break;
+				case PickUps.Soup:
+					_gameDetails.hasSummon = true;
+					LoadUniqueItemGui(PickUps.Soup);
+					break;
+				case PickUps.Gemstone:
+					_gameDetails.hasVision = true;
+					LoadUniqueItemGui(PickUps.Gemstone);
 					break;
 			}
         }
@@ -933,9 +960,6 @@ namespace PrincessAdventure
 					_gameDetails.magicPoints++;
 					_gameDetails.maxManaPoints = _gameDetails.magicPoints * 50;
 					_gameDetails.currentManaPoints = _gameDetails.maxManaPoints;
-					break;
-				case PowerUpOptions.Luck:
-					_gameDetails.luckPoints++;
 					break;
 			}
 

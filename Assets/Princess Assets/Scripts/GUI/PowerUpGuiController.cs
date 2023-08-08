@@ -10,13 +10,11 @@ namespace PrincessAdventure
     {
         [SerializeField] private GameObject _heartSelectBtn;
         [SerializeField] private GameObject _magicSelectBtn;
-        [SerializeField] private GameObject _luckSelectBtn;
         [SerializeField] private GameObject _confirmButton;
         [SerializeField] private GameObject _backButton;
 
         [SerializeField] private Image _heartImage;
         [SerializeField] private Image _magicImage;
-        [SerializeField] private Image _luckImage;
 
         [SerializeField] private AudioClip _click;
         [SerializeField] private AudioClip _powerUpZinger;
@@ -40,7 +38,6 @@ namespace PrincessAdventure
             powerSelection = PowerUpOptions.Heart;
             _heartImage.rectTransform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             _magicImage.rectTransform.localScale = new Vector3(1f, 1f, 1f);
-            _luckImage.rectTransform.localScale = new Vector3(1f, 1f, 1f);
 
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(_confirmButton);
@@ -53,24 +50,11 @@ namespace PrincessAdventure
             powerSelection = PowerUpOptions.Magic;
             _heartImage.rectTransform.localScale = new Vector3(1f, 1f, 1f);
             _magicImage.rectTransform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            _luckImage.rectTransform.localScale = new Vector3(1f, 1f, 1f);
 
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(_confirmButton);
         }
 
-        public void SelectLuck()
-        {
-            SoundManager.SoundInstance.PlayEffectSound(_click);
-
-            powerSelection = PowerUpOptions.Luck;
-            _heartImage.rectTransform.localScale = new Vector3(1f, 1f, 1f);
-            _magicImage.rectTransform.localScale = new Vector3(1f, 1f, 1f);
-            _luckImage.rectTransform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
-
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(_confirmButton);
-        }
 
         public void Confirm()
         {
@@ -87,7 +71,6 @@ namespace PrincessAdventure
 
             _heartImage.rectTransform.localScale = new Vector3(1f, 1f, 1f);
             _magicImage.rectTransform.localScale = new Vector3(1f, 1f, 1f);
-            _luckImage.rectTransform.localScale = new Vector3(1f, 1f, 1f);
 
             switch (powerSelection)
             {
@@ -96,9 +79,6 @@ namespace PrincessAdventure
                     break;
                 case PowerUpOptions.Magic:
                     EventSystem.current.SetSelectedGameObject(_magicSelectBtn);
-                    break;
-                case PowerUpOptions.Luck:
-                    EventSystem.current.SetSelectedGameObject(_luckSelectBtn);
                     break;
             }
         }
