@@ -34,8 +34,8 @@ namespace PrincessAdventure
         {
             //Debug.Log("Loading Gameplay UI");
 
-            LoadHearts(gameDetails.heartPoints, gameDetails.currentHealth);
-            LoadMagic(gameDetails.magicPoints);
+            LoadHearts(gameDetails.maxHealth, gameDetails.currentHealth);
+            LoadMagic(gameDetails.maxMagic);
             UpdateMana(gameDetails.currentManaPoints, gameDetails.maxManaPoints);
             UpdateGoldText(gameDetails.gold);
             UpdateKeyText(gameDetails.keys);

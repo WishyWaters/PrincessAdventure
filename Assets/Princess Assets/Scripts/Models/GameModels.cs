@@ -58,7 +58,9 @@ namespace PrincessAdventure
 	{
 		public int currentHealth;
 		public int currentManaPoints;
-		public int maxManaPoints;
+		public int maxManaPoints { get; private set; }
+		public int maxHealth { get; private set; }
+		public int maxMagic { get; private set; }
 
 		public ActiveGame()
 		{
@@ -93,6 +95,69 @@ namespace PrincessAdventure
 			hasSummon = gameDetails.hasSummon;
 			equipment = new PrincessEquipment();
 			customizations = new PrincessCustomizations();
+		}
+
+		public void RecalculateMaxStats()
+        {
+			int tempHealth = 0;
+			int tempMana = 0;
+
+			if (equipment.selectedHat == 2 || equipment.selectedHat == 6)
+				tempHealth += 2;
+			else if (equipment.selectedHat == 3 || equipment.selectedHat == 5 || equipment.selectedHat == 8)
+				tempMana += 2;
+			else if (equipment.selectedHat != 1)
+			{
+				tempHealth++;
+				tempMana++;
+            }
+
+			if (equipment.selectedOutfit == 2 || equipment.selectedOutfit == 6)
+				tempHealth += 2;
+			else if (equipment.selectedOutfit == 5 || equipment.selectedOutfit == 8)
+				tempMana += 2;
+			else if (equipment.selectedOutfit != 1)
+			{
+				tempHealth++;
+				tempMana++;
+			}
+
+			if (equipment.selectedShoes == 2 || equipment.selectedShoes == 3 || equipment.selectedShoes == 6)
+				tempHealth += 2;
+			else if (equipment.selectedShoes == 5 || equipment.selectedShoes == 8)
+				tempMana += 2;
+			else if (equipment.selectedShoes != 1)
+			{
+				tempHealth++;
+				tempMana++;
+			}
+
+			if (equipment.selectedNecklace == 3 )
+				tempHealth += 2;
+			else if (equipment.selectedNecklace == 4)
+				tempMana += 2;
+			else if (equipment.selectedNecklace != 0)
+			{
+				tempHealth++;
+				tempMana++;
+			}
+
+			if (equipment.selectedRing == 3)
+				tempHealth += 2;
+			else if (equipment.selectedRing == 4)
+				tempMana += 2;
+			else if (equipment.selectedRing != 0)
+			{
+				tempHealth++;
+				tempMana++;
+			}
+
+			tempHealth += heartPoints;
+			tempMana += magicPoints;
+
+			maxMagic = tempMana;
+			maxHealth = tempHealth;
+			maxManaPoints = tempMana * 50;
 		}
 	}
 

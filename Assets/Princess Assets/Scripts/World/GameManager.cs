@@ -144,10 +144,12 @@ namespace PrincessAdventure
 
 		private void FullRestoreNoEffects()
         {
-			_gameDetails.currentHealth = _gameDetails.heartPoints;
-			_gameDetails.maxManaPoints = _gameDetails.magicPoints * 50;
+			_gameDetails.RecalculateMaxStats();
+			_gameDetails.currentHealth = _gameDetails.maxHealth;
 			_gameDetails.currentManaPoints = _gameDetails.maxManaPoints;
 		}
+
+		
 
 		public int GetSaveId()
         {
@@ -491,6 +493,10 @@ namespace PrincessAdventure
         {
 			_gameDetails.equipment = newEquipment;
 
+			//Update Stats
+			_gameDetails.RecalculateMaxStats();
+			GuiManager.GuiInstance.UpdateGameplayGui(_gameDetails);
+
 			//TODO: Call Princess customizer to update character
 
 		}
@@ -607,6 +613,7 @@ namespace PrincessAdventure
 				{
 					if (techPause || gamePause)
 					{
+						_virtualCamera.m_Lens.OrthographicSize = 5f;
 						ResumeGameplay();
 					}
 				}
@@ -620,6 +627,7 @@ namespace PrincessAdventure
 					}
 					else if (gamePause)
 					{
+						_virtualCamera.m_Lens.OrthographicSize = 3f;
 						_pause = true;
 						ChangeGameState(GameState.Menu);
 						GuiManager.GuiInstance.LoadGamePause();
@@ -777,7 +785,7 @@ namespace PrincessAdventure
 
 		public void HealPrincess()
 		{
-			if (_gameDetails.currentHealth < _gameDetails.heartPoints)
+			if (_gameDetails.currentHealth < _gameDetails.maxHealth)
 			{
 				//Update game details
 				_gameDetails.currentHealth += 1;
@@ -788,7 +796,7 @@ namespace PrincessAdventure
 
 		public bool DoesPrincessNeedRegen()
         {
-			if (_gameDetails.currentHealth == _gameDetails.heartPoints
+			if (_gameDetails.currentHealth == _gameDetails.maxHealth
 				&& _gameDetails.currentManaPoints == _gameDetails.maxManaPoints)
 				return false;
 
@@ -954,11 +962,12 @@ namespace PrincessAdventure
             {
 				case PowerUpOptions.Heart:
 					_gameDetails.heartPoints++;
-					_gameDetails.currentHealth = _gameDetails.heartPoints;
+					_gameDetails.RecalculateMaxStats();
+					_gameDetails.currentHealth = _gameDetails.maxHealth;
 					break;
 				case PowerUpOptions.Magic:
 					_gameDetails.magicPoints++;
-					_gameDetails.maxManaPoints = _gameDetails.magicPoints * 50;
+					_gameDetails.RecalculateMaxStats();
 					_gameDetails.currentManaPoints = _gameDetails.maxManaPoints;
 					break;
 			}

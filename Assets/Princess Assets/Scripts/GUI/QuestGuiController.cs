@@ -13,8 +13,7 @@ namespace PrincessAdventure
         // Start is called before the first frame update
         void Start()
         {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(_startSelected);
+            InitializeQuestPanel();
         }
 
         // Update is called once per frame
@@ -33,6 +32,13 @@ namespace PrincessAdventure
 
                 //TODO: Play sfx
             }
+        }
+
+        public void InitializeQuestPanel()
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(_startSelected);
+
         }
     }
 }

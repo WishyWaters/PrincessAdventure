@@ -90,6 +90,11 @@ namespace PrincessAdventure
             _gameplayGui.LoadGameplayGui(gameDetails);
         }
 
+        public void UpdateGameplayGui(ActiveGame gameDetails)
+        {
+            _gameplayGui.LoadGameplayGui(gameDetails);
+        }
+
         public void LoadDefeatGui()
         {
             _gameplayPanel.SetActive(false);
@@ -215,7 +220,7 @@ namespace PrincessAdventure
             _techPausePanel.SetActive(false);
             _gamePausePanel.SetActive(true);
 
-            //_gamePauseGui.
+            _gamePauseGui.InitializePause();
         }
 
         public void EmptyOneHeart()

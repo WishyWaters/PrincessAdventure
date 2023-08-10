@@ -236,5 +236,11 @@ namespace PrincessAdventure
             if(glassData != null)
                 _customizableCharacter.Customizer.SetCustomizationMainColor(glassData, glassesColor);
         }
+
+        public void SetEquipment(PrincessEquipment equipment)
+        {
+            //TODO:  Set custom styles and colors by equipment
+
+        }
     }
 }

@@ -22,8 +22,6 @@ namespace PrincessAdventure
         // Start is called before the first frame update
         void Start()
         {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(_headSelected);
 
             _headSelected.GetComponent<Button>().onClick.AddListener(delegate { OpenEquipSelect(EquipSlots.Head); });
             _bodySelected.GetComponent<Button>().onClick.AddListener(delegate { OpenEquipSelect(EquipSlots.Body); });
@@ -38,6 +36,9 @@ namespace PrincessAdventure
         // Update is called once per frame
         void Update()
         {
+            //TODO: On Cancel Input, initialize equipment to close equip select
+            if (Input.GetButtonUp("Cancel") && _equipSelectCtrl.isActiveAndEnabled)
+                InitializeEquipmentScreen();
 
             if (_highlightedObject != EventSystem.current.currentSelectedGameObject)
             {
@@ -55,6 +56,9 @@ namespace PrincessAdventure
 
         public void InitializeEquipmentScreen()
         {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(_headSelected);
+
             _equipSelectCtrl.gameObject.SetActive(false);
 
             //Load Icons for Current Equipment
@@ -65,7 +69,7 @@ namespace PrincessAdventure
         public void OpenEquipSelect(EquipSlots slot)
         {
             _equipSelectCtrl.gameObject.SetActive(true);
-            _equipSelectCtrl.InitializeEquipSelect();
+            _equipSelectCtrl.InitializeEquipSelect(slot);
         }
 
         private void LoadEquipedIcons(PrincessEquipment equipment)

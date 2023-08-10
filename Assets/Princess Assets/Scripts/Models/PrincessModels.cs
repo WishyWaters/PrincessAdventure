@@ -99,12 +99,26 @@ namespace PrincessAdventure
         {
 			hats = new List<int>();
 			hats.Add(1);
+			hats.Add(2);
+			hats.Add(3);
+			hats.Add(4);
+			hats.Add(5);
+			hats.Add(9);
 
 			outfits = new List<int>();
 			outfits.Add(1);
+			outfits.Add(2);
+			outfits.Add(3);
+			outfits.Add(4);
+			outfits.Add(5);
+			outfits.Add(6);
 
 			shoes = new List<int>();
 			shoes.Add(1);
+			shoes.Add(2);
+			shoes.Add(3);
+			shoes.Add(4);
+			shoes.Add(5);
 
 			necklaces = new List<int>();
 			rings = new List<int>();

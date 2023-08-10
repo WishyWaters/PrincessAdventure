@@ -12,7 +12,7 @@ namespace PrincessAdventure
 
         [SerializeField] EquipIconLookup _equipLookup;
 
-        public void SetEquipIcon(EquipSlots slot, int id, bool showBonus)
+        public void SetEquipIcon(EquipSlots slot, int id, bool showBonus, bool disabled = false)
         {
             EquipInformation equipInfo = GetEquipInfo(slot, id);
 
@@ -22,21 +22,10 @@ namespace PrincessAdventure
             _iconImage.sprite = equipInfo.icon;
             _iconImage.color = equipInfo.color;
 
-            if (showBonus && equipInfo.bonusStats != EquipBonus.None)
-            {
-                _bonusOne.gameObject.SetActive(true);
-                _bonusTwo.gameObject.SetActive(true);
+            BonusStatDisplay(equipInfo, showBonus);
 
-                SetBonusIcons(equipInfo);
-            }
-            else
-            {
-                if(_bonusOne != null)
-                    _bonusOne.gameObject.SetActive(false);
-                if(_bonusTwo != null)
-                    _bonusTwo.gameObject.SetActive(false);
-            }
-
+            if(disabled)
+                DisableDisplay();
         }
 
         private EquipInformation GetEquipInfo(EquipSlots slot, int id)
@@ -48,6 +37,23 @@ namespace PrincessAdventure
             
         }
     
+        private void BonusStatDisplay(EquipInformation equipInfo, bool showBonus)
+        {
+            if (showBonus && equipInfo.bonusStats != EquipBonus.None)
+            {
+                _bonusOne.gameObject.SetActive(true);
+                _bonusTwo.gameObject.SetActive(true);
+
+                SetBonusIcons(equipInfo);
+            }
+            else
+            {
+                if (_bonusOne != null)
+                    _bonusOne.gameObject.SetActive(false);
+                if (_bonusTwo != null)
+                    _bonusTwo.gameObject.SetActive(false);
+            }
+        }
 
         private void SetBonusIcons(EquipInformation equipInfo)
         {
@@ -67,6 +73,19 @@ namespace PrincessAdventure
                     break;
 
             }
+
+        }
+
+        private void DisableDisplay()
+        {
+            Color disabledColor = Color.black;
+            disabledColor.a = .6f;
+
+            _iconImage.color = disabledColor;
+
+            _bonusOne.gameObject.SetActive(false);
+            _bonusTwo.gameObject.SetActive(true);
+            _bonusTwo.sprite = _equipLookup.GetLockedSprite();
 
         }
     }
