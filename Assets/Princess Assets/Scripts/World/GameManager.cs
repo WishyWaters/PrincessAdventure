@@ -437,6 +437,8 @@ namespace PrincessAdventure
 
 			_gameDetails.customizations.HairStyle = hairStyle;
 
+			SetPrincessEquipment(_gameDetails.equipment);
+
 		}
 
 		public void SetHairColor(Color newHairColor)
@@ -497,8 +499,8 @@ namespace PrincessAdventure
 			_gameDetails.RecalculateMaxStats();
 			GuiManager.GuiInstance.UpdateGameplayGui(_gameDetails);
 
-			//TODO: Call Princess customizer to update character
-
+			//Call Princess customizer to update character
+			_customizerCtrl.SetEquipment(newEquipment, _gameDetails.customizations);
 		}
 
 		public void SavePrincessCustomization()
@@ -907,25 +909,25 @@ namespace PrincessAdventure
 					_gameDetails.starShards++;
 					LoadStarShardGui();
 					break;
-				//case MajorTreasures.Friend:
-				//	_gameDetails.friends.Add(treasureId);
-				//	break;
-				//case MajorTreasures.Hat:
-				//	_gameDetails.hats.Add(treasureId);
-				//	break;
-				//case MajorTreasures.Necklace:
-				//	_gameDetails.necklaces.Add(treasureId);
-				//	break;
-				//case MajorTreasures.Outfit:
-				//	_gameDetails.outfits.Add(treasureId);
-				//	break;
-				//case MajorTreasures.Ring:
-				//	_gameDetails.rings.Add(treasureId);
-				//	break;
-				//case MajorTreasures.Shoes:
-				//	_gameDetails.shoes.Add(treasureId);
-				//	break;
-			}
+				case MajorTreasures.Friend:
+					_gameDetails.equipment.friends.Add(treasureId);
+					break;
+				case MajorTreasures.Hat:
+                    _gameDetails.equipment.hats.Add(treasureId);
+                    break;
+                case MajorTreasures.Necklace:
+                    _gameDetails.equipment.necklaces.Add(treasureId);
+                    break;
+                case MajorTreasures.Outfit:
+                    _gameDetails.equipment.outfits.Add(treasureId);
+                    break;
+                case MajorTreasures.Ring:
+                    _gameDetails.equipment.rings.Add(treasureId);
+                    break;
+                case MajorTreasures.Shoes:
+                    _gameDetails.equipment.shoes.Add(treasureId);
+                    break;
+            }
 
 			//Call Game save
         }

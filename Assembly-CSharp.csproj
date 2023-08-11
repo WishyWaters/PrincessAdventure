@@ -122,6 +122,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Utilities/GlobalUtils.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_DigitValidator.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/CreateSummonController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/EquipSelectGuiController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark02.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/InputManager.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TextMeshSpawner.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/LandingController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/CreateBombController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/TechnicalPauseController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/EquipIconController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/BoomshroomController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark03.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/PrincessBodyColorSelector.cs" />
@@ -162,6 +164,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/ProjectileController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/DropdownSample.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_PhoneNumberValidator.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/EquipIconLookup.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexColorCycler.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/UniqueItemGuiController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TeleType.cs" />
@@ -173,9 +176,6 @@
     <Compile Include="Assets/Princess Assets/Scripts/World/LevelManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/CompanionManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/TreasureExplosion.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/GUI/EquipIconLookup.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/GUI/EquipSelectGuiController.cs" />
-    <Compile Include="Assets/Princess Assets/Scripts/GUI/EquipIconController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

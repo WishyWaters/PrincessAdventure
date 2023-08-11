@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CustomizableCharacters;
 
 namespace PrincessAdventure
 {
@@ -103,7 +104,10 @@ namespace PrincessAdventure
 			hats.Add(3);
 			hats.Add(4);
 			hats.Add(5);
-			hats.Add(9);
+			hats.Add(6);
+			hats.Add(7);
+			hats.Add(8);
+			//hats.Add(9);
 
 			outfits = new List<int>();
 			outfits.Add(1);
@@ -112,6 +116,9 @@ namespace PrincessAdventure
 			outfits.Add(4);
 			outfits.Add(5);
 			outfits.Add(6);
+			outfits.Add(7);
+			outfits.Add(8);
+			//outfits.Add(9);
 
 			shoes = new List<int>();
 			shoes.Add(1);
@@ -119,6 +126,10 @@ namespace PrincessAdventure
 			shoes.Add(3);
 			shoes.Add(4);
 			shoes.Add(5);
+			shoes.Add(6);
+			shoes.Add(7);
+			shoes.Add(8);
+			//shoes.Add(9);
 
 			necklaces = new List<int>();
 			rings = new List<int>();
@@ -187,4 +198,51 @@ namespace PrincessAdventure
 		None
 	}
 
+	[System.Serializable]
+	public class HatEquip
+    {
+		public CustomizationData hat;
+		public Color color;
+		public bool requiresHatHair;
+		public bool hasDetail;
+		public int detailIndex;
+		public Color detailColor;
+	}
+
+	[System.Serializable]
+	public class ShoeEquip
+	{
+		public CustomizationData shoe;
+		public Color color;
+		public bool hasDetail;
+		public int detailIndex;
+		public Color detailColor;
+	}
+
+	[System.Serializable]
+	public class OutfitEquip
+	{
+		public CustomizationData top;
+		public Color topColor1;
+		public Color topColor2;
+		public bool hasTopDetail;
+		public int topDetailIndex;
+		public CustomizationData topOverlay;
+		public Color topOverColor1;
+		public Color topOverColor2;
+		public CustomizationData belt;
+		public Color beltColor1;
+		public Color beltColor2;
+		public bool hasBeltDetail;
+		public int beltDetailIndex;
+		public CustomizationData pants;
+		public Color pantColor1;
+		public Color pantColor2;
+		public CustomizationData gloves;
+		public Color gloveColor1;
+		public Color gloveColor2;
+		public CustomizationData shoulder;
+		public Color shoulderColor1;
+		public Color shoulderColor2;
+	}
 }

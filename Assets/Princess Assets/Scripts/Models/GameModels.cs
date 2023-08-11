@@ -158,6 +158,9 @@ namespace PrincessAdventure
 			maxMagic = tempMana;
 			maxHealth = tempHealth;
 			maxManaPoints = tempMana * 50;
+
+			if (currentHealth > maxHealth)
+				currentHealth = maxHealth;
 		}
 	}
 

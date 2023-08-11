@@ -3709,6 +3709,13 @@ MonoBehaviour:
   _eyeCategory: {fileID: 11400000, guid: 22736e209ac6cb4438b3a6385472b38c, type: 2}
   _glassesCategory: {fileID: 11400000, guid: e1c94f8eb2b917c4f98517e2a7744e96, type: 2}
   _irisCategory: {fileID: 11400000, guid: 5e73a5fa217903a4a90f33e6ae07f7cb, type: 2}
+  _hatCategory: {fileID: 11400000, guid: 4fa26ac1a7b166d4cb560487928ce9ad, type: 2}
+  _topCategory: {fileID: 11400000, guid: dfebf0a21665d2949bed88c25abc0d16, type: 2}
+  _overlayCategory: {fileID: 11400000, guid: d8d5bca1f701fb6439f8547e935e517f, type: 2}
+  _beltCategory: {fileID: 11400000, guid: d5dc1342e3dbee948884dc0214112c6f, type: 2}
+  _pantsCategory: {fileID: 11400000, guid: 876735a920f49c84c8d5a49e9bef77d7, type: 2}
+  _handCategory: {fileID: 11400000, guid: 5f10d671b013e0d48b1819a8ab5d722d, type: 2}
+  _shoulderCategory: {fileID: 11400000, guid: 8d403b4d489422849ae30ffa00ec3cd5, type: 2}
   _customizableCharacter: {fileID: 8111599727004752843}
   _characterExpression: {fileID: 9120581913534349739}
   _expressions:
@@ -3737,6 +3744,309 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7147b865e3574a1488af08254a3b194e, type: 2}
   - {fileID: 11400000, guid: 79edc5fb3fac1364fa632184bbb2f12a, type: 2}
   - {fileID: 11400000, guid: 315da73e86c899a48a2b25551a365b7f, type: 2}
+  _hats:
+  - hat: {fileID: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    requiresHatHair: 0
+    hasDetail: 0
+    detailIndex: 0
+    detailColor: {r: 0, g: 0, b: 0, a: 0}
+  - hat: {fileID: 11400000, guid: 8b1067fdf81783d478c97575fe8da7c1, type: 2}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    requiresHatHair: 0
+    hasDetail: 1
+    detailIndex: 0
+    detailColor: {r: 1, g: 1, b: 1, a: 1}
+  - hat: {fileID: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    requiresHatHair: 0
+    hasDetail: 0
+    detailIndex: 0
+    detailColor: {r: 0, g: 0, b: 0, a: 0}
+  - hat: {fileID: 11400000, guid: 5e0e5a2c2752b924da1c4ad34405cace, type: 2}
+    color: {r: 0.2901961, g: 0.2901961, b: 0.2901961, a: 1}
+    requiresHatHair: 1
+    hasDetail: 1
+    detailIndex: 1
+    detailColor: {r: 0, g: 0, b: 0, a: 0}
+  - hat: {fileID: 11400000, guid: 9ed1208c9513bda4481fc7e0d9da0663, type: 2}
+    color: {r: 0.3137255, g: 0.5294118, b: 0.9333334, a: 1}
+    requiresHatHair: 1
+    hasDetail: 1
+    detailIndex: 1
+    detailColor: {r: 0, g: 0, b: 0, a: 0}
+  - hat: {fileID: 11400000, guid: 9ed1208c9513bda4481fc7e0d9da0663, type: 2}
+    color: {r: 0.92549026, g: 0.29803923, b: 0.27450982, a: 1}
+    requiresHatHair: 1
+    hasDetail: 1
+    detailIndex: 0
+    detailColor: {r: 1, g: 1, b: 1, a: 1}
+  - hat: {fileID: 11400000, guid: 933e7642b4c43b743a644415f700f31c, type: 2}
+    color: {r: 0.33333334, g: 0.7254902, b: 0.24705884, a: 1}
+    requiresHatHair: 1
+    hasDetail: 1
+    detailIndex: 0
+    detailColor: {r: 1, g: 1, b: 1, a: 1}
+  - hat: {fileID: 11400000, guid: aabce222a8a05e349b99df99ec3e4f9a, type: 2}
+    color: {r: 0.79215693, g: 0.45098042, b: 0.87843144, a: 1}
+    requiresHatHair: 1
+    hasDetail: 1
+    detailIndex: 1
+    detailColor: {r: 0, g: 0, b: 0, a: 0}
+  - hat: {fileID: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    requiresHatHair: 0
+    hasDetail: 0
+    detailIndex: 0
+    detailColor: {r: 0, g: 0, b: 0, a: 0}
+  _outfits:
+  - top: {fileID: 11400000, guid: 248348bbe5b078f48b1dc2869239cce7, type: 2}
+    topColor1: {r: 0.97647065, g: 0.64705884, b: 0.8588236, a: 1}
+    topColor2: {r: 1, g: 1, b: 1, a: 1}
+    hasTopDetail: 1
+    topDetailIndex: 1
+    topOverlay: {fileID: 0}
+    topOverColor1: {r: 0, g: 0, b: 0, a: 0}
+    topOverColor2: {r: 0, g: 0, b: 0, a: 0}
+    belt: {fileID: 11400000, guid: 0394bece2bad97b4fa82a0ef188cec72, type: 2}
+    beltColor1: {r: 0, g: 0, b: 0, a: 0}
+    beltColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasBeltDetail: 0
+    beltDetailIndex: 0
+    pants: {fileID: 11400000, guid: 047ef1218a2019f498dcffb50282b128, type: 2}
+    pantColor1: {r: 1, g: 1, b: 1, a: 1}
+    pantColor2: {r: 0, g: 0, b: 0, a: 0}
+    gloves: {fileID: 0}
+    gloveColor1: {r: 0, g: 0, b: 0, a: 0}
+    gloveColor2: {r: 0, g: 0, b: 0, a: 0}
+    shoulder: {fileID: 0}
+    shoulderColor1: {r: 0, g: 0, b: 0, a: 0}
+    shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
+  - top: {fileID: 11400000, guid: 452f037c27679464cb9f6b66adeb5062, type: 2}
+    topColor1: {r: 0, g: 0, b: 0, a: 0}
+    topColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasTopDetail: 0
+    topDetailIndex: 0
+    topOverlay: {fileID: 11400000, guid: 2d55f904d5e16484093c40bfaca6723f, type: 2}
+    topOverColor1: {r: 1, g: 1, b: 1, a: 1}
+    topOverColor2: {r: 0.9843138, g: 0.8000001, b: 0.015686275, a: 1}
+    belt: {fileID: 0}
+    beltColor1: {r: 0, g: 0, b: 0, a: 0}
+    beltColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasBeltDetail: 0
+    beltDetailIndex: 0
+    pants: {fileID: 11400000, guid: f1723c068c2306f4c8401e54ac7b2b43, type: 2}
+    pantColor1: {r: 0, g: 0, b: 0, a: 0}
+    pantColor2: {r: 0, g: 0, b: 0, a: 0}
+    gloves: {fileID: 11400000, guid: f08828dc9bc69444eb8821c54c1b9985, type: 2}
+    gloveColor1: {r: 1, g: 1, b: 1, a: 1}
+    gloveColor2: {r: 0.9843138, g: 0.8000001, b: 0.015686275, a: 1}
+    shoulder: {fileID: 11400000, guid: f05a64345123b46469fac518931b5f2b, type: 2}
+    shoulderColor1: {r: 1, g: 1, b: 1, a: 1}
+    shoulderColor2: {r: 0.9843138, g: 0.8000001, b: 0.015686275, a: 1}
+  - top: {fileID: 0}
+    topColor1: {r: 0, g: 0, b: 0, a: 0}
+    topColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasTopDetail: 0
+    topDetailIndex: 0
+    topOverlay: {fileID: 11400000, guid: 2d55f904d5e16484093c40bfaca6723f, type: 2}
+    topOverColor1: {r: 0.79215693, g: 0.45098042, b: 0.87843144, a: 1}
+    topOverColor2: {r: 0.3137255, g: 0.34509805, b: 0.34117648, a: 1}
+    belt: {fileID: 0}
+    beltColor1: {r: 0, g: 0, b: 0, a: 0}
+    beltColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasBeltDetail: 0
+    beltDetailIndex: 0
+    pants: {fileID: 11400000, guid: f1723c068c2306f4c8401e54ac7b2b43, type: 2}
+    pantColor1: {r: 0, g: 0, b: 0, a: 0}
+    pantColor2: {r: 0, g: 0, b: 0, a: 0}
+    gloves: {fileID: 0}
+    gloveColor1: {r: 0, g: 0, b: 0, a: 0}
+    gloveColor2: {r: 0, g: 0, b: 0, a: 0}
+    shoulder: {fileID: 11400000, guid: a5be24a59dbdd98498a14dd0188eee09, type: 2}
+    shoulderColor1: {r: 0.79215693, g: 0.45098042, b: 0.87843144, a: 1}
+    shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
+  - top: {fileID: 11400000, guid: fdb083d340b480c44adebe5467e472d7, type: 2}
+    topColor1: {r: 0.627451, g: 0.6039216, b: 0.6039216, a: 1}
+    topColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasTopDetail: 1
+    topDetailIndex: 0
+    topOverlay: {fileID: 11400000, guid: 72b358597d9524a419d908e09739fd19, type: 2}
+    topOverColor1: {r: 0.2901961, g: 0.2901961, b: 0.2901961, a: 1}
+    topOverColor2: {r: 0, g: 0, b: 0, a: 0}
+    belt: {fileID: 0}
+    beltColor1: {r: 0, g: 0, b: 0, a: 0}
+    beltColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasBeltDetail: 0
+    beltDetailIndex: 0
+    pants: {fileID: 11400000, guid: 047ef1218a2019f498dcffb50282b128, type: 2}
+    pantColor1: {r: 0.2901961, g: 0.2901961, b: 0.2901961, a: 1}
+    pantColor2: {r: 0, g: 0, b: 0, a: 0}
+    gloves: {fileID: 11400000, guid: b6f209527d4aeb545b5b119f3af7f120, type: 2}
+    gloveColor1: {r: 0.2901961, g: 0.2901961, b: 0.2901961, a: 1}
+    gloveColor2: {r: 0, g: 0, b: 0, a: 0}
+    shoulder: {fileID: 0}
+    shoulderColor1: {r: 0, g: 0, b: 0, a: 0}
+    shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
+  - top: {fileID: 11400000, guid: 248348bbe5b078f48b1dc2869239cce7, type: 2}
+    topColor1: {r: 0.3137255, g: 0.5294118, b: 0.9333334, a: 1}
+    topColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasTopDetail: 1
+    topDetailIndex: 0
+    topOverlay: {fileID: 11400000, guid: 72b358597d9524a419d908e09739fd19, type: 2}
+    topOverColor1: {r: 0.61960787, g: 0.90196085, b: 0.9450981, a: 1}
+    topOverColor2: {r: 0, g: 0, b: 0, a: 0}
+    belt: {fileID: 11400000, guid: a81374faf8ccb7741859587aa05a2ee9, type: 2}
+    beltColor1: {r: 1, g: 1, b: 1, a: 1}
+    beltColor2: {r: 0.79215693, g: 0.79215693, b: 0.79215693, a: 1}
+    hasBeltDetail: 1
+    beltDetailIndex: 0
+    pants: {fileID: 11400000, guid: 11b1667fdb210054bbadfc16492b4f56, type: 2}
+    pantColor1: {r: 0.72156864, g: 0.9333334, b: 0.96470594, a: 1}
+    pantColor2: {r: 0, g: 0, b: 0, a: 0}
+    gloves: {fileID: 0}
+    gloveColor1: {r: 0, g: 0, b: 0, a: 0}
+    gloveColor2: {r: 0, g: 0, b: 0, a: 0}
+    shoulder: {fileID: 11400000, guid: 8d63990f7b797124b9db45a112d8f31f, type: 2}
+    shoulderColor1: {r: 0.3137255, g: 0.5294118, b: 0.9333334, a: 1}
+    shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
+  - top: {fileID: 11400000, guid: 05edd8c72d1d33047bb5192a04ba7d9f, type: 2}
+    topColor1: {r: 0.92549026, g: 0.29803923, b: 0.27450982, a: 1}
+    topColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasTopDetail: 0
+    topDetailIndex: 0
+    topOverlay: {fileID: 0}
+    topOverColor1: {r: 0, g: 0, b: 0, a: 0}
+    topOverColor2: {r: 0, g: 0, b: 0, a: 0}
+    belt: {fileID: 11400000, guid: 38bef44bfc19b2a4fb7248a6fbbfbe2c, type: 2}
+    beltColor1: {r: 0, g: 0, b: 0, a: 0}
+    beltColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasBeltDetail: 0
+    beltDetailIndex: 0
+    pants: {fileID: 11400000, guid: 047ef1218a2019f498dcffb50282b128, type: 2}
+    pantColor1: {r: 1, g: 1, b: 1, a: 1}
+    pantColor2: {r: 0, g: 0, b: 0, a: 0}
+    gloves: {fileID: 0}
+    gloveColor1: {r: 0, g: 0, b: 0, a: 0}
+    gloveColor2: {r: 0, g: 0, b: 0, a: 0}
+    shoulder: {fileID: 11400000, guid: 8d63990f7b797124b9db45a112d8f31f, type: 2}
+    shoulderColor1: {r: 0.92549026, g: 0.29803923, b: 0.27450982, a: 1}
+    shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
+  - top: {fileID: 11400000, guid: fdb083d340b480c44adebe5467e472d7, type: 2}
+    topColor1: {r: 1, g: 1, b: 1, a: 1}
+    topColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasTopDetail: 1
+    topDetailIndex: 0
+    topOverlay: {fileID: 11400000, guid: 12cb3809c51758347b5b08f7c8d472b7, type: 2}
+    topOverColor1: {r: 0.87843144, g: 0.60784316, b: 0.37254903, a: 1}
+    topOverColor2: {r: 0, g: 0, b: 0, a: 0}
+    belt: {fileID: 0}
+    beltColor1: {r: 0, g: 0, b: 0, a: 0}
+    beltColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasBeltDetail: 0
+    beltDetailIndex: 0
+    pants: {fileID: 11400000, guid: 047ef1218a2019f498dcffb50282b128, type: 2}
+    pantColor1: {r: 0.4039216, g: 0.8352942, b: 0.79215693, a: 1}
+    pantColor2: {r: 0, g: 0, b: 0, a: 0}
+    gloves: {fileID: 0}
+    gloveColor1: {r: 0, g: 0, b: 0, a: 0}
+    gloveColor2: {r: 0, g: 0, b: 0, a: 0}
+    shoulder: {fileID: 0}
+    shoulderColor1: {r: 0, g: 0, b: 0, a: 0}
+    shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
+  - top: {fileID: 11400000, guid: 05edd8c72d1d33047bb5192a04ba7d9f, type: 2}
+    topColor1: {r: 0.79215693, g: 0.45098042, b: 0.87843144, a: 1}
+    topColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasTopDetail: 0
+    topDetailIndex: 0
+    topOverlay: {fileID: 0}
+    topOverColor1: {r: 0, g: 0, b: 0, a: 0}
+    topOverColor2: {r: 0, g: 0, b: 0, a: 0}
+    belt: {fileID: 11400000, guid: a81374faf8ccb7741859587aa05a2ee9, type: 2}
+    beltColor1: {r: 1, g: 1, b: 1, a: 1}
+    beltColor2: {r: 0, g: 0, b: 0, a: 0}
+    hasBeltDetail: 1
+    beltDetailIndex: 1
+    pants: {fileID: 0}
+    pantColor1: {r: 0, g: 0, b: 0, a: 0}
+    pantColor2: {r: 0, g: 0, b: 0, a: 0}
+    gloves: {fileID: 0}
+    gloveColor1: {r: 0, g: 0, b: 0, a: 0}
+    gloveColor2: {r: 0, g: 0, b: 0, a: 0}
+    shoulder: {fileID: 0}
+    shoulderColor1: {r: 0, g: 0, b: 0, a: 0}
+    shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
+  - top: {fileID: 11400000, guid: 248348bbe5b078f48b1dc2869239cce7, type: 2}
+    topColor1: {r: 0.97647065, g: 0.64705884, b: 0.8588236, a: 1}
+    topColor2: {r: 1, g: 1, b: 1, a: 1}
+    hasTopDetail: 1
+    topDetailIndex: 2
+    topOverlay: {fileID: 0}
+    topOverColor1: {r: 0, g: 0, b: 0, a: 0}
+    topOverColor2: {r: 0, g: 0, b: 0, a: 0}
+    belt: {fileID: 11400000, guid: a81374faf8ccb7741859587aa05a2ee9, type: 2}
+    beltColor1: {r: 1, g: 1, b: 1, a: 1}
+    beltColor2: {r: 0.9843138, g: 0.8000001, b: 0.015686275, a: 1}
+    hasBeltDetail: 1
+    beltDetailIndex: 1
+    pants: {fileID: 11400000, guid: 047ef1218a2019f498dcffb50282b128, type: 2}
+    pantColor1: {r: 1, g: 1, b: 1, a: 1}
+    pantColor2: {r: 0, g: 0, b: 0, a: 0}
+    gloves: {fileID: 0}
+    gloveColor1: {r: 0, g: 0, b: 0, a: 0}
+    gloveColor2: {r: 0, g: 0, b: 0, a: 0}
+    shoulder: {fileID: 0}
+    shoulderColor1: {r: 0, g: 0, b: 0, a: 0}
+    shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
+  _shoes:
+  - shoe: {fileID: 11400000, guid: 179e0dcff0edd6340a2852f774df51d6, type: 2}
+    color: {r: 0.65882355, g: 0.43137258, b: 0.2392157, a: 1}
+    hasDetail: 0
+    detailIndex: 0
+    detailColor: {r: 0, g: 0, b: 0, a: 0}
+  - shoe: {fileID: 11400000, guid: 967a16ffb69adac489914cab121abe0e, type: 2}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    hasDetail: 0
+    detailIndex: 0
+    detailColor: {r: 0.9843138, g: 0.8000001, b: 0.015686275, a: 1}
+  - shoe: {fileID: 11400000, guid: 967a16ffb69adac489914cab121abe0e, type: 2}
+    color: {r: 0.47058827, g: 0.5372549, b: 0.5294118, a: 1}
+    hasDetail: 0
+    detailIndex: 0
+    detailColor: {r: 0.79215693, g: 0.45098042, b: 0.87843144, a: 1}
+  - shoe: {fileID: 11400000, guid: 409075be3694b9c4a8ef6b43e2f999b6, type: 2}
+    color: {r: 0.47058827, g: 0.5372549, b: 0.5294118, a: 1}
+    hasDetail: 1
+    detailIndex: 1
+    detailColor: {r: 1, g: 1, b: 1, a: 1}
+  - shoe: {fileID: 11400000, guid: 179e0dcff0edd6340a2852f774df51d6, type: 2}
+    color: {r: 0.3137255, g: 0.5294118, b: 0.9333334, a: 1}
+    hasDetail: 0
+    detailIndex: 0
+    detailColor: {r: 0, g: 0, b: 0, a: 0}
+  - shoe: {fileID: 11400000, guid: 409075be3694b9c4a8ef6b43e2f999b6, type: 2}
+    color: {r: 0.92549026, g: 0.29803923, b: 0.27450982, a: 1}
+    hasDetail: 1
+    detailIndex: 2
+    detailColor: {r: 0.9843138, g: 0.8000001, b: 0.015686275, a: 1}
+  - shoe: {fileID: 11400000, guid: 179e0dcff0edd6340a2852f774df51d6, type: 2}
+    color: {r: 0.33333334, g: 0.7254902, b: 0.24705884, a: 1}
+    hasDetail: 0
+    detailIndex: 0
+    detailColor: {r: 0, g: 0, b: 0, a: 0}
+  - shoe: {fileID: 11400000, guid: 409075be3694b9c4a8ef6b43e2f999b6, type: 2}
+    color: {r: 0.79215693, g: 0.45098042, b: 0.87843144, a: 1}
+    hasDetail: 1
+    detailIndex: 2
+    detailColor: {r: 1, g: 1, b: 1, a: 1}
+  - shoe: {fileID: 11400000, guid: 179e0dcff0edd6340a2852f774df51d6, type: 2}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    hasDetail: 0
+    detailIndex: 0
+    detailColor: {r: 0, g: 0, b: 0, a: 0}
+  _baldHatHair: {fileID: 11400000, guid: bdbee7467021b474ba672f891baf4fae, type: 2}
+  _shortHatHair: {fileID: 11400000, guid: 1013a7976094bbf4d86632b138ab58d7, type: 2}
+  _longHatHair: {fileID: 11400000, guid: b65ad25d15bd0b641bd244444ffd55c6, type: 2}
 --- !u!114 &708861772
 MonoBehaviour:
   m_ObjectHideFlags: 0
