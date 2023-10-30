@@ -3757,12 +3757,12 @@ MonoBehaviour:
     hasDetail: 1
     detailIndex: 0
     detailColor: {r: 1, g: 1, b: 1, a: 1}
-  - hat: {fileID: 0}
-    color: {r: 0, g: 0, b: 0, a: 0}
-    requiresHatHair: 0
-    hasDetail: 0
+  - hat: {fileID: 11400000, guid: fbe7d1d424510b0459fadbcaaba674e5, type: 2}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    requiresHatHair: 1
+    hasDetail: 1
     detailIndex: 0
-    detailColor: {r: 0, g: 0, b: 0, a: 0}
+    detailColor: {r: 0.92549026, g: 0.29803923, b: 0.27450982, a: 1}
   - hat: {fileID: 11400000, guid: 5e0e5a2c2752b924da1c4ad34405cace, type: 2}
     color: {r: 0.2901961, g: 0.2901961, b: 0.2901961, a: 1}
     requiresHatHair: 1
@@ -3788,7 +3788,7 @@ MonoBehaviour:
     detailIndex: 0
     detailColor: {r: 1, g: 1, b: 1, a: 1}
   - hat: {fileID: 11400000, guid: aabce222a8a05e349b99df99ec3e4f9a, type: 2}
-    color: {r: 0.79215693, g: 0.45098042, b: 0.87843144, a: 1}
+    color: {r: 0.43137258, g: 0.40784317, b: 0.77647066, a: 1}
     requiresHatHair: 1
     hasDetail: 1
     detailIndex: 1
@@ -3850,21 +3850,21 @@ MonoBehaviour:
     hasTopDetail: 0
     topDetailIndex: 0
     topOverlay: {fileID: 11400000, guid: 2d55f904d5e16484093c40bfaca6723f, type: 2}
-    topOverColor1: {r: 0.79215693, g: 0.45098042, b: 0.87843144, a: 1}
+    topOverColor1: {r: 0.654902, g: 0.39607847, b: 0.9921569, a: 1}
     topOverColor2: {r: 0.3137255, g: 0.34509805, b: 0.34117648, a: 1}
     belt: {fileID: 0}
     beltColor1: {r: 0, g: 0, b: 0, a: 0}
     beltColor2: {r: 0, g: 0, b: 0, a: 0}
     hasBeltDetail: 0
     beltDetailIndex: 0
-    pants: {fileID: 11400000, guid: f1723c068c2306f4c8401e54ac7b2b43, type: 2}
-    pantColor1: {r: 0, g: 0, b: 0, a: 0}
+    pants: {fileID: 11400000, guid: 11b1667fdb210054bbadfc16492b4f56, type: 2}
+    pantColor1: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
     pantColor2: {r: 0, g: 0, b: 0, a: 0}
     gloves: {fileID: 0}
     gloveColor1: {r: 0, g: 0, b: 0, a: 0}
     gloveColor2: {r: 0, g: 0, b: 0, a: 0}
     shoulder: {fileID: 11400000, guid: a5be24a59dbdd98498a14dd0188eee09, type: 2}
-    shoulderColor1: {r: 0.79215693, g: 0.45098042, b: 0.87843144, a: 1}
+    shoulderColor1: {r: 0.8196079, g: 0.6039216, b: 0.98823535, a: 1}
     shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
   - top: {fileID: 11400000, guid: fdb083d340b480c44adebe5467e472d7, type: 2}
     topColor1: {r: 0.627451, g: 0.6039216, b: 0.6039216, a: 1}
@@ -3888,10 +3888,10 @@ MonoBehaviour:
     shoulder: {fileID: 0}
     shoulderColor1: {r: 0, g: 0, b: 0, a: 0}
     shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
-  - top: {fileID: 11400000, guid: 248348bbe5b078f48b1dc2869239cce7, type: 2}
+  - top: {fileID: 11400000, guid: 05edd8c72d1d33047bb5192a04ba7d9f, type: 2}
     topColor1: {r: 0.3137255, g: 0.5294118, b: 0.9333334, a: 1}
     topColor2: {r: 0, g: 0, b: 0, a: 0}
-    hasTopDetail: 1
+    hasTopDetail: 0
     topDetailIndex: 0
     topOverlay: {fileID: 11400000, guid: 72b358597d9524a419d908e09739fd19, type: 2}
     topOverColor1: {r: 0.61960787, g: 0.90196085, b: 0.9450981, a: 1}
@@ -3910,11 +3910,11 @@ MonoBehaviour:
     shoulder: {fileID: 11400000, guid: 8d63990f7b797124b9db45a112d8f31f, type: 2}
     shoulderColor1: {r: 0.3137255, g: 0.5294118, b: 0.9333334, a: 1}
     shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
-  - top: {fileID: 11400000, guid: 05edd8c72d1d33047bb5192a04ba7d9f, type: 2}
+  - top: {fileID: 11400000, guid: 5b3b8f3608875124690398163fe72ec0, type: 2}
     topColor1: {r: 0.92549026, g: 0.29803923, b: 0.27450982, a: 1}
-    topColor2: {r: 0, g: 0, b: 0, a: 0}
-    hasTopDetail: 0
-    topDetailIndex: 0
+    topColor2: {r: 0.9960785, g: 0.8000001, b: 0.007843138, a: 1}
+    hasTopDetail: 1
+    topDetailIndex: 1
     topOverlay: {fileID: 0}
     topOverColor1: {r: 0, g: 0, b: 0, a: 0}
     topOverColor2: {r: 0, g: 0, b: 0, a: 0}
@@ -3930,7 +3930,7 @@ MonoBehaviour:
     gloveColor1: {r: 0, g: 0, b: 0, a: 0}
     gloveColor2: {r: 0, g: 0, b: 0, a: 0}
     shoulder: {fileID: 11400000, guid: 8d63990f7b797124b9db45a112d8f31f, type: 2}
-    shoulderColor1: {r: 0.92549026, g: 0.29803923, b: 0.27450982, a: 1}
+    shoulderColor1: {r: 1, g: 1, b: 1, a: 1}
     shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
   - top: {fileID: 11400000, guid: fdb083d340b480c44adebe5467e472d7, type: 2}
     topColor1: {r: 1, g: 1, b: 1, a: 1}
@@ -3955,7 +3955,7 @@ MonoBehaviour:
     shoulderColor1: {r: 0, g: 0, b: 0, a: 0}
     shoulderColor2: {r: 0, g: 0, b: 0, a: 0}
   - top: {fileID: 11400000, guid: 05edd8c72d1d33047bb5192a04ba7d9f, type: 2}
-    topColor1: {r: 0.79215693, g: 0.45098042, b: 0.87843144, a: 1}
+    topColor1: {r: 0.5411765, g: 0.40784317, b: 0.89019614, a: 1}
     topColor2: {r: 0, g: 0, b: 0, a: 0}
     hasTopDetail: 0
     topDetailIndex: 0
@@ -4009,11 +4009,11 @@ MonoBehaviour:
     hasDetail: 0
     detailIndex: 0
     detailColor: {r: 0.9843138, g: 0.8000001, b: 0.015686275, a: 1}
-  - shoe: {fileID: 11400000, guid: 967a16ffb69adac489914cab121abe0e, type: 2}
-    color: {r: 0.47058827, g: 0.5372549, b: 0.5294118, a: 1}
-    hasDetail: 0
-    detailIndex: 0
-    detailColor: {r: 0.79215693, g: 0.45098042, b: 0.87843144, a: 1}
+  - shoe: {fileID: 11400000, guid: 409075be3694b9c4a8ef6b43e2f999b6, type: 2}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    hasDetail: 1
+    detailIndex: 1
+    detailColor: {r: 1, g: 0.4901961, b: 0.64705884, a: 1}
   - shoe: {fileID: 11400000, guid: 409075be3694b9c4a8ef6b43e2f999b6, type: 2}
     color: {r: 0.47058827, g: 0.5372549, b: 0.5294118, a: 1}
     hasDetail: 1
@@ -4035,12 +4035,12 @@ MonoBehaviour:
     detailIndex: 0
     detailColor: {r: 0, g: 0, b: 0, a: 0}
   - shoe: {fileID: 11400000, guid: 409075be3694b9c4a8ef6b43e2f999b6, type: 2}
-    color: {r: 0.79215693, g: 0.45098042, b: 0.87843144, a: 1}
+    color: {r: 0.47058827, g: 0.2509804, b: 0.5921569, a: 1}
     hasDetail: 1
     detailIndex: 2
     detailColor: {r: 1, g: 1, b: 1, a: 1}
   - shoe: {fileID: 11400000, guid: 179e0dcff0edd6340a2852f774df51d6, type: 2}
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 0.65882355, g: 0.43137258, b: 0.24313727, a: 1}
     hasDetail: 0
     detailIndex: 0
     detailColor: {r: 0, g: 0, b: 0, a: 0}

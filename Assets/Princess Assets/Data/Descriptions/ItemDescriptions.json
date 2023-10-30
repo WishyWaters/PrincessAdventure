@@ -1,0 +1,83 @@
+﻿{
+    "descriptions": [
+        {
+            "id": 1,
+            "name": "Star Shard",
+            "crunch": "",
+            "fluff": "Star Piece"
+        },
+        {
+            "id": 2,
+            "name": "Star Wand",
+            "crunch": "",
+            "message": ""
+        },
+        {
+            "id": 3,
+            "name": "Monster Soup",
+            "crunch": "",
+            "message": "Some of these stone blocks are decorated with fiery stones."
+        },
+        {
+            "id": 4,
+            "name": "Candle",
+            "crunch": "",
+            "message": ""
+        },
+        {
+            "id": 5,
+            "name": "Skull",
+            "crunch": "",
+            "message": ""
+        },
+        {
+            "id": 6,
+            "name": "Gem",
+            "crunch": "",
+            "message": ""
+        },
+        {
+            "id": 7,
+            "name": "Spellbook",
+            "crunch": "",
+            "message": ""
+        },
+        {
+            "id": 8,
+            "name": "Headwear",
+            "crunch": "",
+            "message": ""
+        },
+        {
+            "id": 9,
+            "name": "Outfit",
+            "crunch": "",
+            "message": ""
+        },
+        {
+            "id": 10,
+            "name": "Shoes",
+            "crunch": "",
+            "message": ""
+        },
+        {
+            "id": 11,
+            "name": "Ring",
+            "crunch": "",
+            "message": ""
+        },
+        {
+            "id": 12,
+            "name": "Necklace",
+            "crunch": "",
+            "message": ""
+        },
+        {
+            "id": 12,
+            "name": "Summonable Friend",
+            "crunch": "",
+            "message": ""
+        }
+
+    ]
+}

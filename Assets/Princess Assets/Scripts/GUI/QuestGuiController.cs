@@ -30,7 +30,9 @@ namespace PrincessAdventure
                 if (_highlightedObject != null && _highlightedObject.GetComponent<SelectorGuiController>() != null)
                     _highlightedObject.GetComponent<SelectorGuiController>().SetHighlightCursor(true);
 
-                //TODO: Play sfx
+                SoundManager.SoundInstance.PlayUiNavigate();
+
+                //TODO: Update Text based on what is highlighted
             }
         }
 

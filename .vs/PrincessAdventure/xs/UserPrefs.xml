@@ -1,12 +1,17 @@
 ﻿<Properties StartupConfiguration="{AD664D52-B116-25F0-8477-C67A55415F25}|">
   <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="35844753-84f0-400b-bad7-47c6f624c520" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/StandaloneInputModule.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Princess Assets/Data/Descriptions/ItemDescriptions.json">
     <Files>
-      <File FileName="Assets/Princess Assets/Scripts/World/GameManager.cs" Line="489" Column="1" />
-      <File FileName="Assets/Princess Assets/Scripts/Character/PrincessCustomizerController.cs" Line="258" Column="1" />
-      <File FileName="Assets/Princess Assets/Scripts/Models/PrincessModels.cs" Line="110" Column="18" />
-      <File FileName="Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" Line="274" Column="1" />
-      <File FileName="Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/StandaloneInputModule.cs" Line="447" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/World/GameManager.cs" Line="120" Column="4" />
+      <File FileName="Assets/Princess Assets/Scripts/GUI/EquipmentGuiController.cs" Line="103" Column="44" />
+      <File FileName="Assets/Princess Assets/Scripts/GUI/GamePauseGuiController.cs" Line="16" Column="22" />
+      <File FileName="Assets/Princess Assets/Scripts/Models/PrincessModels.cs" Line="158" Column="25" />
+      <File FileName="Assets/Princess Assets/Scripts/World/PrincessSpawnController.cs" Line="62" Column="38" />
+      <File FileName="Assets/Princess Assets/Scripts/Character/PrincessCustomizerController.cs" Line="264" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/World/Save/SaveDataManager.cs" Line="11" Column="10" />
+      <File FileName="Assets/Princess Assets/Scripts/Models/GameModels.cs" Line="1" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/GUI/QuestGuiController.cs" Line="37" Column="10" />
+      <File FileName="Assets/Princess Assets/Data/Descriptions/ItemDescriptions.json" Line="5" Column="7" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -32,13 +37,14 @@
               </Node>
               <Node name="Princess Assets" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="Character" expanded="True">
-                    <Node name="PrincessCustomizerController.cs" selected="True" />
-                  </Node>
+                  <Node name="Character" expanded="True" />
+                  <Node name="GUI" expanded="True" />
                   <Node name="Level" expanded="True">
                     <Node name="Interactions" expanded="True" />
                   </Node>
-                  <Node name="Models" expanded="True" />
+                  <Node name="Models" expanded="True">
+                    <Node name="PrincessModels.cs" selected="True" />
+                  </Node>
                   <Node name="World" expanded="True">
                     <Node name="Save" expanded="True" />
                     <Node name="SoundManager" expanded="True" />
@@ -56,7 +62,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/Character/CharacterController.cs" relfile="Assets/Princess Assets/Scripts/Character/CharacterController.cs" line="42" column="1" />
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/Character/PrincessCustomizerController.cs" relfile="Assets/Princess Assets/Scripts/Character/PrincessCustomizerController.cs" line="255" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

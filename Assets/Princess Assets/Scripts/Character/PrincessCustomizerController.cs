@@ -251,6 +251,18 @@ namespace PrincessAdventure
                 _customizableCharacter.Customizer.SetCustomizationMainColor(glassData, glassesColor);
         }
 
+        public void SetStyle(PrincessCustomizations customizations)
+        {
+            SetBodyColor(customizations.BodyColor);
+            SetHairStyle(customizations.HairStyle);
+            SetHairColor(customizations.HairColor);
+            SetEyeShape(customizations.EyeStyle);
+            SetEyeColor(customizations.EyeColor);
+            SetGlassesShape(customizations.GlassesStyle);
+            SetGlassesColor(customizations.GlassesColor);
+
+        }
+
         public void SetEquipment(PrincessEquipment equipment, PrincessCustomizations customizations)
         {
             SetOutfit(equipment);
@@ -260,7 +272,7 @@ namespace PrincessAdventure
 
         private void SetHat(PrincessEquipment equipment, PrincessCustomizations customizations)
         {
-            if(equipment.selectedHat == 1 || equipment.selectedHat == 3 || equipment.selectedHat == 9)
+            if(equipment.selectedHat == 1 || equipment.selectedHat == 9)
             {
                 //remove hat
                 if (_customizableCharacter.Customizer.HasCustomizationInCategory(_hatCategory))

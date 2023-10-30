@@ -18,7 +18,7 @@ namespace PrincessAdventure
         [SerializeField] EquipSelectGuiController _equipSelectCtrl;
 
         private GameObject _highlightedObject = null;
-
+        private EquipSlots _clickedSlot;
         // Start is called before the first frame update
         void Start()
         {
@@ -36,9 +36,15 @@ namespace PrincessAdventure
         // Update is called once per frame
         void Update()
         {
-            //TODO: On Cancel Input, initialize equipment to close equip select
+            //On Cancel Input, initialize equipment to close equip select
             if (Input.GetButtonUp("Cancel") && _equipSelectCtrl.isActiveAndEnabled)
-                InitializeEquipmentScreen();
+            {
+                InitializeEquipmentScreen(_clickedSlot);
+                SoundManager.SoundInstance.PlayUiCancel();
+
+            }
+
+
 
             if (_highlightedObject != EventSystem.current.currentSelectedGameObject)
             {
@@ -50,14 +56,38 @@ namespace PrincessAdventure
                 if (_highlightedObject != null && _highlightedObject.GetComponent<SelectorGuiController>() != null)
                     _highlightedObject.GetComponent<SelectorGuiController>().SetHighlightCursor(true);
 
-                //TODO: Play sfx
+                SoundManager.SoundInstance.PlayUiNavigate();
+
             }
         }
 
-        public void InitializeEquipmentScreen()
+        public void InitializeEquipmentScreen(EquipSlots highlightedSlot = EquipSlots.Head)
         {
             EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(_headSelected);
+            switch(highlightedSlot)
+            {
+                case EquipSlots.Body:
+                    EventSystem.current.SetSelectedGameObject(_bodySelected);
+                    break;
+                case EquipSlots.Feet:
+                    EventSystem.current.SetSelectedGameObject(_feetSelected);
+                    break;
+                case EquipSlots.Friend:
+                    EventSystem.current.SetSelectedGameObject(_friendSelected);
+                    break;
+
+                case EquipSlots.Necklace:
+                    EventSystem.current.SetSelectedGameObject(_neckSelected);
+                    break;
+                case EquipSlots.Ring:
+                    EventSystem.current.SetSelectedGameObject(_ringSelected);
+                    break;
+                case EquipSlots.Head:
+                default:
+                    EventSystem.current.SetSelectedGameObject(_headSelected);
+                    break;
+
+            }
 
             _equipSelectCtrl.gameObject.SetActive(false);
 
@@ -68,6 +98,7 @@ namespace PrincessAdventure
 
         public void OpenEquipSelect(EquipSlots slot)
         {
+            _clickedSlot = slot;
             _equipSelectCtrl.gameObject.SetActive(true);
             _equipSelectCtrl.InitializeEquipSelect(slot);
         }

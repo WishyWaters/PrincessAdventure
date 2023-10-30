@@ -48,6 +48,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicSource: {fileID: 2666881619383438265}
   _effectsSource: {fileID: 2666881618058618990}
+  _uiNavigate: {fileID: 8300000, guid: 7353ae451b3b34841affc4efd08d4d8f, type: 3}
+  _uiConfirm: {fileID: 8300000, guid: fbf812001261a6d439f21e9ec9a1d65b, type: 3}
+  _uiCancel: {fileID: 8300000, guid: 16ccbe8e5a2c1a24d9be6c1d2fa9969a, type: 3}
+  _uiGameplayPopup: {fileID: 8300000, guid: db7a1e9c30a6ae64981c26577235e047, type: 3}
+  _uiEventSmall: {fileID: 8300000, guid: 2f1726e3ebf84ef47bf03fe02e72b8f6, type: 3}
+  _uiEventBig: {fileID: 8300000, guid: 45ec41bef18a4194a8d6de21193b99d1, type: 3}
+  _uiNotAllowed: {fileID: 8300000, guid: dc8085567c3e0014e89b2bebee494b02, type: 3}
 --- !u!1 &2666881618058618991
 GameObject:
   m_ObjectHideFlags: 0

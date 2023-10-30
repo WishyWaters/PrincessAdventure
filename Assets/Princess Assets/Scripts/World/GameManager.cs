@@ -124,6 +124,10 @@ namespace PrincessAdventure
 			GameObject princess = Instantiate(_princessPrefab, spawnPosition, new Quaternion());
 			_charCtrl = princess.GetComponent<CharacterController>();
 			_customizerCtrl = princess.GetComponent<PrincessCustomizerController>();
+
+			_customizerCtrl.SetStyle(_gameDetails.customizations);
+			_customizerCtrl.SetEquipment(_gameDetails.equipment, _gameDetails.customizations);
+
 			ActivatePrincess(false, faceDirection);
 		}
 
@@ -609,12 +613,15 @@ namespace PrincessAdventure
 
 		public void RoutePauseInput(bool techPause, bool gamePause)
         {
+
 			if (_currentScene != GameScenes.MainMenu)
 			{
 				if (_currentGameState == GameState.Menu && _pause)
 				{
 					if (techPause || gamePause)
 					{
+						SoundManager.SoundInstance.PlayUiEventBig();
+
 						_virtualCamera.m_Lens.OrthographicSize = 5f;
 						ResumeGameplay();
 					}
@@ -623,13 +630,17 @@ namespace PrincessAdventure
 				{
 					if (techPause)
 					{
+						SoundManager.SoundInstance.PlayUiEventBig();
+
 						_pause = true;
 						ChangeGameState(GameState.Menu);
 						GuiManager.GuiInstance.LoadTechnicalPause();
 					}
 					else if (gamePause)
 					{
-						_virtualCamera.m_Lens.OrthographicSize = 3f;
+						SoundManager.SoundInstance.PlayUiEventBig();
+
+						_virtualCamera.m_Lens.OrthographicSize = 4f;
 						_pause = true;
 						ChangeGameState(GameState.Menu);
 						GuiManager.GuiInstance.LoadGamePause();

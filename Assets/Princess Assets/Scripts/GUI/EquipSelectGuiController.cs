@@ -20,12 +20,16 @@ namespace PrincessAdventure
 
         [SerializeField] private EquipmentGuiController _equipGuiCtrl;
 
+        [SerializeField] private AudioClip _onEquipSfx; //ui_menu_button_confirm_04
+
+        private EquipSlots _currentSlot;
+
         public void InitializeEquipSelect(EquipSlots slot)
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(_option1);
 
-
+            _currentSlot = slot;
             PrincessEquipment equipment = GameManager.GameInstance.GetPrincessEquipment();
             ClearButtonListeners();
 
@@ -75,7 +79,10 @@ namespace PrincessAdventure
                 _option2.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Head, 2); });
             }
             else
+            {
                 _option2.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Head, 2, false, true);
+                _option2.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option3.SetActive(true);
             if (equipment.hats.Contains(3))
@@ -84,7 +91,10 @@ namespace PrincessAdventure
                 _option3.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Head, 3); });
             }
             else
+            {
                 _option3.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Head, 3, false, true);
+                _option3.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option4.SetActive(true);
             if (equipment.hats.Contains(4))
@@ -93,7 +103,10 @@ namespace PrincessAdventure
                 _option4.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Head, 4); });
             }
             else
+            {
                 _option4.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Head, 4, false, true);
+                _option4.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option5.SetActive(true);
             if (equipment.hats.Contains(5))
@@ -102,7 +115,10 @@ namespace PrincessAdventure
                 _option5.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Head, 5); });
             }
             else
+            {
                 _option5.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Head, 5, false, true);
+                _option5.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option6.SetActive(true);
             if (equipment.hats.Contains(6))
@@ -111,7 +127,10 @@ namespace PrincessAdventure
                 _option6.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Head,6); });
             }
             else
+            {
                 _option6.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Head, 6, false, true);
+                _option6.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option7.SetActive(true);
             if (equipment.hats.Contains(7))
@@ -120,7 +139,10 @@ namespace PrincessAdventure
                 _option7.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Head, 7); });
             }
             else
+            {
                 _option7.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Head, 7, false, true);
+                _option7.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option8.SetActive(true);
             if (equipment.hats.Contains(8))
@@ -129,7 +151,10 @@ namespace PrincessAdventure
                 _option8.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Head, 8); });
             }
             else
+            {
                 _option8.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Head, 8, false, true);
+                _option8.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
 
         }
@@ -156,7 +181,10 @@ namespace PrincessAdventure
                 _option2.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Body, 2); });
             }
             else
+            {
                 _option2.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Body, 2, false, true);
+                _option2.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option3.SetActive(true);
             if (equipment.outfits.Contains(3))
@@ -165,7 +193,10 @@ namespace PrincessAdventure
                 _option3.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Body, 3); });
             }
             else
+            {
                 _option3.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Body, 3, false, true);
+                _option3.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option4.SetActive(true);
             if (equipment.outfits.Contains(4))
@@ -174,7 +205,10 @@ namespace PrincessAdventure
                 _option4.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Body, 4); });
             }
             else
+            {
                 _option4.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Body, 4, false, true);
+                _option4.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option5.SetActive(true);
             if (equipment.outfits.Contains(5))
@@ -183,7 +217,10 @@ namespace PrincessAdventure
                 _option5.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Body, 5); });
             }
             else
+            {
                 _option5.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Body, 5, false, true);
+                _option5.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option6.SetActive(true);
             if (equipment.outfits.Contains(6))
@@ -192,7 +229,10 @@ namespace PrincessAdventure
                 _option6.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Body, 6); });
             }
             else
+            {
                 _option6.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Body, 6, false, true);
+                _option6.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option7.SetActive(true);
             if (equipment.outfits.Contains(7))
@@ -201,7 +241,10 @@ namespace PrincessAdventure
                 _option7.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Body, 7); });
             }
             else
+            {
                 _option7.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Body, 7, false, true);
+                _option7.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option8.SetActive(true);
             if (equipment.outfits.Contains(8))
@@ -210,7 +253,10 @@ namespace PrincessAdventure
                 _option8.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Body, 8); });
             }
             else
+            {
                 _option8.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Body, 8, false, true);
+                _option8.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
         }
 
@@ -237,7 +283,10 @@ namespace PrincessAdventure
                 _option2.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Feet, 2); });
             }
             else
+            {
                 _option2.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Feet, 2, false, true);
+                _option2.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option3.SetActive(true);
             if (equipment.shoes.Contains(3))
@@ -246,7 +295,10 @@ namespace PrincessAdventure
                 _option3.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Feet, 3); });
             }
             else
+            {
                 _option3.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Feet, 3, false, true);
+                _option3.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option4.SetActive(true);
             if (equipment.shoes.Contains(4))
@@ -255,7 +307,10 @@ namespace PrincessAdventure
                 _option4.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Feet, 4); });
             }
             else
+            {
                 _option4.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Feet, 4, false, true);
+                _option4.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option5.SetActive(true);
             if (equipment.shoes.Contains(5))
@@ -264,7 +319,10 @@ namespace PrincessAdventure
                 _option5.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Feet, 5); });
             }
             else
+            {
                 _option5.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Feet, 5, false, true);
+                _option5.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option6.SetActive(true);
             if (equipment.shoes.Contains(6))
@@ -273,7 +331,10 @@ namespace PrincessAdventure
                 _option6.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Feet, 6); });
             }
             else
+            {
                 _option6.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Feet, 6, false, true);
+                _option6.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option7.SetActive(true);
             if (equipment.shoes.Contains(7))
@@ -282,7 +343,10 @@ namespace PrincessAdventure
                 _option7.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Feet, 7); });
             }
             else
+            {
                 _option7.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Feet, 7, false, true);
+                _option7.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option8.SetActive(true);
             if (equipment.shoes.Contains(8))
@@ -291,7 +355,10 @@ namespace PrincessAdventure
                 _option8.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Feet, 8); });
             }
             else
+            {
                 _option8.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Feet, 8, false, true);
+                _option8.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
         }
 
@@ -304,7 +371,10 @@ namespace PrincessAdventure
                 _option1.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Necklace, 1); });
             }
             else
+            {
                 _option1.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Necklace, 1, false, true);
+                _option1.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option2.SetActive(true);
             if (equipment.necklaces.Contains(2))
@@ -313,7 +383,10 @@ namespace PrincessAdventure
                 _option2.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Necklace, 2); });
             }
             else
+            {
                 _option2.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Necklace, 2, false, true);
+                _option2.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option3.SetActive(true);
             if (equipment.necklaces.Contains(3))
@@ -322,7 +395,10 @@ namespace PrincessAdventure
                 _option3.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Necklace, 3); });
             }
             else
+            {
                 _option3.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Necklace, 3, false, true);
+                _option3.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option4.SetActive(true);
             if (equipment.necklaces.Contains(4))
@@ -331,7 +407,10 @@ namespace PrincessAdventure
                 _option4.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Necklace, 4); });
             }
             else
+            {
                 _option4.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Necklace, 4, false, true);
+                _option4.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option5.SetActive(false);
             _option6.SetActive(false);
@@ -348,7 +427,10 @@ namespace PrincessAdventure
                 _option1.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Ring, 1); });
             }
             else
+            {
                 _option1.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Ring, 1, false, true);
+                _option1.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option2.SetActive(true);
             if (equipment.rings.Contains(2))
@@ -357,7 +439,10 @@ namespace PrincessAdventure
                 _option2.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Ring, 2); });
             }
             else
+            {
                 _option2.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Ring, 2, false, true);
+                _option2.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option3.SetActive(true);
             if (equipment.rings.Contains(3))
@@ -366,7 +451,10 @@ namespace PrincessAdventure
                 _option3.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Ring, 3); });
             }
             else
+            {
                 _option3.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Ring, 3, false, true);
+                _option3.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option4.SetActive(true);
             if (equipment.rings.Contains(4))
@@ -375,7 +463,10 @@ namespace PrincessAdventure
                 _option4.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Ring, 4); });
             }
             else
+            {
                 _option4.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Ring, 4, false, true);
+                _option4.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option5.SetActive(false);
             _option6.SetActive(false);
@@ -392,7 +483,10 @@ namespace PrincessAdventure
                 _option1.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Friend, 1); });
             }
             else
+            {
                 _option1.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Friend, 1, false, true);
+                _option1.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option2.SetActive(true);
             if (equipment.friends.Contains(2))
@@ -401,7 +495,10 @@ namespace PrincessAdventure
                 _option2.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Friend, 2); });
             }
             else
+            {
                 _option2.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Friend, 2, false, true);
+                _option2.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option3.SetActive(true);
             if (equipment.friends.Contains(3))
@@ -410,7 +507,10 @@ namespace PrincessAdventure
                 _option3.GetComponent<Button>().onClick.AddListener(delegate { UpdateSelectedEquipment(EquipSlots.Friend, 3); });
             }
             else
+            {
                 _option3.GetComponent<EquipIconController>().SetEquipIcon(EquipSlots.Friend, 3, false, true);
+                _option3.GetComponent<Button>().onClick.AddListener(delegate { PlayNotAllowedSound(); });
+            }
 
             _option4.SetActive(false);
             _option5.SetActive(false);
@@ -431,7 +531,11 @@ namespace PrincessAdventure
             _option8.GetComponent<Button>().onClick.RemoveAllListeners();
         }
 
-
+        public void CloseEquipSelect()
+        {
+            SoundManager.SoundInstance.PlayUiCancel();
+            _equipGuiCtrl.InitializeEquipmentScreen(_currentSlot);
+        }
 
         public void UpdateSelectedEquipment(EquipSlots slot, int id)
         {
@@ -461,7 +565,13 @@ namespace PrincessAdventure
 
             GameManager.GameInstance.SetPrincessEquipment(equipment);
 
-            _equipGuiCtrl.InitializeEquipmentScreen();
+            SoundManager.SoundInstance.PlayEffectSound(_onEquipSfx);
+            _equipGuiCtrl.InitializeEquipmentScreen(slot);
+        }
+
+        public void PlayNotAllowedSound()
+        {
+            SoundManager.SoundInstance.PlayUiNotAllowed();
         }
     }
 }

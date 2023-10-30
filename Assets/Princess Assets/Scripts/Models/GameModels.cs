@@ -102,9 +102,9 @@ namespace PrincessAdventure
 			int tempHealth = 0;
 			int tempMana = 0;
 
-			if (equipment.selectedHat == 2 || equipment.selectedHat == 6)
+			if (equipment.selectedHat == 2 || equipment.selectedHat == 3 || equipment.selectedHat == 6)
 				tempHealth += 2;
-			else if (equipment.selectedHat == 3 || equipment.selectedHat == 5 || equipment.selectedHat == 8)
+			else if (equipment.selectedHat == 5 || equipment.selectedHat == 8)
 				tempMana += 2;
 			else if (equipment.selectedHat != 1)
 			{
@@ -122,9 +122,9 @@ namespace PrincessAdventure
 				tempMana++;
 			}
 
-			if (equipment.selectedShoes == 2 || equipment.selectedShoes == 3 || equipment.selectedShoes == 6)
+			if (equipment.selectedShoes == 2 || equipment.selectedShoes == 6)
 				tempHealth += 2;
-			else if (equipment.selectedShoes == 5 || equipment.selectedShoes == 8)
+			else if (equipment.selectedShoes == 3 || equipment.selectedShoes == 5 || equipment.selectedShoes == 8)
 				tempMana += 2;
 			else if (equipment.selectedShoes != 1)
 			{

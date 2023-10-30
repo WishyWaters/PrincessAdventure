@@ -39,6 +39,7 @@ namespace PrincessAdventure
             //Toggle panel functions
         public void InitializePause()
         {
+           
 
             if (_lastViewedPanel == CustomizerPanel)
                 OpenCustomizer();
@@ -51,6 +52,8 @@ namespace PrincessAdventure
 
         public void OpenCustomizer()
         {
+            SoundManager.SoundInstance.PlayUiEventSmall();
+
             CustomizerPanel.SetActive(true);
             EquipmentPanel.SetActive(false);
             QuestPanel.SetActive(false);
@@ -62,6 +65,8 @@ namespace PrincessAdventure
 
         public void OpenEquipment()
         {
+            SoundManager.SoundInstance.PlayUiEventSmall();
+
             CustomizerPanel.SetActive(false);
             EquipmentPanel.SetActive(true);
             QuestPanel.SetActive(false);
@@ -73,6 +78,8 @@ namespace PrincessAdventure
 
         public void OpenQuest()
         {
+            SoundManager.SoundInstance.PlayUiEventSmall();
+
             CustomizerPanel.SetActive(false);
             EquipmentPanel.SetActive(false);
             QuestPanel.SetActive(true);

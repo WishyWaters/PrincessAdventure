@@ -12,6 +12,14 @@ namespace PrincessAdventure
         [SerializeField] private AudioSource _musicSource;
         [SerializeField] private AudioSource _effectsSource;
 
+		[SerializeField] private AudioClip _uiNavigate; //ui_menu_button_scroll_15
+		[SerializeField] private AudioClip _uiConfirm; //ui_menu_button_click_26
+		[SerializeField] private AudioClip _uiCancel; //ui_menu_button_beep_11
+		[SerializeField] private AudioClip _uiGameplayPopup; //ui_menu_popup_message_03
+
+		[SerializeField] private AudioClip _uiEventSmall; //ui_menu_button_scroll_03
+		[SerializeField] private AudioClip _uiEventBig; //ui_menu_button_confirm_12
+		[SerializeField] private AudioClip _uiNotAllowed; //ui_menu_button_cancel_02
 
 		public static SoundManager SoundInstance;
 
@@ -96,5 +104,39 @@ namespace PrincessAdventure
 			return aSource; // return the AudioSource reference
 		}
 
+		public void PlayUiNavigate()
+		{
+			PlayEffectSound(_uiNavigate);
+		}
+
+		public void PlayUiConfirm()
+		{
+			PlayEffectSound(_uiConfirm);
+		}
+
+		public void PlayUiCancel()
+		{
+			PlayEffectSound(_uiCancel);
+		}
+
+		public void PlayUiPopup()
+		{
+			PlayEffectSound(_uiGameplayPopup);
+		}
+
+		public void PlayUiEventBig()
+		{
+			PlayEffectSound(_uiEventBig);
+		}
+
+		public void PlayUiEventSmall()
+		{
+			PlayEffectSound(_uiEventSmall);
+		}
+
+		public void PlayUiNotAllowed()
+		{
+			PlayEffectSound(_uiNotAllowed);
+		}
 	}
 }
