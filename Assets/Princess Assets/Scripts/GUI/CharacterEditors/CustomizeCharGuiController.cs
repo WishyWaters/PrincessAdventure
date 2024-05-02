@@ -16,12 +16,19 @@ namespace PrincessAdventure
         [SerializeField] List<PrincessGlassesColorSelector> glassesColorSelects;
 
         private GameObject _highlightedObject = null;
+        private GameScenes _returnScene = GameScenes.LevelLoadTester;
+        private int _returnIndex = 0;
+
+        private PrincessStyle _originalStyle = new PrincessStyle();
 
         // Start is called before the first frame update
         void Start()
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(bodyColorSelects[0].gameObject);
+
+
+            LoadSelectedStyles(GameManager.GameInstance.GetPrincessStyle());
         }
 
         // Update is called once per frame
@@ -52,9 +59,14 @@ namespace PrincessAdventure
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(bodyColorSelects[0].gameObject);
+
+            //if(firstCreation)
+                //TODO: Display Create button
+            //else
+                //TODO: Display normal pause buttons
         }
 
-        public void UpdatePrincessBodyColor(Color newColor)
+        public void UpdatePrincessBodyColor(PrincessSkinColor newColor)
         {
             //Set all body color options as unselected
             foreach(PrincessBodyColorSelector colorSelector in bodyColorSelects)
@@ -80,7 +92,7 @@ namespace PrincessAdventure
             //TODO: Play sfx
         }
 
-        public void UpdatePrincessHairColor(Color newColor)
+        public void UpdatePrincessHairColor(PrincessHairColor newColor)
         {
             //Set all body color options as unselected
             foreach (PrincessHairColorSelector colorSelector in hairColorSelects)
@@ -106,7 +118,7 @@ namespace PrincessAdventure
             //TODO: Play sfx
         }
 
-        public void UpdatePrincessEyeColor(Color eyeColor)
+        public void UpdatePrincessEyeColor(PrincessEyeColor eyeColor)
         {
             //unselect styles
             foreach (PrincessEyeColorSelector eyeSelector in eyeColorSelects)
@@ -132,7 +144,7 @@ namespace PrincessAdventure
             //TODO: Play sfx
         }
 
-        public void UpdatePrincessGlassesColor(Color glassesColor)
+        public void UpdatePrincessGlassesColor(PrincessGlassesColor glassesColor)
         {
             //unselect styles
             foreach (PrincessGlassesColorSelector glassColorSelector in glassesColorSelects)
@@ -143,6 +155,25 @@ namespace PrincessAdventure
             GameManager.GameInstance.SetGlassesColor(glassesColor);
 
             //TODO: Play sfx
+        }
+
+        private void LoadSelectedStyles(PrincessStyle currentStyle)
+        {
+            _originalStyle = currentStyle;
+
+            bodyColorSelects[currentStyle.bodyColor].SetSelectedCheck(true);
+            hairStyleSelects[currentStyle.hairStyle].SetSelectedCheck(true);
+            hairColorSelects[currentStyle.hairColor].SetSelectedCheck(true);
+            eyeShapeSelects[currentStyle.eyeStyle].SetSelectedCheck(true);
+            eyeColorSelects[currentStyle.eyeColor].SetSelectedCheck(true);
+            glassesSelects[currentStyle.glassesStyle].SetSelectedCheck(true);
+            glassesColorSelects[currentStyle.glassesColor].SetSelectedCheck(true);
+
+        }
+
+        public void SaveCharacterAndResumeGame()
+        {
+            GameManager.GameInstance.MoveToSavedScene( FadeTypes.Exit);
         }
     }
 }

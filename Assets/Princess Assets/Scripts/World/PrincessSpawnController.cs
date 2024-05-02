@@ -113,5 +113,53 @@ namespace PrincessAdventure
 
         }
 
+        public void CreatePrincessSpawn(Vector3 spawnPoint)
+        {
+            StartCoroutine(HandleCreateSpawn(spawnPoint));
+        }
+
+        private IEnumerator HandleCreateSpawn(Vector3 spawnPoint)
+        {
+            bool beginFall = false;
+            Vector3 starStart = spawnPoint + new Vector3(0, 8);
+            Vector3 starDestination = spawnPoint;
+
+            GameObject star = Instantiate(_starPrefab, starStart, new Quaternion());
+
+            float percentOfJourney = 0;
+            float timePassed = 0f;
+
+            //Wait a frame
+            while (!beginFall)
+            {
+                beginFall = true;
+                yield return null;
+            }
+
+            SoundManager.SoundInstance.PlayEffectSound(_fallingStarClip);
+
+            while (percentOfJourney < 1f)
+            {
+                timePassed += Time.deltaTime;
+                percentOfJourney = timePassed / 1f;
+
+                Vector2 nextPosition = Vector3.Lerp(starStart, starDestination, percentOfJourney);
+
+                star.transform.position = nextPosition;
+                yield return null;
+            }
+
+            SoundManager.SoundInstance.PlayEffectSound(_starMagicClip);
+            Instantiate(_starExposionPrefab, starDestination, new Quaternion());
+            SoundManager.SoundInstance.PlayEffectSound(_starExplosionClip);
+
+            Destroy(star.gameObject);
+            GameManager.GameInstance.LoadPlayer(starDestination, Vector2.down, false);
+
+            SoundManager.SoundInstance.PlayEffectSound(_princessLandClips[Random.Range(0, _princessLandClips.Count)]);
+
+            GameManager.GameInstance.ActivateCharCreator();
+        }
+
     }
 }

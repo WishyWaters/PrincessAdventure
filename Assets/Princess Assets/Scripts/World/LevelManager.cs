@@ -19,7 +19,7 @@ namespace PrincessAdventure
 
         private void Awake()
         {
-            if (_scene != GameScenes.MainMenu)
+            if (_scene != GameScenes.MainMenu && _scene != GameScenes.CharCreator)
             {
                 if (_levelMessageData != null)
                     _levelMessages = JsonUtility.FromJson<LevelMessages>(_levelMessageData.text);

@@ -60,7 +60,7 @@ namespace PrincessAdventure
             GameplayGuiPanel.SetActive(false);
 
             _lastViewedPanel = CustomizerPanel;
-            CustomizerPanel.GetComponent<CustomizeCharGuiController>().InitializeCustomizerGui();
+            //CustomizerPanel.GetComponent<CustomizeCharGuiController>().InitializeCustomizerGui();
         }
 
         public void OpenEquipment()

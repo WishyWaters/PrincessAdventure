@@ -61,7 +61,8 @@ namespace PrincessAdventure
         #endregion
 
         #region load functions
-		public void LoadGame(int saveId)
+
+		public void StartGame(int saveId)
         {
 			ChangeGameState(GameState.Loading);
 
@@ -104,9 +105,14 @@ namespace PrincessAdventure
 				ChangeGameState(GameState.Menu);
 				GuiManager.GuiInstance.LoadMainMenuGui();
 			}
+			else if(_levelMgr.GetCurrentLevel() == GameScenes.CharCreator)
+			{
+				ChangeGameState(GameState.Menu);
+				GuiManager.GuiInstance.LoadCharCreator();
+			}
 		}
 
-		private void SpawnPlayerAtCheckpoint()
+		private void SpawnPlayerAtCheckpoint(bool isNewgame = false)
         {
 			ChangeGameState(GameState.Cutscene);
 			FullRestoreNoEffects();
@@ -116,34 +122,49 @@ namespace PrincessAdventure
 			_virtualCamera.enabled = true;
 
 			PrincessSpawnController spawnCtrl = this.GetComponent<PrincessSpawnController>();
-			spawnCtrl.StartPrincessSpawn(checkPoint.transform.position);
+
+			if (isNewgame)
+            {
+				Vector3 spawnPosition = checkPoint.transform.position - new Vector3(0, 1, 0);
+
+				spawnCtrl.CreatePrincessSpawn(spawnPosition);
+            }
+				
+			else
+				spawnCtrl.StartPrincessSpawn(checkPoint.transform.position);
+			
 		}
 
-		public void LoadPlayer(Vector3 spawnPosition, Vector2 faceDirection)
+		public void LoadPlayer(Vector3 spawnPosition, Vector2 faceDirection, bool activatePrincess = true)
         {
 			GameObject princess = Instantiate(_princessPrefab, spawnPosition, new Quaternion());
 			_charCtrl = princess.GetComponent<CharacterController>();
 			_customizerCtrl = princess.GetComponent<PrincessCustomizerController>();
 
-			_customizerCtrl.SetStyle(_gameDetails.customizations);
-			_customizerCtrl.SetEquipment(_gameDetails.equipment, _gameDetails.customizations);
+			_customizerCtrl.SetStyle(_gameDetails.princessStyle);
+			_customizerCtrl.SetEquipment(_gameDetails.equipment, _gameDetails.princessStyle);
 
-			ActivatePrincess(false, faceDirection);
+			if(activatePrincess)
+				ActivatePrincess(false, faceDirection);
 		}
 
 
-		private void LoadGameDetails()
+		private bool LoadGameDetails()
 		{
 			GameDetails savedGame = SaveDataManager.LoadGameDetails(_saveId);
+			bool isNewGame = false;
 
 			if (savedGame == null)
+            {
 				_gameDetails = new ActiveGame();
+				isNewGame = true;
+			}
 			else
 				_gameDetails = new ActiveGame(savedGame);
 
 
 			FullRestoreNoEffects();
-
+			return isNewGame;
 		}
 
 		private void FullRestoreNoEffects()
@@ -159,6 +180,14 @@ namespace PrincessAdventure
         {
 			return _saveId;
         }
+
+		public void MoveToSavedScene( FadeTypes fade)
+		{
+			ChangeGameState(GameState.Loading);
+
+			StartCoroutine(LoadSceneWithCurrentGame(_gameDetails.gameScene, _gameDetails.loadLocationIndex, fade));
+
+		}
 
 		public void MoveToNewScene(GameScenes targetScene, int targetIndex, FadeTypes fade)
         {
@@ -191,8 +220,12 @@ namespace PrincessAdventure
 
 			GuiManager.GuiInstance.DeactivateAllExceptFade();
 
-			LoadGameDetails();
-			_currentScene = _gameDetails.gameScene;
+			bool isNewgame = LoadGameDetails();
+
+			if (isNewgame)
+				_currentScene = GameScenes.CharCreator;
+			else
+				_currentScene = _gameDetails.gameScene;
 
 			//load next scene
 			AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_currentScene.ToString());
@@ -208,7 +241,7 @@ namespace PrincessAdventure
 			SetupLevel();
 
 			//Play Cutscene
-			SpawnPlayerAtCheckpoint();
+			SpawnPlayerAtCheckpoint(isNewgame);
 
 			//Call fade in
 			currentTimer = 0;
@@ -426,12 +459,18 @@ namespace PrincessAdventure
 
 		#region Customization functions
 
-		public void SetBodyColor(Color newBodyColor)
+
+		public PrincessStyle GetPrincessStyle()
+		{
+			return _gameDetails.princessStyle;
+		}
+
+		public void SetBodyColor(PrincessSkinColor newBodyColor)
 		{
 			//update player
 			_customizerCtrl.SetBodyColor(newBodyColor);
 
-			_gameDetails.customizations.BodyColor = newBodyColor;
+			_gameDetails.princessStyle.bodyColor = (int)newBodyColor;
 		}
 
 		public void SetHairStyle(PrincessHairStyles hairStyle)
@@ -439,18 +478,18 @@ namespace PrincessAdventure
 			//update player
 			_customizerCtrl.SetHairStyle(hairStyle);
 
-			_gameDetails.customizations.HairStyle = hairStyle;
+			_gameDetails.princessStyle.hairStyle = (int)hairStyle;
 
 			SetPrincessEquipment(_gameDetails.equipment);
 
 		}
 
-		public void SetHairColor(Color newHairColor)
+		public void SetHairColor(PrincessHairColor newHairColor)
 		{
 			//update player
 			_customizerCtrl.SetHairColor(newHairColor);
 
-			_gameDetails.customizations.HairColor = newHairColor;
+			_gameDetails.princessStyle.hairColor = (int)newHairColor;
 
 		}
 
@@ -459,16 +498,16 @@ namespace PrincessAdventure
 			//update player
 			_customizerCtrl.SetEyeShape(eyes);
 
-			_gameDetails.customizations.EyeStyle = eyes;
+			_gameDetails.princessStyle.eyeStyle = (int)eyes;
 
 		}
 
-		public void SetEyeColor(Color eyeColor)
+		public void SetEyeColor(PrincessEyeColor eyeColor)
 		{
 			//update player
 			_customizerCtrl.SetEyeColor(eyeColor);
 
-			_gameDetails.customizations.EyeColor = eyeColor;
+			_gameDetails.princessStyle.eyeColor = (int)eyeColor;
 
 		}
 
@@ -477,16 +516,16 @@ namespace PrincessAdventure
 			//update player
 			_customizerCtrl.SetGlassesShape(glassesStyle);
 
-			_gameDetails.customizations.GlassesStyle = glassesStyle;
+			_gameDetails.princessStyle.glassesStyle = (int)glassesStyle;
 
 		}
 
-		public void SetGlassesColor(Color color)
+		public void SetGlassesColor(PrincessGlassesColor color)
 		{
 			//update player
 			_customizerCtrl.SetGlassesColor(color);
 
-			_gameDetails.customizations.GlassesColor = color;
+			_gameDetails.princessStyle.glassesColor = (int)color;
 
 		}
 
@@ -504,7 +543,7 @@ namespace PrincessAdventure
 			GuiManager.GuiInstance.UpdateGameplayGui(_gameDetails);
 
 			//Call Princess customizer to update character
-			_customizerCtrl.SetEquipment(newEquipment, _gameDetails.customizations);
+			_customizerCtrl.SetEquipment(newEquipment, _gameDetails.princessStyle);
 		}
 
 		public void SavePrincessCustomization()
@@ -597,7 +636,7 @@ namespace PrincessAdventure
 		public void RouteInputs(PrincessInputActions inputs)
         {
 			
-			if (GetCurrentGameState() == GameState.Playing  && _currentScene != GameScenes.MainMenu)
+			if (GetCurrentGameState() == GameState.Playing  && (_currentScene != GameScenes.MainMenu && _currentScene != GameScenes.CharCreator))
 			{
 
 				if (_controllingCompanion)
@@ -613,40 +652,44 @@ namespace PrincessAdventure
 
 		public void RoutePauseInput(bool techPause, bool gamePause)
         {
+			if (_currentScene == GameScenes.MainMenu)
+				return;
 
-			if (_currentScene != GameScenes.MainMenu)
+			if (_currentScene == GameScenes.CharCreator)
+				return;
+
+
+			if (_currentGameState == GameState.Menu && _pause)
 			{
-				if (_currentGameState == GameState.Menu && _pause)
+				if (techPause || gamePause)
 				{
-					if (techPause || gamePause)
-					{
-						SoundManager.SoundInstance.PlayUiEventBig();
+					SoundManager.SoundInstance.PlayUiEventBig();
 
-						_virtualCamera.m_Lens.OrthographicSize = 5f;
-						ResumeGameplay();
-					}
-				}
-				else
-				{
-					if (techPause)
-					{
-						SoundManager.SoundInstance.PlayUiEventBig();
-
-						_pause = true;
-						ChangeGameState(GameState.Menu);
-						GuiManager.GuiInstance.LoadTechnicalPause();
-					}
-					else if (gamePause)
-					{
-						SoundManager.SoundInstance.PlayUiEventBig();
-
-						_virtualCamera.m_Lens.OrthographicSize = 4f;
-						_pause = true;
-						ChangeGameState(GameState.Menu);
-						GuiManager.GuiInstance.LoadGamePause();
-					}
+					_virtualCamera.m_Lens.OrthographicSize = 5f;
+					ResumeGameplay();
 				}
 			}
+			else
+			{
+				if (techPause)
+				{
+					SoundManager.SoundInstance.PlayUiEventBig();
+
+					_pause = true;
+					ChangeGameState(GameState.Menu);
+					GuiManager.GuiInstance.LoadTechnicalPause();
+				}
+				else if (gamePause)
+				{
+					SoundManager.SoundInstance.PlayUiEventBig();
+
+					_virtualCamera.m_Lens.OrthographicSize = 4f;
+					_pause = true;
+					ChangeGameState(GameState.Menu);
+					GuiManager.GuiInstance.LoadGamePause();
+				}
+			}
+			
 
 		}
 
@@ -995,6 +1038,17 @@ namespace PrincessAdventure
 			_pause = false;
 
 			LoadGameplayGui();
+			ChangeGameState(GameState.Playing);
+
+		}
+
+		public void ActivateCharCreator()
+		{
+			//_pause = true;
+
+			_virtualCamera.m_Lens.OrthographicSize = 3f;
+			
+			//_virtualCamera.transform.position.y += 1;
 			ChangeGameState(GameState.Playing);
 
 		}

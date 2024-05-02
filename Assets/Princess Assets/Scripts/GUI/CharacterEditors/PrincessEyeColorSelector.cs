@@ -9,11 +9,11 @@ namespace PrincessAdventure
     {
         [SerializeField] private CustomizeCharGuiController _customCharGuiCtrl;
         [SerializeField] private GameObject _selectedCheck;
+        [SerializeField] private PrincessEyeColor _eyeColor;
 
         public void UpdatePrincessEyeColor()
         {
-            Color newColor = this.GetComponent<Image>().color;
-            _customCharGuiCtrl.UpdatePrincessEyeColor(newColor);
+            _customCharGuiCtrl.UpdatePrincessEyeColor(_eyeColor);
 
             SetSelectedCheck(true);
         }

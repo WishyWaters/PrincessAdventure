@@ -63,25 +63,25 @@ namespace PrincessAdventure
 	}
 
 	[System.Serializable]
-	public class PrincessCustomizations
-    {
-		public Color BodyColor { get; set; }
-		public PrincessHairStyles HairStyle { get; set; }
-		public Color HairColor { get; set; }
-		public PrincessEyeShapes EyeStyle { get; set; }
-		public Color EyeColor { get; set; }
-		public PrincessGlassesStyle GlassesStyle { get; set; }
-		public Color GlassesColor { get; set; }
+	public class PrincessStyle
+	{
+		public int bodyColor;
+		public int hairStyle;
+		public int hairColor;
+		public int eyeStyle;
+		public int eyeColor;
+		public int glassesStyle;
+		public int glassesColor;
 
-		public PrincessCustomizations()
+		public PrincessStyle()
         {
-			BodyColor = Color.white;
-			HairStyle = PrincessHairStyles.Slick;
-			HairColor = Color.black;
-			EyeStyle = PrincessEyeShapes.Middle;
-			EyeColor = Color.green;
-			GlassesStyle = PrincessGlassesStyle.None;
-			GlassesColor = Color.white;
+			bodyColor = (int)PrincessSkinColor.color3;
+			hairStyle = (int)PrincessHairStyles.Down;
+			hairColor = (int)PrincessHairColor.color6;
+			eyeStyle = (int)PrincessEyeShapes.Middle;
+			eyeColor = (int)PrincessEyeColor.color3;
+			glassesStyle = (int)PrincessGlassesStyle.None;
+			glassesColor = (int)PrincessGlassesColor.color1;
 		}
 	}
 
@@ -163,56 +163,61 @@ namespace PrincessAdventure
 		}
 	}
 
+	[System.Serializable]
 	public enum PrincessHairStyles
     {
-		Bangs,
-		Feathery,
-		Down,
-		Ponytail,
-		DoubleBun,
-		FaceFrame,
-		TurnedOut,
-		Mohawk,
-		Spike,
-		Floof,
-		Slick,
-		SlickPony,
-		SlickBun,
-		Pixie,
-		Bald
+		Bangs=0,
+		Feathery=1,
+		Down=2,
+		Ponytail=3,
+		DoubleBun=4,
+		FaceFrame=5,
+		TurnedOut=6,
+		Mohawk=7,
+		Spike=8,
+		Floof=9,
+		Slick=10,
+		SlickPony=11,
+		SlickBun=12,
+		Pixie=13,
+		Bald=14
     }
 
+	[System.Serializable]
 	public enum PrincessEyeShapes
     {
-		Big,
-		Middle,
-		Narrow
+		Big=0,
+		Middle=1,
+		Narrow=2
     }
 
+	[System.Serializable]
 	public enum PrincessGlassesStyle
 	{
-		None,
-		Round,
-		Thick,
-		Nose
+		None=0,
+		Round=1,
+		Thick=2,
+		Nose=3
 	}
 
+	[System.Serializable]
 	public enum EquipSlots
     {
-		Head,
-		Body,
-		Feet,
-		Necklace,
-		Ring,
-		Friend
+		Head=0,
+		Body=1,
+		Feet=2,
+		Necklace=3,
+		Ring=4,
+		Friend=5
     }
 
+	[System.Serializable]
 	public enum EquipBonus
 	{
-		Hearts,
-		Magic,
-		Both,
-		None
+		Hearts=0,
+		Magic=1,
+		Both=2,
+		None=3
 	}
 
 	[System.Serializable]
@@ -261,5 +266,50 @@ namespace PrincessAdventure
 		public CustomizationData shoulder;
 		public Color shoulderColor1;
 		public Color shoulderColor2;
+	}
+
+	[System.Serializable]
+	public enum PrincessSkinColor
+	{
+		color1=0,
+		color2=1,
+		color3=2,
+		color4=3,
+		color5=4
+	}
+
+	[System.Serializable]
+	public enum PrincessHairColor
+	{
+		color1 = 0,
+		color2 = 1,
+		color3 = 2,
+		color4 = 3,
+		color5 = 4,
+		color6=5,
+		color7=6,
+		color8=7,
+		color9=8,
+		color10=9
+	}
+
+	[System.Serializable]
+	public enum PrincessEyeColor
+	{
+		color1 = 0,
+		color2 = 1,
+		color3 = 2,
+		color4 = 3,
+		color5 = 4
+	}
+
+	[System.Serializable]
+	public enum PrincessGlassesColor
+    {
+		color1 = 0,
+		color2 = 1,
+		color3 = 2,
+		color4 = 3,
+		color5 = 4
 	}
 }

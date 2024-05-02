@@ -21,7 +21,8 @@ namespace PrincessAdventure
 		StartMountain,
 		BoomshroomWoods,
 		LevelLoadTester,
-		BoneTomb
+		BoneTomb,
+		CharCreator
 	}
 
 	public enum ControllerTypes
@@ -48,8 +49,9 @@ namespace PrincessAdventure
 		public bool hasFireball;
 		public bool hasSummon;
 		public bool hasVision;
-		public PrincessEquipment equipment;
-		public PrincessCustomizations customizations;
+		public PrincessEquipment equipment = new();
+		public PrincessStyle princessStyle = new();
+
 
 	}
 
@@ -61,6 +63,7 @@ namespace PrincessAdventure
 		public int maxManaPoints { get; private set; }
 		public int maxHealth { get; private set; }
 		public int maxMagic { get; private set; }
+
 
 		public ActiveGame()
 		{
@@ -93,8 +96,8 @@ namespace PrincessAdventure
 			hasBomb = gameDetails.hasBomb;
 			hasFireball = gameDetails.hasFireball;
 			hasSummon = gameDetails.hasSummon;
-			equipment = new PrincessEquipment();
-			customizations = new PrincessCustomizations();
+			equipment = gameDetails.equipment;
+			princessStyle = gameDetails.princessStyle;
 		}
 
 		public void RecalculateMaxStats()

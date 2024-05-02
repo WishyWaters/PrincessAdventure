@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Princess Assets/Scenes/BoneTomb.unity
     guid: 11af9d4aa16034a74aedd42de555b85a
+  - enabled: 1
+    path: Assets/Princess Assets/Scenes/CharCreator.unity
+    guid: a1cd903efbd814f6fbbf254f05f5dfd7
   m_configObjects: {}

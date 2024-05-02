@@ -62,9 +62,30 @@ namespace PrincessAdventure
                 
         }
 
-        public void SetBodyColor(Color newBodyColor)
+        public void SetBodyColor(PrincessSkinColor newBodyColor)
         {
-            _customizableCharacter.Customizer.SetBodyColor(newBodyColor);
+            Color32 skinColor = new Color32();
+
+            switch(newBodyColor)
+            {
+                case PrincessSkinColor.color1:
+                    skinColor = new Color32(0xFD, 0xE9, 0xE0, 0xFF);//#FDE9E0
+                    break;
+                case PrincessSkinColor.color2:
+                    skinColor = new Color32(0xEE, 0xD0, 0xB5, 0xFF);//#EED0B5
+                    break;
+                case PrincessSkinColor.color4:
+                    skinColor = new Color32(0x80, 0x6B, 0x58, 0xFF);//#806B58
+                    break;
+                case PrincessSkinColor.color5:
+                    skinColor = new Color32(0x73, 0x43, 0x19, 0xFF);//#734319
+                    break;
+                default:
+                    skinColor = new Color32(0xBA, 0x97, 0x77, 0xFF);//#BA9777
+                    break;
+            }
+    
+            _customizableCharacter.Customizer.SetBodyColor(skinColor);
         }
 
         public void SetHairStyle(PrincessHairStyles newHairStyle)
@@ -167,11 +188,48 @@ namespace PrincessAdventure
   
         }
 
-        public void SetHairColor(Color newColor)
+        public void SetHairColor(PrincessHairColor newColor)
         {
             CustomizationData hairData = _customizableCharacter.Customizer.GetCustomizationDataInCategory(_hairCategory);
 
-            _customizableCharacter.Customizer.SetCustomizationMainColor(hairData, newColor);
+            Color32 hairColor = new Color32();
+
+            switch (newColor)
+            {
+                case PrincessHairColor.color1:
+                    hairColor = new Color32(0xFF, 0xF7, 0x93, 0xFF);//#FFF793
+                    break;
+                case PrincessHairColor.color2:
+                    hairColor = new Color32(0xFB, 0xDB, 0x76, 0xFF);//#FBDB76
+                    break;
+                case PrincessHairColor.color3:
+                    hairColor = new Color32(0xD1, 0xAD, 0x6E, 0xFF);//#D1AD6E
+                    break;
+                case PrincessHairColor.color4:
+                    hairColor = new Color32(0x9C, 0x78, 0x62, 0xFF);//#9C7862
+                    break;
+                case PrincessHairColor.color5:
+                    hairColor = new Color32(0x4F, 0x4B, 0x49, 0xFF);//#4F4B49
+                    break;
+                case PrincessHairColor.color7:
+                    hairColor = new Color32(0xF8, 0x9D, 0xEA, 0xFF);//#F89DEA
+                    break;
+                case PrincessHairColor.color8:
+                    hairColor = new Color32(0x93, 0x54, 0xCF, 0xFF);//#9354CF
+                    break;
+                case PrincessHairColor.color9:
+                    hairColor = new Color32(0x4D, 0xA9, 0xFF, 0xFF);//#4DA9FF
+                    break;
+                case PrincessHairColor.color10:
+                    hairColor = new Color32(0x5F, 0xC0, 0x46, 0xFF);//#5FC046
+                    break;
+                case PrincessHairColor.color6:
+                default:
+                    hairColor = new Color32(0xF8, 0x93, 0x7C, 0xFF);//#F8937C
+                    break;
+            }
+
+            _customizableCharacter.Customizer.SetCustomizationMainColor(hairData, hairColor);
         }
 
         public void SetEyeShape(PrincessEyeShapes eyeShape)
@@ -198,9 +256,29 @@ namespace PrincessAdventure
 
         }
 
-        public void SetEyeColor(Color eyeColor)
+        public void SetEyeColor(PrincessEyeColor newColor)
         {
             CustomizationData irisData = _customizableCharacter.Customizer.GetCustomizationDataInCategory(_irisCategory);
+            Color32 eyeColor = new Color32();
+
+            switch (newColor)
+            {
+                case PrincessEyeColor.color1:
+                    eyeColor = new Color32(0xA7, 0x64, 0x3E, 0xFF);//#A7643E
+                    break;
+                case PrincessEyeColor.color2:
+                    eyeColor = new Color32(0x77, 0xB5, 0xF9, 0xFF);//#77B5F9
+                    break;
+                case PrincessEyeColor.color4:
+                    eyeColor = new Color32(0xDB, 0x73, 0x96, 0xFF);//#DB7396
+                    break;
+                case PrincessEyeColor.color5:
+                    eyeColor = new Color32(0x49, 0x2F, 0x5F, 0xFF);//#492F5F
+                    break;
+                default:
+                    eyeColor = new Color32(0x75, 0xD4, 0x61, 0xFF);//#75D461
+                    break;
+            }
 
             _customizableCharacter.Customizer.SetCustomizationMainColor(irisData, eyeColor);
         }
@@ -243,34 +321,57 @@ namespace PrincessAdventure
 
         }
 
-        public void SetGlassesColor(Color glassesColor)
+        public void SetGlassesColor(PrincessGlassesColor newColor)
         {
             CustomizationData glassData = _customizableCharacter.Customizer.GetCustomizationDataInCategory(_glassesCategory);
 
-            if(glassData != null)
+            if (glassData != null)
+            {
+                Color32 glassesColor = new Color32();
+
+                switch (newColor)
+                {
+                    case PrincessGlassesColor.color1:
+                        glassesColor = new Color32(0xFF, 0xFF, 0xFF, 0xFF);//#FFFFFF
+                        break;
+                    case PrincessGlassesColor.color2:
+                        glassesColor = new Color32(0xFF, 0xCC, 0x00, 0xFF);//#FFCC00
+                        break;
+                    case PrincessGlassesColor.color4:
+                        glassesColor = new Color32(0xFF, 0x93, 0x7B, 0xFF);//#FF937B
+                        break;
+                    case PrincessGlassesColor.color5:
+                        glassesColor = new Color32(0x42, 0x52, 0x50, 0xFF);//#425250
+                        break;
+                    default:
+                        glassesColor = new Color32(0xC1, 0xFF, 0xF7, 0xFF);//#C1FFF7
+                        break;
+                }
+
                 _customizableCharacter.Customizer.SetCustomizationMainColor(glassData, glassesColor);
+            }
         }
 
-        public void SetStyle(PrincessCustomizations customizations)
+        public void SetStyle(PrincessStyle customizations)
         {
-            SetBodyColor(customizations.BodyColor);
-            SetHairStyle(customizations.HairStyle);
-            SetHairColor(customizations.HairColor);
-            SetEyeShape(customizations.EyeStyle);
-            SetEyeColor(customizations.EyeColor);
-            SetGlassesShape(customizations.GlassesStyle);
-            SetGlassesColor(customizations.GlassesColor);
+            SetBodyColor((PrincessSkinColor)customizations.bodyColor);
+            SetHairStyle((PrincessHairStyles)customizations.hairStyle);
+            SetHairColor((PrincessHairColor)customizations.hairColor);
+            SetEyeShape((PrincessEyeShapes)customizations.eyeStyle);
+            SetEyeColor((PrincessEyeColor)customizations.eyeColor);
+            SetGlassesShape((PrincessGlassesStyle)customizations.glassesStyle);
+            SetGlassesColor((PrincessGlassesColor)customizations.glassesColor);
 
         }
 
-        public void SetEquipment(PrincessEquipment equipment, PrincessCustomizations customizations)
+        public void SetEquipment(PrincessEquipment equipment, PrincessStyle customizations)
         {
             SetOutfit(equipment);
             SetHat(equipment, customizations);
             SetShoes(equipment);
         }
 
-        private void SetHat(PrincessEquipment equipment, PrincessCustomizations customizations)
+        private void SetHat(PrincessEquipment equipment, PrincessStyle customizations)
         {
             if(equipment.selectedHat == 1 || equipment.selectedHat == 9)
             {
@@ -281,7 +382,7 @@ namespace PrincessAdventure
                     _customizableCharacter.Customizer.Remove(oldHatData);
                 }
                 //set hair to custom style
-                SetHairStyle(customizations.HairStyle);
+                SetHairStyle((PrincessHairStyles)customizations.hairStyle);
             }
             else
             {
@@ -301,7 +402,7 @@ namespace PrincessAdventure
                     CustomizationData oldHairData = _customizableCharacter.Customizer.GetCustomizationDataInCategory(_hairCategory);
                     Color hairColor = _customizableCharacter.Customizer.GetCustomizationMainColor(oldHairData);
 
-                    switch(customizations.HairStyle)
+                    switch((PrincessHairStyles)customizations.hairStyle)
                     {
                         case PrincessHairStyles.Mohawk:
                         case PrincessHairStyles.Bald:
@@ -324,7 +425,7 @@ namespace PrincessAdventure
                 }
                 else
                 {
-                    SetHairStyle(customizations.HairStyle);
+                    SetHairStyle((PrincessHairStyles)customizations.hairStyle);
                 }
             }
 

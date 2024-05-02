@@ -185,7 +185,7 @@ namespace PrincessAdventure
         private void StartGame(int saveId)
         {
             SoundManager.SoundInstance.PlayEffectSound(_gameStart);
-            GameManager.GameInstance.LoadGame(saveId);
+            GameManager.GameInstance.StartGame(saveId);
         }
 
         public void CancelErase()
