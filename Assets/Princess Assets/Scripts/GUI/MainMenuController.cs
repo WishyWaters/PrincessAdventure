@@ -48,6 +48,9 @@ namespace PrincessAdventure
         [SerializeField] private AudioClip _eraseDone;
         [SerializeField] private AudioClip _gameStart;
 
+        private GameObject _highlightedObject = null;
+
+
 
 
         private bool _hasSave;
@@ -57,6 +60,33 @@ namespace PrincessAdventure
         private void Start()
         {
             CheckForRecentSave();
+        }
+
+        void Update()
+        {
+            //On Cancel Input, initialize equipment to close equip select
+            if (Input.GetButtonUp("Cancel") )
+            {
+                //TODO: Back up menu
+                SoundManager.SoundInstance.PlayUiCancel();
+
+            }
+
+
+
+            if (_highlightedObject != EventSystem.current.currentSelectedGameObject)
+            {
+                if (_highlightedObject != null && _highlightedObject.GetComponent<SelectorGuiController>() != null)
+                    _highlightedObject.GetComponent<SelectorGuiController>().SetHighlightCursor(false);
+
+                _highlightedObject = EventSystem.current.currentSelectedGameObject;
+
+                if (_highlightedObject != null && _highlightedObject.GetComponent<SelectorGuiController>() != null)
+                    _highlightedObject.GetComponent<SelectorGuiController>().SetHighlightCursor(true);
+
+                SoundManager.SoundInstance.PlayUiNavigate();
+
+            }
         }
 
         public void CheckForRecentSave()
@@ -317,7 +347,7 @@ namespace PrincessAdventure
 
             SoundManager.SoundInstance.ChangeMusicVolume(musicSlider.value);
             SoundManager.SoundInstance.ChangeSfxVolume(sfxSlider.value);
-
+            GameManager.GameInstance.UpdateShowTips(_tipsToggle.isOn);
             LoadMainMenu();
         }
 

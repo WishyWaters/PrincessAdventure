@@ -30,7 +30,7 @@ namespace PrincessAdventure
             currentShards = numOfShards;
             _starFill.fillAmount = GetFillValue(currentShards - 1);
 
-            if (currentShards == 5)
+            if (currentShards >= 5)
                 _continueButtonText.text = "Power Up";
             else
                 _continueButtonText.text = "Confirm";
@@ -56,7 +56,7 @@ namespace PrincessAdventure
         {
             SoundManager.SoundInstance.PlayEffectSound(_click);
 
-            if (currentShards == 5) 
+            if (currentShards >= 5) 
             {
                 GameManager.GameInstance.LoadPowerUpGui();
                 currentShards = 0;
@@ -77,7 +77,7 @@ namespace PrincessAdventure
                 return .61f;
             if (numOfShards == 4)
                 return .82f;
-            if (numOfShards == 5)
+            if (numOfShards >= 5)
                 return 1f;
 
             return 0;

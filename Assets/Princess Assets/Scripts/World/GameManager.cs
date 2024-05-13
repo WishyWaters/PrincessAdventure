@@ -31,6 +31,8 @@ namespace PrincessAdventure
 
 		private bool _pause;
 
+		private bool _showTips;
+
 		#region Unity Functions
 		private void Awake()
 		{
@@ -49,6 +51,11 @@ namespace PrincessAdventure
 
         private void Start()
         {
+			_showTips = true;
+			if (PlayerPrefs.HasKey("Tips"))
+				_showTips = PlayerPrefs.GetInt("Tips") == 0 ? false : true;
+
+
 			SetupGameFromStart();
 		}
 
@@ -399,7 +406,7 @@ namespace PrincessAdventure
 			_levelMgr.SaveLevelDetails(_saveId);
 
 			//load next scene
-			AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_currentScene.ToString());
+			AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_gameDetails.gameScene.ToString());
 
 			// Wait until the asynchronous scene fully loads
 			while (!asyncLoad.isDone)
@@ -433,7 +440,7 @@ namespace PrincessAdventure
 		}
 
 
-		public void ContinueGameAfterDeath()
+		public void ContinueGame()
         {
 			ChangeGameState(GameState.Loading);
 			GuiManager.GuiInstance.DeactivateAllGui();
@@ -554,10 +561,19 @@ namespace PrincessAdventure
 		#endregion
 
 		#region GUI functions
+		public void UpdateShowTips(bool isOn)
+        {
+			_showTips = isOn;
+		}
+
+		public bool GetShowTips()
+		{
+			return _showTips;
+		}
 
 		public void LoadDefeatGui()
 		{
-			ChangeGameState(GameState.Menu);
+			ChangeGameState(GameState.Defeated);
 			GuiManager.GuiInstance.LoadDefeatGui();
 		}
 
@@ -608,6 +624,11 @@ namespace PrincessAdventure
 			GuiManager.GuiInstance.LoadMessageGui(msgText);
         }
 
+		public string GetLevelMessage(int msgId)
+        {
+			return _levelMgr.GetMessageText(msgId);
+		}
+
 		#endregion
 
 		#region Gameplay Actions
@@ -617,6 +638,7 @@ namespace PrincessAdventure
 			switch(newState)
             {
 				case GameState.Menu:
+				case GameState.Defeated:
 					Time.timeScale = 0;
 					break;
 				default:
@@ -658,6 +680,9 @@ namespace PrincessAdventure
 			if (_currentScene == GameScenes.CharCreator)
 				return;
 
+			if (_currentGameState == GameState.Defeated)
+				return;
+
 
 			if (_currentGameState == GameState.Menu && _pause)
 			{
@@ -686,7 +711,10 @@ namespace PrincessAdventure
 					_virtualCamera.m_Lens.OrthographicSize = 4f;
 					_pause = true;
 					ChangeGameState(GameState.Menu);
-					GuiManager.GuiInstance.LoadGamePause();
+					if(_gameDetails.starShards >= 5)
+						GuiManager.GuiInstance.LoadPowerUpGui();
+					else
+						GuiManager.GuiInstance.LoadGamePause();
 				}
 			}
 			
@@ -1012,20 +1040,23 @@ namespace PrincessAdventure
 
 		public void PowerUpPrincess(PowerUpOptions powerUp)
         {
-			_gameDetails.starShards = 0;
+			if (_gameDetails.starShards >= 5)
+			{
+				_gameDetails.starShards -= 5;
 
-			switch(powerUp)
-            {
-				case PowerUpOptions.Heart:
-					_gameDetails.heartPoints++;
-					_gameDetails.RecalculateMaxStats();
-					_gameDetails.currentHealth = _gameDetails.maxHealth;
-					break;
-				case PowerUpOptions.Magic:
-					_gameDetails.magicPoints++;
-					_gameDetails.RecalculateMaxStats();
-					_gameDetails.currentManaPoints = _gameDetails.maxManaPoints;
-					break;
+				switch (powerUp)
+				{
+					case PowerUpOptions.Heart:
+						_gameDetails.heartPoints++;
+						_gameDetails.RecalculateMaxStats();
+						_gameDetails.currentHealth = _gameDetails.maxHealth;
+						break;
+					case PowerUpOptions.Magic:
+						_gameDetails.magicPoints++;
+						_gameDetails.RecalculateMaxStats();
+						_gameDetails.currentManaPoints = _gameDetails.maxManaPoints;
+						break;
+				}
 			}
 
 

@@ -15,8 +15,28 @@ namespace PrincessAdventure
         [SerializeField] private AudioClip _click;
         [SerializeField] private AudioClip _defeatZinger;
 
+        private GameObject _highlightedObject = null;
+
         private void Start()
         {
+        }
+
+        void Update()
+        {
+
+            if (_highlightedObject != EventSystem.current.currentSelectedGameObject)
+            {
+                if (_highlightedObject != null && _highlightedObject.GetComponent<SelectorGuiController>() != null)
+                    _highlightedObject.GetComponent<SelectorGuiController>().SetHighlightCursor(false);
+
+                _highlightedObject = EventSystem.current.currentSelectedGameObject;
+
+                if (_highlightedObject != null && _highlightedObject.GetComponent<SelectorGuiController>() != null)
+                    _highlightedObject.GetComponent<SelectorGuiController>().SetHighlightCursor(true);
+
+                SoundManager.SoundInstance.PlayUiNavigate();
+
+            }
         }
 
         public void LoadDefeatScreen()
@@ -25,14 +45,21 @@ namespace PrincessAdventure
 
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(_continueButton);
-            _wishText.text = "Don't get bombed out!";
+            _wishText.text = GetDefeatMsg();
+        }
+
+        public string GetDefeatMsg()
+        {
+            int randoId = Random.Range(1, 6);
+
+            return GameManager.GameInstance.GetLevelMessage(randoId);
         }
 
         public void ContinueGame()
         {
             SoundManager.SoundInstance.PlayEffectSound(_click);
 
-            GameManager.GameInstance.ContinueGameAfterDeath();
+            GameManager.GameInstance.ContinueGame();
         }
 
         public void QuitGame()
@@ -42,7 +69,7 @@ namespace PrincessAdventure
             GameManager.GameInstance.LoadMainMenu();
         }
 
-        //TODO:  Look up messages by death
+        
 
     }
 }

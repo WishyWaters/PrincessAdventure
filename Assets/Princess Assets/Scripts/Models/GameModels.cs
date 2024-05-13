@@ -11,7 +11,8 @@ namespace PrincessAdventure
 		Loading,
 		Playing,
 		Cutscene,
-		Menu
+		Menu,
+		Defeated
 	}
 
 	public enum GameScenes
@@ -22,7 +23,8 @@ namespace PrincessAdventure
 		BoomshroomWoods,
 		LevelLoadTester,
 		BoneTomb,
-		CharCreator
+		CharCreator,
+		MirrorMountain
 	}
 
 	public enum ControllerTypes

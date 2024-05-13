@@ -17,6 +17,8 @@ namespace PrincessAdventure
         [SerializeField] private GameObject _deathExposionPrefab;
         [SerializeField] private AudioClip _risingStarClip; //shine light 5
 
+        [SerializeField] private GameObject _starCreatorPrefab;
+
 
         public void StartPrincessSpawn(Vector3 spawnPoint)
         {
@@ -150,13 +152,13 @@ namespace PrincessAdventure
             }
 
             SoundManager.SoundInstance.PlayEffectSound(_starMagicClip);
-            Instantiate(_starExposionPrefab, starDestination, new Quaternion());
-            SoundManager.SoundInstance.PlayEffectSound(_starExplosionClip);
+            Instantiate(_starCreatorPrefab, starDestination, new Quaternion());
+            //SoundManager.SoundInstance.PlayEffectSound(_starExplosionClip);
 
             Destroy(star.gameObject);
             GameManager.GameInstance.LoadPlayer(starDestination, Vector2.down, false);
 
-            SoundManager.SoundInstance.PlayEffectSound(_princessLandClips[Random.Range(0, _princessLandClips.Count)]);
+            //SoundManager.SoundInstance.PlayEffectSound(_princessLandClips[Random.Range(0, _princessLandClips.Count)]);
 
             GameManager.GameInstance.ActivateCharCreator();
         }

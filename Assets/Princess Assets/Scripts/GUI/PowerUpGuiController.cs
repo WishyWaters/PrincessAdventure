@@ -20,6 +20,25 @@ namespace PrincessAdventure
         [SerializeField] private AudioClip _powerUpZinger;
 
         private PowerUpOptions powerSelection;
+        private GameObject _highlightedObject = null;
+
+        void Update()
+        {
+
+            if (_highlightedObject != EventSystem.current.currentSelectedGameObject)
+            {
+                if (_highlightedObject != null && _highlightedObject.GetComponent<SelectorGuiController>() != null)
+                    _highlightedObject.GetComponent<SelectorGuiController>().SetHighlightCursor(false);
+
+                _highlightedObject = EventSystem.current.currentSelectedGameObject;
+
+                if (_highlightedObject != null && _highlightedObject.GetComponent<SelectorGuiController>() != null)
+                    _highlightedObject.GetComponent<SelectorGuiController>().SetHighlightCursor(true);
+
+                SoundManager.SoundInstance.PlayUiNavigate();
+
+            }
+        }
 
         public void LoadPowerUpScreen()
         {

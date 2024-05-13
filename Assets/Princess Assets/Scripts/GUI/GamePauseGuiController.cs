@@ -6,7 +6,7 @@ namespace PrincessAdventure
 {
     public class GamePauseGuiController : MonoBehaviour
     {
-        [SerializeField] private GameObject CustomizerPanel;
+        [SerializeField] private GameObject MapPanel;
         [SerializeField] private GameObject EquipmentPanel;
         [SerializeField] private GameObject QuestPanel;
         [SerializeField] private GameObject GameplayGuiPanel;
@@ -17,19 +17,19 @@ namespace PrincessAdventure
         {
             if (Input.GetButtonUp("LeftBump"))
             {
-                if (_lastViewedPanel == CustomizerPanel)
+                if (_lastViewedPanel == MapPanel)
                     OpenEquipment();
                 else if (_lastViewedPanel == EquipmentPanel)
                     OpenQuest();
                 else
-                    OpenCustomizer();
+                    OpenMap();
             }
             else if(Input.GetButtonUp("RightBump"))
             {
-                if (_lastViewedPanel == CustomizerPanel)
+                if (_lastViewedPanel == MapPanel)
                     OpenQuest();
                 else if (_lastViewedPanel == EquipmentPanel)
-                    OpenCustomizer();
+                    OpenMap();
                 else
                     OpenEquipment();
             }
@@ -41,8 +41,8 @@ namespace PrincessAdventure
         {
            
 
-            if (_lastViewedPanel == CustomizerPanel)
-                OpenCustomizer();
+            if (_lastViewedPanel == MapPanel)
+                OpenMap();
             else if (_lastViewedPanel == QuestPanel)
                 OpenQuest();
             else 
@@ -50,16 +50,16 @@ namespace PrincessAdventure
             
         }
 
-        public void OpenCustomizer()
+        public void OpenMap()
         {
             SoundManager.SoundInstance.PlayUiEventSmall();
 
-            CustomizerPanel.SetActive(true);
+            MapPanel.SetActive(true);
             EquipmentPanel.SetActive(false);
             QuestPanel.SetActive(false);
             GameplayGuiPanel.SetActive(false);
 
-            _lastViewedPanel = CustomizerPanel;
+            _lastViewedPanel = MapPanel;
             //CustomizerPanel.GetComponent<CustomizeCharGuiController>().InitializeCustomizerGui();
         }
 
@@ -67,7 +67,7 @@ namespace PrincessAdventure
         {
             SoundManager.SoundInstance.PlayUiEventSmall();
 
-            CustomizerPanel.SetActive(false);
+            MapPanel.SetActive(false);
             EquipmentPanel.SetActive(true);
             QuestPanel.SetActive(false);
             GameplayGuiPanel.SetActive(true);
@@ -80,7 +80,7 @@ namespace PrincessAdventure
         {
             SoundManager.SoundInstance.PlayUiEventSmall();
 
-            CustomizerPanel.SetActive(false);
+            MapPanel.SetActive(false);
             EquipmentPanel.SetActive(false);
             QuestPanel.SetActive(true);
             GameplayGuiPanel.SetActive(false);

@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4171004264456068047}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.7691199, y: -1.0587174, z: -0.088523574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4171004264456068044
 MonoBehaviour:
@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _companionMgr: {fileID: 2753737074986956837}
-  _camera: {fileID: 0}
   _princessPrefab: {fileID: 4482395217454736612, guid: fd64a3efd2d5141cc9c3c7b4cb87f0ae, type: 3}
+  _saveId: 0
 --- !u!114 &4171004264456068050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +90,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ff566fff97c9057488105db1519c414d, type: 3}
   _deathExposionPrefab: {fileID: 7437856771827640419, guid: 572abbd3ece3c4c88b8fb4ae487d32c7, type: 3}
   _risingStarClip: {fileID: 8300000, guid: fed0868802ec3b9428822989ed693806, type: 3}
+  _starCreatorPrefab: {fileID: 8771972552311404799, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}
 --- !u!114 &2753737074986956837
 MonoBehaviour:
   m_ObjectHideFlags: 0

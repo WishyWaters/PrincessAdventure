@@ -173,7 +173,7 @@ namespace PrincessAdventure
 
         public void SaveCharacterAndResumeGame()
         {
-            GameManager.GameInstance.MoveToSavedScene( FadeTypes.Exit);
+            GameManager.GameInstance.ContinueGame();
         }
     }
 }

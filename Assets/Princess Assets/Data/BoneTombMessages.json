@@ -1,14 +1,36 @@
-﻿{"messages" : [
+﻿{
+    "messages": [
         {
             "id": 1,
-            "message": "A collapsed tunnel, but there is a sparkle past the fallen bricks."
+            "message": "Becareful around skeletons you didn't bring with you"
         },
         {
             "id": 2,
-            "message": "A dusty, rusty solid door."
+            "message": "Green acid lasers are not safe for princesses or kittens"
         },
         {
             "id": 3,
-            "message": "Some of these stone blocks are decorated with fiery stones."
+            "message": "Skeletons are immune to some magic, but not fire"
+        },
+        {
+            "id": 4,
+            "message": "Ask permission before playing in underground crypts"
+        },
+        {
+            "id": 5,
+            "message": "If you are lost in hidden passages try moving in all directions"
+        },
+        {
+            "id": 6,
+            "message": "A collapsed tunnel with a sparkle of light past the fallen bricks."
+        },
+        {
+            "id": 7,
+            "message": "A dusty rusty door."
+        },
+        {
+            "id": 8,
+            "message": "Cold stone blocks.  The cold grey and fiery red patterns must mean something!"
         }
-]}
+    ]
+}
