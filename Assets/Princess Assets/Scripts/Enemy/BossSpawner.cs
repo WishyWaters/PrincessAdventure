@@ -63,7 +63,7 @@ namespace PrincessAdventure
             LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
             //TODO: Save boss defeated
 
-            SoundManager.SoundInstance.ChangeMusic(levelMgr.GetLevelMusic(), true);
+            SoundManager.SoundInstance.ChangeMusic(levelMgr.GetDefaultLevelMusic(), true);
 
             foreach (GameObject go in _objectsToDeactivateOnEnd)
             {

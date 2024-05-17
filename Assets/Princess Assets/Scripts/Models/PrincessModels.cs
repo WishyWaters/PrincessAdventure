@@ -107,7 +107,7 @@ namespace PrincessAdventure
             hats.Add(1);
             hats.Add(2);
             hats.Add(3);
-            hats.Add(4);
+            //hats.Add(4);
             hats.Add(5);
             hats.Add(6);
             hats.Add(7);

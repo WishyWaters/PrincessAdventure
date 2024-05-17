@@ -17,8 +17,6 @@ namespace PrincessAdventure
         [SerializeField] private GameObject _activeBefore;
         [SerializeField] private GameObject _activeAfter;
 
-        [SerializeField] private int _id;
-
         private void Start()
         {
             //TODO: Check affected object, if toggled, update _activeBefore/_activeAfter
@@ -54,7 +52,6 @@ namespace PrincessAdventure
             {
                 case InteractionTypes.Door:
                 case InteractionTypes.MajorChest:
-                    //TODO:  Check if locked
                     if (_affectedObjectCtrl.IsLocked())
                         word = "Unlock";
                     else
@@ -104,7 +101,8 @@ namespace PrincessAdventure
                         DoMajorTreasure();
                     break;
                 case InteractionTypes.Message:
-                    GameManager.GameInstance.LoadMessageGui(_id);
+                case InteractionTypes.Talk:
+                    DoMessage();
                     break;
             }
 
@@ -152,6 +150,12 @@ namespace PrincessAdventure
             else
                 _affectedObjectCtrl.FailedToUnlock();
 
+        }
+
+        private void DoMessage()
+        {
+            MessageInteractionController msgCtrl = this.gameObject.GetComponent<MessageInteractionController>();
+            msgCtrl.ShowMessage();
         }
 
     }

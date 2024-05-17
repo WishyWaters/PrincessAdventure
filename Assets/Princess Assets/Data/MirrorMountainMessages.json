@@ -1,0 +1,56 @@
+﻿{
+    "messages": [
+        {
+            "id": 1,
+            "message": "Spiky ice is bad for your health"
+        },
+        {
+            "id": 2,
+            "message": "Snow trolls don't like anyone, it's not personal"
+        },
+        {
+            "id": 3,
+            "message": "Dress in whatever you want or at least whatever you have"
+        },
+        {
+            "id": 4,
+            "message": "Jumping down from snowy cliffs is fine and fun"
+        },
+        {
+            "id": 5,
+            "message": "Keep moving to stay warm and to find more adventures"
+        },
+        {
+            "id": 6,
+            "message": "Slime village ahead, friends only!"
+        },
+        {
+            "id": 7,
+            "message": "A giant snowball.  Too big to move, but cold enough to melt."
+        },
+        {
+            "id": 8,
+            "message": "Gnome village ahead, bring money!"
+        },
+        {
+            "id": 9,
+            "message": "Oh my! It has been a long time since a star princess has visited us."
+        },
+        {
+            "id": 10,
+            "message": "The last one who visited must have come before the mountain had frozen over."
+        },
+        {
+            "id": 11,
+            "message": "You must be freezing!  Take my extra hat!"
+        },
+        {
+            "id": 12,
+            "message": "May the stars ever shine upon you!"
+        },
+        {
+            "id": 13,
+            "message": "I love this windy mountain"
+        }
+    ]
+}

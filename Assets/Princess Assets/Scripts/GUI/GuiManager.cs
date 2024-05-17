@@ -151,7 +151,7 @@ namespace PrincessAdventure
             _powerUpGui.LoadPowerUpScreen();
         }
 
-        public void LoadMessageGui(string msgText)
+        public void LoadMessageGui(MessageModels.Message msg)
         {
             _gameplayPanel.SetActive(false);
             _defeatPanel.SetActive(false);
@@ -165,7 +165,7 @@ namespace PrincessAdventure
             _gamePausePanel.SetActive(false);
             _charCreatePanel.SetActive(false);
 
-            _messageGui.LoadMessageGui(msgText);
+            _messageGui.LoadMessageGui(msg);
         }
 
         public void LoadUniqueItemGui(PickUps item, int id=0)

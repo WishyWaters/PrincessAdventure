@@ -10,6 +10,7 @@ namespace PrincessAdventure
         [SerializeField] private GameScenes _scene;
         [SerializeField] private string _levelName;
         [SerializeField] private AudioClip _defaultLevelMusic;
+        [SerializeField] private AudioClip _secondaryLevelMusic;
         [SerializeField] private GameObject _checkPointReference;
         [SerializeField] private List<Transform> _levelEntrances;
         [SerializeField] private TextAsset _levelMessageData;
@@ -43,9 +44,14 @@ namespace PrincessAdventure
             return _checkPointReference;
         }
 
-        public AudioClip GetLevelMusic()
+        public AudioClip GetDefaultLevelMusic()
         {
             return _defaultLevelMusic;
+        }
+
+        public AudioClip GetSecondaryLevelMusic()
+        {
+            return _secondaryLevelMusic;
         }
 
         public Transform GetLevelEntryPoint(int entryIndex)

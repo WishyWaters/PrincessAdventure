@@ -19,7 +19,6 @@ namespace PrincessAdventure
 	{
 		MainMenu,
 		TestBox,
-		StartMountain,
 		BoomshroomWoods,
 		LevelLoadTester,
 		BoneTomb,

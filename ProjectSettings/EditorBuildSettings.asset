@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Princess Assets/Scenes/CharCreator.unity
     guid: a1cd903efbd814f6fbbf254f05f5dfd7
+  - enabled: 1
+    path: Assets/Princess Assets/Scenes/MirrorMountain.unity
+    guid: 8e19d393dbc0546f0ab1f9a85299b2f3
   m_configObjects: {}

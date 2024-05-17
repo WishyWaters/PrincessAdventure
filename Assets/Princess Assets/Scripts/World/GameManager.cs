@@ -105,7 +105,7 @@ namespace PrincessAdventure
 			_virtualCamera.enabled = false;
 			_levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
 			_currentScene = _levelMgr.GetCurrentLevel();
-			SoundManager.SoundInstance.ChangeMusic(_levelMgr.GetLevelMusic(), true);
+			SoundManager.SoundInstance.ChangeMusic(_levelMgr.GetDefaultLevelMusic(), true);
 
 			if (_levelMgr.GetCurrentLevel() == GameScenes.MainMenu)
 			{
@@ -616,18 +616,51 @@ namespace PrincessAdventure
 			GuiManager.GuiInstance.EndTimerGui();
 		}
 
-		public void LoadMessageGui(int msgId)
+		public void LoadMessageGui(MessageModels.Message msg)
         {
 			ChangeGameState(GameState.Menu);
 
-			string msgText = _levelMgr.GetMessageText(msgId);
-			GuiManager.GuiInstance.LoadMessageGui(msgText);
+			GuiManager.GuiInstance.LoadMessageGui(msg);
         }
 
 		public string GetLevelMessage(int msgId)
         {
 			return _levelMgr.GetMessageText(msgId);
 		}
+
+		public bool HasItem(int itemType, int itemId)
+        {
+			bool has = false;
+			switch(itemType)
+            {
+				case 0:
+					return _gameDetails.equipment.friends.Contains(itemId);
+				case 1:
+					return _gameDetails.equipment.hats.Contains(itemId);
+				case 2:
+					return _gameDetails.equipment.necklaces.Contains(itemId);
+				case 3:
+					return _gameDetails.equipment.outfits.Contains(itemId);
+				case 4:
+					return _gameDetails.equipment.rings.Contains(itemId);
+				case 5:
+					return _gameDetails.equipment.shoes.Contains(itemId);
+				case 6:
+					return _gameDetails.hasMagic;
+				case 7:
+					return _gameDetails.hasFireball;
+				case 8:
+					return _gameDetails.hasFade;
+				case 9:
+					return _gameDetails.hasBomb;
+				case 10:
+					return _gameDetails.hasVision;
+				case 11:
+					return _gameDetails.hasSummon;
+			}
+			
+			return has;
+        }
 
 		#endregion
 
