@@ -12,6 +12,7 @@ namespace PrincessAdventure
         private float _magicDownStart;
         private float _bombDownStart;
         private float _holdThreshold = .4f;
+        private float _interactCooldown = .2f;
 
         private void Awake()
         {
@@ -65,8 +66,13 @@ namespace PrincessAdventure
             {
                 if (_interactDownStart > 0 && _interactDownStart + _holdThreshold >= Time.time)
                 {
-                    newInputs.InputInteract = true;
-                    //Debug.Log("interact");
+                    if(CanInteract())
+                    {
+                        UpdateInteractCooldown();
+                        newInputs.InputInteract = true;
+
+                    }
+                    
                 }
                 _interactDownStart = 0f;
 
@@ -85,7 +91,10 @@ namespace PrincessAdventure
             if (Input.GetButtonUp("Magic"))
             {
                 if (_magicDownStart + _holdThreshold >= Time.time)
+                {
+                    UpdateInteractCooldown();
                     newInputs.InputMagicCast = true;
+                }
                 else
                     newInputs.InputSummonComplete = true;
 
@@ -147,6 +156,18 @@ namespace PrincessAdventure
             {
                 return ControllerTypes.Other;
             }
+        }
+
+        private bool CanInteract()
+        {
+            return _interactCooldown < Time.time;
+
+        }
+
+        private void UpdateInteractCooldown()
+        {
+            _interactCooldown = Time.time + .5f;
+
         }
     }
 }

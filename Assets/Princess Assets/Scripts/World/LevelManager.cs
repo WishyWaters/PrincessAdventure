@@ -17,16 +17,63 @@ namespace PrincessAdventure
 
         private LevelSave _levelDetails;
         private LevelMessages _levelMessages;
+        private List<GameObject> _affectedObjectsToLoad = new List<GameObject>();
+        private bool _levelIsLoaded;
 
-        private void Awake()
+        public void LoadLevelDetails(int saveId)
         {
             if (_scene != GameScenes.MainMenu && _scene != GameScenes.CharCreator)
             {
                 if (_levelMessageData != null)
                     _levelMessages = JsonUtility.FromJson<LevelMessages>(_levelMessageData.text);
 
-                _levelDetails = SaveDataManager.LoadLevelDetails(GameManager.GameInstance.GetSaveId(), _scene);
+                _levelDetails = SaveDataManager.LoadLevelDetails(saveId, _scene);
+
+                _levelIsLoaded = true;
+                LoadAffectedObjects();
             }
+
+            
+        }
+
+        private void LoadAffectedObjects()
+        {
+            foreach(GameObject affectedObj in _affectedObjectsToLoad)
+            {
+                CallbackAndLoadAffected(affectedObj);
+            }
+        }
+
+        private void CallbackAndLoadAffected(GameObject affectedObject)
+        {
+            
+            if (affectedObject.GetComponent<AffectedObjectController>() != null)
+            {
+                AffectedObjectController afObjCtrl = affectedObject.GetComponent<AffectedObjectController>();
+
+                if (DoesToggleSaveExist(afObjCtrl.GetToggleSaveId()))
+                {
+                    afObjCtrl.LoadToggleStatus(GetLevelToggle(afObjCtrl.GetToggleSaveId()));
+                }
+            }
+            else if(affectedObject.GetComponent<PickupController>() != null)
+            {
+                PickupController pickupCtrl = affectedObject.GetComponent<PickupController>();
+                pickupCtrl.LoadPickupStatus((LevelManager)this);
+            }
+            else if (affectedObject.GetComponent<Interaction>() != null)
+            {
+                Interaction interaction = affectedObject.GetComponent<Interaction>();
+                interaction.LeverToggleCallback();
+            }
+        }
+
+        public void AddToCallBackList(GameObject affectedObject)
+        {
+            if (_levelIsLoaded)
+                CallbackAndLoadAffected(affectedObject);
+            else
+                _affectedObjectsToLoad.Add(affectedObject);
         }
 
         public void SaveLevelDetails(int saveId)
@@ -94,7 +141,7 @@ namespace PrincessAdventure
             }
         }
 
-        public bool DoesReferenceSaveExist(int id)
+        private bool DoesReferenceSaveExist(int id)
         {
             if (_levelDetails.references.Exists(x => x.id == id))
                 return true;
@@ -102,7 +149,7 @@ namespace PrincessAdventure
             return false;
         }
 
-        public int GetReferenceValue(int id)
+        private int GetReferenceValue(int id)
         {
             if (_levelDetails.references.Exists(x => x.id == id))
                 return _levelDetails.references.Where(x => x.id == id).First().referenceId;
@@ -110,7 +157,7 @@ namespace PrincessAdventure
             return 0;
         }
 
-        public void SetReferenceToggle(int id, int value)
+        private void SetReferenceValue(int id, int value)
         {
             if (_levelDetails.references.Exists(x => x.id == id))
                 _levelDetails.references.Where(x => x.id == id).First().referenceId = value;

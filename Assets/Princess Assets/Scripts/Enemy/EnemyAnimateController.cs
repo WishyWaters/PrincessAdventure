@@ -135,11 +135,13 @@ namespace PrincessAdventure
                 Destroy(this.gameObject);
             else if (_spineAnimator.AnimationName.Contains("Attack"))
             {
-                _actionCtrl.AttemptIdleAfterAttack();
+                if(_actionCtrl != null)
+                    _actionCtrl.AttemptIdleAfterAttack();
             }
             else if (_spineAnimator.AnimationName.Contains("Hurt"))
             {
-                _actionCtrl.AttemptFleeFromPain();
+                if (_actionCtrl != null)
+                    _actionCtrl.AttemptFleeFromPain();
             }
 
             _allowNewSpineAnimations = true;

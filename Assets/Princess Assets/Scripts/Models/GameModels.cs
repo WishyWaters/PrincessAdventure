@@ -23,7 +23,8 @@ namespace PrincessAdventure
 		LevelLoadTester,
 		BoneTomb,
 		CharCreator,
-		MirrorMountain
+		MirrorMountain,
+		SlimeVault
 	}
 
 	public enum ControllerTypes
@@ -68,7 +69,7 @@ namespace PrincessAdventure
 
 		public ActiveGame()
 		{
-			gameScene = GameScenes.LevelLoadTester;
+			gameScene = GameScenes.MirrorMountain;
 			loadLocationIndex = 0;
 			gold = 0;
 			keys = 0;

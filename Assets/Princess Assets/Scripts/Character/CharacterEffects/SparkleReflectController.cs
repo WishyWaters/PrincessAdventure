@@ -54,6 +54,20 @@ namespace PrincessAdventure
 
                 fireCtrl.Extinguish();
             }
+            else if (collision.CompareTag("NPC"))
+            {
+                Instantiate(_deflectHitPrefab, (Vector3)collision.ClosestPoint(this.transform.position), this.transform.rotation);
+
+                MessageInteractionController msgCtrl = collision.GetComponentInChildren<MessageInteractionController>();
+
+                StartCoroutine(ShowHeartMessageOnDelay(msgCtrl));
+            }
+        }
+
+        IEnumerator ShowHeartMessageOnDelay(MessageInteractionController msgCtrl)
+        {
+            yield return new WaitForSecondsRealtime(.3f);
+            msgCtrl.ShowHeartMessage();
         }
     }
 }

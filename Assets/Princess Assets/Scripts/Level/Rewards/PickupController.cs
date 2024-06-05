@@ -23,15 +23,22 @@ namespace PrincessAdventure
 
         private void Start()
         {
-            LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
-
-            if (_saveOnPickup && levelMgr.DoesToggleSaveExist(_toggleSaveId))
+            if (_saveOnPickup)
             {
-                if (levelMgr.GetLevelToggle(_toggleSaveId) == true)
-                    this.gameObject.SetActive(false);
+                LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+
+                levelMgr.AddToCallBackList(this.gameObject);
             }
 
         }
+
+        public void LoadPickupStatus(LevelManager levelMgr)
+        {
+            if (levelMgr.GetLevelToggle(_toggleSaveId) == true)
+                this.gameObject.SetActive(false);
+            
+        }
+
         private void Update()
         {
             if (Time.timeScale > 0)
@@ -121,6 +128,9 @@ namespace PrincessAdventure
 
         private void UpdateSave()
         {
+            if (_toggleSaveId == 0)
+                return;
+
             //Call level manager and update object data
             LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
 

@@ -526,7 +526,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 143188114306567291, guid: c9e1b61fdb9a64424b6abe6bbda5e720, type: 3}
       propertyPath: _scene
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 143188114306567291, guid: c9e1b61fdb9a64424b6abe6bbda5e720, type: 3}
       propertyPath: _levelName
@@ -1243,6 +1243,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 971515255, guid: a351bbc0f1f8741b8bbd2452b06974e6, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 995653350, guid: a351bbc0f1f8741b8bbd2452b06974e6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1015125672, guid: a351bbc0f1f8741b8bbd2452b06974e6, type: 3}

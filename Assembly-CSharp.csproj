@@ -60,6 +60,7 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/2022.3.25f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Princess Assets/Scripts/Enemy/ScriptedMovementController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/GuiManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/HeartReadController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/ExplosionController.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Models/MessageModels.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/EquipSelectGuiController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/CreateBombController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/GuiTextManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/TechnicalPauseController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/GameplayGuiController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Models/LevelModels.cs" />
@@ -169,8 +171,10 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/DestructibleController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Enemy/EnemySoundController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/SmallFireController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/IceSpikeTrap.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/PotionPickupEffectController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/PowerUpGuiController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/TriggerScriptedMoveController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/TeleportInScene.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/MainMenuController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Enemy/EnemyAnimateController.cs" />
@@ -178,6 +182,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/GUI/TimerGuiController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/PickupController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/DefeatGuiController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Enemy/GuardianMonsterController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/Interaction.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/UniqueItemGuiController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextInfoDebugTool.cs" />

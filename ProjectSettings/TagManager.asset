@@ -17,6 +17,9 @@ TagManager:
   - Boomshroom
   - OpenFire
   - VirtualCamera
+  - NPC
+  - Ice
+  - Guard
   layers:
   - Default
   - TransparentFX

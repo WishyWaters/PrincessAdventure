@@ -12,14 +12,18 @@ namespace PrincessAdventure
 
         void OnTriggerEnter2D(Collider2D col)
         {
-            if(_changeMusic == 1)
+            if (col.CompareTag("Player"))
             {
-                LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
-                SoundManager.SoundInstance.ChangeMusic(levelMgr.GetDefaultLevelMusic(), true);
-            } else if (_changeMusic == 2)
-            {
-                LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
-                SoundManager.SoundInstance.ChangeMusic(levelMgr.GetSecondaryLevelMusic(), true);
+                if (_changeMusic == 1)
+                {
+                    LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+                    SoundManager.SoundInstance.ChangeMusic(levelMgr.GetDefaultLevelMusic(), true);
+                }
+                else if (_changeMusic == 2)
+                {
+                    LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+                    SoundManager.SoundInstance.ChangeMusic(levelMgr.GetSecondaryLevelMusic(), true);
+                }
             }
 
             //Debug.Log("item enter " + col.name);

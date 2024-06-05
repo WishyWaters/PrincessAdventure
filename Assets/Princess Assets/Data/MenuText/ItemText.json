@@ -1,0 +1,248 @@
+﻿{
+    "uniqueItems": [
+        {
+            "id": 1,
+            "name": "Star Shard",
+            "text": "A piece of fallen star.  Many of the wishes made have not been granted because the wishing stars have broken into pieces.  When five of them are found they can be used to increase health or magic."
+        },
+        {
+            "id": 2,
+            "name": "Star Wand",
+            "text": "A magical wand used to calm emotions, reflect danger, and find wishes."
+        },
+        {
+            "id": 3,
+            "name": "Monster Soup",
+            "text": "A tasty treat for pure monsters. Use to magically summon monster friends, "
+        },
+        {
+            "id": 4,
+            "name": "Candle",
+            "text": "A candle that shoots a fire ball.  Do not use on birthday cakes."
+        },
+        {
+            "id": 5,
+            "name": "Skull",
+            "text": "A ghastly prize that grants the ghostly power to fade walk."
+        },
+        {
+            "id": 6,
+            "name": "Mirror Gem",
+            "text": "A magical stone that reveals secrets when fade walking."
+        },
+        {
+            "id": 7,
+            "name": "Boom Book",
+            "text": "An entire book on how to create magic explosions.  Keep out of reach of children!"
+        }
+
+    ],
+    "friends": [
+        {
+            "id": 1,
+            "name": "Slime",
+            "text": "The queen of blue slimes has pledged his people to your cause.  Summon a slime to squeeze into small places."
+        },
+        {
+            "id": 2,
+            "name": "Fibbit",
+            "text": "The fibbits of the wood want to see the world.  Summon a fibbit when you need something heavy."
+        },
+        {
+            "id": 3,
+            "name": "Bobo",
+            "text": "The bobos have faced their fears and wish to help you.  Summon a bobo to fly over obstacles."
+        }
+
+    ],
+    "hats": [
+        {
+            "id": 1,
+            "name": "Star Earrings",
+            "text": "A simple set of earrings that sparkle like stars"
+        },
+        {
+            "id": 2,
+            "name": "Winged Helm",
+            "text": "A golden helm decorated with pegasus feathers made in the style of ancient Nalkry warriors"
+        },
+        {
+            "id": 3,
+            "name": "Red Horn Helm",
+            "text": "A helm to made with monster parts to scare enemies"
+        },
+        {
+            "id": 4,
+            "name": "Black Hat",
+            "text": "A simple yet mysterious black hat given by a kindly snowman"
+        },
+        {
+            "id": 5,
+            "name": "Magician Cap",
+            "text": "A simple cap often worn by royal wizards and healers"
+        },
+        {
+            "id": 6,
+            "name": "Royal Cap",
+            "text": "Posh style combined with potent magic that keeps those who wear it safe"
+        },
+        {
+            "id": 7,
+            "name": "Ranger Cap",
+            "text": "Worn by the long lost forest folk, who once protected the wild lands"
+        },
+        {
+            "id": 8,
+            "name": "Witch Hat",
+            "text": "Often worn by powerful and intelligent witches who focus on complex magic"
+        },
+        {
+            "id": 9,
+            "name": "Sparkle Star Earring",
+            "text": "A stunning pair of earrings that glisten like a comet in the night sky"
+        }
+
+    ],
+    "necklaces": [
+        {
+            "id": 1,
+            "name": "Gift of the Galaxy",
+            "text": "A swirl of sparkling star shaped stones that are worn as a necklace"
+        },
+        {
+            "id": 2,
+            "name": "Oceans Pride",
+            "text": "A pearl necklace decorated with sealife made by the Queen of Sea herself"
+        },
+        {
+            "id": 3,
+            "name": "Ruby of Life",
+            "text": "Warm to the touch, the amulet yearns to protect the life of anyone who wears it"
+        },
+        {
+            "id": 4,
+            "name": "Dragon Friend Amulet",
+            "text": "Created for ancient dragon riders.  Made for those who can befriend even monsters."
+        }
+
+    ],
+    "outfits": [
+        {
+            "id": 1,
+            "name": "Cosmic Gown",
+            "text": "A simple gown often worn by star princesses"
+        },
+        {
+            "id": 2,
+            "name": "Guilded Plate",
+            "text": "Protective armor forged for ancient Nalkry warriors.  Enscribed in the gold trim are words of a lost language."
+        },
+        {
+            "id": 3,
+            "name": "Arcane Plate",
+            "text": "Armor made for battle mages from a far away land.  Many find the protection as valuable as the magic."
+        },
+        {
+            "id": 4,
+            "name": "Black Jack",
+            "text": "Mysterious black clothing that is mostly formal.  It tailors itself for a perfect fit."
+        },
+        {
+            "id": 5,
+            "name": "Magic Cape",
+            "text": "Although it is seen by many as a working class garment, it's fine threadwork is clear to trained eyes."
+        },
+        {
+            "id": 6,
+            "name": "Royal Cloak",
+            "text": "Fine silks and elaborate ribbons are layered to offer protection."
+        },
+        {
+            "id": 7,
+            "name": "Ranger Leather",
+            "text": "Ornate stitching covers this hardened leather.  Forest folk lived in armor such as this while patrolling among the wilds."
+        },
+        {
+            "id": 8,
+            "name": "Witch Dress",
+            "text": "Considered formal wear by the untrained.  Generations of powerful witches have made such dresses legendary."
+        },
+        {
+            "id": 9,
+            "name": "Cosmic Gown",
+            "text": "A beautiful gown often worn by star princesses.  This gown had it's cosmic luster restored and now grants extra protection."
+        }
+
+    ],
+    "rings": [
+        {
+            "id": 1,
+            "name": "Super Nova",
+            "text": "A star shard ring that glows with magical starlight"
+        },
+        {
+            "id": 2,
+            "name": "Oceans Grace",
+            "text": "A simple sea shell ring made by the King of Sea for his wife"
+        },
+        {
+            "id": 3,
+            "name": "Ruby of Love",
+            "text": "Warm to the touch, the ring yearns to show love to anyone who wears it"
+        },
+        {
+            "id": 4,
+            "name": "Folk Friend Ring",
+            "text": "Created for ancient dragons.  Made for monsters who can befriend even folk"
+        }
+
+    ],
+    "shoes": [
+        {
+            "id": 1,
+            "name": "Starsole Boots",
+            "text": "Simple boots often worn by star princesses"
+        },
+        {
+            "id": 2,
+            "name": "Guilded Greaves",
+            "text": "Protective footwear created for the ancient Nalkry warriors.  The Nalkry marched across the lands fighting for justice."
+        },
+        {
+            "id": 3,
+            "name": "Sundae Shoes",
+            "text": "High quality shoes often worn to weekly ice cream events.  Slightly uncomfortable and often kicked off."
+        },
+        {
+            "id": 4,
+            "name": "Winklepickers",
+            "text": "Dark pointy shoes perfect for kicking up trouble.  Not pointy enough to poke monsters."
+        },
+        {
+            "id": 5,
+            "name": "Sheepskin Slippers",
+            "text": "Possibly the most comfy of all footware and comfort is crucial for spell casting.  "
+        },
+        {
+            "id": 6,
+            "name": "Royal Monk Shoe",
+            "text": "Single strap, handmade, and overpriced.  Clicking these heels won't do anything special."
+        },
+        {
+            "id": 7,
+            "name": "Ranger Boots",
+            "text": "Soft and flexible boots that muffle your steps.  Flakes of dirt hang onto the sole from adventures long ago."
+        },
+        {
+            "id": 8,
+            "name": "Witch Flats",
+            "text": "Fashionable, check.  Comfortable, check.  Practicle, check.  The perfect everyday shoe for a witch on the move."
+        },
+        {
+            "id": 9,
+            "name": "Starsole Boots",
+            "text": "Well crafted boots often worn by star princesses.  The leather comes from miniature giant space beasts."
+        }
+
+    ]
+}

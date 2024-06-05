@@ -103,6 +103,13 @@ namespace PrincessAdventure
         sharpTurn
     }
 
+    public enum ScriptedMoveTypes
+    {
+        Loop,
+        MoveThenDestroy,
+        MoveThenIdle
+    }
+
     [System.Serializable]
     public class MessageData
     {
@@ -114,6 +121,41 @@ namespace PrincessAdventure
     public class LevelMessages
     {
         public List<MessageData> messages;
+    }
+
+    [System.Serializable]
+    public class ItemDescription
+    {
+        public int id;
+        public string name;
+        public string text;
+    }
+
+    [System.Serializable]
+    public class ItemDescriptions
+    {
+        public List<ItemDescription> uniqueItems;
+        public List<ItemDescription> friends;
+        public List<ItemDescription> hats;
+        public List<ItemDescription> necklaces;
+        public List<ItemDescription> outfits;
+        public List<ItemDescription> rings;
+        public List<ItemDescription> shoes;
+    }
+
+    [System.Serializable]
+    public class QuestDescription
+    {
+        public int id;
+        public int stage;
+        public string title;
+        public string text;
+    }
+
+    [System.Serializable]
+    public class QuestDescriptions
+    {
+        public List<QuestDescription> descriptions;
     }
 
     [System.Serializable]

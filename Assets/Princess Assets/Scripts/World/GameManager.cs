@@ -104,6 +104,7 @@ namespace PrincessAdventure
 			_virtualCamera = GameObject.FindGameObjectWithTag("VirtualCamera").GetComponentInChildren<CinemachineVirtualCamera>();
 			_virtualCamera.enabled = false;
 			_levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+			_levelMgr.LoadLevelDetails(_saveId);
 			_currentScene = _levelMgr.GetCurrentLevel();
 			SoundManager.SoundInstance.ChangeMusic(_levelMgr.GetDefaultLevelMusic(), true);
 
@@ -114,7 +115,7 @@ namespace PrincessAdventure
 			}
 			else if(_levelMgr.GetCurrentLevel() == GameScenes.CharCreator)
 			{
-				ChangeGameState(GameState.Menu);
+				//ChangeGameState(GameState.Menu);
 				GuiManager.GuiInstance.LoadCharCreator();
 			}
 		}
@@ -589,6 +590,12 @@ namespace PrincessAdventure
 			GuiManager.GuiInstance.LoadUniqueItemGui(item);
 		}
 
+		public void LoadUniqueItemGui(MajorTreasures treasureType, int treasureId)
+		{
+			ChangeGameState(GameState.Menu);
+			GuiManager.GuiInstance.LoadUniqueItemGui(treasureType, treasureId);
+		}
+
 		private void LoadGameplayGui()
 		{
 			GuiManager.GuiInstance.LoadGameplayGui(_gameDetails);
@@ -616,11 +623,11 @@ namespace PrincessAdventure
 			GuiManager.GuiInstance.EndTimerGui();
 		}
 
-		public void LoadMessageGui(MessageModels.Message msg)
+		public void LoadMessageGui(MessageModels.Message msg, string title)
         {
 			ChangeGameState(GameState.Menu);
 
-			GuiManager.GuiInstance.LoadMessageGui(msg);
+			GuiManager.GuiInstance.LoadMessageGui(msg, title);
         }
 
 		public string GetLevelMessage(int msgId)
@@ -698,7 +705,14 @@ namespace PrincessAdventure
 					_companionMgr.UpdateNextInputs(inputs);
 				else
 				{
+					inputs.InputDropBomb = inputs.InputDropBomb && _gameDetails.hasBomb;
 					inputs.InputFade = inputs.InputFade && _gameDetails.hasFade;
+					inputs.InputHoldBomb = inputs.InputHoldBomb && _gameDetails.hasBomb;
+					inputs.InputMagicCast = inputs.InputMagicCast && _gameDetails.hasMagic;
+					inputs.InputSummonComplete = inputs.InputSummonComplete && _gameDetails.hasSummon && _gameDetails.equipment.selectedFriend > 0;
+					inputs.InputSummoning = inputs.InputSummoning && _gameDetails.hasSummon && _gameDetails.equipment.selectedFriend > 0; ;
+					inputs.InputThrowFireball = inputs.InputThrowFireball && _gameDetails.hasFireball;
+
 					_charCtrl.UpdateNextInputs(inputs);
 				}
 				
@@ -1026,22 +1040,27 @@ namespace PrincessAdventure
 					break;
 				case MajorTreasures.Friend:
 					_gameDetails.equipment.friends.Add(treasureId);
+					LoadUniqueItemGui(treasure, treasureId);
 					break;
 				case MajorTreasures.Hat:
                     _gameDetails.equipment.hats.Add(treasureId);
-                    break;
+					LoadUniqueItemGui(treasure, treasureId);
+					break;
                 case MajorTreasures.Necklace:
                     _gameDetails.equipment.necklaces.Add(treasureId);
-                    break;
+					LoadUniqueItemGui(treasure, treasureId);
+					break;
                 case MajorTreasures.Outfit:
                     _gameDetails.equipment.outfits.Add(treasureId);
                     break;
                 case MajorTreasures.Ring:
                     _gameDetails.equipment.rings.Add(treasureId);
-                    break;
+					LoadUniqueItemGui(treasure, treasureId);
+					break;
                 case MajorTreasures.Shoes:
                     _gameDetails.equipment.shoes.Add(treasureId);
-                    break;
+					LoadUniqueItemGui(treasure, treasureId);
+					break;
             }
 
 			//Call Game save
@@ -1099,10 +1118,19 @@ namespace PrincessAdventure
 
 		public void ResumeGameplay()
         {
-			_pause = false;
+			if(_currentScene == GameScenes.CharCreator)
+            {
+				ActivateCharCreator();
+            }
+			else
+            {
+				_pause = false;
 
-			LoadGameplayGui();
-			ChangeGameState(GameState.Playing);
+				LoadGameplayGui();
+				ChangeGameState(GameState.Playing);
+
+            }
+
 
 		}
 

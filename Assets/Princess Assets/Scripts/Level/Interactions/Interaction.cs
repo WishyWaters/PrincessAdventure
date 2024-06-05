@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 
 namespace PrincessAdventure
 {
@@ -12,15 +12,34 @@ namespace PrincessAdventure
 
         [Header("Optional")]
         [SerializeField] private Vector2 _direction;
-        [SerializeField] private AffectedObjectController _affectedObjectCtrl;
+        [SerializeField] private List<AffectedObjectController> _affectedObjects;
 
         [SerializeField] private GameObject _activeBefore;
         [SerializeField] private GameObject _activeAfter;
 
         private void Start()
         {
-            //TODO: Check affected object, if toggled, update _activeBefore/_activeAfter
+            if ((_affectedObjects == null || _affectedObjects.Count == 0) && this.GetComponent<AffectedObjectController>() != null)
+            {
+                _affectedObjects = new List<AffectedObjectController>();
+                _affectedObjects.Add(this.GetComponent<AffectedObjectController>());
+            }
 
+            if(_interactionType == InteractionTypes.Lever)
+            {
+                LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+
+                levelMgr.AddToCallBackList(this.gameObject);
+            }
+        }
+
+        public void LeverToggleCallback()
+        {
+            if (_interactionType == InteractionTypes.Lever)
+            {
+                if (_affectedObjects != null && _affectedObjects.Count > 0)
+                    UpdateActiveInteractable(!_affectedObjects[0].IsToggled());
+            }
         }
 
         public bool IsInteractionActive(bool isCompanion)
@@ -37,7 +56,7 @@ namespace PrincessAdventure
                 case InteractionTypes.MinorChest:
                 case InteractionTypes.MajorChest:
                 case InteractionTypes.Lever:
-                    isActive = _affectedObjectCtrl.IsActive();
+                    isActive = _affectedObjects[0].IsActive();
                     break;
             }
 
@@ -52,7 +71,7 @@ namespace PrincessAdventure
             {
                 case InteractionTypes.Door:
                 case InteractionTypes.MajorChest:
-                    if (_affectedObjectCtrl.IsLocked())
+                    if (_affectedObjects[0].IsLocked())
                         word = "Unlock";
                     else
                         word = "Open";
@@ -90,12 +109,12 @@ namespace PrincessAdventure
                 case InteractionTypes.Lever:
                     
                     if (_activeAfter != null)
-                        UpdateActiveInteractable(!_affectedObjectCtrl.IsToggled());
+                        UpdateActiveInteractable(!_affectedObjects[0].IsToggled());
 
                     DoLeverPull();
                     break;
                 case InteractionTypes.MajorChest:
-                    if (_affectedObjectCtrl.IsLocked())
+                    if (_affectedObjects[0].IsLocked())
                         AttemptUnlock();
                     else
                         DoMajorTreasure();
@@ -123,20 +142,23 @@ namespace PrincessAdventure
 
         private void DoTreasureExplosion()
         {
-            _affectedObjectCtrl.ToggleTheObject();
-            TreasureExplosion treasure = _affectedObjectCtrl.gameObject.GetComponent<TreasureExplosion>();
+            _affectedObjects[0].ToggleTheObject();
+            TreasureExplosion treasure = _affectedObjects[0].gameObject.GetComponent<TreasureExplosion>();
             treasure.ThrowTreasure();
         }
 
         private void DoLeverPull()
         {
-            _affectedObjectCtrl.ToggleTheObject();
+            foreach (AffectedObjectController affObj in _affectedObjects)
+            {
+                affObj.ToggleTheObject();
+            }
         }
 
         private void DoMajorTreasure()
         {
-            _affectedObjectCtrl.ToggleTheObject();
-            MajorItemHandler itemHandler = _affectedObjectCtrl.gameObject.GetComponent<MajorItemHandler>();
+            _affectedObjects[0].ToggleTheObject();
+            MajorItemHandler itemHandler = _affectedObjects[0].gameObject.GetComponent<MajorItemHandler>();
             itemHandler.HandleTreasure();
         }
 
@@ -144,11 +166,11 @@ namespace PrincessAdventure
         {
             if (GameManager.GameInstance.HasKey())
             {
-                _affectedObjectCtrl.Unlock();
+                _affectedObjects[0].Unlock();
                 GameManager.GameInstance.UseKey();
             }
             else
-                _affectedObjectCtrl.FailedToUnlock();
+                _affectedObjects[0].FailedToUnlock();
 
         }
 

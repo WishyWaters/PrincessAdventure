@@ -11,12 +11,12 @@ namespace PrincessAdventure
         [Header("Settings")]
         [SerializeField] private MajorTreasures _treasureType;
         [SerializeField] private AudioClip _fanfareClip;
-
+        [SerializeField] private int _treasureId;
 
         public void HandleTreasure()
         {
 
-            GameManager.GameInstance.PickupMajorTreasure(_treasureType, 0);
+            GameManager.GameInstance.PickupMajorTreasure(_treasureType, _treasureId);
 
             PlayFanFare();
 

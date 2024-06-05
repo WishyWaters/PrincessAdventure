@@ -105,55 +105,55 @@ namespace PrincessAdventure
         {
 			hats = new List<int>();
             hats.Add(1);
-            hats.Add(2);
-            hats.Add(3);
+            //hats.Add(2);
+            //hats.Add(3);
             //hats.Add(4);
-            hats.Add(5);
-            hats.Add(6);
-            hats.Add(7);
-            hats.Add(8);
-            hats.Add(9);
+            //hats.Add(5);
+            //hats.Add(6);
+            //hats.Add(7);
+            //hats.Add(8);
+            //hats.Add(9);
 
             outfits = new List<int>();
             outfits.Add(1);
-            outfits.Add(2);
-            outfits.Add(3);
-            outfits.Add(4);
-            outfits.Add(5);
-            outfits.Add(6);
-            outfits.Add(7);
-            outfits.Add(8);
-            outfits.Add(9);
+            //outfits.Add(2);
+            //outfits.Add(3);
+            //outfits.Add(4);
+            //outfits.Add(5);
+            //outfits.Add(6);
+            //outfits.Add(7);
+            //outfits.Add(8);
+            //outfits.Add(9);
 
             shoes = new List<int>();
             shoes.Add(1);
-            shoes.Add(2);
-            shoes.Add(3);
-            shoes.Add(4);
-            shoes.Add(5);
-            shoes.Add(6);
-            shoes.Add(7);
-            shoes.Add(8);
-            shoes.Add(9);
+            //shoes.Add(2);
+            //shoes.Add(3);
+            //shoes.Add(4);
+            //shoes.Add(5);
+            //shoes.Add(6);
+            //shoes.Add(7);
+            //shoes.Add(8);
+            //shoes.Add(9);
 
             necklaces = new List<int>();
 			rings = new List<int>();
 
-            rings.Add(1);
-            rings.Add(2);
-            rings.Add(3);
-            rings.Add(4);
-            necklaces.Add(1);
-            necklaces.Add(2);
-            necklaces.Add(3);
-            necklaces.Add(4);
+            //rings.Add(1);
+            //rings.Add(2);
+            //rings.Add(3);
+            //rings.Add(4);
+            //necklaces.Add(1);
+            //necklaces.Add(2);
+            //necklaces.Add(3);
+            //necklaces.Add(4);
 
             friends = new List<int>();
-			friends.Add(1);
+			//friends.Add(1);
 			//friends.Add(2);
 			//friends.Add(3);
 
-			selectedFriend = 1;
+			selectedFriend = 0;
 			selectedHat = 1;
 			selectedNecklace = 0;
 			selectedOutfit = 1;

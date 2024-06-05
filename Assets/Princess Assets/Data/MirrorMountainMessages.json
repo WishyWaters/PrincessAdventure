@@ -46,11 +46,127 @@
         },
         {
             "id": 12,
-            "message": "May the stars ever shine upon you!"
+            "message": "Beautiful weather today.  May the stars ever shine upon you!"
         },
         {
             "id": 13,
-            "message": "I love this windy mountain"
+            "message": "I love this icy mountain.  I will be so sad when I have to move back to the peak.  I can barely sleep up there because of that shiny stone floating about."
+        },
+        {
+            "id": 14,
+            "message": "Welcome to our cave, we slimes are proud to host a real princess!"
+        },
+        {
+            "id": 15,
+            "message": "I hope Chef makes more soup soon, we guards have to keep warm."
+        },
+        {
+            "id": 16,
+            "message": "The old mines are locked shut for your safety.  No way to get in there."
+        },
+        {
+            "id": 17,
+            "message": "The old mines are open I guess, enjoy the warm breeze."
+        },
+        {
+            "id": 18,
+            "message": "The wind from the old mines is warm and cozy.  No one can know that I sneak in through the rubble."
+        },
+        {
+            "id": 19,
+            "message": "This is Mirror Mountain."
+        },
+        {
+            "id": 20,
+            "message": "People used to travel from all over to make wishes at the mountain top."
+        },
+        {
+            "id": 21,
+            "message": "Then the mountain froze and the wishes stopped coming true."
+        },
+        {
+            "id": 22,
+            "message": "If I were a star princess, I would make the gnomes run away!"
+        },
+        {
+            "id": 23,
+            "message": "Princess star magic is amazing!  It can turn crystals into potions and make monsters run away!"
+        },
+        {
+            "id": 24,
+            "message": "Red Crystals are spicy and Blue Crystals minty!"
+        },
+        {
+            "id": 25,
+            "message": "Princess magic can be used to find out what people really want, but it only works on kind folk and monsters."
+        },
+        {
+            "id": 26,
+            "message": "The kings eyes are so beautiful."
+        },
+        {
+            "id": 27,
+            "message": "I love being a blue slimey!  We are tiny, quick, and cute!"
+        },
+        {
+            "id": 28,
+            "message": "Green slimes are so big, stinky, and scary!"
+        },
+        {
+            "id": 29,
+            "message": "The gnomes stole our soup!  If you want some, you'll have to go take it back from them."
+        },
+        {
+            "id": 30,
+            "message": "You keep that soup and I'll make some fresh for us slimes."
+        },
+        {
+            "id": 31,
+            "message": "I love making soup, maybe I'll just give some to the gnomes."
+        },
+        {
+            "id": 32,
+            "message": "Our soup allows princesses to magically summon monster friends!"
+        },
+        {
+            "id": 33,
+            "message": "This soup makes princesses sleepy.  So only summon your friends in a safe place."
+        },
+        {
+            "id": 34,
+            "message": "Within in our vault we have hidden away princess treasures."
+        },
+        {
+            "id": 35,
+            "message": "Please fetch the treasures and make the wishes come true."
+        },
+        {
+            "id": 36,
+            "message": "If you find any monster soup, come visit me.  Until then please use the treasures to make wishes come true."
+        },
+        {
+            "id": 37,
+            "message": "You have shown us slimes kindness and given us hope."
+        },
+        {
+            "id": 38,
+            "message": "You may summon us whenever you need and we will answer!"
+        },
+        {
+            "id": 39,
+            "message": "You can always call on the blue slimes and we will answer!"
+        },
+        {
+            "id": 40,
+            "message": "I wish for my people to be safe from the giant berserker gnome king."
+        },
+        {
+            "id": 41,
+            "message": "With the berserker king gone, we slimes are safe!"
+        },
+        {
+            "id": 42,
+            "message": "We slimes can explore and eat soup soup peacefully."
         }
     ]
 }

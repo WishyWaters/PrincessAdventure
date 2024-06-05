@@ -9,21 +9,24 @@ namespace PrincessAdventure
         [SerializeField] private GameObject _projectilePrefab;
         [SerializeField] private AudioClip _throwSound;
         [SerializeField] private Vector2 _direction;
+        [SerializeField] private float _shotDelay;
+        [SerializeField] private bool _isActive;
 
         private float _shotTime;
         private GameObject _projectile;
 
         private void Start()
         {
-            _shotTime = Time.time + 2;
+            if(_isActive)
+                _shotTime = Time.time + _shotDelay;
         }
 
         private void Update()
         {
-            if(_shotTime < Time.time)
+            if(_isActive && _shotTime < Time.time)
             {
                 ThrowFireball();
-                _shotTime = Time.time + 2;
+                _shotTime = Time.time + _shotDelay;
             }
         }
 

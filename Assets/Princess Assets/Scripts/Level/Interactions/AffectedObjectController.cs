@@ -33,16 +33,23 @@ namespace PrincessAdventure
             //Talk to LevelManager & update active, locked, and toggled
             LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
 
-            if(levelMgr.DoesToggleSaveExist(_toggleSaveId))
-            {
-                _isLocked = false;
-                _isToggled = levelMgr.GetLevelToggle(_toggleSaveId);
-                _activeAfter.SetActive(_isToggled);
-                _activeBefore.SetActive(!_isToggled);
+            levelMgr.AddToCallBackList(this.gameObject);
+        }
 
-                if (_behavior == AffectedBehavior.OneTimeSave && _isToggled)
-                    _isActive = false;
-            }
+        public int GetToggleSaveId()
+        {
+            return _toggleSaveId;
+        }
+
+        public void LoadToggleStatus(bool toggle)
+        {
+            _isLocked = false;
+            _isToggled = toggle;
+            _activeAfter.SetActive(_isToggled);
+            _activeBefore.SetActive(!_isToggled);
+
+            if (_behavior == AffectedBehavior.OneTimeSave && _isToggled)
+                _isActive = false;
         }
 
         public void ToggleTheObject()

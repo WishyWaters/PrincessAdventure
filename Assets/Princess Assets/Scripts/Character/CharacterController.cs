@@ -355,6 +355,7 @@ namespace PrincessAdventure
             }
         }
 
+
         private void HandleMagicCast(PrincessInputActions inputs)
         {
 

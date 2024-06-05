@@ -57,6 +57,18 @@ namespace PrincessAdventure
 
                 destCtrl.RemoveDestructable();
             }
+            else if (hit.tag == "Ice")
+            {
+                DestructibleController destCtrl = hit.GetComponent<DestructibleController>();
+
+                destCtrl.RemoveDestructable();
+            }
+            else if (hit.tag == "Guard")
+            {
+                GuardianMonsterController guardCtrl = hit.GetComponent<GuardianMonsterController>();
+
+                guardCtrl.DamageEnemy();
+            }
         }
     
     }

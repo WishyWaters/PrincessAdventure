@@ -69,16 +69,15 @@ namespace PrincessAdventure
             saveName.Append(scene.ToString());
             saveName.Append(".dat");
 
-            LevelSave savedLevel = null;
+            LevelSave savedLevel = new LevelSave();
 
             if (FileManager.LoadFromFile(saveName.ToString(), out var levelJson))
             {
-                savedLevel = JsonUtility.FromJson<LevelSave>(levelJson);
+                if(!string.IsNullOrEmpty(levelJson))
+                    savedLevel = JsonUtility.FromJson<LevelSave>(levelJson);
                 
                 Debug.Log("Level Load complete");
             }
-            else
-                savedLevel = new LevelSave();
 
             return savedLevel;
         }

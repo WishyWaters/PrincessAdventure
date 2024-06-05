@@ -13,7 +13,7 @@ namespace PrincessAdventure
 			None = 0,
 			HasItem = 1,
 			NotHasItem = 2,
-			QuestStatus = 3
+			ToggleStatus = 3
 		}
 
 		[System.Serializable]

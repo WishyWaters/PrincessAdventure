@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 namespace PrincessAdventure
 {
@@ -32,7 +33,13 @@ namespace PrincessAdventure
         [SerializeField] GamePauseGuiController _gamePauseGui;
         [SerializeField] CustomizeCharGuiController _custCharGui;
 
+        [Header("Documents")]
+        [SerializeField] private TextAsset _ItemText;
+        [SerializeField] private TextAsset _QuestText;
+
         public static GuiManager GuiInstance;
+        private ItemDescriptions _itemDescriptions;
+        private QuestDescriptions _questDescriptions;
 
         #region Unity Functions
         private void Awake()
@@ -41,12 +48,25 @@ namespace PrincessAdventure
             {
                 DontDestroyOnLoad(this);
                 GuiInstance = this;
+                LoadTextAssets();
             }
             else if (GuiInstance != this)
             {
                 Destroy(gameObject);
             }
         }
+
+        private void LoadTextAssets()
+        {
+
+            if (_ItemText != null)
+                _itemDescriptions = JsonUtility.FromJson<ItemDescriptions>(_ItemText.text);
+
+            if (_QuestText != null)
+                _questDescriptions = JsonUtility.FromJson<QuestDescriptions>(_QuestText.text);
+
+        }
+
         #endregion
         public void DeactivateAllGui()
         {
@@ -151,7 +171,7 @@ namespace PrincessAdventure
             _powerUpGui.LoadPowerUpScreen();
         }
 
-        public void LoadMessageGui(MessageModels.Message msg)
+        public void LoadMessageGui(MessageModels.Message msg, string title)
         {
             _gameplayPanel.SetActive(false);
             _defeatPanel.SetActive(false);
@@ -165,10 +185,10 @@ namespace PrincessAdventure
             _gamePausePanel.SetActive(false);
             _charCreatePanel.SetActive(false);
 
-            _messageGui.LoadMessageGui(msg);
+            _messageGui.LoadMessageGui(msg, title);
         }
 
-        public void LoadUniqueItemGui(PickUps item, int id=0)
+        public void LoadUniqueItemGui(PickUps item)
         {
             _gameplayPanel.SetActive(false);
             _defeatPanel.SetActive(false);
@@ -182,7 +202,26 @@ namespace PrincessAdventure
             _gamePausePanel.SetActive(false);
             _charCreatePanel.SetActive(false);
 
-            _itemGui.LoadUniqueItemGui(item);
+            //TODO: Get item descriptions
+
+            _itemGui.LoadUniqueItemGui(item, GetItemText(item));
+        }
+
+        public void LoadUniqueItemGui(MajorTreasures treasureType, int id)
+        {
+            _gameplayPanel.SetActive(false);
+            _defeatPanel.SetActive(false);
+            _starShardPanel.SetActive(false);
+            _powerUpPanel.SetActive(false);
+            _messagePanel.SetActive(false);
+            _fadePanel.SetActive(false);
+            _uniqueItemPanel.SetActive(true);
+            _mainMenuPanel.SetActive(false);
+            _techPausePanel.SetActive(false);
+            _gamePausePanel.SetActive(false);
+            _charCreatePanel.SetActive(false);
+
+            _itemGui.LoadEquipItemGui(treasureType, id, GetItemText(treasureType, id));
         }
 
         public void LoadMainMenuGui()
@@ -314,6 +353,52 @@ namespace PrincessAdventure
         {
             _fadePanel.SetActive(true);
             StartCoroutine(_fadeGui.FillToClear(type, timeToTake));
+        }
+
+        private ItemDescription GetItemText(PickUps pickup)
+        {
+            switch(pickup)
+            {
+                case PickUps.StarShard:
+                    return _itemDescriptions.uniqueItems.Where(x => x.id == 1).FirstOrDefault();
+                case PickUps.Staff:
+                    return _itemDescriptions.uniqueItems.Where(x => x.id == 2).FirstOrDefault();
+                case PickUps.Soup:
+                    return _itemDescriptions.uniqueItems.Where(x => x.id == 3).FirstOrDefault();
+                case PickUps.Candle:
+                    return _itemDescriptions.uniqueItems.Where(x => x.id == 4).FirstOrDefault();
+                case PickUps.Skull:
+                    return _itemDescriptions.uniqueItems.Where(x => x.id == 5).FirstOrDefault();
+                case PickUps.Gemstone:
+                    return _itemDescriptions.uniqueItems.Where(x => x.id == 6).FirstOrDefault();
+                case PickUps.Book:
+                    return _itemDescriptions.uniqueItems.Where(x => x.id == 7).FirstOrDefault();
+                default:
+                    return new ItemDescription();
+            }
+
+        }
+
+        private ItemDescription GetItemText(MajorTreasures treasureType, int id)
+        {
+            switch (treasureType)
+            {
+                case MajorTreasures.Friend:
+                    return _itemDescriptions.friends.Where(x => x.id == id).FirstOrDefault();
+                case MajorTreasures.Hat:
+                    return _itemDescriptions.hats.Where(x => x.id == id).FirstOrDefault();
+                case MajorTreasures.Necklace:
+                    return _itemDescriptions.necklaces.Where(x => x.id == id).FirstOrDefault();
+                case MajorTreasures.Outfit:
+                    return _itemDescriptions.outfits.Where(x => x.id == id).FirstOrDefault();
+                case MajorTreasures.Ring:
+                    return _itemDescriptions.rings.Where(x => x.id == id).FirstOrDefault();
+                case MajorTreasures.Shoes:
+                    return _itemDescriptions.shoes.Where(x => x.id == id).FirstOrDefault();
+                default:
+                    return new ItemDescription();
+            }
+
         }
     }
 }

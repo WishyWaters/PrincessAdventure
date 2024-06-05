@@ -149,6 +149,19 @@ namespace PrincessAdventure
 
                     shroomCtrl.StartExplode();
                 }
+                else if (collision.CompareTag("Ice"))
+                {
+                    DestructibleController iceCtrl = collision.GetComponent<DestructibleController>();
+
+                    iceCtrl.RemoveDestructable();
+                }
+                else if (collision.CompareTag("Guard"))
+                {
+                    GuardianMonsterController guardCtrl = collision.GetComponent<GuardianMonsterController>();
+
+                    guardCtrl.DamageEnemy();
+                }
+
 
                 Explode();
             }
@@ -162,6 +175,12 @@ namespace PrincessAdventure
                     SmallFireController fireCtrl = collision.GetComponent<SmallFireController>();
 
                     fireCtrl.LightFire();
+
+                    Explode();
+                }
+                else if (collision.CompareTag("Projectile"))
+                {
+                    
 
                     Explode();
                 }
