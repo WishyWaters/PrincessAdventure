@@ -17,7 +17,11 @@ namespace PrincessAdventure
 
         [SerializeField] private AudioClip _victoryStinger;
 
-        [SerializeField] private GameObject _starShardToActivate;
+        //[SerializeField] private GameObject _starShardToActivate;
+
+
+        [SerializeField] private float _cameraMoveTime;
+        [SerializeField] private GameObject _cameraMoveTarget;
 
         private bool _wasActivated;
 
@@ -25,6 +29,11 @@ namespace PrincessAdventure
         {
             LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
 
+            levelMgr.AddToCallBackList(this.gameObject);
+        }
+
+        public void SetWasActivated(LevelManager levelMgr)
+        {
             if (levelMgr.DoesToggleSaveExist(_bossToggleSaveId))
             {
                 if (levelMgr.GetLevelToggle(_bossToggleSaveId) == true)
@@ -34,13 +43,22 @@ namespace PrincessAdventure
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(!_wasActivated)
-                BeginBossFight();
+            if(!_wasActivated && collision.CompareTag("Player"))
+                StartCoroutine(BeginBossFight());
         }
 
-        private void BeginBossFight()
+        private IEnumerator BeginBossFight()
         {
             _wasActivated = true;
+
+            GameManager.GameInstance.UpdateCameraFollow(_cameraMoveTarget);
+
+            float timeCount = 0;
+            while (timeCount < _cameraMoveTime)
+            {
+                timeCount += Time.deltaTime;
+                yield return null;
+            }
 
             SoundManager.SoundInstance.ChangeMusic(_bossMusic, true);
 
@@ -55,13 +73,22 @@ namespace PrincessAdventure
                 affected.ToggleTheObject();
             }
 
+            timeCount = 0;
+            while (timeCount < _cameraMoveTime)
+            {
+                timeCount += Time.deltaTime;
+                yield return null;
+            }
+
+            GameManager.GameInstance.UpdateCameraFollowToPlayer();
+
 
         }
 
         public void EndBossFight()
         {
             LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
-            //TODO: Save boss defeated
+            
 
             SoundManager.SoundInstance.ChangeMusic(levelMgr.GetDefaultLevelMusic(), true);
 
@@ -76,7 +103,7 @@ namespace PrincessAdventure
                 affected.ToggleTheObject();
             }
 
-            _starShardToActivate.SetActive(true);
+            //_starShardToActivate.SetActive(true);
         }
 
     }

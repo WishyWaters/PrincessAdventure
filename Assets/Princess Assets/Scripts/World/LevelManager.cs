@@ -66,6 +66,26 @@ namespace PrincessAdventure
                 Interaction interaction = affectedObject.GetComponent<Interaction>();
                 interaction.LeverToggleCallback();
             }
+            else if (affectedObject.GetComponent<BossSpawner>() != null)
+            {
+                BossSpawner boss = affectedObject.GetComponent<BossSpawner>();
+                boss.SetWasActivated((LevelManager)this);
+            }
+            else if (affectedObject.GetComponent<EnemyBehaviorController>() != null)
+            {
+                EnemyBehaviorController enemy = affectedObject.GetComponent<EnemyBehaviorController>();
+                enemy.SetEnemyActive((LevelManager)this);
+            }
+            else if (affectedObject.GetComponent<ScriptedMovementController>() != null)
+            {
+                ScriptedMovementController move = affectedObject.GetComponent<ScriptedMovementController>();
+                move.ActivateMovement((LevelManager)this);
+            }
+            else if (affectedObject.GetComponent<PuzzleCheckController>() != null)
+            {
+                PuzzleCheckController puzzleCheck = affectedObject.GetComponent<PuzzleCheckController>();
+                puzzleCheck.PuzzleLoad((LevelManager)this);
+            }
         }
 
         public void AddToCallBackList(GameObject affectedObject)

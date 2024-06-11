@@ -56,6 +56,19 @@ namespace PrincessAdventure
             }
         }
 
+        void Update()
+        {
+            if (Input.GetButtonUp("LeftBump") && _gamePausePanel.activeInHierarchy)
+            {
+                _gamePauseGui.LeftNavigation();
+            }
+            else if (Input.GetButtonUp("RightBump") && _gamePausePanel.activeInHierarchy)
+            {
+                _gamePauseGui.RightNavigation();
+            }
+
+        }
+
         private void LoadTextAssets()
         {
 
@@ -274,6 +287,7 @@ namespace PrincessAdventure
 
             _gamePauseGui.InitializePause();
         }
+
 
         public void LoadCharCreator()
         {

@@ -24,7 +24,17 @@ namespace PrincessAdventure
 		BoneTomb,
 		CharCreator,
 		MirrorMountain,
-		SlimeVault
+		SlimeVault,
+		GravefordFarms,
+		DesireTown,
+		FoolsPitMine,
+		OldShineMine,
+		PhantomForest,
+		WishyWaterways,
+		Mansion,
+		FunkyCave
+
+
 	}
 
 	public enum ControllerTypes
@@ -53,6 +63,10 @@ namespace PrincessAdventure
 		public bool hasVision;
 		public PrincessEquipment equipment = new();
 		public PrincessStyle princessStyle = new();
+		public int totalShards;
+		public int apples;
+		public int tradeItemId;
+		public bool hasTeleport;
 
 
 	}

@@ -1595,7 +1595,7 @@ MonoBehaviour:
     m_Bits: 320
   _whatIsBlockade:
     serializedVersion: 2
-    m_Bits: 3073
+    m_Bits: 1025
   _patrolType: 1
   _patrolTime: 4
   _idleTimeAfterPatrol: 1

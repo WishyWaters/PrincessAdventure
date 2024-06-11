@@ -1,21 +1,20 @@
 ﻿<Properties StartupConfiguration="{AD664D52-B116-25F0-8477-C67A55415F25}|">
   <MonoDevelop.Ide.ItemProperties.2DCustomizableCharacters PreferredExecutionTarget="4cb0eb1a-99ec-4f20-bbce-ce702cc3e3d5" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Princess Assets/Scripts/Level/Interactions/Interaction.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Princess Assets/Scripts/Level/Rewards/PuzzleCheckController.cs">
     <Files>
-      <File FileName="Assets/Princess Assets/Scripts/World/GameManager.cs" Line="714" Column="73" IsPinned="True" />
-      <File FileName="Assets/Princess Assets/Scripts/World/LevelManager.cs" Line="10" Column="41" IsPinned="True" />
-      <File FileName="Assets/Princess Assets/Scripts/GUI/UniqueItemGuiController.cs" Line="76" Column="86" />
-      <File FileName="Assets/Princess Assets/Data/MenuText/ItemText.json" Line="44" Column="31" />
-      <File FileName="Assets/Princess Assets/Scripts/Level/Traps/ProjectileTrap.cs" Line="21" Column="22" />
-      <File FileName="Assets/Princess Assets/Scripts/Enemy/GuardianMonsterController.cs" Line="101" Column="31" />
-      <File FileName="Assets/Princess Assets/Scripts/Enemy/ScriptedMovementController.cs" Line="63" Column="14" />
-      <File FileName="Assets/Princess Assets/Scripts/Enemy/EnemyBehaviorController.cs" Line="139" Column="41" />
-      <File FileName="Assets/Princess Assets/Scripts/Enemy/EnemySoundController.cs" Line="26" Column="1" />
-      <File FileName="Assets/Princess Assets/Scripts/Enemy/EnemyActionController.cs" Line="281" Column="10" />
-      <File FileName="Assets/Princess Assets/Scripts/Level/Interactions/ProjectileController.cs" Line="163" Column="18" />
-      <File FileName="Assets/Princess Assets/Scripts/Level/Interactions/ExplosionController.cs" Line="66" Column="41" />
-      <File FileName="Assets/Princess Assets/Scripts/Enemy/EnemyAnimateController.cs" Line="7" Column="5" />
-      <File FileName="Assets/Princess Assets/Scripts/Level/Interactions/Interaction.cs" Line="59" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/World/GameManager.cs" Line="204" Column="30" IsPinned="True" />
+      <File FileName="Assets/Princess Assets/Scripts/World/LevelManager.cs" Line="135" Column="1" IsPinned="True" />
+      <File FileName="Assets/Princess Assets/Scripts/GUI/EquipmentGuiController.cs" Line="42" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/GUI/GamePauseGuiController.cs" Line="47" Column="33" />
+      <File FileName="Assets/Princess Assets/Scripts/GUI/MainMenuController.cs" Line="71" Column="61" />
+      <File FileName="Assets/Princess Assets/Scripts/GUI/UniqueItemGuiController.cs" Line="60" Column="58" />
+      <File FileName="Assets/Princess Assets/Scripts/GUI/GuiManager.cs" Line="67" Column="49" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Interactions/Interaction.cs" Line="13" Column="29" />
+      <File FileName="Assets/Princess Assets/Scripts/Models/GameModels.cs" Line="27" Column="14" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Rewards/TreasureExplosion.cs" Line="55" Column="55" />
+      <File FileName="Assets/Princess Assets/Scripts/Enemy/BossSpawner.cs" Line="106" Column="52" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Interactions/SmallFireController.cs" Line="45" Column="1" />
+      <File FileName="Assets/Princess Assets/Scripts/Level/Rewards/PuzzleCheckController.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -31,17 +30,14 @@
               <Node name="Princess Assets" expanded="True">
                 <Node name="Data" expanded="True" />
                 <Node name="Scripts" expanded="True">
-                  <Node name="Character" expanded="True">
-                    <Node name="CharacterEffects" expanded="True" />
-                  </Node>
+                  <Node name="Character" expanded="True" />
                   <Node name="Enemy" expanded="True" />
                   <Node name="GUI" expanded="True" />
                   <Node name="Level" expanded="True">
-                    <Node name="Interactions" expanded="True">
-                      <Node name="Interaction.cs" selected="True" />
+                    <Node name="Interactions" expanded="True" />
+                    <Node name="Rewards" expanded="True">
+                      <Node name="PuzzleCheckController.cs" selected="True" />
                     </Node>
-                    <Node name="Rewards" expanded="True" />
-                    <Node name="Traps" expanded="True" />
                   </Node>
                   <Node name="Models" expanded="True" />
                   <Node name="Utilities" expanded="True" />
@@ -52,9 +48,7 @@
                 </Node>
               </Node>
               <Node name="TextMesh Pro" expanded="True">
-                <Node name="Examples &amp; Extras" expanded="True">
-                  <Node name="Scripts" expanded="True" />
-                </Node>
+                <Node name="Examples &amp; Extras" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -79,7 +73,7 @@
     <BreakpointStore>
       <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/World/GameManager.cs" relfile="Assets/Princess Assets/Scripts/World/GameManager.cs" line="1085" column="1" />
       <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/World/GameManager.cs" relfile="Assets/Princess Assets/Scripts/World/GameManager.cs" line="406" column="1" />
-      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/Enemy/ScriptedMovementController.cs" relfile="Assets/Princess Assets/Scripts/Enemy/ScriptedMovementController.cs" line="66" column="1" />
+      <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/Enemy/ScriptedMovementController.cs" relfile="Assets/Princess Assets/Scripts/Enemy/ScriptedMovementController.cs" line="72" column="1" />
       <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/Level/Interactions/MessageInteractionController.cs" relfile="Assets/Princess Assets/Scripts/Level/Interactions/MessageInteractionController.cs" line="105" column="1" />
       <Breakpoint file="/Users/AdamWatersMacMini/Projects/PrincessAdventure/Assets/Princess Assets/Scripts/Level/Interactions/MessageInteractionController.cs" relfile="Assets/Princess Assets/Scripts/Level/Interactions/MessageInteractionController.cs" line="140" column="1" />
     </BreakpointStore>

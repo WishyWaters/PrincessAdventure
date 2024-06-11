@@ -13,6 +13,10 @@ namespace PrincessAdventure
 
         [SerializeField] private PuzzleCheckController _puzzleCtrl;
 
+        [SerializeField] private float _igniteTimer;
+
+        private float _igniteCountDown = 0;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -25,6 +29,13 @@ namespace PrincessAdventure
         // Update is called once per frame
         void Update()
         {
+            if (_igniteCountDown <= 0)
+                return;
+
+            _igniteCountDown -= Time.deltaTime;
+
+            if (_igniteCountDown <= 0)
+                LightFire();
 
         }
 
@@ -46,6 +57,8 @@ namespace PrincessAdventure
             if (_puzzleCtrl != null)
                 _puzzleCtrl.CheckPuzzle();
 
+            if (_igniteTimer > 0f)
+                _igniteCountDown = _igniteTimer;
 
         }
 

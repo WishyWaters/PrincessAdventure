@@ -37,23 +37,29 @@ namespace PrincessAdventure
         // Start is called before the first frame update
         void Start()
         {
-            LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
-
             _moveAxis = _startDirection;
             _lastActiveAxis = _startDirection;
 
-            if (_onlyOnceSaveId > 0 && levelMgr.DoesToggleSaveExist(_onlyOnceSaveId))
+            if (_onlyOnceSaveId > 0)
             {
-                if (levelMgr.GetLevelToggle(_onlyOnceSaveId) == true)
-                {
-                    Destroy(this.gameObject);
-                    return;
-                }
+                LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+                levelMgr.AddToCallBackList(this.gameObject);
                     
             }
 
             if (_startOnAwake)
                 BeginMovement();
+        }
+
+        public void ActivateMovement(LevelManager levelMgr)
+        {
+            if (levelMgr.DoesToggleSaveExist(_onlyOnceSaveId))
+            {
+                if (levelMgr.GetLevelToggle(_onlyOnceSaveId) == true)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
         }
 
         // Update is called once per frame

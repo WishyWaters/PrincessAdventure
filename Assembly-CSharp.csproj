@@ -173,6 +173,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/SmallFireController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/IceSpikeTrap.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/PotionPickupEffectController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Unique/ChangeSceneMusicTrigger.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/PowerUpGuiController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/TriggerScriptedMoveController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/TeleportInScene.cs" />

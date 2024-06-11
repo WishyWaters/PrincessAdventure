@@ -68,7 +68,7 @@ namespace PrincessAdventure
             if (Input.GetButtonUp("Cancel") )
             {
                 //TODO: Back up menu
-                SoundManager.SoundInstance.PlayUiCancel();
+                //SoundManager.SoundInstance.PlayUiCancel();
 
             }
 

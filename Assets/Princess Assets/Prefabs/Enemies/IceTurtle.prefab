@@ -181,7 +181,7 @@ MonoBehaviour:
   _patrolType: 1
   _patrolTime: 60
   _idleTimeAfterPatrol: 4
-  _fleeTime: 0
+  _fleeTime: 5
   _acceleration: 13
   _moveSpeed: 0.15
   _startDirection: {x: 0, y: 1}
@@ -201,10 +201,10 @@ MonoBehaviour:
   _behaviorCtrl: {fileID: 4806419051142504686}
   _sfxCtrl: {fileID: 3412071200335059718}
   _health: 1
-  _dealHeartDamage: 1
+  _dealHeartDamage: 0
   _coinDamage: 3
   _diesToExplosion: 0
-  _canBeReflected: 0
+  _canBeReflected: 1
   _fleeOnDamage: 0
   _attackRadius: 0.8
   _meleeWaitTime: 0.6

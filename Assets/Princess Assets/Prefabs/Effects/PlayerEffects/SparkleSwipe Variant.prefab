@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1042269289, guid: 69d8f05fda8421849a84b27b8c0d773d, type: 3}
@@ -92,6 +93,24 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5318118474938795680, guid: 69d8f05fda8421849a84b27b8c0d773d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3735603065364174236}
+    - targetCorrespondingSourceObject: {fileID: 5318118474938795680, guid: 69d8f05fda8421849a84b27b8c0d773d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3259975959418427536}
+    - targetCorrespondingSourceObject: {fileID: 5318118474938795680, guid: 69d8f05fda8421849a84b27b8c0d773d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1114864276963506000}
+    - targetCorrespondingSourceObject: {fileID: 5318118474938795680, guid: 69d8f05fda8421849a84b27b8c0d773d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1703839521486502746}
+    - targetCorrespondingSourceObject: {fileID: 5318118474938795680, guid: 69d8f05fda8421849a84b27b8c0d773d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3120972354350802824}
   m_SourcePrefab: {fileID: 100100000, guid: 69d8f05fda8421849a84b27b8c0d773d, type: 3}
 --- !u!1 &5418981108207200328 stripped
 GameObject:
@@ -108,6 +127,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -125,6 +163,7 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!114 &1114864276963506000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,5 +204,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a8fc0ba69df42729b6c64a76c59c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _liveTime: 0.9
+  _liveTime: 0.75
   _startClip: {fileID: 0}

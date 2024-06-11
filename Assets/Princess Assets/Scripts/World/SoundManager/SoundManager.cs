@@ -60,10 +60,13 @@ namespace PrincessAdventure
 
 		public void ChangeMusic(AudioClip track, bool isLoop)
         {
-			_musicSource.Stop();
-			_musicSource.loop = isLoop;
-			_musicSource.clip = track;
-			_musicSource.PlayDelayed(.5f);
+			if (_musicSource.clip != track)
+			{
+				_musicSource.Stop();
+				_musicSource.loop = isLoop;
+				_musicSource.clip = track;
+				_musicSource.PlayDelayed(.5f);
+			}
         }
 
 		public void ChangeMusicVolume(float value)

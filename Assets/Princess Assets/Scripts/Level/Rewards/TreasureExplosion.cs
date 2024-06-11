@@ -22,6 +22,7 @@ namespace PrincessAdventure
         [SerializeField] private TreasureDrops _treasureType;
         [SerializeField] private float _tossMinRadius;
         [SerializeField] private float _tossMaxRadius;
+        //[SerializeField] private bool _includeKey;
 
         [Header("Optional Effects")]
         [SerializeField] private AudioClip _fanfareClip;
@@ -39,7 +40,6 @@ namespace PrincessAdventure
             int numOfRedPotion = NumberOfRedPotions();
             int numOfBluePotion = NumberOfBluePotions();
             int numOfGreenPotion = NumberOfGreenPotions();
-            int numOfKeys = NumberOfKeys();
 
 
             if (GameManager.GameInstance.GetCurrentHealth() <= 2)
@@ -59,9 +59,9 @@ namespace PrincessAdventure
                     CreateTreasureItem(bluePotionPrefab);
                 if (i < numOfGreenPotion)
                     CreateTreasureItem(greenPotionPrefab);
-                if (i < numOfKeys)
-                    CreateTreasureItem(keyPrefab);
             }
+            //if (_includeKey)
+            //    CreateTreasureItem(keyPrefab);
 
             PlayFanFare();
 

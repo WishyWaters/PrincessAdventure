@@ -23,11 +23,7 @@ namespace PrincessAdventure
         {
             LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
 
-            if (levelMgr.DoesToggleSaveExist(_toggleSaveId))
-            {
-                if(levelMgr.GetLevelToggle(_toggleSaveId))
-                    HandlePuzzleCompletion(false);
-            }
+            levelMgr.AddToCallBackList(this.gameObject);
 
         }
 
@@ -37,6 +33,15 @@ namespace PrincessAdventure
                 HandlePuzzleCompletion(true);
             else if(!puzzleSolved)
                 SoundManager.SoundInstance.PlayEffectSound(_failClip);
+        }
+
+        public void PuzzleLoad(LevelManager lvlMgr)
+        {
+            if (lvlMgr.DoesToggleSaveExist(_toggleSaveId))
+            {
+                if (lvlMgr.GetLevelToggle(_toggleSaveId))
+                    HandlePuzzleCompletion(false);
+            }
         }
 
         private bool IsPuzzleCorrect()

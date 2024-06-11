@@ -44,13 +44,18 @@ namespace PrincessAdventure
 
         private void Start()
         {
-            LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
-
-            if (_singleSpawn && levelMgr.DoesToggleSaveExist(_toggleSaveId))
+            if(_singleSpawn)
             {
-                if (levelMgr.GetLevelToggle(_toggleSaveId) == true)
-                    this.gameObject.SetActive(false);
+                LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+                levelMgr.AddToCallBackList(this.gameObject);
             }
+            
+        }
+
+        public void SetEnemyActive(LevelManager levelMgr)
+        {
+            if (levelMgr.DoesToggleSaveExist(_toggleSaveId) && levelMgr.GetLevelToggle(_toggleSaveId) == true)
+                this.gameObject.SetActive(false);
         }
 
         void FixedUpdate()

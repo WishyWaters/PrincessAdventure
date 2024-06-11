@@ -2039,7 +2039,7 @@ Transform:
   m_GameObject: {fileID: 733339734789654617}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.030000506, y: 0.41280004, z: 0}
+  m_LocalPosition: {x: -0.029993055, y: 0.41280004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8661,8 +8661,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 18
+  MinDistance: 3
+  MaxDistance: 25
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -8871,7 +8871,7 @@ MonoBehaviour:
   _canBeReflected: 1
   _fleeOnDamage: 1
   _attackRadius: 0.5
-  _meleeWaitTime: 0.7
+  _meleeWaitTime: 0.3
   _idleTimeAfterAttack: 2
   _projectile: {fileID: 0}
   _projectileWaitTime: 0

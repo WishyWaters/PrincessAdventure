@@ -13,29 +13,6 @@ namespace PrincessAdventure
 
         private GameObject _lastViewedPanel = null;
 
-        void Update()
-        {
-            if (Input.GetButtonUp("LeftBump"))
-            {
-                if (_lastViewedPanel == MapPanel)
-                    OpenEquipment();
-                else if (_lastViewedPanel == EquipmentPanel)
-                    OpenQuest();
-                else
-                    OpenMap();
-            }
-            else if(Input.GetButtonUp("RightBump"))
-            {
-                if (_lastViewedPanel == MapPanel)
-                    OpenQuest();
-                else if (_lastViewedPanel == EquipmentPanel)
-                    OpenMap();
-                else
-                    OpenEquipment();
-            }
-
-        }
-
             //Toggle panel functions
         public void InitializePause()
         {
@@ -48,6 +25,26 @@ namespace PrincessAdventure
             else 
                 OpenEquipment();
             
+        }
+
+        public void LeftNavigation()
+        {
+            if (_lastViewedPanel == MapPanel)
+                OpenEquipment();
+            else if (_lastViewedPanel == EquipmentPanel)
+                OpenQuest();
+            else
+                OpenMap();
+        }
+
+        public void RightNavigation()
+        {
+            if (_lastViewedPanel == MapPanel)
+                OpenQuest();
+            else if (_lastViewedPanel == EquipmentPanel)
+                OpenMap();
+            else
+                OpenEquipment();
         }
 
         public void OpenMap()
