@@ -12,11 +12,14 @@ namespace PrincessAdventure
         [SerializeField] private GameObject GameplayGuiPanel;
 
         private GameObject _lastViewedPanel = null;
+        private GameDetails _lastGameDets = null;
+        private ItemDescriptions _lastItemDesc = null;
 
-            //Toggle panel functions
-        public void InitializePause()
+        //Toggle panel functions
+        public void InitializePause(GameDetails details, ItemDescriptions itemDescriptions)
         {
-           
+            _lastGameDets = details;
+            _lastItemDesc = itemDescriptions;
 
             if (_lastViewedPanel == MapPanel)
                 OpenMap();
@@ -57,7 +60,7 @@ namespace PrincessAdventure
             GameplayGuiPanel.SetActive(false);
 
             _lastViewedPanel = MapPanel;
-            //CustomizerPanel.GetComponent<CustomizeCharGuiController>().InitializeCustomizerGui();
+            MapPanel.GetComponent<MapGuiController>().InitializeMapPanel();
         }
 
         public void OpenEquipment()
@@ -83,7 +86,7 @@ namespace PrincessAdventure
             GameplayGuiPanel.SetActive(false);
 
             _lastViewedPanel = QuestPanel;
-            QuestPanel.GetComponent<QuestGuiController>().InitializeQuestPanel();
+            QuestPanel.GetComponent<QuestGuiController>().InitializeQuestPanel(_lastGameDets, _lastItemDesc);
         }
 
 

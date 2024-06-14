@@ -271,7 +271,7 @@ namespace PrincessAdventure
             _techPauseGui.LoadTechPause();
         }
 
-        public void LoadGamePause()
+        public void LoadGamePause(GameDetails details)
         {
             _gameplayPanel.SetActive(false);
             _defeatPanel.SetActive(false);
@@ -285,7 +285,7 @@ namespace PrincessAdventure
             _gamePausePanel.SetActive(true);
             _charCreatePanel.SetActive(false);
 
-            _gamePauseGui.InitializePause();
+            _gamePauseGui.InitializePause(details, _itemDescriptions);
         }
 
 
@@ -387,6 +387,8 @@ namespace PrincessAdventure
                     return _itemDescriptions.uniqueItems.Where(x => x.id == 6).FirstOrDefault();
                 case PickUps.Book:
                     return _itemDescriptions.uniqueItems.Where(x => x.id == 7).FirstOrDefault();
+                case PickUps.Apple:
+                    return _itemDescriptions.uniqueItems.Where(x => x.id == 8).FirstOrDefault();
                 default:
                     return new ItemDescription();
             }

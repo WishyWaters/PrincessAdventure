@@ -183,6 +183,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/GUI/TimerGuiController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Rewards/PickupController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/DefeatGuiController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/GUI/MapGuiController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Enemy/GuardianMonsterController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/Interaction.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/UniqueItemGuiController.cs" />

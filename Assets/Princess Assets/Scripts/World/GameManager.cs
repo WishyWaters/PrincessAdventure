@@ -761,7 +761,7 @@ namespace PrincessAdventure
 					if(_gameDetails.starShards >= 5)
 						GuiManager.GuiInstance.LoadPowerUpGui();
 					else
-						GuiManager.GuiInstance.LoadGamePause();
+						GuiManager.GuiInstance.LoadGamePause(_gameDetails);
 				}
 			}
 			
@@ -1000,6 +1000,7 @@ namespace PrincessAdventure
 					GuiManager.GuiInstance.UpdateKeyText(_gameDetails.keys);
 					break;
 				case PickUps.StarShard:
+					_gameDetails.totalShards++;
 					_gameDetails.starShards++;
 					LoadStarShardGui();
 					break;
@@ -1026,6 +1027,10 @@ namespace PrincessAdventure
 				case PickUps.Gemstone:
 					_gameDetails.hasVision = true;
 					LoadUniqueItemGui(PickUps.Gemstone);
+					break;
+				case PickUps.Apple:
+					_gameDetails.apples++;
+					LoadUniqueItemGui(PickUps.Apple);
 					break;
 			}
         }

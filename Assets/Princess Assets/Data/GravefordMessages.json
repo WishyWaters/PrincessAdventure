@@ -1,0 +1,28 @@
+﻿{
+    "messages": [
+        {
+            "id": 1,
+            "message": "Becareful around skeletons you didn't bring with you"
+        },
+        {
+            "id": 2,
+            "message": "Green acid lasers are not safe for princesses or kittens"
+        },
+        {
+            "id": 3,
+            "message": "Skeletons are immune to some magic, but not fire"
+        },
+        {
+            "id": 4,
+            "message": "Ask permission before playing in underground crypts"
+        },
+        {
+            "id": 5,
+            "message": "If you are lost in hidden passages try moving in all directions"
+        },
+        {
+            "id": 6,
+            "message": "Take this fire rabbit friend."
+        }
+    ]
+}

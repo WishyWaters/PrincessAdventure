@@ -105,5 +105,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _companionPrefabs:
   - {fileID: 3850641674204995764, guid: 5ea9bab106b5f4f2386f40534dce8052, type: 3}
+  - {fileID: 4382496749294106652, guid: 279a791f05eb54116ba6654b98048d1f, type: 3}
+  - {fileID: 6554691535201228370, guid: 18c0dc0fd4ab1428dab5daaa37f4b59b, type: 3}
   _unsummonEffectPrefab: {fileID: 141433446842962269, guid: 9fe8f8b3288e45a44af36ff8aa04486e, type: 3}
   _unsummonSound: {fileID: 8300000, guid: 1c58756cbf41d76479bac606d55926c0, type: 3}
+  _fireEffectPrefab: {fileID: 2003039375407860232, guid: 4eed1ec0938db44998f92a3fb06e9204, type: 3}
+  _fireSound: {fileID: 8300000, guid: 8db21a3a8c0821e498c36809e2d13cf2, type: 3}
+  _slimeSound: {fileID: 8300000, guid: e31146d5200154645b6a4b282276b824, type: 3}
+  _rabbitSound: {fileID: 8300000, guid: c30ac88550db77340b7819dd3bc7b8d8, type: 3}
+  _batSound: {fileID: 8300000, guid: 91cd5960380c2a14c80e31d3b756557d, type: 3}

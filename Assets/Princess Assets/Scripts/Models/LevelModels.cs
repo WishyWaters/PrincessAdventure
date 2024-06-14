@@ -49,7 +49,8 @@ namespace PrincessAdventure
         Skull,
         Book,
         Gemstone,
-        Soup
+        Soup,
+        Apple
 
 
     }
@@ -129,6 +130,7 @@ namespace PrincessAdventure
         public int id;
         public string name;
         public string text;
+        public string extra;
     }
 
     [System.Serializable]
@@ -141,6 +143,7 @@ namespace PrincessAdventure
         public List<ItemDescription> outfits;
         public List<ItemDescription> rings;
         public List<ItemDescription> shoes;
+        public List<ItemDescription> trade;
     }
 
     [System.Serializable]

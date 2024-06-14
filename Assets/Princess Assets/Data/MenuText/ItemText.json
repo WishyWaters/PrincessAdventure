@@ -3,37 +3,62 @@
         {
             "id": 1,
             "name": "Star Shard",
-            "text": "A piece of fallen star.  Many of the wishes made have not been granted because the wishing stars have broken into pieces.  When five of them are found they can be used to increase health or magic."
+            "text": "A piece of fallen star.  When five of star shards are found they can be used to increase health or magic.",
+            "extra": "Many of the wishes made have not been granted because the wishing stars have broken into pieces."
         },
         {
             "id": 2,
             "name": "Star Wand",
-            "text": "A magical wand used to calm emotions, reflect danger, and find wishes."
+            "text": "A magical wand used to control star magic.  Sparkles and light, what star magic is all about.",
+            "extra": "Tapping the magic button creates an arc of star magic.  Star magic is used to calm emotions, reflect danger, and find wishes."
         },
         {
             "id": 3,
             "name": "Monster Soup",
-            "text": "A tasty treat for pure monsters. Use to magically summon monster friends, "
+            "text": "A tasty treat and a bit of star magic let's you summon friends from anywhere.",
+            "extra": "Holding the magic button summons your selected monster friend.  You will fall asleep while controlling the monster."
         },
         {
             "id": 4,
-            "name": "Candle",
-            "text": "A candle that shoots a fire ball.  Do not use on birthday cakes."
+            "name": "Magic Candle",
+            "text": "A candle used to control fire magic.  Heat and energy, what star magic is also about.",
+            "extra": "Tapping the fire button shoots a fireball.  Fireballs can hurt monsters and start fires."
         },
         {
             "id": 5,
-            "name": "Skull",
-            "text": "A ghastly prize that grants the ghostly power to fade walk."
+            "name": "Friendly Skull",
+            "text": "A ghastly prize used to fade walk.  Friends forever.",
+            "extra": "Holding the fade button makes allows you to walk through some walls and makes you invisible to enemies."
         },
         {
             "id": 6,
             "name": "Mirror Gem",
-            "text": "A magical stone that reveals secrets when fade walking."
+            "text": "A magical stone used to see beyond.  Seeing all is often to see too much.",
+            "extra": "Holding the fade button reveals hidden objects and allows you to interact with them."
         },
         {
             "id": 7,
-            "name": "Boom Book",
-            "text": "An entire book on how to create magic explosions.  Keep out of reach of children!"
+            "name": "Spell Book",
+            "text": "A book used to learn dragon magic.  Sought by many, found by you.",
+            "extra": "Holding the fire button creates an explosive orb.  Explosions can destroy many things."
+        },
+        {
+            "id": 8,
+            "name": "Shiny Apple",
+            "text": "An apple overflowing with magical power.  Used by Apple Witches to cast party spells.",
+            "extra": "There must be someone, somewhere who would want this fruit we just found laying about."
+        },
+        {
+            "id": 9,
+            "name": "Gold",
+            "text": "Used to purchase items in the Town of Desire.  Often found on the ground and in chests.",
+            "extra": "Gold used to be rare, but in the town of Desire where wishes came true it was mostly useless."
+        },
+        {
+            "id": 10,
+            "name": "Lost Key",
+            "text": "Used to open locked chests and doors.",
+            "extra": "Star magic can be used to turn lost keys into master keys.  Knock off the dirt and open any lock you come across."
         }
 
     ],
@@ -41,17 +66,20 @@
         {
             "id": 1,
             "name": "Slime",
-            "text": "The queen of blue slimes has pledged his people to your cause.  Summon a slime to squeeze into small places."
+            "text": "The queen of blue slimes has pledged his people to your cause.  Summon a slime to squeeze into small places.",
+            "extra": ""
         },
         {
             "id": 2,
             "name": "Fibbit",
-            "text": "The fibbits of the wood want to see the world.  Summon a fibbit when you need something heavy."
+            "text": "The fibbits of the wood want to see the world.  Summon a fibbit when you need something heavy.",
+            "extra": ""
         },
         {
             "id": 3,
             "name": "Bobo",
-            "text": "The bobos have faced their fears and wish to help you.  Summon a bobo to fly over obstacles."
+            "text": "The bobos have faced their fears and wish to help you.  Summon a bobo to fly over obstacles.",
+            "extra": ""
         }
 
     ],
@@ -59,47 +87,56 @@
         {
             "id": 1,
             "name": "Star Earrings",
-            "text": "A simple set of earrings that sparkle like stars"
+            "text": "A simple set of earrings that sparkle like stars",
+            "extra": ""
         },
         {
             "id": 2,
             "name": "Winged Helm",
-            "text": "A golden helm decorated with pegasus feathers made in the style of ancient Nalkry warriors"
+            "text": "A golden helm decorated with pegasus feathers made in the style of ancient Nalkry warriors",
+            "extra": ""
         },
         {
             "id": 3,
             "name": "Red Horn Helm",
-            "text": "A helm to made with monster parts to scare enemies"
+            "text": "A helm to made with monster parts to scare enemies",
+            "extra": ""
         },
         {
             "id": 4,
             "name": "Black Hat",
-            "text": "A simple yet mysterious black hat given by a kindly snowman"
+            "text": "A simple yet mysterious black hat given by a kindly snowman",
+            "extra": ""
         },
         {
             "id": 5,
             "name": "Magician Cap",
-            "text": "A simple cap often worn by royal wizards and healers"
+            "text": "A simple cap often worn by royal wizards and healers",
+            "extra": ""
         },
         {
             "id": 6,
             "name": "Royal Cap",
-            "text": "Posh style combined with potent magic that keeps those who wear it safe"
+            "text": "Posh style combined with potent magic that keeps those who wear it safe",
+            "extra": ""
         },
         {
             "id": 7,
             "name": "Ranger Cap",
-            "text": "Worn by the long lost forest folk, who once protected the wild lands"
+            "text": "Worn by the long lost forest folk, who once protected the wild lands",
+            "extra": ""
         },
         {
             "id": 8,
             "name": "Witch Hat",
-            "text": "Often worn by powerful and intelligent witches who focus on complex magic"
+            "text": "Often worn by powerful and intelligent witches who focus on complex magic",
+            "extra": ""
         },
         {
             "id": 9,
             "name": "Sparkle Star Earring",
-            "text": "A stunning pair of earrings that glisten like a comet in the night sky"
+            "text": "A stunning pair of earrings that glisten like a comet in the night sky",
+            "extra": ""
         }
 
     ],
@@ -107,22 +144,26 @@
         {
             "id": 1,
             "name": "Gift of the Galaxy",
-            "text": "A swirl of sparkling star shaped stones that are worn as a necklace"
+            "text": "A swirl of sparkling star shaped stones that are worn as a necklace",
+            "extra": ""
         },
         {
             "id": 2,
             "name": "Oceans Pride",
-            "text": "A pearl necklace decorated with sealife made by the Queen of Sea herself"
+            "text": "A pearl necklace decorated with sealife made by the Queen of Sea herself",
+            "extra": ""
         },
         {
             "id": 3,
             "name": "Ruby of Life",
-            "text": "Warm to the touch, the amulet yearns to protect the life of anyone who wears it"
+            "text": "Warm to the touch, the amulet yearns to protect the life of anyone who wears it",
+            "extra": ""
         },
         {
             "id": 4,
             "name": "Dragon Friend Amulet",
-            "text": "Created for ancient dragon riders.  Made for those who can befriend even monsters."
+            "text": "Created for ancient dragon riders.  Made for those who can befriend even monsters.",
+            "extra": ""
         }
 
     ],
@@ -130,47 +171,56 @@
         {
             "id": 1,
             "name": "Cosmic Gown",
-            "text": "A simple gown often worn by star princesses"
+            "text": "A simple gown often worn by star princesses",
+            "extra": ""
         },
         {
             "id": 2,
             "name": "Guilded Plate",
-            "text": "Protective armor forged for ancient Nalkry warriors.  Enscribed in the gold trim are words of a lost language."
+            "text": "Protective armor forged for ancient Nalkry warriors.  Enscribed in the gold trim are words of a lost language.",
+            "extra": ""
         },
         {
             "id": 3,
             "name": "Arcane Plate",
-            "text": "Armor made for battle mages from a far away land.  Many find the protection as valuable as the magic."
+            "text": "Armor forged in the dark voids of space were wishes and stars have been swallowed by despire.  Hope and light masks the true potential held within this armor.",
+            "extra": ""
         },
         {
             "id": 4,
             "name": "Black Jack",
-            "text": "Mysterious black clothing that is mostly formal.  It tailors itself for a perfect fit."
+            "text": "Mysterious black clothing that is mostly formal.  It tailors itself for a perfect fit.",
+            "extra": ""
         },
         {
             "id": 5,
             "name": "Magic Cape",
-            "text": "Although it is seen by many as a working class garment, it's fine threadwork is clear to trained eyes."
+            "text": "Although it is seen by many as a working class garment, it's fine threadwork is clear to trained eyes.",
+            "extra": ""
         },
         {
             "id": 6,
             "name": "Royal Cloak",
-            "text": "Fine silks and elaborate ribbons are layered to offer protection."
+            "text": "Fine silks and elaborate ribbons are layered to offer protection.",
+            "extra": ""
         },
         {
             "id": 7,
             "name": "Ranger Leather",
-            "text": "Ornate stitching covers this hardened leather.  Forest folk lived in armor such as this while patrolling among the wilds."
+            "text": "Ornate stitching covers this hardened leather.  Forest folk lived in armor such as this while patrolling among the wilds.",
+            "extra": ""
         },
         {
             "id": 8,
             "name": "Witch Dress",
-            "text": "Considered formal wear by the untrained.  Generations of powerful witches have made such dresses legendary."
+            "text": "Considered formal wear by the untrained.  Generations of powerful witches have made such dresses legendary.",
+            "extra": ""
         },
         {
             "id": 9,
             "name": "Cosmic Gown",
-            "text": "A beautiful gown often worn by star princesses.  This gown had it's cosmic luster restored and now grants extra protection."
+            "text": "A beautiful gown often worn by star princesses.  This gown had it's cosmic luster restored and now grants extra protection.",
+            "extra": ""
         }
 
     ],
@@ -178,22 +228,26 @@
         {
             "id": 1,
             "name": "Super Nova",
-            "text": "A star shard ring that glows with magical starlight"
+            "text": "A star shard ring that glows with magical starlight",
+            "extra": ""
         },
         {
             "id": 2,
             "name": "Oceans Grace",
-            "text": "A simple sea shell ring made by the King of Sea for his wife"
+            "text": "A simple sea shell ring made by the King of Sea for his wife",
+            "extra": ""
         },
         {
             "id": 3,
             "name": "Ruby of Love",
-            "text": "Warm to the touch, the ring yearns to show love to anyone who wears it"
+            "text": "Warm to the touch, the ring yearns to show love to anyone who wears it",
+            "extra": ""
         },
         {
             "id": 4,
             "name": "Folk Friend Ring",
-            "text": "Created for ancient dragons.  Made for monsters who can befriend even folk"
+            "text": "Created for ancient dragons.  Made for monsters who can befriend even folk",
+            "extra": ""
         }
 
     ],
@@ -201,48 +255,70 @@
         {
             "id": 1,
             "name": "Starsole Boots",
-            "text": "Simple boots often worn by star princesses"
+            "text": "Simple boots often worn by star princesses",
+            "extra": ""
         },
         {
             "id": 2,
             "name": "Guilded Greaves",
-            "text": "Protective footwear created for the ancient Nalkry warriors.  The Nalkry marched across the lands fighting for justice."
+            "text": "Protective footwear created for the ancient Nalkry warriors.  The Nalkry marched across the lands fighting for justice.",
+            "extra": ""
         },
         {
             "id": 3,
             "name": "Sundae Shoes",
-            "text": "High quality shoes often worn to weekly ice cream events.  Slightly uncomfortable and often kicked off."
+            "text": "High quality shoes often worn to weekly ice cream events.  Slightly uncomfortable and often kicked off.",
+            "extra": ""
         },
         {
             "id": 4,
             "name": "Winklepickers",
-            "text": "Dark pointy shoes perfect for kicking up trouble.  Not pointy enough to poke monsters."
+            "text": "Dark pointy shoes perfect for kicking up trouble.  Not pointy enough to poke monsters.",
+            "extra": ""
         },
         {
             "id": 5,
             "name": "Sheepskin Slippers",
-            "text": "Possibly the most comfy of all footware and comfort is crucial for spell casting.  "
+            "text": "Possibly the most comfy of all footware and comfort is crucial for spell casting.  ",
+            "extra": ""
         },
         {
             "id": 6,
             "name": "Royal Monk Shoe",
-            "text": "Single strap, handmade, and overpriced.  Clicking these heels won't do anything special."
+            "text": "Single strap, handmade, and overpriced.  Clicking these heels won't do anything special.",
+            "extra": ""
         },
         {
             "id": 7,
             "name": "Ranger Boots",
-            "text": "Soft and flexible boots that muffle your steps.  Flakes of dirt hang onto the sole from adventures long ago."
+            "text": "Soft and flexible boots that muffle your steps.  Flakes of dirt hang onto the sole from adventures long ago.",
+            "extra": ""
         },
         {
             "id": 8,
             "name": "Witch Flats",
-            "text": "Fashionable, check.  Comfortable, check.  Practicle, check.  The perfect everyday shoe for a witch on the move."
+            "text": "Fashionable, check.  Comfortable, check.  Practicle, check.  The perfect everyday shoe for a witch on the move.",
+            "extra": ""
         },
         {
             "id": 9,
             "name": "Starsole Boots",
-            "text": "Well crafted boots often worn by star princesses.  The leather comes from miniature giant space beasts."
+            "text": "Well crafted boots often worn by star princesses.  The leather comes from miniature giant space beasts.",
+            "extra": ""
         }
-
+    ],
+    "trade": [
+        {
+            "id": 1,
+            "name": "Bubble Beverage",
+            "text": "A big mug of bubble beverage, which is often used to quench thirsts.",
+            "extra": ""
+        },
+        {
+            "id": 2,
+            "name": "Cheese",
+            "text": "A delicious hunk of stinky cheese.",
+            "extra": ""
+        }
     ]
 }

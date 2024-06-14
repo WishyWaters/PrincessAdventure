@@ -87,6 +87,11 @@ namespace PrincessAdventure
             _ignoreInputs = ignore;
         }
 
+        public void SetColor(Color color)
+        {
+            _monsterAnimator.skeleton.SetColor(color);
+        }
+
         private void EnableController()
         {
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -257,6 +262,8 @@ namespace PrincessAdventure
 
         private void HandleUnsummon()
         {
+            //Set fire rabbit to timed explosion
+
             GameManager.GameInstance.ActivatePrincess(true);
             
         }

@@ -66,8 +66,8 @@ namespace PrincessAdventure
 		public int totalShards;
 		public int apples;
 		public int tradeItemId;
-		public bool hasTeleport;
-
+		public int totalApples;
+		public List<int> discoveredStarPortals;
 
 	}
 

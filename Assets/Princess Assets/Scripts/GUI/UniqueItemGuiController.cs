@@ -21,15 +21,18 @@ namespace PrincessAdventure
 
         [SerializeField] private AudioClip _click;
         [SerializeField] private AudioClip _powerUpZinger;
+        [SerializeField] private AudioClip _appleZinger;
+        [SerializeField] private AudioClip _outfitZinger;
 
         [SerializeField] private Sprite _gemSprite;
         [SerializeField] private Sprite _soupSprite;
+        [SerializeField] private Sprite _appleSprite;
 
         [SerializeField] EquipIconLookup _equipLookup;
 
         public void LoadUniqueItemGui(PickUps item, ItemDescription itemDescription)
         {
-            SoundManager.SoundInstance.PlayEffectSound(_powerUpZinger);
+            //SoundManager.SoundInstance.PlayEffectSound(_powerUpZinger);
 
             _titleText.text = itemDescription.name;
             _descText.text = itemDescription.text;
@@ -38,21 +41,31 @@ namespace PrincessAdventure
             {
                 case PickUps.Staff:
                     _itemImage.sprite = _wandSprite;
+                    SoundManager.SoundInstance.PlayEffectSound(_powerUpZinger);
                     break;
                 case PickUps.Candle:
                     _itemImage.sprite = _candleSprite;
+                    SoundManager.SoundInstance.PlayEffectSound(_powerUpZinger);
                     break;
                 case PickUps.Skull:
                     _itemImage.sprite = _skullSprite;
+                    SoundManager.SoundInstance.PlayEffectSound(_powerUpZinger);
                     break;
                 case PickUps.Book:
                     _itemImage.sprite = _bookSprite;
+                    SoundManager.SoundInstance.PlayEffectSound(_powerUpZinger);
                     break;
                 case PickUps.Soup:
                     _itemImage.sprite = _soupSprite;
+                    SoundManager.SoundInstance.PlayEffectSound(_powerUpZinger);
                     break;
                 case PickUps.Gemstone:
                     _itemImage.sprite = _gemSprite;
+                    SoundManager.SoundInstance.PlayEffectSound(_powerUpZinger);
+                    break;
+                case PickUps.Apple:
+                    _itemImage.sprite = _appleSprite;
+                    SoundManager.SoundInstance.PlayEffectSound(_appleZinger);
                     break;
             }
 
@@ -63,8 +76,8 @@ namespace PrincessAdventure
 
         public void LoadEquipItemGui(MajorTreasures treasureType, int id, ItemDescription itemDescription)
         {
-            SoundManager.SoundInstance.PlayEffectSound(_powerUpZinger);
 
+            SoundManager.SoundInstance.PlayEffectSound(_outfitZinger);
             _titleText.text = itemDescription.name;
             _descText.text = itemDescription.text;
 
