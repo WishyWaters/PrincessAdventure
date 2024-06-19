@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 329470897414639882}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300132, guid: 9c36637dca858d04bab9dd613234be63, type: 3}
+  m_Sprite: {fileID: 21300438, guid: 6eb0a75aaab2e434e88f40e0fceb777c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 2026826884453488919}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300100, guid: 9c36637dca858d04bab9dd613234be63, type: 3}
+  m_Sprite: {fileID: 21300406, guid: 6eb0a75aaab2e434e88f40e0fceb777c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -198,7 +198,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -21.58, y: 0.494, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3996836443852676127}
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d5a4009ed94948bf8f99acd5a1abf68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyedPrefab: {fileID: 3803506460705675392, guid: efca1fc7876650244b258ed3ee1231a4, type: 3}
+  _destroyedPrefab: {fileID: 202869682261907829, guid: 6d3387c2ea3834fec94c27c92dca64e6, type: 3}
 --- !u!60 &2684685233717746411
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -277,7 +277,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -289,11 +289,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.02563095, y: 0.28229493}
+    - - {x: -0.041330338, y: 0.32939172}
       - {x: -0.97669125, y: -0.024203181}
-      - {x: -0.8441062, y: -0.8474657}
+      - {x: -0.8284068, y: -0.83176666}
       - {x: -0.029108047, y: -0.93524486}
-      - {x: 0.94663584, y: -0.8602817}
+      - {x: 0.8524424, y: -0.7503891}
       - {x: 1.0407705, y: 0.0014292598}
   m_UseDelaunayMesh: 0
 --- !u!1 &3154520109171336846
@@ -322,7 +322,7 @@ Transform:
   m_GameObject: {fileID: 3154520109171336846}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -369,7 +369,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300134, guid: 9c36637dca858d04bab9dd613234be63, type: 3}
+  m_Sprite: {fileID: 21300440, guid: 6eb0a75aaab2e434e88f40e0fceb777c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -406,7 +406,7 @@ Transform:
   m_GameObject: {fileID: 6241153854124614206}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -453,7 +453,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300102, guid: 9c36637dca858d04bab9dd613234be63, type: 3}
+  m_Sprite: {fileID: 21300408, guid: 6eb0a75aaab2e434e88f40e0fceb777c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

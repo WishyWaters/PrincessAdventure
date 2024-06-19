@@ -27,6 +27,7 @@ namespace PrincessAdventure
         private float _currentAcceleration;
         private Vector2 _lastActiveAxis;
         private Vector2 _currentMovement;
+        private Vector2 _forcedMovement;
         private int _animatorDirection;
         private Vector2 _previousDirection;
         private GameObject _currentDirectionGameObject;
@@ -75,6 +76,11 @@ namespace PrincessAdventure
                 _nextInputs.InputThrowFireball = true;
             
 
+        }
+
+        public void AddForcedMovement(Vector2 moveTarget)
+        {
+            _forcedMovement = moveTarget;
         }
 
         public void AttemptCliffJump(Vector2 fallDirection)
@@ -217,6 +223,12 @@ namespace PrincessAdventure
         {
             Vector2 nextPosition = _rigidbody.position;
             nextPosition += amount * Time.deltaTime;
+
+            if(_forcedMovement != Vector2.zero)
+            {
+                nextPosition += _forcedMovement;
+                _forcedMovement = Vector2.zero;
+            }
 
             _rigidbody.MovePosition(nextPosition);
 

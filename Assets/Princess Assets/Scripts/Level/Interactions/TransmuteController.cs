@@ -9,6 +9,8 @@ namespace PrincessAdventure
         [SerializeField] private GameObject _pickupPrefab;
         [SerializeField] private AudioClip _fanfareClip;
         [SerializeField] private GameObject _fanfareEffect;
+        [SerializeField] private GameObject _objectToActivate;
+        [SerializeField] private int _oneTimeSaveId;
 
 
         private bool _isDrained;
@@ -20,10 +22,20 @@ namespace PrincessAdventure
                 DisableObject();
         }
 
-        public void TransmuteToItem()
+        public void TriggerTransmute()
         {
             DisableObject();
             PlayFanFare();
+
+            if (_pickupPrefab != null)
+                TransmuteToItem();
+
+            if (_objectToActivate != null)
+                _objectToActivate.SetActive(true);
+        }
+
+        private void TransmuteToItem()
+        {
             Instantiate(_pickupPrefab, this.transform.position, this.transform.rotation);
 
         }

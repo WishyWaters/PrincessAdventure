@@ -44,7 +44,7 @@ namespace PrincessAdventure
                 Instantiate(_deflectHitPrefab, (Vector3)collision.ClosestPoint(this.transform.position), this.transform.rotation);
 
                 TransmuteController transCtrl = collision.gameObject.GetComponent<TransmuteController>();
-                transCtrl.TransmuteToItem();
+                transCtrl.TriggerTransmute();
             }
             else if (collision.CompareTag("OpenFire"))
             {

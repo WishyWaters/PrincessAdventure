@@ -61,6 +61,16 @@ namespace PrincessAdventure
                 SwitchDown();
 
             }
+            else if (collision.CompareTag("Companion"))
+            {
+                CompanionController compCtrl = collision.GetComponent<CompanionController>();
+                if (compCtrl.GetCompanionId() == 2) //Is fibbit
+                {
+                    _currentWeight = collision;
+                    SwitchDown();
+                }
+
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collision)

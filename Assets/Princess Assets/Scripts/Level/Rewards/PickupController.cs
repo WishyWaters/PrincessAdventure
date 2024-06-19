@@ -6,11 +6,16 @@ namespace PrincessAdventure
 {
     public class PickupController : MonoBehaviour
     {
+        [Header("Pick Up Options")]
         [SerializeField] PickUps _itemType;
         [SerializeField] AudioClip _clip;
         [SerializeField] GameObject _item;
         [SerializeField] bool _saveOnPickup;
         [SerializeField] int _toggleSaveId;
+
+        [Header("Spawner Options")]
+        [SerializeField] private bool _spawnOnPickup;
+        [SerializeField] private GameObject _objectSpawner;
 
         private Transform _startMarker;
         private Transform _endMarker;
@@ -20,6 +25,8 @@ namespace PrincessAdventure
         private float _gravity = .05f;
         private float _itemHeight = 0f;
         private float _bounceSpeed = .01f;
+
+
 
         private void Start()
         {
@@ -87,6 +94,9 @@ namespace PrincessAdventure
                 SoundManager.SoundInstance.PlayEffectSound(_clip);
 
             UpdateSave();
+            if (_spawnOnPickup)
+                SpawnThing();
+
             Destroy(this.gameObject);
         }
 
@@ -135,6 +145,16 @@ namespace PrincessAdventure
             LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
 
             levelMgr.SetLevelToggle(_toggleSaveId, true);
+        }
+
+        private void SpawnThing()
+        {
+            ObjectSpawner spawner = _objectSpawner.GetComponent<ObjectSpawner>();
+
+            if(spawner != null)
+            {
+                spawner.StartSpawning();
+            }
         }
 
     }

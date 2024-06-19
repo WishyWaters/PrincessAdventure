@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Princess Assets/Scripts/Enemy/ScriptedMovementController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Unique/MovingPlatform.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/GuiManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/HeartReadController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/ExplosionController.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/Interactions/WeightSwitchController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexShakeA.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/StarShardGuiController.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Enemy/ObjectSpawner.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/Save/FileManager.cs" />
     <Compile Include="Assets/Retro Cartoon UI Pack/Retro Cartoon UI Resources/Scripts/PressedBtn.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/ProjectileTrap.cs" />
