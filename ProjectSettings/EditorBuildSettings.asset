@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Princess Assets/Scenes/FunkyCave.unity
     guid: 21214b4790a9e46a28b530007a97a3e6
+  - enabled: 1
+    path: Assets/Princess Assets/Scenes/FoolsPitMine.unity
+    guid: a9940162e039c4633995758f30aff0ef
   m_configObjects: {}

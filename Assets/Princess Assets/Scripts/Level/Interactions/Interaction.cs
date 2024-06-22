@@ -123,6 +123,13 @@ namespace PrincessAdventure
                 case InteractionTypes.Talk:
                     DoMessage();
                     break;
+                case InteractionTypes.Door:
+                    if (_affectedObjects[0].IsLocked())
+                        AttemptUnlock();
+                    else
+                        OpenDoor();
+                    break;
+
             }
 
         }
@@ -178,6 +185,14 @@ namespace PrincessAdventure
         {
             MessageInteractionController msgCtrl = this.gameObject.GetComponent<MessageInteractionController>();
             msgCtrl.ShowMessage();
+        }
+
+        private void OpenDoor()
+        {
+            foreach (AffectedObjectController affObj in _affectedObjects)
+            {
+                affObj.ToggleTheObject();
+            }
         }
 
     }

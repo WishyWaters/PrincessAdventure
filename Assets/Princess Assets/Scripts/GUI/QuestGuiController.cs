@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Linq;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TMPro;
 
 namespace PrincessAdventure

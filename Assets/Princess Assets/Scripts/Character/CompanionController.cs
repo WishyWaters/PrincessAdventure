@@ -92,6 +92,14 @@ namespace PrincessAdventure
             _monsterAnimator.skeleton.SetColor(color);
         }
 
+        public void Teleport(Vector2 directionToFace, Vector2 position)
+        {
+            _rigidbody.velocity = Vector3.zero;
+            this.transform.position = position;
+
+            _nextInputs.MoveAxis = directionToFace;
+        }
+
         private void EnableController()
         {
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;

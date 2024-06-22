@@ -58,18 +58,23 @@ namespace PrincessAdventure
 
         private void MoveRiders(Vector2 forcedMove)
         {
-            foreach (GameObject rider in _riders)
+            for (int i = _riders.Count - 1; i >= 0; i--)
             {
-                if(rider.CompareTag("Player"))
+                if (_riders[i] == null)
+                { 
+                    _riders.RemoveAt(i);
+                    continue;
+                }
+
+                if (_riders[i].CompareTag("Player"))
                 {
-                    CharacterController charCtrl = rider.GetComponent<CharacterController>();
+                    CharacterController charCtrl = _riders[i].GetComponent<CharacterController>();
 
                     if (charCtrl != null)
                         charCtrl.AddForcedMovement(forcedMove);
                 }
-
-                //TODO: Repeat for companion & monsters
             }
+
         }
 
         private bool NearTarget()

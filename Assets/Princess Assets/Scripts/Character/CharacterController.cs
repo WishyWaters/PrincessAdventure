@@ -201,6 +201,16 @@ namespace PrincessAdventure
             }
         }
 
+        public void Teleport(Vector2 directionToFace, Vector2 position)
+        {
+            _rigidbody.velocity = Vector3.zero;
+            this.transform.position = position;
+            _previousDirection = Vector2.zero;
+            _nextInputs = new PrincessInputActions();
+            _nextInputs.MoveAxis = directionToFace;
+            HandleDirection(_nextInputs);
+        }
+
         public void DisableController()
         {
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -754,6 +764,37 @@ namespace PrincessAdventure
 
             _animator.ResetTrigger("Hurt");
 
+        }
+
+        private IEnumerator DoFall(Vector2 respawnPoint)
+        {
+            LandingController landCtrl = this.GetComponent<LandingController>();
+
+            _rigidbody.simulated = false;
+            _ignoreInputs = true;
+
+            _animator.SetTrigger("Hurt");
+
+            // wait for animator state to change to Hurt
+            while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt") == false)
+                yield return null;
+
+            _animator.ResetTrigger("Hurt");
+            landCtrl.JumpShout();
+
+            while (_rigidbody.position != respawnPoint)
+            {
+                Vector2 nextPosition = Vector2.MoveTowards(_rigidbody.position, respawnPoint, Time.deltaTime * _moveSpeed * 10);
+                //_rigidbody.MovePosition(nextPosition);
+                this.transform.position = nextPosition;
+                yield return null;
+            }
+
+
+            landCtrl.HandleLanding();
+            _rigidbody.simulated = true;
+            _ignoreInputs = false;
+            ChangeState(PrincessState.Neutral);
         }
 
         #endregion

@@ -961,7 +961,7 @@ namespace PrincessAdventure
 			if (_gameDetails.keys > 0)
             {
 				_gameDetails.keys -= 1;
-
+				GuiManager.GuiInstance.UpdateKeyText(_gameDetails.keys);
 			}
 
 		}
@@ -1191,18 +1191,46 @@ namespace PrincessAdventure
 				yield return null;
             }
 
+			Vector2 facing = new Vector2();
+			switch (fade)
+			{
+				case FadeTypes.Left:
+					facing = Vector2.left;
+					break;
+				case FadeTypes.Right:
+					facing = Vector2.right;
+					break;
+				case FadeTypes.Up:
+				case FadeTypes.Enter:
+					facing = Vector2.up;
+					break;
+				case FadeTypes.Down:
+				case FadeTypes.Exit:
+				default:
+					facing = Vector2.down;
+					break;
+
+			}
+
+
 			//perform warp
 			if (_controllingCompanion)
 			{
 				_virtualCamera.OnTargetObjectWarped(_activeCompanion.transform, target - _activeCompanion.transform.position);
-				_activeCompanion.transform.position = target;
+				_charCtrl.Teleport(facing, (Vector2)target);
 			}
 			else
 			{
 				_virtualCamera.OnTargetObjectWarped(_charCtrl.gameObject.transform, target - _charCtrl.gameObject.transform.position);
-				_charCtrl.gameObject.transform.position = target;
+
+
+				_charCtrl.Teleport(facing, (Vector2)target);
+				//_charCtrl.gameObject.transform.position = target;
 
 			}
+
+			
+
 
 			//Call fade in
 			GuiManager.GuiInstance.FillToClear(fade, fadeTime);
