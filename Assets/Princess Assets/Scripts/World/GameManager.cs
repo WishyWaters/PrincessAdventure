@@ -32,6 +32,7 @@ namespace PrincessAdventure
 		private bool _pause;
 
 		private bool _showTips;
+		private int _fallValue;
 
 		#region Unity Functions
 		private void Awake()
@@ -52,6 +53,7 @@ namespace PrincessAdventure
         private void Start()
         {
 			_showTips = true;
+			_fallValue = 0;
 			if (PlayerPrefs.HasKey("Tips"))
 				_showTips = PlayerPrefs.GetInt("Tips") == 0 ? false : true;
 
@@ -778,6 +780,8 @@ namespace PrincessAdventure
 		public void ActivatePrincess(bool unsummon, Vector2 faceDirection = new Vector2())
 		{
 			bool doWakeUpAnim = false;
+			_fallValue = 0;
+
 			_virtualCamera.enabled = true;
 			_virtualCamera.Follow = _charCtrl.gameObject.transform;
 			_virtualCamera.OnTargetObjectWarped(_charCtrl.gameObject.transform, _charCtrl.gameObject.transform.position - _virtualCamera.gameObject.transform.position);
@@ -837,6 +841,27 @@ namespace PrincessAdventure
 					KillPrincess();
 			}
         }
+
+		public void FallPrincess(Vector3 respawnPoint)
+        {
+			if (_fallValue > 0)
+				return;
+
+			if (_controllingCompanion)
+				ActivatePrincess(true);
+			else
+			{
+				//Update game details
+				_gameDetails.currentHealth -= 1;
+
+				GuiManager.GuiInstance.EmptyOneHeart();
+
+				if (_gameDetails.currentHealth == 0)
+					KillPrincess();
+				else
+					_charCtrl.HandleFall(respawnPoint);
+			}
+		}
 
 		public void CoinDamagePrincess(Vector3 hitFromPosition, int coinDmg)
 		{
@@ -1057,7 +1082,8 @@ namespace PrincessAdventure
 					break;
                 case MajorTreasures.Outfit:
                     _gameDetails.equipment.outfits.Add(treasureId);
-                    break;
+					LoadUniqueItemGui(treasure, treasureId);
+					break;
                 case MajorTreasures.Ring:
                     _gameDetails.equipment.rings.Add(treasureId);
 					LoadUniqueItemGui(treasure, treasureId);
@@ -1173,6 +1199,12 @@ namespace PrincessAdventure
 
 
         }
+
+		public void IncrementFallValue(int value)
+        {
+			_fallValue += value;
+
+		}
 
 		#endregion
 

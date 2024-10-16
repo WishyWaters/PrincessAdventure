@@ -163,5 +163,7 @@ namespace PrincessAdventure
             GameManager.GameInstance.ActivateCharCreator();
         }
 
+
+
     }
 }

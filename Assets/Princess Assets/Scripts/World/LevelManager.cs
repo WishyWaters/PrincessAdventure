@@ -86,6 +86,11 @@ namespace PrincessAdventure
                 PuzzleCheckController puzzleCheck = affectedObject.GetComponent<PuzzleCheckController>();
                 puzzleCheck.PuzzleLoad((LevelManager)this);
             }
+            else if(affectedObject.GetComponent<TransmuteController>() != null)
+            {
+                TransmuteController transmuteCtrl = affectedObject.GetComponent<TransmuteController>();
+                transmuteCtrl.LoadCallBack((LevelManager)this);
+            }
         }
 
         public void AddToCallBackList(GameObject affectedObject)

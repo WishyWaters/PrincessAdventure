@@ -116,6 +116,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/GUI/MessageGuiController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/PrincessEyeSelector.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexJitter.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Character/CharacterEffects/FallController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/PrincessHairColorSelector.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/CompanionManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/SoundManager/SoundManager.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/DamageAnyThenDestroyThis.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/PrincessSpawnController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/LaserTrap.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Traps/Pit.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/SkewTextExample.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/WarpTextExample.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Level/DefaultRenderOrder.cs" />

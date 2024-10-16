@@ -2,27 +2,71 @@
     "messages": [
         {
             "id": 1,
-            "message": "Becareful around skeletons you didn't bring with you"
+            "message": "The farmers keep this place pretty safe, what did you do!?"
         },
         {
             "id": 2,
-            "message": "Green acid lasers are not safe for princesses or kittens"
+            "message": "Beware the witch of the red wood, she is kind and reclusive"
         },
         {
             "id": 3,
-            "message": "Skeletons are immune to some magic, but not fire"
+            "message": "Star magic uncover many kinds of dirty secrets"
         },
         {
             "id": 4,
-            "message": "Ask permission before playing in underground crypts"
+            "message": ""
         },
         {
             "id": 5,
-            "message": "If you are lost in hidden passages try moving in all directions"
+            "message": "Living trees can be very grumpy, best avoid them"
         },
         {
             "id": 6,
-            "message": "Take this fire rabbit friend."
+            "message": "Don’t go taking my shiny bits. If something is in my field it’s mine!."
+        },
+        {
+            "id": 7,
+            "message": "All these witches and wizards digging around, they better leave my shiny bits alone."
+        },
+        {
+            "id": 8,
+            "message": "How nice to see a new face.  I hope you’re the first of many."
+        },
+        {
+            "id": 9,
+            "message": "She has the same sparkling energy as that other girl from years ago."
+        },
+        {
+            "id": 10,
+            "message": "Haha! You can hear me and you’re not scared!"
+        },
+        {
+            "id": 11,
+            "message": "I am terrible at this job.  Guess it's still the best one for a pumpkin headed strawman."
+        },
+        {
+            "id": 12,
+            "message": "Those hay piles burn up quick, but I'm safe here in the fire proof wheat."
+        },
+        {
+            "id": 13,
+            "message": "Hello princess, I hear your kind love completing tasks."
+        },
+        {
+            "id": 14,
+            "message": "Bring me 5 red apples and I will fit you with a dress from my coven."
+        },
+        {
+            "id": 15,
+            "message": "These look perfect!  As we agreed, here is your dress."
+        },
+        {
+            "id": 16,
+            "message": "I always enjoyed watching the stars twinkle across the sky.  Good luck."
+        },
+        {
+            "id": 17,
+            "message": "No peeking into my heart princess. Respect the woods and I will gladly share them."
         }
     ]
 }

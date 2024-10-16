@@ -29,6 +29,11 @@ namespace PrincessAdventure
 
         }
 
+        public void SpawnDamageWithNoSound()
+        {
+            Instantiate(_damageHeartEffectPrefab, this.transform);
+        }
+
 
     }
 }

@@ -110,6 +110,17 @@ namespace PrincessAdventure
 
         }
 
+        public void HandleFall(Vector3 respawnPoint)
+        {
+
+            ChangeState(PrincessState.Falling);
+            if (_currentCoroutine != null)
+                StopCoroutine(_currentCoroutine);
+
+            _currentCoroutine = StartCoroutine(DoFall(respawnPoint));
+
+        }
+
         public void HandleCoinDamage(Vector3 hitFromPosition, int coinsTossed)
         {
 
@@ -768,30 +779,23 @@ namespace PrincessAdventure
 
         private IEnumerator DoFall(Vector2 respawnPoint)
         {
-            LandingController landCtrl = this.GetComponent<LandingController>();
+            FallController fallCtrl = this.GetComponent<FallController>();
 
             _rigidbody.simulated = false;
             _ignoreInputs = true;
 
-            _animator.SetTrigger("Hurt");
+            fallCtrl.StartFallingPrincess(respawnPoint, this.gameObject);
 
-            // wait for animator state to change to Hurt
-            while (_animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt") == false)
-                yield return null;
-
-            _animator.ResetTrigger("Hurt");
-            landCtrl.JumpShout();
-
-            while (_rigidbody.position != respawnPoint)
+            while (!fallCtrl.IsFinishedFalling())
             {
-                Vector2 nextPosition = Vector2.MoveTowards(_rigidbody.position, respawnPoint, Time.deltaTime * _moveSpeed * 10);
-                //_rigidbody.MovePosition(nextPosition);
-                this.transform.position = nextPosition;
                 yield return null;
             }
 
 
-            landCtrl.HandleLanding();
+            //this.transform.position = respawnPoint;
+
+            fallCtrl.EndFall();
+
             _rigidbody.simulated = true;
             _ignoreInputs = false;
             ChangeState(PrincessState.Neutral);

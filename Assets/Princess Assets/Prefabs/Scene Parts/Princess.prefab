@@ -3665,6 +3665,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8746090421077416876, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 840513162}
+    - targetCorrespondingSourceObject: {fileID: 8746090421077416876, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7143567086100199939}
   m_SourcePrefab: {fileID: 100100000, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}
 --- !u!95 &2092515312099186629 stripped
 Animator:
@@ -4278,6 +4281,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 7412016046180206115, guid: df3a677b7393f4369a8bba8e55a32767, type: 3}
+--- !u!114 &7143567086100199939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482395217454736612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9229dbae12046e2b9e8e80c151e81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _starPrefab: {fileID: 6226289986157931524, guid: 223f9c2ef78c940cb853ed55192eb004, type: 3}
+  _starCreatorPrefab: {fileID: 8771972552311404799, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}
+  _fallEffectPrefab: {fileID: 6091849738672977877, guid: af7931239aa7b5e479e4e5c2e6b460c3, type: 3}
+  _fallShouts:
+  - {fileID: 8300000, guid: b79a958f682637e43b983b16157ed65a, type: 3}
+  - {fileID: 8300000, guid: 0f98d3133fd5601459bee3c2ec1cfe6f, type: 3}
+  - {fileID: 8300000, guid: 7d2a7c514ee8b2445850dd67edec3719, type: 3}
+  - {fileID: 8300000, guid: 0f637f7fe161c4d449c7543fa6745bbd, type: 3}
+  _fallingStarClip: {fileID: 8300000, guid: ea28b38424eff8844aedc8f836e7fba6, type: 3}
+  _starMagicClip: {fileID: 8300000, guid: 6b68c5eb65b816642a404dca3c7e71cc, type: 3}
+  _princessLandClips:
+  - {fileID: 8300000, guid: 4fb70e67aacba144caffde90720a6c55, type: 3}
+  - {fileID: 8300000, guid: fb309dc75bbe292459fc52a34b2bf1e5, type: 3}
+  - {fileID: 8300000, guid: 7f4bea8a5e4d179409c97a515c6d0406, type: 3}
+  - {fileID: 8300000, guid: 06983d60c2e02124a81b57a1aac0f02e, type: 3}
 --- !u!114 &8111599727004752843 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4019111563092731011, guid: 326a40dc18ddd894ba68f57ef60472f6, type: 3}

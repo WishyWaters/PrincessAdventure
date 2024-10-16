@@ -200,6 +200,7 @@ Transform:
   - {fileID: 5166684180401675359}
   - {fileID: 2329807837549910233}
   - {fileID: 5864648871588799094}
+  - {fileID: 7513445644245622694}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1607499066655781790
@@ -578,7 +579,6 @@ Transform:
   - {fileID: 2400488931858287793}
   - {fileID: 1636052672042209573}
   - {fileID: 1569612199540274950}
-  - {fileID: 7513445644245622694}
   m_Father: {fileID: 2414466491959013610}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8601882552747727660
@@ -595,11 +595,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveType: 0
   _moveSpeed: 2
-  _idleTimeBetweenMoves: 0.5
+  _idleTimeBetweenMoves: 1
   _targets:
   - {fileID: 2329807837549910233}
   - {fileID: 5864648871588799094}
   _platformRb: {fileID: 5225962207175990071}
+  _riders:
+  - {fileID: 7513445644245622693}
 --- !u!61 &4521188434343482689
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -643,7 +645,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7, y: 1.7}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!50 &5225962207175990071
 Rigidbody2D:
@@ -908,7 +910,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 5166684180401675359}
+    m_TransformParent: {fileID: 2414466491959013610}
     m_Modifications:
     - target: {fileID: -1319646105536913407, guid: 4e4af44ff8ed747889c9ba354f0b0b8f, type: 3}
       propertyPath: callOnUpdate
@@ -924,23 +926,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6247219999614076267, guid: 4e4af44ff8ed747889c9ba354f0b0b8f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6666667
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6247219999614076267, guid: 4e4af44ff8ed747889c9ba354f0b0b8f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6666667
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6247219999614076267, guid: 4e4af44ff8ed747889c9ba354f0b0b8f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6666667
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6247219999614076267, guid: 4e4af44ff8ed747889c9ba354f0b0b8f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.01
+      value: 0.01499939
       objectReference: {fileID: 0}
     - target: {fileID: 6247219999614076267, guid: 4e4af44ff8ed747889c9ba354f0b0b8f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02
+      value: 0.02999878
       objectReference: {fileID: 0}
     - target: {fileID: 6247219999614076267, guid: 4e4af44ff8ed747889c9ba354f0b0b8f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -977,8 +979,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6247219999614076264, guid: 4e4af44ff8ed747889c9ba354f0b0b8f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5040957328109393697}
   m_SourcePrefab: {fileID: 100100000, guid: 4e4af44ff8ed747889c9ba354f0b0b8f, type: 3}
+--- !u!1 &7513445644245622693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6247219999614076264, guid: 4e4af44ff8ed747889c9ba354f0b0b8f, type: 3}
+  m_PrefabInstance: {fileID: 4537247418651105997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &5040957328109393697
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7513445644245622693}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!4 &7513445644245622694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6247219999614076267, guid: 4e4af44ff8ed747889c9ba354f0b0b8f, type: 3}

@@ -11,18 +11,21 @@ namespace PrincessAdventure
         [SerializeField] private float _idleTimeBetweenMoves;
         [SerializeField] private List<Transform> _targets;
         [SerializeField] private Rigidbody2D _platformRb;
+        [SerializeField] private List<GameObject> _riders;
 
         private int _currentTargetIndex;
         private float _idleUntil;
         private bool _movementActive = true;
         private Vector2 _previousPosition;
 
-        private List<GameObject> _riders;
-
+        
+        
         // Use this for initialization
         void Start()
         {
-            _riders = new List<GameObject>();
+            if(_riders == null)
+                _riders = new List<GameObject>();
+
             transform.position = _targets[0].position;
             _previousPosition = _targets[0].position;
         }
@@ -49,8 +52,9 @@ namespace PrincessAdventure
                 //transform.position = Vector2.MoveTowards(transform.position, _targets[_currentTargetIndex].position, _moveSpeed * Time.deltaTime);
 
                 Vector2 moveDiff = nextTarget - _previousPosition;
-                MoveRiders(moveDiff);
                 _previousPosition = nextTarget;
+                MoveRiders(moveDiff);
+                
 
             }
 
@@ -73,6 +77,18 @@ namespace PrincessAdventure
                     if (charCtrl != null)
                         charCtrl.AddForcedMovement(forcedMove);
                 }
+                else if (_riders[i].CompareTag("Companion"))
+                {
+                    CompanionController compCtrl = _riders[i].GetComponent<CompanionController>();
+
+                    if (compCtrl != null)
+                        compCtrl.AddForcedMovement(forcedMove);
+                }
+                else
+                {
+                    _riders[i].GetComponent<Rigidbody2D>().MovePosition(_previousPosition);
+                }
+                
             }
 
         }
@@ -90,24 +106,29 @@ namespace PrincessAdventure
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            
+            if (_riders.IndexOf(collision.gameObject) < 0)
+            {
 
-            _riders.Add(collision.gameObject);
-
-            
+                if (collision.CompareTag("Player") || collision.CompareTag("Companion"))
+                {
+                    _riders.Add(collision.gameObject);
+                    GameManager.GameInstance.IncrementFallValue(1);
+                }
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            //collision.transform.SetParent(null);
-            _riders.Remove(collision.gameObject);
+            if (_riders.IndexOf(collision.gameObject) >= 0)
+            {
+                if (collision.CompareTag("Player") || collision.CompareTag("Companion"))
+                {
+                    _riders.Remove(collision.gameObject);
+                    GameManager.GameInstance.IncrementFallValue(-1);
+                }
+            }
         }
 
-        private void Connect(Rigidbody2D player)
-        {
-            FixedJoint2D joint = GetComponent<FixedJoint2D>();
-            joint.connectedBody = player;
-        }
 
 
     }

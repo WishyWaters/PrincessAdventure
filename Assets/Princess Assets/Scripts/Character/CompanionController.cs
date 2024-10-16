@@ -35,6 +35,7 @@ namespace PrincessAdventure
         private float _currentAcceleration;
         private Vector2 _lastActiveAxis;
         private Vector2 _currentMovement;
+        private Vector2 _forcedMovement;
 
         // Start is called before the first frame update
         void Start()
@@ -80,6 +81,11 @@ namespace PrincessAdventure
                 _nextInputs.InputThrowFireball = true;
 
 
+        }
+
+        public void AddForcedMovement(Vector2 moveTarget)
+        {
+            _forcedMovement = moveTarget;
         }
 
         public void SetIngoreInputs(bool ignore)
@@ -141,6 +147,12 @@ namespace PrincessAdventure
             Vector2 nextPosition = _rigidbody.position;
             nextPosition += amount * Time.deltaTime;
 
+            if (_forcedMovement != Vector2.zero)
+            {
+                nextPosition += _forcedMovement;
+                _forcedMovement = Vector2.zero;
+            }
+
             _rigidbody.MovePosition(nextPosition);
 
         }
@@ -172,13 +184,15 @@ namespace PrincessAdventure
             if(targetSpeed > 0)
             {
                 _currentMovement = _lastActiveAxis * targetSpeed;
-                Move(_currentMovement);
+            
                 UpdateAnimation("Walk", true);
 
             } else
             {
+                _currentMovement = Vector2.zero;
                 UpdateAnimation("Idle", true);
             }
+            Move(_currentMovement);
         }
 
 

@@ -13,25 +13,44 @@ namespace PrincessAdventure
         [SerializeField] private int _oneTimeSaveId;
 
 
-        private bool _isDrained;
-        // Start is called before the first frame update
-
         void Start()
         {
-            if (_isDrained)
-                DisableObject();
+            if (_oneTimeSaveId > 0)
+            {
+                LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+
+                levelMgr.AddToCallBackList(this.gameObject);
+            }
+
+        }
+
+        public void LoadCallBack(LevelManager levelMgr)
+        {
+            if(levelMgr.DoesToggleSaveExist(_oneTimeSaveId))
+            {
+                if (levelMgr.GetLevelToggle(_oneTimeSaveId))
+                    TriggerTransmute();
+
+            }
         }
 
         public void TriggerTransmute()
         {
-            DisableObject();
             PlayFanFare();
+
+            if(_oneTimeSaveId > 0)
+            {
+                LevelManager levelMgr = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManager>();
+                levelMgr.SetLevelToggle(_oneTimeSaveId, true);
+            }
 
             if (_pickupPrefab != null)
                 TransmuteToItem();
 
             if (_objectToActivate != null)
                 _objectToActivate.SetActive(true);
+
+            DisableObject();
         }
 
         private void TransmuteToItem()
@@ -42,7 +61,6 @@ namespace PrincessAdventure
 
         private void DisableObject()
         {
-            _isDrained = true;
             this.gameObject.SetActive(false);
         }
 
