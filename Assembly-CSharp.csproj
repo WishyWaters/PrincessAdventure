@@ -163,6 +163,7 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/ShaderPropAnimator.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/Save/SaveDataManager.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/World/LevelManager.cs" />
+    <Compile Include="Assets/Princess Assets/Scripts/Level/Unique/MovingPlatformGate.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/Enemy/EnemyActionController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/CameraController.cs" />
     <Compile Include="Assets/Princess Assets/Scripts/GUI/CharacterEditors/CustomizeCharGuiController.cs" />
